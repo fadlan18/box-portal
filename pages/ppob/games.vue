@@ -113,7 +113,7 @@
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:14px">
               <span style="color:#64748b">No. Tujuan</span>
-              <span style="font-weight:600;color:#1a202c">{{ nomorAkun.value }}</span>
+              <span style="font-weight:600;color:#1a202c">{{ gameId }}</span>
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:14px">
               <span style="color:#64748b">Email</span>
@@ -152,6 +152,11 @@ const showConfirm = ref(false)
 const ordering = ref(false)
 const orderError = ref('')
 
+async function konfirmasiDanBayar() {
+  showConfirm.value = false
+  await bayar()
+}
+
 async function bayar() {
   if (!buyerEmail.value) { orderError.value = 'Email wajib diisi'; return }
   if (!buyerEmail.value.includes('@')) { orderError.value = 'Email tidak valid'; return }
@@ -161,7 +166,7 @@ async function bayar() {
     const res: any = await $fetch('/api/ppob/order', {
       method: 'POST',
       body: {
-        customer_no: nomorAkun.value,
+        customer_no: gameId.value,
         product: selectedProduct.value,
         email: buyerEmail.value,
         name: buyerEmail.value,
@@ -171,7 +176,8 @@ async function bayar() {
       window.location.href = `https://paymen.mitranz.com/invoices/${res.invoice.id}`
     }
   } catch (e: any) {
-    orderError.value = e?.data?.message || 'Gagal membuat pesanan'
+    console.error('[Games bayar error]', e)
+    orderError.value = e?.data?.message || e?.message || 'Gagal membuat pesanan'
   } finally {
     ordering.value = false
   }

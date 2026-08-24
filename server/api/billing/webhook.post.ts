@@ -13,10 +13,9 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 403, message: 'Missing signature' })
   }
   const expected = crypto
-    .createHmac('sha256', WEBHOOK_SECRET)
+    .createHmac('sha256', useRuntimeConfig().webhookSecret || '0798b667ee9d25fd542cfb5ec2d015c91e3162cfeacccfb8f5364afd1ea4708d')
     .update(body)
     .digest('hex')
-  const webhookSecret = useRuntimeConfig().webhookSecret || '0798b667ee9d25fd542cfb5ec2d015c91e3162cfeacccfb8f5364afd1ea4708d'
   if (signature !== expected) {
     console.warn('[Billing Webhook] Ditolak: signature tidak valid')
     throw createError({ statusCode: 403, message: 'Invalid signature' })

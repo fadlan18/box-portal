@@ -151,7 +151,7 @@
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:14px">
               <span style="color:#64748b">No. Tujuan</span>
-              <span style="font-weight:600;color:#1a202c">{{ nomorHP.value }}</span>
+              <span style="font-weight:600;color:#1a202c">{{ phoneNo }}</span>
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:14px">
               <span style="color:#64748b">Email</span>
@@ -210,6 +210,11 @@ const showConfirm = ref(false)
 const ordering = ref(false)
 const orderError = ref('')
 
+async function konfirmasiDanBayar() {
+  showConfirm.value = false
+  await bayar()
+}
+
 async function bayar() {
   if (!buyerEmail.value) { orderError.value = 'Email wajib diisi'; return }
   if (!buyerEmail.value.includes('@')) { orderError.value = 'Email tidak valid'; return }
@@ -219,7 +224,7 @@ async function bayar() {
     const res: any = await $fetch('/api/ppob/order', {
       method: 'POST',
       body: {
-        customer_no: nomorHP.value,
+        customer_no: phoneNo.value,
         product: selectedProduct.value,
         email: buyerEmail.value,
         name: buyerEmail.value,

@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
         return await $fetch('/api/auth/refresh', { method: 'POST' })
       } catch {}
     }
-    throw createError({ statusCode: 401, message: 'Tidak terautentikasi' })
+    return { ok: false, user: null }
   }
 
   try {
@@ -35,6 +35,6 @@ export default defineEventHandler(async (event) => {
         } catch {}
       }
     }
-    throw createError({ statusCode: 401, message: 'Session tidak valid' })
+    return { ok: false, user: null }
   }
 })

@@ -97,7 +97,7 @@
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:14px">
               <span style="color:#64748b">No. Tujuan</span>
-              <span style="font-weight:600;color:#1a202c">{{ nomorPelanggan.value }}</span>
+              <span style="font-weight:600;color:#1a202c">{{ nomorPelanggan }}</span>
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:14px">
               <span style="color:#64748b">Email</span>
@@ -132,6 +132,11 @@ const emailConfirmed = ref(false)
 const showConfirm = ref(false)
 const ordering = ref(false)
 const orderError = ref('')
+
+async function konfirmasiDanBayar() {
+  showConfirm.value = false
+  await bayar()
+}
 
 async function bayar() {
   if (!buyerEmail.value) { orderError.value = 'Email wajib diisi'; return }

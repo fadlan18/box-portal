@@ -113,6 +113,7 @@ const adminItems = [
   { to: '/admin/users',     label: 'Kelola User',     icon: Users           },
   { to: '/admin/chat',      label: 'Riwayat Chat',    icon: MessageCircle   },
   { to: '/admin/markup',    label: 'Markup PPOB',     icon: Settings        },
+  { to: '/admin/ppob-categories', label: 'Kategori PPOB', icon: LayoutDashboard },
   { to: '/admin/tickets',   label: 'Kelola Tickets',  icon: Ticket          },
 ]
 

@@ -55,7 +55,7 @@
             <input v-model="visitorEmail" type="email" placeholder="email@example.com" class="w-full px-3 py-2.5 rounded-xl text-sm outline-none" style="border:2px solid #e2e8f0;color:#1a202c" @focus="$event.target.style.borderColor='#1a4fa0'" @blur="$event.target.style.borderColor='#e2e8f0'"/>
           </div>
           <div>
-            <label class="text-xs font-semibold text-gray-600 block mb-1">No HP / WhatsApp</label>
+            <label class="text-xs font-semibold text-gray-600 block mb-1">No HP</label>
             <input v-model="visitorPhone" type="tel" placeholder="+62 812 xxxx xxxx" class="w-full px-3 py-2.5 rounded-xl text-sm outline-none" style="border:2px solid #e2e8f0;color:#1a202c" @focus="$event.target.style.borderColor='#1a4fa0'" @blur="$event.target.style.borderColor='#e2e8f0'" @keyup.enter="startChat"/>
           </div>
           <p v-if="formError" style="color:#dc2626;font-size:12px;margin:0">⚠️ {{ formError }}</p>

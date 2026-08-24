@@ -49,7 +49,7 @@
         <!-- Contact -->
         <div style="margin-top:24px;text-align:center">
           <p style="font-size:13px;color:#64748b">Ada pertanyaan? Hubungi kami via
-            <a href="https://wa.me/6281150000912" style="color:#1a4fa0;font-weight:700;text-decoration:none">WhatsApp</a>
+            fitur <strong>Chat</strong> di halaman utama
           </p>
         </div>
       </div>
