@@ -1,5 +1,5 @@
 <template>
-  <div style="min-height:100vh;background:#f0f4fa;padding:24px 16px">
+  <div style="min-height:100vh;background:#f0f4fa;padding:16px 12px">
     <div style="max-width:600px;margin:0 auto">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
         <a href="/dashboard" style="width:36px;height:36px;border-radius:10px;background:white;display:flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid #e2e8f0">←</a>

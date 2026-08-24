@@ -1,5 +1,5 @@
 <template>
-  <div style="min-height:100vh;background:#f0f4fa;padding:24px 16px">
+  <div style="min-height:100vh;background:#f0f4fa;padding:16px 12px">
     <div style="max-width:600px;margin:0 auto">
       <!-- Header -->
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
@@ -16,6 +16,32 @@
         <input v-model="nomorMeter" type="text" placeholder="Masukkan nomor meter PLN"
           style="width:100%;box-sizing:border-box;padding:14px 16px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;outline:none;color:#1a202c"
           @focus="$event.target.style.borderColor='#1a4fa0'" @blur="$event.target.style.borderColor='#e2e8f0'"/>
+
+        <!-- Nomor tersimpan -->
+        <div v-if="savedNumbers.length" style="margin-top:10px">
+          <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;font-weight:600">TERSIMPAN:</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <button v-for="num in savedNumbers" :key="num"
+              @click="nomorMeter = num"
+              style="padding:6px 12px;background:#eff6ff;color:#1a4fa0;border:1px solid #bfdbfe;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer">
+              {{ num }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Simpan nomor -->
+        <div v-if="nomorMeter && !savedNumbers.includes(nomorMeter)" style="margin-top:8px">
+          <button @click="saveNumber"
+            style="font-size:12px;color:#1a4fa0;background:none;border:none;cursor:pointer;padding:0;font-weight:600">
+            💾 Simpan nomor ini
+          </button>
+        </div>
+        <div v-else-if="nomorMeter && savedNumbers.includes(nomorMeter)" style="margin-top:8px">
+          <button @click="removeNumber(nomorMeter)"
+            style="font-size:12px;color:#dc2626;background:none;border:none;cursor:pointer;padding:0;font-weight:600">
+            🗑 Hapus dari tersimpan
+          </button>
+        </div>
         <button @click="step = 2" :disabled="!nomorMeter.trim()"
           style="width:100%;margin-top:16px;padding:14px;background:#1a4fa0;color:white;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;disabled:opacity-0.5">
           Lanjut →
@@ -150,6 +176,26 @@ useHead({ title: 'Token Listrik PLN — miTRANZ' })
 
 const step = ref(1)
 const nomorMeter = ref('')
+const savedNumbers = ref<string[]>([])
+
+onMounted(() => {
+  try {
+    const saved = localStorage.getItem('pln:saved_numbers')
+    if (saved) savedNumbers.value = JSON.parse(saved)
+  } catch {}
+})
+
+function saveNumber() {
+  if (!nomorMeter.value) return
+  const list = [...new Set([nomorMeter.value, ...savedNumbers.value])].slice(0, 5)
+  savedNumbers.value = list
+  localStorage.setItem('pln:saved_numbers', JSON.stringify(list))
+}
+
+function removeNumber(num: string) {
+  savedNumbers.value = savedNumbers.value.filter(n => n !== num)
+  localStorage.setItem('pln:saved_numbers', JSON.stringify(savedNumbers.value))
+}
 const products = ref<any[]>([])
 const selectedProduct = ref<any>(null)
 const loading = ref(false)

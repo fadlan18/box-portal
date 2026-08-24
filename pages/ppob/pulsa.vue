@@ -1,5 +1,5 @@
 <template>
-  <div style="min-height:100vh;background:#f0f4fa;padding:24px 16px">
+  <div style="min-height:100vh;background:#f0f4fa;padding:16px 12px">
     <div style="max-width:600px;margin:0 auto">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
         <a href="/dashboard" style="width:36px;height:36px;border-radius:10px;background:white;display:flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid #e2e8f0">←</a>
@@ -33,6 +33,30 @@
         <input v-model="phoneNo" type="tel" placeholder="08xxxxxxxxxx"
           style="width:100%;box-sizing:border-box;padding:14px 16px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;outline:none;color:#1a202c"
           @focus="$event.target.style.borderColor='#1a4fa0'" @blur="$event.target.style.borderColor='#e2e8f0'"/>
+
+        <!-- Nomor tersimpan -->
+        <div v-if="savedNumbers.length" style="margin-top:10px">
+          <div style="font-size:11px;color:#94a3b8;margin-bottom:6px;font-weight:600">TERSIMPAN:</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <button v-for="num in savedNumbers" :key="num"
+              @click="phoneNo = num"
+              style="padding:6px 12px;background:#eff6ff;color:#1a4fa0;border:1px solid #bfdbfe;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer">
+              {{ num }}
+            </button>
+          </div>
+        </div>
+        <div v-if="phoneNo && !savedNumbers.includes(phoneNo)" style="margin-top:8px">
+          <button @click="saveNumber"
+            style="font-size:12px;color:#1a4fa0;background:none;border:none;cursor:pointer;padding:0;font-weight:600">
+            💾 Simpan nomor ini
+          </button>
+        </div>
+        <div v-else-if="phoneNo && savedNumbers.includes(phoneNo)" style="margin-top:8px">
+          <button @click="removeNumber(phoneNo)"
+            style="font-size:12px;color:#dc2626;background:none;border:none;cursor:pointer;padding:0;font-weight:600">
+            🗑 Hapus dari tersimpan
+          </button>
+        </div>
       </div>
 
       <!-- Tab Pulsa/Data -->
@@ -158,6 +182,26 @@ definePageMeta({ layout: false })
 useHead({ title: 'Pulsa & Paket Data — miTRANZ' })
 
 const { getOperatorLogo } = useOperatorLogo()
+const savedNumbers = ref<string[]>([])
+
+onMounted(() => {
+  try {
+    const saved = localStorage.getItem('pulsa:saved_numbers')
+    if (saved) savedNumbers.value = JSON.parse(saved)
+  } catch {}
+})
+
+function saveNumber() {
+  if (!phoneNo.value) return
+  const list = [...new Set([phoneNo.value, ...savedNumbers.value])].slice(0, 5)
+  savedNumbers.value = list
+  localStorage.setItem('pulsa:saved_numbers', JSON.stringify(list))
+}
+
+function removeNumber(num: string) {
+  savedNumbers.value = savedNumbers.value.filter(n => n !== num)
+  localStorage.setItem('pulsa:saved_numbers', JSON.stringify(savedNumbers.value))
+}
 const allProducts = ref<any[]>([])
 const grouped = ref<Record<string, any[]>>({})
 const buyerEmail = ref('')

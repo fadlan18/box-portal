@@ -17,13 +17,13 @@
     </nav>
 
     <!-- Hero -->
-    <div style="background:linear-gradient(135deg,#1a4fa0 0%,#2563eb 50%,#1e40af 100%);padding:80px 32px 100px;text-align:center;position:relative;overflow:hidden">
+    <div style="background:linear-gradient(135deg,#1a4fa0 0%,#2563eb 50%,#1e40af 100%);padding:clamp(40px,8vw,80px) clamp(16px,4vw,32px) clamp(48px,10vw,100px);text-align:center;position:relative;overflow:hidden">
       <div style="position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2220%22 cy=%2220%22 r=%2240%22 fill=%22rgba(255,255,255,0.03)%22/><circle cx=%2280%22 cy=%2280%22 r=%2260%22 fill=%22rgba(255,255,255,0.03)%22/></svg>');background-size:cover"></div>
       <div style="position:relative;max-width:800px;margin:0 auto">
         <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:100px;margin-bottom:24px">
           <span style="color:white;font-size:13px;font-weight:600">🚀 Platform Layanan Digital Terpercaya</span>
         </div>
-        <h1 style="font-size:clamp(22px,3vw,38px);font-weight:900;color:white;line-height:1.1;margin:0 0 20px;letter-spacing:-1px">
+        <h1 style="font-size:clamp(28px,5vw,38px);font-weight:900;color:white;line-height:1.1;margin:0 0 20px;letter-spacing:-1px">
           Semua Layanan Digital<br>
           <span style="color:#fbbf24">dalam Satu Platform</span>
         </h1>
@@ -100,7 +100,7 @@
           <p style="color:#64748b;font-size:16px;max-width:480px;margin:0 auto">Website modern untuk bisnis, UMKM, dan pemerintah desa. Harga transparan, kualitas terjamin.</p>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px">
           <div v-for="w in websiteProducts" :key="w.name"
             :style="`background:white;border-radius:20px;padding:32px;border:2px solid ${w.featured ? '#1a4fa0' : '#e2e8f0'};position:relative;box-shadow:${w.featured ? '0 8px 32px rgba(26,79,160,0.15)' : '0 2px 8px rgba(0,0,0,0.04)'};transition:all 0.2s`"
             onmouseover="this.style.transform='translateY(-4px)'"
