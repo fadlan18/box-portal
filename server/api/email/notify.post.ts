@@ -108,7 +108,10 @@ export default defineEventHandler(async (event) => {
         `</div>`,
       ].join('') : '',
       message ? `<p style="color:#64748b;font-size:13px;text-align:center">${message}</p>` : '',
-      `<p style="color:#94a3b8;font-size:12px;text-align:center;margin-top:24px">Terima kasih telah menggunakan layanan miTRANZ</p>`,
+      `<div style="text-align:center;margin-top:20px">`,
+      `<a href="https://mitranz.com/ppob/riwayat" style="display:inline-block;padding:10px 24px;background:#1a4fa0;color:white;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700">📋 Cek Status Transaksi</a>`,
+      `</div>`,
+      `<p style="color:#94a3b8;font-size:12px;text-align:center;margin-top:16px">Terima kasih telah menggunakan layanan miTRANZ</p>`,
       `</div></div>`,
     ].join('')
   } else if (type === 'otp') {
