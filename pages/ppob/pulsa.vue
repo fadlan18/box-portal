@@ -358,20 +358,23 @@ const trustBadges = [
   { icon: '🕐', label: 'Layanan 24 Jam', desc: 'Kapan saja' },
 ]
 
-onMounted(async () => {
+// SSR fetch untuk data awal
+const { data: opsData } = await useAsyncData('pulsa-operators',
+  () => $fetch<any[]>('/api/ppob/operator-brands?category=Pulsa'),
+  { default: () => [] }
+)
+const { data: pulsaProds } = await useAsyncData('pulsa-products',
+  () => $fetch<any>('/api/ppob/products-pulsa'),
+  { default: () => ({ products: [] }) }
+)
+operators.value = opsData.value ?? []
+allProducts.value = pulsaProds.value?.products ?? []
+loadingOps.value = false
+
+onMounted(() => {
   isDesktop.value = window.innerWidth >= 768
   window.addEventListener('resize', () => { isDesktop.value = window.innerWidth >= 768 })
   savedNumbers.value = JSON.parse(localStorage.getItem('pulsa_saved') || '[]')
-  try {
-    const [opsData, rawData] = await Promise.all([
-      $fetch<any[]>('/api/ppob/operator-brands?category=Pulsa'),
-      $fetch<any>('/api/ppob/products-raw')
-    ])
-    operators.value = opsData
-    allProducts.value = (rawData?.products ?? []).filter((p: any) =>
-      p.category === 'Pulsa' || p.category === 'Data'
-    )
-  } finally { loadingOps.value = false }
 })
 
 async function pilihOperator(op: any) {

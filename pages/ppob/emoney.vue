@@ -298,17 +298,22 @@ const trustBadges = [
   { icon: '🕐', label: 'Layanan 24 Jam', desc: 'Kapan saja' },
 ]
 
-onMounted(async () => {
+// SSR fetch
+const { data: emoneyBrands } = await useAsyncData('emoney-brands',
+  () => $fetch<any[]>('/api/ppob/operator-brands?category=EMoney'),
+  { default: () => [] }
+)
+const { data: emoneyProducts } = await useAsyncData('emoney-products',
+  () => $fetch<any>('/api/ppob/products-raw'),
+  { default: () => ({ products: [] }) }
+)
+brands.value = emoneyBrands.value ?? []
+allProducts.value = emoneyProducts.value?.products ?? []
+loadingBrands.value = false
+
+onMounted(() => {
   isDesktop.value = window.innerWidth >= 768
   window.addEventListener('resize', () => { isDesktop.value = window.innerWidth >= 768 })
-  try {
-    const [brandsData, rawData] = await Promise.all([
-      $fetch<any[]>('/api/ppob/operator-brands?category=EMoney'),
-      $fetch<any>('/api/ppob/products-raw')
-    ])
-    brands.value = brandsData
-    allProducts.value = rawData?.products ?? []
-  } finally { loadingBrands.value = false }
 })
 
 const brandProducts = computed(() => {

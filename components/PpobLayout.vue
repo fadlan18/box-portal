@@ -60,14 +60,11 @@
 
 <script setup lang="ts">
 const route = useRoute()
-const categories = ref<any[]>([])
-
-onMounted(async () => {
-  try {
-    const all = await $fetch<any[]>('/api/ppob/categories')
-    categories.value = all.filter(c => c.is_active)
-  } catch {}
-})
+const { data: catData } = await useAsyncData('ppob-categories',
+  () => $fetch<any[]>('/api/ppob/categories'),
+  { default: () => [] }
+)
+const categories = computed(() => (catData.value ?? []).filter((c: any) => c.is_active))
 
 function isActive(href: string) {
   if (href === '/ppob/games') return route.path.startsWith('/ppob/games')

@@ -257,6 +257,18 @@ const savedNumbers = ref<string[]>([])
 const isDesktop = ref(false)
 const productConfigs = ref<any[]>([])
 
+// SSR fetch
+const { data: plnRaw } = await useAsyncData('pln-products',
+  () => $fetch<any>('/api/ppob/products?category=PLN'),
+  { default: () => ({ products: [] }) }
+)
+const { data: plnConfigs } = await useAsyncData('pln-configs',
+  () => $fetch<any[]>('/api/ppob/product-configs?category=PLN'),
+  { default: () => [] }
+)
+products.value = plnRaw.value?.products ?? []
+productConfigs.value = plnConfigs.value ?? []
+
 const featuredProducts = computed(() => {
   if (!productConfigs.value.length) return []
   const featuredSkus = productConfigs.value
@@ -275,15 +287,8 @@ onMounted(async () => {
   window.addEventListener('resize', () => { isDesktop.value = window.innerWidth >= 768 })
   savedNumbers.value = JSON.parse(localStorage.getItem('pln_saved') || '[]')
 
-  loading.value = true
-  try {
-    const [rawData, configData] = await Promise.all([
-      $fetch<any>('/api/ppob/products-raw'),
-      $fetch<any[]>('/api/ppob/product-configs?category=PLN')
-    ])
-    products.value = (rawData?.products ?? []).filter((p: any) => p.category === 'PLN')
-    productConfigs.value = configData
-  } finally { loading.value = false }
+  // SSR fetch sudah dilakukan di setup
+  loading.value = false
 })
 
 const canBuy = computed(() => selectedProduct.value && nomorMeter.value && emailConfirmed.value && !ordering.value)

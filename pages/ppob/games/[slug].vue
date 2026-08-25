@@ -273,7 +273,7 @@ onMounted(async () => {
   try {
     const [brandsData, productsData] = await Promise.all([
       $fetch<any[]>('/api/ppob/game-brands'),
-      $fetch<any>('/api/ppob/products-raw')
+      $fetch<any>('/api/ppob/products?category=Games')
     ])
     const found = brandsData.find((b: any) => b.slug === slugVal)
     brand.value = found || null

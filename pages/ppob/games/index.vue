@@ -83,10 +83,6 @@
 definePageMeta({ layout: false })
 useHead({ title: 'Voucher Game — miTRANZ' })
 
-const loading = ref(true)
-const brands = ref<any[]>([])
-const allProducts = ref<any[]>([])
-
 const trustBadges = [
   { icon: '⚡', label: 'Proses Instan', desc: 'Dalam hitungan detik' },
   { icon: '🔒', label: 'Transaksi Aman', desc: 'Enkripsi penuh' },
@@ -94,18 +90,18 @@ const trustBadges = [
   { icon: '🕐', label: 'Layanan 24 Jam', desc: 'Kapan saja, di mana saja' },
 ]
 
-onMounted(async () => {
-  try {
-    const [brandsData, productsData] = await Promise.all([
-      $fetch<any[]>('/api/ppob/game-brands'),
-      $fetch<any>('/api/ppob/products-raw')
-    ])
-    brands.value = brandsData
-    allProducts.value = (productsData?.products ?? []).filter((p: any) => p.category === 'Games')
-  } finally {
-    loading.value = false
-  }
-})
+const { data: brandsData, pending: loadingBrands } = await useAsyncData('game-brands',
+  () => $fetch<any[]>('/api/ppob/game-brands'),
+  { default: () => [] }
+)
+const { data: productsData } = await useAsyncData('games-products',
+  () => $fetch<any>('/api/ppob/products?category=Games'),
+  { default: () => ({ products: [] }) }
+)
+
+const brands = computed(() => brandsData.value ?? [])
+const loading = computed(() => loadingBrands.value)
+const allProducts = computed(() => productsData.value?.products ?? [])
 
 function getProductCount(brand: any) {
   const kw = brand.sku_keyword.toLowerCase()
