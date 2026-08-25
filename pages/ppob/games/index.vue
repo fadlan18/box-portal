@@ -4,7 +4,7 @@
     <!-- Hero -->
     <div style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);padding:40px 20px 32px">
       <div style="max-width:1280px;margin:0 auto">
-        <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px">
+        <div style="display:flex;align-items:center;gap:16px">
           <div style="width:48px;height:48px;border-radius:12px;background:rgba(99,102,241,0.3);display:flex;align-items:center;justify-content:center;font-size:24px">🎮</div>
           <div>
             <h1 style="font-size:24px;font-weight:900;color:white;margin:0;letter-spacing:-0.5px">Voucher Game</h1>
@@ -15,7 +15,7 @@
     </div>
 
     <!-- Grid Game -->
-    <div style="max-width:1280px;margin:0 auto;padding:32px 20px">
+    <div style="max-width:1280px;margin:0 auto;padding:32px 20px 48px">
 
       <!-- Loading skeleton -->
       <div v-if="loading" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px">
@@ -27,44 +27,44 @@
       <div v-else style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px">
         <a v-for="brand in brands" :key="brand.id"
           :href="`/ppob/games/${brand.slug}`"
-          style="position:relative;border-radius:20px;overflow:hidden;text-decoration:none;display:block;aspect-ratio:2/3;background:#1a1a2e;box-shadow:0 4px 16px rgba(0,0,0,0.1);transition:all 0.25s"
-          onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,0.2)'"
-          onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.1)'">
+          class="game-card"
+          style="position:relative;border-radius:20px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;background:#1a1a2e;box-shadow:0 4px 16px rgba(0,0,0,0.12);transition:all 0.3s ease;aspect-ratio:2/3">
 
-          <!-- Cover image -->
-          <img v-if="brand.banner_url || brand.logo_url"
-            :src="brand.banner_url || brand.logo_url"
-            :alt="brand.name"
-            style="width:100%;height:100%;object-fit:cover;display:block">
-
-          <!-- Placeholder jika belum ada gambar -->
-          <div v-else style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a2e,#0f3460)">
-            <div style="font-size:56px;margin-bottom:12px">🎮</div>
-            <div style="font-size:14px;font-weight:700;color:rgba(255,255,255,0.5);text-align:center;padding:0 16px">{{ brand.name }}</div>
-          </div>
-
-          <!-- Gradient overlay bawah -->
-          <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.4) 50%,transparent 100%);padding:20px 14px 14px">
-
-            <!-- Badge -->
-            <div v-if="brand.badge_text" style="margin-bottom:6px">
-              <span style="padding:2px 10px;border-radius:100px;font-size:10px;font-weight:800;background:#f59e0b;color:white;letter-spacing:0.5px">
-                {{ brand.badge_text }}
-              </span>
+          <!-- Cover image area -->
+          <div style="position:relative;flex:1;overflow:hidden;min-height:0">
+            <img v-if="brand.banner_url || brand.logo_url"
+              :src="brand.banner_url || brand.logo_url"
+              :alt="brand.name"
+              class="game-card-img"
+              style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease">
+            <div v-else
+              style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a2e,#0f3460);font-size:56px">
+              🎮
             </div>
 
-            <div style="font-size:14px;font-weight:800;color:white;line-height:1.2;margin-bottom:4px">{{ brand.name }}</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.55)">{{ getProductCount(brand) }} produk</div>
+            <!-- Badge -->
+            <div v-if="brand.badge_text"
+              style="position:absolute;top:10px;left:10px;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:800;background:#f59e0b;color:white;letter-spacing:0.5px;box-shadow:0 2px 8px rgba(0,0,0,0.3)">
+              {{ brand.badge_text }}
+            </div>
+
+            <!-- Hover overlay Top Up -->
+            <div class="game-card-hover"
+              style="position:absolute;inset:0;background:rgba(99,102,241,0.82);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s ease;gap:8px">
+              <div style="font-size:40px;filter:drop-shadow(0 2px 12px rgba(0,0,0,0.4))">⚡</div>
+              <div style="font-size:18px;font-weight:900;color:white;letter-spacing:3px;text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,0.4)">Top Up</div>
+            </div>
           </div>
 
-          <!-- Arrow -->
-          <div style="position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;font-size:12px;color:white">
-            →
+          <!-- Info solid bottom -->
+          <div style="background:#1a1a2e;padding:12px 14px;text-align:center;border-top:1px solid rgba(255,255,255,0.08);flex-shrink:0">
+            <div style="font-size:13px;font-weight:800;color:white;line-height:1.3;margin-bottom:3px">{{ brand.name }}</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);font-weight:600">{{ getProductCount(brand) }} produk</div>
           </div>
         </a>
       </div>
 
-      <!-- Info bawah -->
+      <!-- Trust badges -->
       <div style="margin-top:40px;background:white;border-radius:20px;padding:24px;border:1px solid #e2e8f0;display:flex;flex-wrap:wrap;gap:24px;justify-content:center">
         <div v-for="t in trustBadges" :key="t.label" style="display:flex;align-items:center;gap:10px">
           <div style="font-size:24px">{{ t.icon }}</div>
@@ -118,7 +118,17 @@ function getProductCount(brand: any) {
 
 <style>
 @keyframes skeleton {
-  0%, 100% { opacity: 0.6 }
+  0%, 100% { opacity: 0.5 }
   50% { opacity: 1 }
+}
+.game-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 48px rgba(0,0,0,0.25) !important;
+}
+.game-card:hover .game-card-img {
+  transform: scale(1.07);
+}
+.game-card:hover .game-card-hover {
+  opacity: 1 !important;
 }
 </style>

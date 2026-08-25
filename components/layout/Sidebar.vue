@@ -114,7 +114,8 @@ const adminItems = [
   { to: '/admin/chat',      label: 'Riwayat Chat',    icon: MessageCircle   },
   { to: '/admin/markup',    label: 'Markup PPOB',     icon: Settings        },
   { to: '/admin/ppob-categories', label: 'Kategori PPOB', icon: LayoutDashboard },
-  { to: '/admin/ppob-game-brands',  label: 'Brand Game',    icon: Package         },
+  { to: '/admin/ppob-brands',       label: 'Brand PPOB',    icon: Package         },
+  { to: '/admin/ppob-products',     label: 'Produk Featured',icon: Settings        },
   { to: '/admin/tickets',   label: 'Kelola Tickets',  icon: Ticket          },
 ]
 

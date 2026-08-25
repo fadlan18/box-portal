@@ -2,9 +2,9 @@
   <PpobLayout>
 
     <!-- Hero -->
-    <div style="background:linear-gradient(135deg,#1e3a5f 0%,#1a4fa0 100%);padding:40px 20px 32px">
+    <div style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);padding:40px 20px 32px">
       <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:16px">
-        <div style="width:56px;height:56px;border-radius:16px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0">⚡</div>
+        <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">⚡</div>
         <div>
           <h1 style="font-size:24px;font-weight:900;color:white;margin:0;letter-spacing:-0.5px">Token Listrik PLN</h1>
           <p style="color:rgba(255,255,255,0.7);font-size:13px;margin:0">Beli token listrik prabayar instan, langsung ke email</p>
@@ -69,20 +69,46 @@
               Masukkan nomor meter terlebih dahulu
             </div>
             <div v-else-if="loading" style="text-align:center;padding:24px;color:#64748b">Memuat produk...</div>
-            <div v-else style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px">
-              <button v-for="p in products" :key="p.buyer_sku_code"
-                @click="selectedProduct = p"
-                style="padding:16px 12px;border-radius:14px;text-align:left;cursor:pointer;border:1.5px solid;transition:all 0.15s;background:white"
-                :style="selectedProduct?.buyer_sku_code === p.buyer_sku_code
-                  ? 'border-color:#1a4fa0;background:#eff6ff;box-shadow:0 0 0 3px rgba(26,79,160,0.12)'
-                  : 'border-color:#e2e8f0'"
-                @mouseover="hoverNominal($event, p, selectedProduct)"
-                @mouseout="unhoverNominal($event, p, selectedProduct)">
-                <div style="font-size:11px;font-weight:700;color:#64748b;margin-bottom:4px">PLN TOKEN</div>
-                <div style="font-size:14px;font-weight:900;color:#1a202c;margin-bottom:6px">{{ cleanPlnName(p.product_name) }}</div>
-                <div style="font-size:15px;font-weight:900;color:#1a4fa0">{{ fmtRp(p.price) }}</div>
-              </button>
-            </div>
+            <template v-else>
+              <!-- Featured -->
+              <div v-if="featuredProducts.length > 0" style="margin-bottom:16px">
+                <div style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:0.5px;margin-bottom:10px">REKOMENDASI</div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px">
+                  <button v-for="p in featuredProducts" :key="p.buyer_sku_code"
+                    @click="selectedProduct = p"
+                    style="padding:16px 12px;border-radius:14px;text-align:left;cursor:pointer;border:1.5px solid;transition:all 0.15s;background:white;position:relative"
+                    :style="selectedProduct?.buyer_sku_code === p.buyer_sku_code
+                      ? 'border-color:#1a4fa0;background:#eff6ff;box-shadow:0 0 0 3px rgba(26,79,160,0.12)'
+                      : 'border-color:#e2e8f0'">
+                    <div v-if="p.badge_text"
+                      style="position:absolute;top:-1px;right:-1px;padding:2px 8px;border-radius:0 14px 0 8px;font-size:10px;font-weight:800;background:#f59e0b;color:white">
+                      {{ p.badge_text }}
+                    </div>
+                    <div style="font-size:11px;font-weight:700;color:#64748b;margin-bottom:4px">PLN TOKEN</div>
+                    <div style="font-size:14px;font-weight:900;color:#1a202c;margin-bottom:6px">{{ cleanPlnName(p.product_name) }}</div>
+                    <div style="font-size:15px;font-weight:900;color:#1a4fa0">{{ fmtRp(p.price) }}</div>
+                  </button>
+                </div>
+              </div>
+              <!-- Semua produk -->
+              <div>
+                <div style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:0.5px;margin-bottom:10px">
+                  {{ featuredProducts.length > 0 ? 'SEMUA NOMINAL' : 'PILIH NOMINAL' }}
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px">
+                  <button v-for="p in products" :key="p.buyer_sku_code"
+                    @click="selectedProduct = p"
+                    style="padding:14px 12px;border-radius:12px;text-align:left;cursor:pointer;border:1.5px solid;transition:all 0.15s;background:white"
+                    :style="selectedProduct?.buyer_sku_code === p.buyer_sku_code
+                      ? 'border-color:#1a4fa0;background:#eff6ff'
+                      : 'border-color:#e2e8f0'">
+                    <div style="font-size:11px;font-weight:700;color:#64748b;margin-bottom:3px">PLN TOKEN</div>
+                    <div style="font-size:13px;font-weight:900;color:#1a202c;margin-bottom:4px">{{ cleanPlnName(p.product_name) }}</div>
+                    <div style="font-size:14px;font-weight:900;color:#1a4fa0">{{ fmtRp(p.price) }}</div>
+                  </button>
+                </div>
+              </div>
+            </template>
           </div>
 
           <!-- Step 3: Email -->
@@ -229,6 +255,20 @@ const showConfirm = ref(false)
 const products = ref<any[]>([])
 const savedNumbers = ref<string[]>([])
 const isDesktop = ref(false)
+const productConfigs = ref<any[]>([])
+
+const featuredProducts = computed(() => {
+  if (!productConfigs.value.length) return []
+  const featuredSkus = productConfigs.value
+    .filter(c => c.is_featured)
+    .map(c => ({ sku: c.sku_code, badge: c.badge_text }))
+  return products.value
+    .filter(p => featuredSkus.some(f => f.sku === p.buyer_sku_code))
+    .map(p => ({
+      ...p,
+      badge_text: featuredSkus.find(f => f.sku === p.buyer_sku_code)?.badge || ''
+    }))
+})
 
 onMounted(async () => {
   isDesktop.value = window.innerWidth >= 768
@@ -237,8 +277,12 @@ onMounted(async () => {
 
   loading.value = true
   try {
-    const data = await $fetch<any>('/api/ppob/products-raw')
-    products.value = (data?.products ?? []).filter((p: any) => p.category === 'PLN')
+    const [rawData, configData] = await Promise.all([
+      $fetch<any>('/api/ppob/products-raw'),
+      $fetch<any[]>('/api/ppob/product-configs?category=PLN')
+    ])
+    products.value = (rawData?.products ?? []).filter((p: any) => p.category === 'PLN')
+    productConfigs.value = configData
   } finally { loading.value = false }
 })
 
@@ -270,14 +314,13 @@ async function bayar() {
     const res = await $fetch<any>('/api/ppob/order', {
       method: 'POST',
       body: {
-        sku: selectedProduct.value.buyer_sku_code,
-        customerNo: nomorMeter.value,
+        customer_no: nomorMeter.value,
         email: buyerEmail.value,
-        price: selectedProduct.value.price,
-        productName: selectedProduct.value.product_name,
+        product: selectedProduct.value,
       }
     })
-    if (res.paymentUrl) window.location.href = res.paymentUrl
+    const payUrl = res.paymentUrl || res.invoice?.payment_url
+    if (payUrl) window.location.href = payUrl
     else orderError.value = res.message || 'Gagal membuat pesanan'
   } catch (e: any) {
     orderError.value = e?.data?.message || 'Terjadi kesalahan'
