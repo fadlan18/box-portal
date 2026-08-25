@@ -1,3 +1,4 @@
+import { getRedis } from '~/server/utils/redis'
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   const { action, data } = await readBody(event)
@@ -27,5 +28,10 @@ export default defineEventHandler(async (event) => {
   })
 
   if (res.errors) throw createError({ statusCode: 400, message: res.errors[0].message })
+  // Invalidate cache
+  try {
+    const redis = getRedis()
+    redis.del('ppob:game-brands:active').catch(() => {})
+  } catch {}
   return { ok: true }
 })

@@ -22,7 +22,8 @@ export default defineEventHandler(async (event) => {
   if (!file?.data) throw createError({ statusCode: 400, message: 'File not found' })
 
   const ext = file.filename?.split('.').pop() || 'png'
-  const filename = `${folder}/${Date.now()}.${ext}`
+  const baseName = file.filename?.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9-_]/g, '-') || 'asset'
+  const filename = `${folder}/${baseName}-${Date.now()}.${ext}`
 
   await s3.send(new PutObjectCommand({
     Bucket: 'mitranz-assets',

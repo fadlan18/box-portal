@@ -258,6 +258,7 @@ async function simpan() {
     const endpoint = isGame ? '/api/admin/ppob-game-brands' : '/api/admin/ppob-operator-brands'
     await $fetch(endpoint, {
       method: 'POST',
+      credentials: 'include',
       body: { action: modal.value.id ? 'update' : 'insert', data: modal.value }
     })
     modal.value = null
