@@ -55,6 +55,7 @@
 </template>
 
 <script setup>
+definePageMeta({ layout: false })
 useHead({ title: 'FAQ — miTRANZ' })
 const openMap = ref({})
 const toggle = (ci, fi) => {

@@ -127,5 +127,6 @@
 </template>
 
 <script setup>
+definePageMeta({ layout: false })
 useHead({ title: 'Kebijakan Privasi — miTRANZ' })
 </script>

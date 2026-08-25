@@ -92,6 +92,7 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({ layout: false })
 useHead({ title: 'Semua Layanan PPOB — miTRANZ' })
 
 const loading = ref(true)

@@ -100,6 +100,7 @@
 </template>
 
 <script setup>
+definePageMeta({ layout: false })
 useHead({ title: 'Kebijakan Refund — miTRANZ' })
 const eligible = [
   'Transaksi PPOB gagal diproses oleh sistem, namun pembayaran sudah berhasil diterima.',

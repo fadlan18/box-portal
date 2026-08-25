@@ -103,6 +103,7 @@
 </template>
 
 <script setup>
+definePageMeta({ layout: false })
 useHead({ title: 'Kontak — miTRANZ' })
 const form = ref({ nama: '', email: '', subjek: '', pesan: '' })
 const terkirim = ref(false)

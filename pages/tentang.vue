@@ -95,6 +95,7 @@
 </template>
 
 <script setup>
+definePageMeta({ layout: false })
 useHead({ title: 'Tentang Kami — miTRANZ' })
 const features = [
   { icon: '⚡', title: 'Proses Instan', desc: 'Transaksi diproses otomatis dalam hitungan detik tanpa campur tangan manual' },

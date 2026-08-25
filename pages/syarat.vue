@@ -111,5 +111,6 @@
 </template>
 
 <script setup>
+definePageMeta({ layout: false })
 useHead({ title: 'Syarat & Ketentuan — miTRANZ' })
 </script>
