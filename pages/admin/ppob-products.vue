@@ -151,7 +151,7 @@ onMounted(loadProducts)
 async function addProduct(p: any) {
   if (isConfigured(p.buyer_sku_code)) return
   try {
-    await $fetch('/api/admin/ppob-product-configs', {
+    await $fetch('/api/admin/ppob-product-configs', { credentials: 'include',
       method: 'POST',
       body: { action: 'insert', data: {
         category: activeCategory.value,
@@ -178,7 +178,7 @@ async function toggleFeatured(c: any) {
 }
 
 async function updateConfig(c: any) {
-  await $fetch('/api/admin/ppob-product-configs', {
+  await $fetch('/api/admin/ppob-product-configs', { credentials: 'include',
     method: 'POST',
     body: { action: 'update', data: c }
   })
@@ -186,7 +186,7 @@ async function updateConfig(c: any) {
 
 async function hapusConfig(c: any) {
   if (!confirm(`Hapus konfigurasi "${c.product_name}"?`)) return
-  await $fetch('/api/admin/ppob-product-configs', {
+  await $fetch('/api/admin/ppob-product-configs', { credentials: 'include',
     method: 'POST', body: { action: 'delete', data: { id: c.id } }
   })
   await loadProducts()

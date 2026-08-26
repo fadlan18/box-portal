@@ -192,7 +192,7 @@ async function uploadLogo(e: Event) {
     const fd = new FormData()
     fd.append('file', file)
     fd.append('folder', 'operators')
-    const res = await $fetch<any>('/api/admin/upload-asset', { method: 'POST', body: fd })
+    const res = await $fetch<any>('/api/admin/upload-asset', { credentials: 'include', method: 'POST', body: fd })
     modal.value.logo_url = res.url
   } catch (e: any) {
     alert('Upload gagal: ' + (e?.data?.message || e.message))
@@ -208,7 +208,7 @@ async function uploadBanner(e: Event) {
     const fd = new FormData()
     fd.append('file', file)
     fd.append('folder', 'operator-banners')
-    const res = await $fetch<any>('/api/admin/upload-asset', { method: 'POST', body: fd })
+    const res = await $fetch<any>('/api/admin/upload-asset', { credentials: 'include', method: 'POST', body: fd })
     modal.value.banner_url = res.url
   } catch (e: any) {
     alert('Upload banner gagal: ' + (e?.data?.message || e.message))
@@ -218,7 +218,7 @@ async function uploadBanner(e: Event) {
 async function simpan() {
   saving.value = true
   try {
-    await $fetch('/api/admin/ppob-operator-brands', {
+    await $fetch('/api/admin/ppob-operator-brands', { credentials: 'include',
       method: 'POST',
       body: { action: modal.value.id ? 'update' : 'insert', data: modal.value }
     })
@@ -231,7 +231,7 @@ async function simpan() {
 
 async function hapus(b: any) {
   if (!confirm(`Hapus "${b.name}"?`)) return
-  await $fetch('/api/admin/ppob-operator-brands', {
+  await $fetch('/api/admin/ppob-operator-brands', { credentials: 'include',
     method: 'POST', body: { action: 'delete', data: { id: b.id } }
   })
   await fetchBrands()

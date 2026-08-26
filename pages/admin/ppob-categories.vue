@@ -203,7 +203,7 @@ function openAdd() {
 async function simpan() {
   saving.value = true
   try {
-    await $fetch('/api/admin/ppob-categories', {
+    await $fetch('/api/admin/ppob-categories', { credentials: 'include',
       method: 'POST',
       body: {
         action: modal.value.id ? 'update' : 'insert',
@@ -223,7 +223,7 @@ async function toggleFeatured(cat: any) {
     alert('Maksimal 6 layanan featured di landing page. Nonaktifkan salah satu terlebih dahulu.')
     return
   }
-  await $fetch('/api/admin/ppob-categories', {
+  await $fetch('/api/admin/ppob-categories', { credentials: 'include',
     method: 'POST',
     body: { action: 'update', data: { ...cat, is_featured: !cat.is_featured } }
   })
@@ -231,7 +231,7 @@ async function toggleFeatured(cat: any) {
 }
 
 async function toggleActive(cat: any) {
-  await $fetch('/api/admin/ppob-categories', {
+  await $fetch('/api/admin/ppob-categories', { credentials: 'include',
     method: 'POST',
     body: { action: 'update', data: { ...cat, is_active: !cat.is_active } }
   })
@@ -240,7 +240,7 @@ async function toggleActive(cat: any) {
 
 async function hapus(cat: any) {
   if (!confirm(`Hapus layanan "${cat.name}"?`)) return
-  await $fetch('/api/admin/ppob-categories', {
+  await $fetch('/api/admin/ppob-categories', { credentials: 'include',
     method: 'POST',
     body: { action: 'delete', data: { id: cat.id } }
   })
