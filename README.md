@@ -1,75 +1,89 @@
-# Nuxt Minimal Starter
+# miTRANZ Portal (box-portal)
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Portal utama ekosistem miTRANZ untuk layanan PPOB dan jasa IT.
+Dibangun dengan Nuxt 3 + Hasura GraphQL + PostgreSQL.
 
-## Setup
+URL Produksi: https://mitranz.com
 
-Make sure to install dependencies:
+---
 
-```bash
-# npm
-npm install
+## Stack Teknologi
 
-# pnpm
-pnpm install
+- Frontend/Backend: Nuxt 3 SSR
+- Database: PostgreSQL via Hasura GraphQL
+- Cache: Redis (produk PPOB + session)
+- Auth: Custom JWT httpOnly cookie
+- PPOB Provider: Digiflazz
+- Asset Storage: MinIO (data-layer namespace)
+- Email: Mailcow via SMTP relay
+- Chat: Telegram Bot
+- Deploy: K3s namespace box-portal, authserv VM 103
 
-# yarn
-yarn install
+---
 
-# bun
-bun install
-```
+## Fitur Utama
 
-## Development Server
+### PPOB (Payment Point Online Bank)
+- Pulsa dan Paket Data (semua operator)
+- Token PLN
+- Games (Free Fire, Mobile Legends, dll)
+- E-Money (GoPay, OVO, DANA, ShopeePay)
+- TV Kabel
+- Riwayat transaksi dengan verifikasi OTP email
+- Cache Redis per kategori untuk performa tinggi
 
-Start the development server on `http://localhost:3000`:
+### Layanan Jasa IT
+- Order layanan website, hosting, domain
+- Invoice terintegrasi dengan billing portal
+- Tracking status layanan aktif
 
-```bash
-# npm
-npm run dev
+### User
+- Register, login, forgot/reset password
+- Profil dan ganti password
+- Support ticket
+- Live chat dengan admin via Telegram
 
-# pnpm
-pnpm dev
+### Admin
+- Dashboard real-time stats
+- Kelola user, produk, markup PPOB
+- Kelola brand game, operator, kategori
+- Kelola support ticket
+- Upload asset ke MinIO
 
-# yarn
-yarn dev
+---
 
-# bun
-bun run dev
-```
+## Integrasi
 
-## Production
+| Layanan | Fungsi | Status |
+|---|---|---|
+| Digiflazz | Provider PPOB | Aktif |
+| paymen.mitranz.com | Billing portal | Aktif |
+| Mailcow | SMTP email | Aktif |
+| Telegram Bot | Live chat + notifikasi | Aktif |
+| MinIO | Asset storage | Aktif |
+| Redis | Cache PPOB + session | Aktif |
 
-Build the application for production:
+---
 
-```bash
-# npm
-npm run build
+## Deploy
 
-# pnpm
-pnpm build
+    npm install       # install dependencies
+    npm run dev       # development
+    ./deploy.sh       # build dan deploy ke K8s
+    ./git-save.sh     # simpan ke git
 
-# yarn
-yarn build
+PENTING: Credentials dan secrets TIDAK boleh ada di repository ini.
+Semua secrets dikelola via K8s secrets namespace box-portal.
 
-# bun
-bun run build
-```
+---
 
-Locally preview production build:
+## Backup
 
-```bash
-# npm
-npm run preview
+- Code: GitHub fadlan18/box-portal (private)
+- Database: harian jam 01:00 ke lokal + MinIO
+- Hasura metadata: ikut backup harian
 
-# pnpm
-pnpm preview
+---
 
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Lihat STATUS.md untuk kondisi riil sistem.
+Lihat CHANGELOG.md untuk riwayat perubahan.
