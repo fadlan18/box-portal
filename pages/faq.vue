@@ -70,24 +70,24 @@ const faqCategories = [
     title: 'Layanan PPOB',
     items: [
       {
-        q: 'Berapa lama token listrik PLN dikirim setelah pembayaran?',
-        a: 'Token listrik PLN dikirim secara otomatis ke email Anda dalam <strong>hitungan detik</strong> hingga maksimal 5 menit setelah pembayaran dikonfirmasi. Pastikan Anda mengecek folder <em>spam/junk</em> jika email belum masuk.'
+        q: 'Produk apa saja yang tersedia di layanan PPOB miTRANZ?',
+        a: 'miTRANZ menyediakan berbagai layanan PPOB lengkap: <strong>Token & Tagihan Listrik PLN</strong>, <strong>Pulsa & Paket Data</strong> (semua operator: Telkomsel, XL, Indosat, Tri, Smartfren), <strong>Voucher & Top Up Game</strong> (Free Fire, Mobile Legends, PUBG, dan lainnya), <strong>E-Money</strong> (GoPay, OVO, DANA, ShopeePay, LinkAja), dan <strong>TV Kabel</strong> (Indihome, MNC, dll). Produk terus bertambah secara berkala.'
       },
       {
-        q: 'Apakah saya perlu membuat akun untuk bertransaksi?',
-        a: 'Tidak perlu. Layanan PPOB miTRANZ dapat digunakan <strong>tanpa mendaftar akun</strong>. Cukup masukkan nomor tujuan dan email Anda, lalu lakukan pembayaran.'
+        q: 'Apakah saya perlu membuat akun untuk bertransaksi PPOB?',
+        a: 'Tidak perlu mendaftar akun. Layanan PPOB miTRANZ dapat digunakan langsung — cukup masukkan nomor tujuan dan alamat email Anda, lalu lakukan pembayaran. Riwayat transaksi dapat dicek kapan saja menggunakan email yang sama.'
       },
       {
-        q: 'Nomor meter PLN saya salah input. Apa yang terjadi?',
-        a: 'Jika nomor meter yang dimasukkan tidak valid, sistem akan <strong>menolak transaksi sebelum pembayaran</strong> diproses. Namun jika nomor valid milik orang lain, token akan dikirim ke nomor tersebut dan transaksi tidak dapat dibatalkan. Pastikan nomor sudah benar sebelum membayar.'
+        q: 'Berapa lama produk diterima setelah pembayaran?',
+        a: 'Semua produk PPOB diproses <strong>secara otomatis dalam hitungan detik</strong> hingga maksimal 5 menit setelah pembayaran dikonfirmasi. Token PLN dikirim ke email, pulsa langsung masuk ke nomor tujuan, voucher game dikirim ke email, dan saldo e-money langsung ditambahkan.'
       },
       {
-        q: 'Produk apa saja yang tersedia di PPOB?',
-        a: 'Saat ini tersedia: <strong>Token Listrik PLN</strong>, <strong>Pulsa & Paket Data</strong> (semua operator), dan <strong>Voucher Game</strong>. Layanan lain terus kami tambahkan.'
+        q: 'Data atau nomor tujuan saya salah input. Apa yang terjadi?',
+        a: 'Jika nomor/ID tidak valid, sistem akan <strong>menolak transaksi sebelum pembayaran</strong> diproses. Namun jika nomor valid milik orang lain (misalnya nomor pulsa atau ID game orang lain), transaksi akan berhasil ke tujuan tersebut dan tidak dapat dibatalkan. Selalu periksa kembali nomor tujuan sebelum melakukan pembayaran.'
       },
       {
         q: 'Bagaimana cara mengecek riwayat transaksi saya?',
-        a: 'Kunjungi halaman <strong>Cek Riwayat Transaksi</strong> yang tersedia di setiap halaman PPOB. Anda akan diminta verifikasi melalui email OTP untuk melihat riwayat transaksi Anda.'
+        a: 'Kunjungi menu <strong>Riwayat Transaksi</strong> di halaman PPOB. Anda akan diminta verifikasi melalui <strong>OTP yang dikirim ke email</strong> terdaftar untuk mengakses seluruh riwayat transaksi Anda.'
       },
     ]
   },
@@ -97,7 +97,7 @@ const faqCategories = [
     items: [
       {
         q: 'Metode pembayaran apa yang diterima?',
-        a: 'Kami menerima pembayaran melalui <strong>QRIS</strong> (semua e-wallet & m-banking), <strong>ShopeePay</strong>, dan <strong>Transfer Bank BCA</strong>.'
+        a: 'Kami menerima pembayaran melalui <strong>QRIS Universal</strong> (dapat digunakan dari semua aplikasi e-wallet & mobile banking), <strong>ShopeePay</strong>. Untuk layanan jasa website, pembayaran dilakukan melalui invoice yang dikirim ke email Anda.'
       },
       {
         q: 'Apakah ada biaya tambahan saat pembayaran?',
