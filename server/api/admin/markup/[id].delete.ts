@@ -16,5 +16,17 @@ export default defineEventHandler(async (event) => {
     `, variables: { id } }
   })
 
+  // Flush semua cache produk agar markup langsung update
+  try {
+    const { getRedis } = await import('~/server/utils/redis')
+    const redis = getRedis()
+    await redis.del('ppob:markup:all')
+    await redis.del('ppob:products:games')
+    await redis.del('ppob:products:pulsa')
+    await redis.del('ppob:products:pln')
+    await redis.del('ppob:products:emoney')
+    await redis.del('ppob:products:tv')
+    await redis.del('digiflazz:pricelist:all')
+  } catch (e) { console.error('[Markup] gagal flush cache:', e) }
   return { ok: true }
 })

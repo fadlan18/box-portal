@@ -136,7 +136,11 @@ const markupMap = ref<Record<string, any>>({})
 // Preview sementara sebelum save
 const previewMap = ref<Record<string, number>>({})
 
-const categories = ['Pulsa', 'Data', 'PLN', 'Paket SMS & Telpon', 'Games', 'TV', 'Voucher', 'Gas', 'Masa Aktif', 'Aktivasi Perdana', 'Aktivasi Voucher']
+// Kategori dinamis dari produk yang ada di DB
+const categories = computed(() => {
+  const cats = [...new Set(products.value.map((p: any) => p.category))].filter(Boolean).sort()
+  return cats.length ? cats : ['Pulsa', 'Data', 'PLN', 'Games', 'TV']
+})
 
 const filteredProducts = computed(() =>
   products.value.filter((p: any) => p.category === activeCategory.value)
