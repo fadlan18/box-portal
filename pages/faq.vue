@@ -79,7 +79,7 @@ const faqCategories = [
       },
       {
         q: 'Berapa lama produk diterima setelah pembayaran?',
-        a: 'Semua produk PPOB diproses <strong>secara otomatis dalam hitungan detik</strong> hingga maksimal 5 menit setelah pembayaran dikonfirmasi. Token PLN dikirim ke email, pulsa langsung masuk ke nomor tujuan, voucher game dikirim ke email, dan saldo e-money langsung ditambahkan.'
+        a: 'Semua produk PPOB diproses <strong>secara otomatis dalam hitungan detik</strong> hingga maksimal 5 menit setelah pembayaran dikonfirmasi. Konfirmasi transaksi dan detail produk dikirim ke email yang Anda daftarkan. Untuk pulsa dan paket data, pengisian langsung masuk ke nomor tujuan. Untuk e-money, ikuti petunjuk yang dikirim via email.'
       },
       {
         q: 'Data atau nomor tujuan saya salah input. Apa yang terjadi?',
