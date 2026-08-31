@@ -1,3 +1,5 @@
+import { hasuraQuery } from '~/server/utils/hasura'
+import { applyMarkup } from '~/server/utils/digiflazz'
 import { getCached } from '~/server/utils/redis'
 
 export default defineEventHandler(async (event) => {
@@ -5,12 +7,28 @@ export default defineEventHandler(async (event) => {
   const category = query.category as string || 'PLN'
 
   return getCached(`ppob:products:${category}`, async () => {
-    const config = useRuntimeConfig()
-    const redis = await import('~/server/utils/redis').then(m => m.getRedis())
-    const cached = await redis.get('digiflazz:pricelist:all').catch(() => null)
-    if (!cached) return { products: [] }
-    const all = JSON.parse(cached)
-    const filtered = all.filter((p: any) => p.category === category)
-    return { products: filtered }
-  })
+    const data = await hasuraQuery(`
+      query GetProducts($category: String!) {
+        ppob_products(
+          where: {
+            _and: [
+              { is_active: { _eq: true } }
+              { buyer_product_status: { _eq: true } }
+              { category: { _eq: $category } }
+            ]
+          }
+          order_by: { price: asc }
+        ) {
+          buyer_sku_code product_name category brand seller_name
+          price price_final buyer_product_status is_active multi start_cut_off end_cut_off
+        }
+      }
+    `, { category })
+
+    const products = data.ppob_products || []
+    const markupRes: any = await $fetch('/api/ppob/markup').catch(() => ({ markups: [] }))
+    const withMarkup = applyMarkup(products, markupRes.markups || [])
+
+    return { products: withMarkup, total: withMarkup.length }
+  }, 900)
 })

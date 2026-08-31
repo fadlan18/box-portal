@@ -24,12 +24,24 @@ export default defineEventHandler(async (event) => {
     const products = data.ppob_products || []
     const markupRes: any = await $fetch('/api/ppob/markup').catch(() => ({ markups: [] }))
     const withMarkup = applyMarkup(products, markupRes.markups || [])
-    const grouped: Record<string, any[]> = {}
+
+    // Deduplikasi: untuk nama produk yang sama, ambil harga terendah
+    const deduped: Map<string, any> = new Map()
     withMarkup.forEach((p: any) => {
+      const key = p.product_name.toLowerCase().trim()
+      const existing = deduped.get(key)
+      if (!existing || p.price < existing.price) {
+        deduped.set(key, p)
+      }
+    })
+    const unique = Array.from(deduped.values())
+
+    const grouped: Record<string, any[]> = {}
+    unique.forEach((p: any) => {
       const brand = p.brand || 'Lainnya'
       if (!grouped[brand]) grouped[brand] = []
       grouped[brand].push(p)
     })
-    return { products: withMarkup, grouped, total: withMarkup.length }
+    return { products: unique, grouped, total: unique.length }
   }, 900)
 })
