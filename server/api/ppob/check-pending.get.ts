@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
           where: {status: {_eq: "Pending"}},
           order_by: {created_at: asc},
           limit: 10
-        ) { id ref_id buyer_sku_code customer_no email product_name price }
+        ) { id ref_id buyer_sku_code customer_no email name product_name category price price_final }
       }`
     }
   })
@@ -82,12 +82,13 @@ export default defineEventHandler(async (event) => {
             body: {
               type: 'ppob_success',
               to: trx.email,
-              name: trx.email,
+              name: trx.name || trx.email,
               invoice_number: trx.ref_id,
-              total: trx.price,
+              total: trx.price_final || trx.price,
               currency: 'IDR',
               product_name: trx.product_name,
               customer_no: trx.customer_no,
+              category: trx.category || '',
               token: status.sn || '-',
               message: status.message || '',
             }
@@ -104,7 +105,7 @@ export default defineEventHandler(async (event) => {
             `👤 <b>Pelanggan:</b> ${trx.email}`,
             `🛒 <b>Produk:</b> ${trx.product_name}`,
             `📱 <b>No. Pelanggan:</b> ${trx.customer_no}`,
-            `💰 <b>Nominal:</b> ${fmtRp(trx.price)}`,
+            `💰 <b>Nominal:</b> ${fmtRp(trx.price_final || trx.price)}`,
             `❌ <b>Pesan:</b> ${status.message || 'Tidak ada pesan'}`,
             '',
             '⚠️ Segera hubungi pelanggan dan proses refund jika diperlukan.',

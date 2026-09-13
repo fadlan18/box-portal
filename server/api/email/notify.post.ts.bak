@@ -72,130 +72,48 @@ export default defineEventHandler(async (event) => {
       '</td></tr></table></td></tr></table></body></html>',
     ].join('')
   } else if (type === 'ppob_success') {
-    const { product_name, customer_no, token, total, currency, invoice_number, message, category } = body
+    const { product_name, customer_no, token, total, currency, invoice_number, message } = body
     const fmtRp = (n: number) => new Intl.NumberFormat('id-ID', { style:'currency', currency: currency||'IDR', maximumFractionDigits:0 }).format(n||0)
-    const isToken = token && token !== '-' && token !== 'null'
-    const isPLN = category === 'PLN' || (product_name || '').toUpperCase().includes('PLN')
-    subject = `✅ Transaksi Berhasil — ${product_name} — miTRANZ`
-
-    const tokenBlock = isToken ? `
-        <tr><td style="padding:0 0 20px">
-          <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0fdf4;border:2px solid #86efac;border-radius:12px">
-            <tr><td style="padding:24px;text-align:center">
-              <div style="font-size:11px;font-weight:700;color:#16a34a;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">
-                ${isPLN ? '⚡ Token Listrik PLN' : '🎫 Kode / Token'}
-              </div>
-              <div style="font-size:32px;font-weight:900;color:#15803d;letter-spacing:6px;font-family:Courier,monospace;background:#fff;padding:12px 20px;border-radius:8px;border:1px dashed #86efac;display:inline-block">
-                ${token}
-              </div>
-              <div style="font-size:12px;color:#166534;margin-top:12px;line-height:1.6">
-                ${isPLN ? 'Masukkan token ini pada meteran listrik Anda.<br>Simpan token ini sebagai bukti transaksi.' : 'Gunakan kode ini sesuai petunjuk produk.<br>Simpan sebagai bukti transaksi.'}
-              </div>
-            </td></tr>
-          </table>
-        </td></tr>` : ''
-
-    const messageBlock = message ? `
-        <tr><td style="padding:0 0 20px">
-          <table width="100%" cellpadding="16" cellspacing="0" style="background:#fffbeb;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0">
-            <tr><td style="font-size:13px;color:#92400e;line-height:1.6">${message}</td></tr>
-          </table>
-        </td></tr>` : ''
-
-    html = `<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Transaksi Berhasil — miTRANZ</title>
-</head>
-<body style="margin:0;padding:0;background:#f0f4f8;font-family:Arial,Helvetica,sans-serif">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f4f8;padding:40px 0">
-    <tr><td align="center">
-      <table width="580" cellpadding="0" cellspacing="0" style="max-width:580px;width:100%">
-
-        <!-- Header -->
-        <tr><td style="background:linear-gradient(135deg,#1a4fa0,#2563eb);border-radius:12px 12px 0 0;padding:28px 40px;text-align:center">
-          <div style="font-size:30px;font-weight:900;line-height:1">
-            <span style="color:#ffffff">mi</span><span style="color:#ff6b35">TRANZ</span>
-          </div>
-          <div style="color:rgba(255,255,255,0.75);font-size:12px;margin-top:4px;letter-spacing:1px">PLATFORM LAYANAN DIGITAL</div>
-        </td></tr>
-
-        <!-- Status Banner -->
-        <tr><td style="background:#16a34a;padding:16px 40px;text-align:center">
-          <div style="color:#fff;font-size:15px;font-weight:700">✅ Transaksi Berhasil Diproses</div>
-        </td></tr>
-
-        <!-- Body -->
-        <tr><td style="background:#ffffff;padding:36px 40px;border-radius:0 0 12px 12px">
-          <table width="100%" cellpadding="0" cellspacing="0">
-
-            <!-- Greeting -->
-            <tr><td style="padding:0 0 24px">
-              <p style="margin:0;font-size:15px;color:#374151;line-height:1.7">
-                Halo, terima kasih telah bertransaksi di <strong>miTRANZ</strong>.<br>
-                Pesanan Anda telah berhasil diproses secara otomatis.
-              </p>
-            </td></tr>
-
-            <!-- Detail Transaksi -->
-            <tr><td style="padding:0 0 20px">
-              <div style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;border-bottom:2px solid #e5e7eb;padding-bottom:8px">
-                Detail Transaksi
-              </div>
-              <table width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td style="padding:8px 0;font-size:13px;color:#6b7280;width:45%">No. Invoice</td>
-                  <td style="padding:8px 0;font-size:13px;font-weight:700;color:#111827;text-align:right;font-family:Courier,monospace">${invoice_number}</td>
-                </tr>
-                <tr style="border-top:1px solid #f3f4f6">
-                  <td style="padding:8px 0;font-size:13px;color:#6b7280">Produk</td>
-                  <td style="padding:8px 0;font-size:13px;font-weight:700;color:#111827;text-align:right">${product_name}</td>
-                </tr>
-                <tr style="border-top:1px solid #f3f4f6">
-                  <td style="padding:8px 0;font-size:13px;color:#6b7280">No. Pelanggan / ID</td>
-                  <td style="padding:8px 0;font-size:13px;font-weight:700;color:#111827;text-align:right;font-family:Courier,monospace">${customer_no}</td>
-                </tr>
-                <tr style="border-top:2px solid #e5e7eb;background:#f9fafb">
-                  <td style="padding:12px 8px;font-size:14px;font-weight:700;color:#374151">Total Dibayar</td>
-                  <td style="padding:12px 8px;font-size:18px;font-weight:900;color:#1a4fa0;text-align:right">${fmtRp(total)}</td>
-                </tr>
-              </table>
-            </td></tr>
-
-            ${tokenBlock}
-            ${messageBlock}
-
-            <!-- CTA -->
-            <tr><td style="padding:8px 0 0;text-align:center">
-              <a href="https://mitranz.com/ppob/riwayat"
-                style="display:inline-block;background:#1a4fa0;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;padding:12px 28px;border-radius:8px">
-                Cek Riwayat Transaksi
-              </a>
-            </td></tr>
-
-          </table>
-        </td></tr>
-
-        <!-- Footer -->
-        <tr><td style="padding:24px 40px;text-align:center">
-          <p style="margin:0 0 6px;font-size:12px;color:#9ca3af">
-            Email ini dikirim secara otomatis oleh sistem miTRANZ.
-          </p>
-          <p style="margin:0;font-size:12px;color:#9ca3af">
-            Butuh bantuan? Hubungi kami di <a href="https://mitranz.com/kontak" style="color:#1a4fa0;text-decoration:none">mitranz.com/kontak</a>
-          </p>
-          <p style="margin:8px 0 0;font-size:11px;color:#d1d5db">
-            &copy; 2026 miTRANZ — Platform Layanan Digital Terpercaya
-          </p>
-        </td></tr>
-
-      </table>
-    </td></tr>
-  </table>
-</body>
-</html>`
+    subject = `⚡ Transaksi PPOB Berhasil — ${invoice_number}`
+    html = [
+      `<div style="font-family:Arial,sans-serif;max-width:520px;margin:0 auto;background:#f0f7ff;padding:32px 16px">`,
+      `<div style="background:white;border-radius:16px;padding:32px;border:1px solid #e2e8f0">`,
+      `<div style="text-align:center;margin-bottom:24px">`,
+      `<div style="font-size:28px;font-weight:900"><span style="color:#1a4fa0">mi</span><span style="color:#c0192c">TRANZ</span></div>`,
+      `</div>`,
+      `<div style="text-align:center;margin-bottom:24px">`,
+      `<div style="font-size:48px">⚡</div>`,
+      `<h2 style="color:#1a202c;margin:8px 0">Transaksi Berhasil!</h2>`,
+      `<p style="color:#64748b;font-size:14px">Pesanan Anda telah diproses</p>`,
+      `</div>`,
+      `<div style="background:#f8fafc;border-radius:12px;padding:20px;margin-bottom:20px">`,
+      `<div style="display:flex;justify-content:space-between;margin-bottom:12px;font-size:14px">`,
+      `<span style="color:#64748b">No. Invoice</span><span style="font-weight:700;color:#1a202c">${invoice_number}</span>`,
+      `</div>`,
+      `<div style="display:flex;justify-content:space-between;margin-bottom:12px;font-size:14px">`,
+      `<span style="color:#64748b">Produk</span><span style="font-weight:700;color:#1a202c">${product_name}</span>`,
+      `</div>`,
+      `<div style="display:flex;justify-content:space-between;margin-bottom:12px;font-size:14px">`,
+      `<span style="color:#64748b">No. Pelanggan</span><span style="font-weight:700;color:#1a202c">${customer_no}</span>`,
+      `</div>`,
+      `<div style="display:flex;justify-content:space-between;font-size:14px;padding-top:12px;border-top:1px solid #e2e8f0">`,
+      `<span style="color:#64748b">Total Bayar</span><span style="font-weight:800;color:#1a4fa0;font-size:16px">${fmtRp(total)}</span>`,
+      `</div>`,
+      `</div>`,
+      token && token !== '-' ? [
+        `<div style="background:#f0fdf4;border:2px solid #86efac;border-radius:12px;padding:20px;text-align:center;margin-bottom:20px">`,
+        `<div style="font-size:12px;color:#16a34a;font-weight:600;margin-bottom:8px">TOKEN LISTRIK</div>`,
+        `<div style="font-size:28px;font-weight:900;color:#15803d;letter-spacing:4px">${token}</div>`,
+        `<div style="font-size:12px;color:#16a34a;margin-top:8px">Masukkan token ini pada meteran listrik Anda</div>`,
+        `</div>`,
+      ].join('') : '',
+      message ? `<p style="color:#64748b;font-size:13px;text-align:center">${message}</p>` : '',
+      `<div style="text-align:center;margin-top:20px">`,
+      `<a href="https://mitranz.com/ppob/riwayat" style="display:inline-block;padding:10px 24px;background:#1a4fa0;color:white;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700">📋 Cek Status Transaksi</a>`,
+      `</div>`,
+      `<p style="color:#94a3b8;font-size:12px;text-align:center;margin-top:16px">Terima kasih telah menggunakan layanan miTRANZ</p>`,
+      `</div></div>`,
+    ].join('')
   } else if (type === 'otp') {
     const { otp } = body
     subject = '🔐 Kode Verifikasi Riwayat Transaksi — miTRANZ'

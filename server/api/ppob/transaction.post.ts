@@ -5,7 +5,7 @@ import { sendTelegram } from '~/server/utils/telegram.ts'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
-  const { buyer_sku_code, customer_no, ref_id, email } = await readBody(event)
+  const { buyer_sku_code, customer_no, ref_id, email, price_final, name: buyerName } = await readBody(event)
 
   if (!buyer_sku_code || !customer_no || !ref_id) {
     throw createError({ statusCode: 400, message: 'Data tidak lengkap' })
@@ -90,12 +90,14 @@ export default defineEventHandler(async (event) => {
         variables: {
           obj: {
             email,
+            name: buyerName || email,
             buyer_sku_code,
             customer_no,
             ref_id,
             product_name: result?.product_name || buyer_sku_code,
-            category: result?.buyer_sku_code || '',
+            category: result?.category || '',
             price: result?.price || 0,
+            price_final: price_final || result?.price || 0,
             status: result?.status || 'pending',
             sn: result?.sn || null,
             message: result?.message || null,

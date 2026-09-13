@@ -111,6 +111,8 @@ export default defineEventHandler(async (event) => {
               customer_no,
               ref_id: invoice_number,
               email: email || invoice.client?.email,
+              name: invoice.client?.name || email,
+              price_final: invoice.total,
             }
           })
 
@@ -144,12 +146,13 @@ export default defineEventHandler(async (event) => {
               body: {
                 type: 'ppob_success',
                 to: clientEmail,
-                name: clientName,
+                name: clientName || clientEmail,
                 invoice_number,
                 total: invoice.total,
                 currency: invoice.currency || 'IDR',
                 product_name: metadata.product_name || buyer_sku_code,
                 customer_no,
+                category: metadata.category || '',
                 token: ppobRes.token || ppobRes.sn || '-',
                 message: ppobRes.message || '',
               }
