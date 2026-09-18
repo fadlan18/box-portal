@@ -23,11 +23,16 @@
       <div style="background:white;border-radius:20px;padding:48px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,0.06)">
         <h2 style="font-size:22px;font-weight:800;color:#1a202c;margin:0 0 16px">Siapa Kami</h2>
         <p style="color:#374151;font-size:15px;line-height:1.8;margin:0 0 16px">
-          miTRANZ adalah platform layanan digital yang menyediakan solusi pembayaran PPOB dan jasa pembuatan website profesional. Kami hadir untuk menjawab kebutuhan masyarakat Indonesia akan layanan digital yang cepat, mudah, dan terpercaya.
+          <strong>miTRANZ</strong> adalah merek dagang dari <strong>PT Mitra Trans Digital</strong>, perusahaan teknologi yang bergerak di bidang layanan pembayaran digital (PPOB) dan solusi website profesional. Kami hadir untuk menjawab kebutuhan masyarakat Indonesia akan layanan digital yang cepat, mudah, dan terpercaya.
         </p>
-        <p style="color:#374151;font-size:15px;line-height:1.8;margin:0">
+        <p style="color:#374151;font-size:15px;line-height:1.8;margin:0 0 16px">
           Dengan teknologi yang terus berkembang, kami berkomitmen untuk terus berinovasi menghadirkan pengalaman transaksi digital yang mulus — tanpa antri, tanpa repot, langsung di genggaman Anda.
         </p>
+        <div style="margin-top:20px;padding:16px 20px;background:#f0f7ff;border-left:4px solid #1a4fa0;border-radius:0 8px 8px 0">
+          <div style="font-size:13px;color:#64748b;margin-bottom:4px">Badan Usaha Resmi</div>
+          <div style="font-size:15px;font-weight:700;color:#1a4fa0">PT Mitra Trans Digital</div>
+          <div style="font-size:13px;color:#64748b;margin-top:4px">📧 cs@mitranz.com</div>
+        </div>
       </div>
 
       <!-- Visi Misi -->

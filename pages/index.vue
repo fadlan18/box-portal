@@ -166,7 +166,10 @@
             <p style="color:#94a3b8;font-size:13px;line-height:1.8;margin:0 0 16px">
               Platform layanan digital terpercaya untuk semua kebutuhan pembayaran dan solusi digital Anda.
             </p>
-            <a href="mailto:cs@mitranz.com" style="color:#60a5fa;font-size:13px;text-decoration:none">📧 cs@mitranz.com</a>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <a href="mailto:cs@mitranz.com" style="color:#60a5fa;font-size:13px;text-decoration:none">📧 cs@mitranz.com</a>
+              <span style="color:#64748b;font-size:12px">PT Mitra Trans Digital</span>
+            </div>
           </div>
 
           <!-- Layanan -->
@@ -204,7 +207,7 @@
 
         <!-- Divider -->
         <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
-          <p style="color:#475569;font-size:13px;margin:0">© 2026 miTRANZ. Platform Layanan Digital Terpercaya.</p>
+          <p style="color:#475569;font-size:13px;margin:0">© 2026 <strong style="color:#64748b">PT Mitra Trans Digital</strong>. Semua hak dilindungi.</p>
           <div style="display:flex;gap:16px">
             <a href="/syarat" style="color:#475569;text-decoration:none;font-size:12px" onmouseover="this.style.color='#94a3b8'" onmouseout="this.style.color='#475569'">Syarat & Ketentuan</a>
             <a href="/privasi" style="color:#475569;text-decoration:none;font-size:12px" onmouseover="this.style.color='#94a3b8'" onmouseout="this.style.color='#475569'">Privasi</a>
@@ -240,10 +243,10 @@ onMounted(() => {
 })
 
 const stats = [
-  { value: '5+', label: 'Operator Tersedia' },
-  { value: 'Instan', label: 'Proses Transaksi' },
-  { value: '24/7', label: 'Layanan Support' },
-  { value: '100%', label: 'Aman & Terenkripsi' },
+  { value: '10+', label: 'Produk PPOB' },
+  { value: '<5 Detik', label: 'Proses Transaksi' },
+  { value: '24/7', label: 'Layanan Aktif' },
+  { value: 'SSL', label: 'Keamanan Terenkripsi' },
 ]
 
 // PPOB dari API - featured max 6, diatur dari admin
