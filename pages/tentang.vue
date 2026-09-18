@@ -23,10 +23,10 @@
       <div style="background:white;border-radius:20px;padding:48px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,0.06)">
         <h2 style="font-size:22px;font-weight:800;color:#1a202c;margin:0 0 16px">Siapa Kami</h2>
         <p style="color:#374151;font-size:15px;line-height:1.8;margin:0 0 16px">
-          <strong>miTRANZ</strong> adalah merek dagang dari <strong>PT Mitra Trans Digital</strong>, perusahaan teknologi yang bergerak di bidang layanan pembayaran digital (PPOB) dan solusi website profesional. Kami hadir untuk menjawab kebutuhan masyarakat Indonesia akan layanan digital yang cepat, mudah, dan terpercaya.
+          <strong>miTRANZ</strong> adalah merek dagang dari <strong>PT Mitra Trans Digital</strong>, perusahaan teknologi yang bergerak di bidang solusi website profesional dan layanan pembayaran digital. Kami hadir untuk membantu bisnis, UMKM, dan pemerintah desa tampil profesional di era digital.
         </p>
         <p style="color:#374151;font-size:15px;line-height:1.8;margin:0 0 16px">
-          Dengan teknologi yang terus berkembang, kami berkomitmen untuk terus berinovasi menghadirkan pengalaman transaksi digital yang mulus — tanpa antri, tanpa repot, langsung di genggaman Anda.
+          Dengan pengalaman membangun berbagai solusi digital, kami berkomitmen menghadirkan produk berkualitas tinggi yang mudah digunakan — dari website modern hingga sistem informasi yang terintegrasi.
         </p>
         <div style="margin-top:20px;padding:16px 20px;background:#f0f7ff;border-left:4px solid #1a4fa0;border-radius:0 8px 8px 0">
           <div style="font-size:13px;color:#64748b;margin-bottom:4px">Badan Usaha Resmi</div>
@@ -48,7 +48,7 @@
           <div style="font-size:32px;margin-bottom:16px">🚀</div>
           <h3 style="font-size:18px;font-weight:800;color:#1a202c;margin:0 0 12px">Misi</h3>
           <ul style="color:#374151;font-size:14px;line-height:2;margin:0;padding-left:18px">
-            <li>Menghadirkan layanan PPOB yang cepat dan terjangkau</li>
+            <li>Menghadirkan layanan pembayaran digital yang cepat dan terjangkau</li>
             <li>Membangun website profesional berkualitas tinggi</li>
             <li>Memberikan dukungan pelanggan yang responsif</li>
             <li>Terus berinovasi untuk pengalaman digital terbaik</li>
@@ -75,7 +75,7 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
           <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:32px;backdrop-filter:blur(8px)">
             <div style="font-size:40px;margin-bottom:16px">⚡</div>
-            <h3 style="font-size:17px;font-weight:800;color:white;margin:0 0 10px">PPOB</h3>
+            <h3 style="font-size:17px;font-weight:800;color:white;margin:0 0 10px">Pembayaran Digital</h3>
             <p style="color:rgba(255,255,255,0.75);font-size:13px;line-height:1.7;margin:0">
               Token Listrik PLN, Pulsa & Paket Data, Voucher Game, dan lebih banyak lagi. Proses otomatis, token langsung ke email.
             </p>
@@ -108,6 +108,6 @@ const features = [
   { icon: '📧', title: 'Konfirmasi Email', desc: 'Bukti transaksi dan token dikirim langsung ke email Anda secara otomatis' },
   { icon: '💬', title: 'Dukungan Responsif', desc: 'Tim kami siap membantu melalui fitur chat yang tersedia di platform' },
   { icon: '💰', title: 'Harga Transparan', desc: 'Tidak ada biaya tersembunyi. Harga yang tampil adalah harga yang Anda bayar' },
-  { icon: '🕐', title: 'Layanan 24 Jam', desc: 'Transaksi PPOB dapat dilakukan kapan saja, 24 jam sehari 7 hari seminggu' },
+  { icon: '🕐', title: 'Layanan 24 Jam', desc: 'Transaksi pembayaran digital dapat dilakukan kapan saja, 24 jam sehari 7 hari seminggu' },
 ]
 </script>

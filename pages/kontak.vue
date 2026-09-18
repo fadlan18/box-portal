@@ -37,7 +37,7 @@
             Senin – Jumat<br>
             <strong>08.00 – 17.00 WITA</strong>
           </div>
-          <div style="font-size:12px;color:#94a3b8;margin-top:6px">Transaksi PPOB otomatis 24 jam</div>
+          <div style="font-size:12px;color:#94a3b8;margin-top:6px">Layanan digital aktif 24 jam</div>
         </div>
       </div>
 
@@ -66,7 +66,7 @@
           <select v-model="form.subjek"
             style="width:100%;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;background:white">
             <option value="">Pilih subjek...</option>
-            <option>Pertanyaan tentang PPOB</option>
+            <option>Pertanyaan tentang Pembayaran Digital</option>
             <option>Pertanyaan tentang Jasa Website</option>
             <option>Pengajuan Refund</option>
             <option>Laporan Masalah Transaksi</option>

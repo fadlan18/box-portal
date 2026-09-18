@@ -29,11 +29,14 @@ export default defineEventHandler(async (event) => {
     const redis = getRedis()
     await redis.del('ppob:markup:all')
     // Flush cache produk agar markup langsung update di frontend
-    await redis.del('ppob:products:games')
-    await redis.del('ppob:products:pulsa')
-    await redis.del('ppob:products:pln')
-    await redis.del('ppob:products:emoney')
-    await redis.del('ppob:products:tv')
+    await redis.del('ppob:products:PLN')
+    await redis.del('ppob:products:Pulsa')
+    await redis.del('ppob:products:Data')
+    await redis.del('ppob:products:PulsaData')
+    await redis.del('ppob:products:Games')
+    await redis.del('ppob:products:TV')
+    await redis.del('ppob:products:EMoney')
+    await redis.del('ppob:game-brands:active')
     await redis.del('digiflazz:pricelist:all')
   } catch (e) { console.error('[Markup] gagal flush cache:', e) }
 

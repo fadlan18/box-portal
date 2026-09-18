@@ -27,7 +27,7 @@
           <h2 style="font-size:17px;font-weight:800;color:#1a4fa0;margin:0 0 12px">2. Layanan yang Disediakan</h2>
           <p style="color:#374151;font-size:14px;line-height:1.8;margin:0 0 12px">miTRANZ menyediakan layanan digital yang meliputi:</p>
           <ul style="color:#374151;font-size:14px;line-height:2;margin:0;padding-left:20px">
-            <li>Layanan PPOB (Payment Point Online Bank) — Token Listrik PLN, Pulsa & Paket Data, Voucher Game</li>
+            <li>Layanan pembayaran digital — Token Listrik PLN, Pulsa & Paket Data, Voucher Game, dan layanan sejenis</li>
             <li>Jasa pembuatan website profesional untuk bisnis, UMKM, dan pemerintah desa</li>
             <li>Layanan digital lainnya sebagaimana tersedia di platform</li>
           </ul>

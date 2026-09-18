@@ -32,7 +32,7 @@
             <li><strong>Data teknis:</strong> alamat IP, jenis browser, waktu akses (untuk keamanan dan analitik)</li>
           </ul>
           <p style="color:#374151;font-size:14px;line-height:1.8;margin:12px 0 0">
-            Untuk transaksi PPOB, kami <strong>tidak menyimpan</strong> data kartu kredit/debit. Pembayaran diproses melalui payment gateway pihak ketiga yang telah tersertifikasi.
+            Untuk transaksi pembayaran digital, kami <strong>tidak menyimpan</strong> data kartu kredit/debit. Pembayaran diproses melalui payment gateway pihak ketiga yang telah tersertifikasi.
           </p>
         </section>
 
@@ -54,7 +54,7 @@
             Kami <strong>tidak menjual</strong> data pribadi Anda kepada pihak ketiga. Data dapat dibagikan hanya kepada:
           </p>
           <ul style="color:#374151;font-size:14px;line-height:2;margin:0;padding-left:20px">
-            <li><strong>Penyedia PPOB (Digiflazz):</strong> untuk memproses transaksi token listrik, pulsa, dll</li>
+            <li><strong>Mitra Penyedia Layanan:</strong> untuk memproses transaksi pembayaran digital</li>
             <li><strong>Payment gateway:</strong> untuk memproses pembayaran secara aman</li>
             <li><strong>Otoritas berwenang:</strong> jika diwajibkan oleh hukum yang berlaku</li>
           </ul>
@@ -91,7 +91,7 @@
         <section style="margin-bottom:32px">
           <h2 style="font-size:17px;font-weight:800;color:#1a4fa0;margin:0 0 12px">8. Cookie</h2>
           <p style="color:#374151;font-size:14px;line-height:1.8;margin:0">
-            miTRANZ menggunakan cookie untuk menjaga sesi login dan menyimpan preferensi pengguna (seperti nomor favorit PPOB di localStorage). Cookie ini tidak digunakan untuk pelacakan iklan. Anda dapat menonaktifkan cookie melalui pengaturan browser, namun beberapa fitur mungkin tidak berfungsi optimal.
+            miTRANZ menggunakan cookie untuk menjaga sesi login dan menyimpan preferensi pengguna (seperti nomor favorit di localStorage). Cookie ini tidak digunakan untuk pelacakan iklan. Anda dapat menonaktifkan cookie melalui pengaturan browser, namun beberapa fitur mungkin tidak berfungsi optimal.
           </p>
         </section>
 
