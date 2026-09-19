@@ -1,8 +1,19 @@
 <template>
   <div class="space-y-6">
     <div>
-      <h1 class="font-display text-2xl font-bold text-adaptive mb-1">Invoice Saya</h1>
-      <p class="text-sm text-gray-400">Riwayat tagihan dan status pembayaran</p>
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="font-display text-2xl font-bold text-adaptive mb-1">Invoice Saya</h1>
+          <p class="text-sm text-gray-400">Riwayat tagihan dan status pembayaran</p>
+        </div>
+        <button v-if="cancelledCount > 0" @click="showCancelled = !showCancelled"
+          class="text-xs px-3 py-1.5 rounded-lg font-semibold transition-all"
+          :style="showCancelled
+            ? 'background:rgba(239,68,68,0.1);color:#f87171;border:1px solid rgba(239,68,68,0.2)'
+            : 'background:var(--dash-input-bg);color:var(--dash-text-muted);border:1px solid var(--dash-card-border)'">
+          {{ showCancelled ? 'Sembunyikan Dibatalkan' : 'Tampilkan Dibatalkan (' + cancelledCount + ')' }}
+        </button>
+      </div>
     </div>
 
     <!-- Stats -->
@@ -43,7 +54,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="inv in invoices" :key="inv.id"
+            <tr v-for="inv in visibleInvoices" :key="inv.id"
               class="hover:bg-white/5 transition-colors"
               style="border-bottom:1px solid rgba(255,255,255,0.04)">
               <td class="px-4 py-3">
@@ -68,20 +79,29 @@
                 </span>
               </td>
               <td class="px-4 py-3">
-                <a v-if="inv.status === 'unpaid'"
-                  :href="`https://paymen.mitranz.com/invoices/${inv.id}`"
-                  target="_blank"
-                  class="text-xs px-3 py-1.5 rounded-lg font-semibold"
-                  style="background:#1a4fa0;color:#ffffff !important">
-                  💳 Bayar
-                </a>
-                <a v-else
-                  :href="`https://paymen.mitranz.com/invoices/${inv.id}`"
-                  target="_blank"
-                  class="text-xs px-3 py-1.5 rounded-lg font-semibold"
-                  style="background:rgba(255,255,255,0.08);color:#94a3b8">
-                  Detail
-                </a>
+                <div class="flex items-center gap-2">
+                  <a v-if="inv.status === 'unpaid'"
+                    :href="`https://paymen.mitranz.com/invoices/${inv.id}`"
+                    target="_blank"
+                    class="text-xs px-3 py-1.5 rounded-lg font-semibold"
+                    style="background:#1a4fa0;color:#ffffff !important">
+                    💳 Bayar
+                  </a>
+                  <a v-else
+                    :href="`https://paymen.mitranz.com/invoices/${inv.id}`"
+                    target="_blank"
+                    class="text-xs px-3 py-1.5 rounded-lg font-semibold"
+                    style="background:rgba(255,255,255,0.08);color:#94a3b8">
+                    Detail
+                  </a>
+                  <button v-if="inv.status === 'unpaid'"
+                    @click="cancelInvoice(inv)"
+                    :disabled="cancelling === inv.id"
+                    class="text-xs px-3 py-1.5 rounded-lg font-semibold"
+                    style="background:rgba(239,68,68,0.08);color:#f87171;border:1px solid rgba(239,68,68,0.2)">
+                    {{ cancelling === inv.id ? '...' : 'Batalkan' }}
+                  </button>
+                </div>
               </td>
             </tr>
           </tbody>
@@ -98,8 +118,34 @@ const { user } = useCustomAuth()
 const invoices = ref<any[]>([])
 const loading = ref(true)
 
+const showCancelled = ref(false)
+const visibleInvoices = computed(() =>
+  showCancelled.value
+    ? invoices.value
+    : invoices.value.filter((i: any) => i.status !== 'cancelled')
+)
 const unpaidCount = computed(() => invoices.value.filter(i => i.status === 'unpaid').length)
 const paidCount = computed(() => invoices.value.filter(i => i.status === 'paid').length)
+const cancelledCount = computed(() => invoices.value.filter(i => i.status === 'cancelled').length)
+const cancelling = ref<string | null>(null)
+
+async function cancelInvoice(inv: any) {
+  if (!confirm(`Batalkan invoice ${inv.invoice_number}?\nInvoice yang dibatalkan tidak dapat digunakan kembali.`)) return
+  cancelling.value = inv.id
+  try {
+    await $fetch('/api/billing/cancel-invoice', {
+      method: 'POST',
+      body: { invoice_id: inv.id, user_id: user.value?.id }
+    })
+    // Update status lokal tanpa reload
+    const idx = invoices.value.findIndex((i: any) => i.id === inv.id)
+    if (idx >= 0) invoices.value[idx].status = 'cancelled'
+  } catch (e: any) {
+    alert(e?.data?.message || 'Gagal membatalkan invoice')
+  } finally {
+    cancelling.value = null
+  }
+}
 
 onMounted(async () => {
   if (!user.value?.id) return

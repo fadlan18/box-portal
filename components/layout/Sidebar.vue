@@ -36,6 +36,23 @@
       </nav>
     </div>
 
+    <!-- Menu PPOB sekunder -->
+    <div class="px-3 pb-2">
+      <div class="text-[10px] font-bold uppercase tracking-widest mb-2 px-2"
+        :style="isDark ? 'color:rgba(255,255,255,0.2)' : 'color:#cbd5e1'">Layanan Digital</div>
+      <nav class="space-y-0.5">
+        <NuxtLink v-for="item in ppobItems" :key="item.to" :to="item.to"
+          class="flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium transition-all"
+          :style="isActive(item.to)
+            ? 'background:rgba(26,79,160,0.12);color:#1a4fa0'
+            : isDark ? 'color:#64748b' : 'color:#94a3b8'">
+          <component :is="item.icon" class="w-4 h-4 flex-shrink-0"/>
+          <span class="flex-1 text-xs">{{ item.label }}</span>
+          <span v-if="isActive(item.to)" class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#1a4fa0"/>
+        </NuxtLink>
+      </nav>
+    </div>
+
     <!-- Admin menu -->
     <div v-if="isAdmin" class="px-3 pb-4">
       <div class="text-[10px] font-bold uppercase tracking-widest mb-2 px-2"
@@ -102,9 +119,12 @@ const navItems = [
   { to: '/services',   label: 'Layanan Saya',   icon: Monitor         },
   { to: '/orders',     label: 'Order Baru',      icon: ShoppingCart    },
   { to: '/invoices',   label: 'Invoice',         icon: FileText        },
-  { to: '/ppob/riwayat', label: 'Riwayat PPOB', icon: BarChart2       },
   { to: '/tickets',    label: 'Tiket Support',   icon: MessageSquare   },
   { to: '/profile',    label: 'Profil',          icon: User            },
+]
+
+const ppobItems = [
+  { to: '/ppob/riwayat', label: 'Riwayat PPOB', icon: BarChart2 },
 ]
 
 const adminItems = [

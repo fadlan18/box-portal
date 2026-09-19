@@ -1,8 +1,8 @@
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
-  const { user_id, user_name, user_email, service, form } = await readBody(event)
+  const { user_id, user_name, user_email, items, form } = await readBody(event)
 
-  if (!user_id || !service) {
+  if (!user_id || !items?.length) {
     throw createError({ statusCode: 400, message: 'Data tidak lengkap' })
   }
 
@@ -17,22 +17,15 @@ export default defineEventHandler(async (event) => {
         external_id: user_id,
         name: user_name,
         email: user_email,
-        phone: form.phone || null,
+        phone: form?.phone || null,
       },
-      items: [
-        {
-          description: service.name,
-          quantity: 1,
-          unit_price: service.price,
-        }
-      ],
+      items,
       due_days: 7,
-      notes: form.notes || null,
+      notes: form?.notes || null,
       currency: 'IDR',
       metadata: {
-        service_id: service.id,
-        domain: form.domain || null,
-        period: service.period,
+        source: 'mitranz-portal',
+        item_count: items.length,
       },
     },
   })

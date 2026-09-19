@@ -31,15 +31,23 @@ export function useOrders() {
 
   async function createOrder(product: any, selectedOption: PricingOption) {
     if (!selectedOption?.amount) throw new Error('Harga tidak tersedia')
-    const res = await $fetch<any>('/api/orders', {
+    const { user } = useCustomAuth()
+    if (!user.value?.id) throw new Error('Silakan login terlebih dahulu')
+    const res = await $fetch<any>('/api/billing/create-invoice', {
       method: 'POST',
       body: {
-        product_id: product.id,
-        product_name: product.name,
-        unit_price: selectedOption.amount,
-        total_amount: selectedOption.amount,
-        period: selectedOption.period,
-        currency: 'IDR',
+        user_id: user.value.id,
+        user_name: user.value.name,
+        user_email: user.value.email,
+        service: {
+          id: product.id,
+          name: product.name,
+          price: selectedOption.amount,
+          period: selectedOption.period,
+        },
+        form: {
+          notes: selectedOption.label,
+        }
       }
     })
     return { ...res, product }

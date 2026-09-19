@@ -1,247 +1,413 @@
 <template>
   <div class="space-y-6">
-    <!-- Progress Steps -->
-    <div class="flex items-center gap-2 mb-8">
-      <template v-for="(s, i) in steps" :key="i">
-        <div class="flex items-center gap-2 cursor-pointer" @click="goStep(i)">
-          <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300"
-            :style="step > i ? 'background:#10b981;color:white'
-              : step === i ? 'background:rgba(16,185,129,0.15);color:#10b981;border:2px solid #10b981'
-              : 'background:rgba(0,0,0,0.06);color:#9ca3af;border:2px solid rgba(0,0,0,0.1)'">
-            <span v-if="step > i">✓</span>
-            <span v-else>{{ i + 1 }}</span>
-          </div>
-          <span class="text-xs font-semibold hidden sm:block"
-            :style="step === i ? 'color:#10b981' : step > i ? 'color:#10b981' : 'color:#9ca3af'">{{ s }}</span>
-        </div>
-        <div v-if="i < steps.length - 1" class="h-px flex-1 max-w-16 transition-all"
-          :style="step > i ? 'background:#10b981' : 'background:rgba(0,0,0,0.08)'"/>
-      </template>
+
+    <!-- Header -->
+    <div class="flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-bold" style="color:var(--dash-text-primary)">Order Layanan</h1>
+        <p class="text-sm" style="color:var(--dash-text-muted)">Pilih paket website yang sesuai kebutuhan Anda</p>
+      </div>
+      <!-- Badge keranjang -->
+      <button v-if="cart.length > 0" @click="scrollToCart"
+        class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all"
+        style="background:rgba(26,79,160,0.08);color:#1a4fa0;border:1px solid rgba(26,79,160,0.2)">
+        🛒 Keranjang
+        <span class="w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white"
+          style="background:#1a4fa0">{{ cart.length }}</span>
+      </button>
     </div>
 
-    <!-- Step 1: Kategori -->
-    <Transition name="slide-fade" mode="out-in">
-    <div v-if="step === 0" key="step0">
-      <div class="mb-8">
-        <h2 class="text-2xl font-bold mb-1" style="color:var(--dash-text-primary)">Pilih Kategori Layanan</h2>
-        <p class="text-sm" style="color:var(--dash-text-muted)">Apa yang ingin Anda pesan hari ini?</p>
-      </div>
-      <div v-if="productLoading" class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div v-for="i in 3" :key="i" class="rounded-3xl animate-pulse h-56" style="background:var(--dash-card-bg)"/>
-      </div>
-      <div v-else class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        <button v-for="c in visibleCategories" :key="c.val"
-          @click="selectCategory(c)"
-          class="group relative rounded-2xl text-left transition-all duration-200 p-6 flex flex-col"
-          style="background:var(--dash-card-bg);cursor:pointer;height:200px"
-          :style="'border:1.5px solid ' + c.border"
-          @mouseenter="e => { (e.currentTarget as HTMLElement).style.transform='translateY(-3px)'; (e.currentTarget as HTMLElement).style.boxShadow='0 8px 24px '+c.shadow }"
-          @mouseleave="e => { (e.currentTarget as HTMLElement).style.transform='translateY(0)'; (e.currentTarget as HTMLElement).style.boxShadow='none' }">
-          <div class="w-14 h-14 rounded-xl flex items-center justify-center text-3xl mb-4"
-            :style="'background:' + c.iconBg">{{ c.icon }}</div>
-          <div class="text-base font-bold mb-1" style="color:var(--dash-text-primary)">{{ c.label }}</div>
-          <div class="text-xs leading-relaxed flex-1" style="color:var(--dash-text-muted)">{{ c.desc }}</div>
-          <div class="flex items-center justify-between mt-4 pt-3" :style="'border-top:1px solid ' + c.border">
-            <span class="text-xs font-semibold flex items-center gap-1 transition-all" :style="'color:' + c.accent">
-              {{ c.count }} produk tersedia →
+    <!-- Loading -->
+    <div v-if="productLoading" class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <div v-for="i in 3" :key="i" class="rounded-2xl h-64 animate-pulse"
+        style="background:var(--dash-input-bg)"></div>
+    </div>
+
+    <!-- Daftar produk — semua tampil sekaligus -->
+    <div v-else class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <div v-for="p in websiteProducts" :key="p.id"
+        class="glass rounded-2xl p-5 flex flex-col transition-all"
+        :style="isInCart(p.id) ? 'border:2px solid #1a4fa0' : ''">
+
+        <!-- Header produk -->
+        <div class="flex items-start justify-between mb-3">
+          <div class="text-3xl">{{ productIcon(p.name) }}</div>
+          <div class="flex items-center gap-2">
+            <span v-if="isInCart(p.id)" class="text-xs px-2 py-0.5 rounded-full font-bold"
+              style="background:rgba(26,79,160,0.1);color:#1a4fa0;border:1px solid rgba(26,79,160,0.2)">
+              ✓ Di Keranjang
             </span>
           </div>
-        </button>
-      </div>
-    </div>
-    </Transition>
+        </div>
+        <h3 class="font-bold text-base mb-1" style="color:var(--dash-text-primary)">{{ p.name }}</h3>
+        <p class="text-xs mb-4 flex-1" style="color:var(--dash-text-muted)">{{ p.short_desc }}</p>
 
-    <!-- Step 2: Produk -->
-    <Transition name="slide-fade" mode="out-in">
-    <div v-if="step === 1" key="step1">
-      <div class="flex items-center justify-between mb-6">
-        <div>
-          <h2 class="text-xl font-bold" style="color:var(--dash-text-primary)">{{ selectedCategory?.label }}</h2>
-          <p class="text-sm" style="color:var(--dash-text-muted)">Pilih produk yang sesuai kebutuhan</p>
-        </div>
-        <button @click="step = 0" class="text-xs font-semibold px-4 py-2 rounded-xl border transition-all"
-          style="color:var(--dash-text-muted);border-color:var(--dash-card-border);background:var(--dash-card-bg)">← Kembali</button>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <button v-for="p in filtered" :key="p.id"
-          @click="selectProduct(p)"
-          class="rounded-2xl p-5 text-left transition-all duration-200 group"
-          style="background:var(--dash-card-bg);border:1px solid var(--dash-card-border)"
-          @mouseenter="e => { (e.currentTarget as HTMLElement).style.borderColor='#10b981'; (e.currentTarget as HTMLElement).style.transform='translateY(-2px)' }"
-          @mouseleave="e => { (e.currentTarget as HTMLElement).style.borderColor='var(--dash-card-border)'; (e.currentTarget as HTMLElement).style.transform='translateY(0)' }">
-          <div class="flex items-start gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:rgba(16,185,129,0.1)">
-              {{ catIcon(p.category) }}
-            </div>
-            <div>
-              <div class="font-semibold text-sm" style="color:var(--dash-text-primary)">{{ p.name }}</div>
-              <div class="text-xs uppercase tracking-wide" style="color:var(--dash-text-muted)">{{ p.category }}</div>
-            </div>
+        <!-- Paket Utama (type: main) — radio -->
+        <div class="mb-3">
+          <div class="text-xs font-bold uppercase tracking-wider mb-2" style="color:var(--dash-text-muted)">
+            Pilih Paket
           </div>
-          <p class="text-xs leading-relaxed line-clamp-2 mb-3" style="color:var(--dash-text-muted)">{{ p.short_desc }}</p>
-          <div v-if="p.category === 'ppob'" class="flex items-center justify-between pt-3" style="border-top:1px solid var(--dash-divider)">
-            <span class="text-xs" style="color:var(--dash-text-muted)">Transaksi langsung</span>
-            <span class="text-xs font-semibold" style="color:#10b981">Buka halaman →</span>
-          </div>
-          <div v-else-if="getPricingOptions(p).length > 0" class="flex items-center justify-between pt-3" style="border-top:1px solid var(--dash-divider)">
-            <span class="text-xs" style="color:var(--dash-text-muted)">Mulai dari</span>
-            <span class="text-sm font-bold" style="color:#10b981">{{ rp(Math.min(...getPricingOptions(p).map((o:any) => o.amount))) }}</span>
-          </div>
-        </button>
-      </div>
-    </div>
-    </Transition>
-
-    <!-- Step 3: Paket -->
-    <Transition name="slide-fade" mode="out-in">
-    <div v-if="step === 2" key="step2">
-      <div class="flex items-center justify-between mb-6">
-        <div>
-          <h2 class="text-xl font-bold" style="color:var(--dash-text-primary)">{{ selectedProduct?.name }}</h2>
-          <p class="text-sm" style="color:var(--dash-text-muted)">Pilih paket yang sesuai</p>
-        </div>
-        <button @click="step = 1" class="text-xs font-semibold px-4 py-2 rounded-xl border"
-          style="color:var(--dash-text-muted);border-color:var(--dash-card-border);background:var(--dash-card-bg)">← Kembali</button>
-      </div>
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Summary -->
-        <div class="space-y-4">
-          <div class="rounded-2xl p-5" style="background:var(--dash-card-bg);border:1px solid var(--dash-card-border)">
-            <h3 class="text-sm font-semibold mb-3" style="color:var(--dash-text-primary)">Detail Layanan</h3>
-            <p class="text-xs leading-relaxed" style="color:var(--dash-text-muted)">{{ selectedProduct?.short_desc }}</p>
-          </div>
-          <div v-if="selectedOpt" class="rounded-2xl p-5" style="background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.25)">
-            <h3 class="text-sm font-semibold mb-3" style="color:#10b981">Ringkasan Order</h3>
-            <div class="space-y-2 text-xs mb-4">
-              <div class="flex justify-between"><span style="color:var(--dash-text-muted)">Produk</span><span style="color:var(--dash-text-primary)">{{ selectedProduct?.name }}</span></div>
-              <div class="flex justify-between"><span style="color:var(--dash-text-muted)">Paket</span><span style="color:var(--dash-text-primary)">{{ selectedOpt?.label }}</span></div>
-              <div class="flex justify-between pt-2" style="border-top:1px solid var(--dash-divider)">
-                <span class="font-bold" style="color:var(--dash-text-primary)">Total</span>
-                <span class="font-bold text-base" style="color:#10b981">{{ rp(selectedOpt?.amount) }}</span>
-              </div>
-            </div>
-            <button @click="handleOrder(selectedProduct)" :disabled="ordering"
-              class="w-full py-3 rounded-xl font-bold text-sm text-white"
-              style="background:linear-gradient(135deg,#059669,#10b981);box-shadow:0 4px 16px rgba(16,185,129,0.35)">
-              {{ ordering ? 'Memproses...' : 'Order — ' + rp(selectedOpt?.amount) }}
-            </button>
-          </div>
-        </div>
-        <!-- Paket -->
-        <div class="lg:col-span-2 rounded-2xl p-5" style="background:var(--dash-card-bg);border:1px solid var(--dash-card-border)">
-          <h3 class="text-sm font-semibold mb-4" style="color:var(--dash-text-primary)">Pilih Paket</h3>
-          <div class="space-y-3">
-            <button v-for="opt in getPricingOptions(selectedProduct)" :key="opt.id"
-              @click="selectedOpt = opt"
-              class="w-full p-4 rounded-xl text-left transition-all"
-              :style="selectedOpt?.id === opt.id
-                ? 'background:rgba(16,185,129,0.08);border:2px solid #10b981'
-                : 'background:var(--dash-input-bg);border:2px solid var(--dash-input-border)'">
+          <div class="space-y-2">
+            <button v-for="opt in mainOptions(p)" :key="opt.id"
+              @click="selectMain(p.id, opt)"
+              class="w-full p-3 rounded-xl text-left transition-all"
+              :style="selectedMain[p.id]?.id === opt.id
+                ? 'background:rgba(26,79,160,0.06);border:1.5px solid #1a4fa0'
+                : 'background:var(--dash-input-bg);border:1.5px solid var(--dash-card-border)'">
               <div class="flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center"
-                    :style="selectedOpt?.id === opt.id ? 'border-color:#10b981' : 'border-color:var(--dash-input-border)'">
-                    <div v-if="selectedOpt?.id === opt.id" class="w-2.5 h-2.5 rounded-full" style="background:#10b981"/>
+                <div class="flex items-center gap-2">
+                  <div class="w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0"
+                    :style="selectedMain[p.id]?.id === opt.id
+                      ? 'border-color:#1a4fa0'
+                      : 'border-color:var(--dash-input-border)'">
+                    <div v-if="selectedMain[p.id]?.id === opt.id"
+                      class="w-2 h-2 rounded-full" style="background:#1a4fa0"/>
                   </div>
                   <div>
-                    <div class="text-sm font-semibold" style="color:var(--dash-text-primary)">{{ opt.label }}</div>
-                    <div class="text-xs" style="color:var(--dash-text-muted)">Periode: {{ opt.period }}</div>
+                    <div class="text-xs font-semibold" style="color:var(--dash-text-primary)">{{ opt.label }}</div>
                   </div>
                 </div>
-                <div class="text-base font-bold" style="color:var(--dash-text-primary)">{{ rp(opt.amount) }}</div>
+                <div class="text-right flex-shrink-0 ml-2">
+                  <div class="text-xs font-bold" style="color:#1a4fa0">{{ fmtRp(opt.amount) }}</div>
+                  <span v-if="opt.promo_label" class="text-xs px-1.5 py-0.5 rounded font-bold"
+                    style="background:rgba(251,191,36,0.15);color:#d97706">{{ opt.promo_label }}</span>
+                </div>
               </div>
             </button>
           </div>
         </div>
+
+        <!-- Layanan Tambahan (type: addon) — checkbox -->
+        <div v-if="addonOptions(p).length > 0" class="mb-4">
+          <div class="text-xs font-bold uppercase tracking-wider mb-2" style="color:var(--dash-text-muted)">
+            Layanan Tambahan <span class="font-normal">(opsional)</span>
+          </div>
+          <div class="space-y-2">
+            <label v-for="opt in addonOptions(p)" :key="opt.id"
+              class="flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all"
+              :style="isAddonSelected(p.id, opt.id)
+                ? 'background:rgba(16,185,129,0.06);border:1.5px solid rgba(16,185,129,0.4)'
+                : 'background:var(--dash-input-bg);border:1.5px solid var(--dash-card-border)'">
+              <div class="flex items-center gap-2">
+                <input type="checkbox"
+                  :checked="isAddonSelected(p.id, opt.id)"
+                  @change="toggleAddon(p.id, opt)"
+                  class="rounded" style="accent-color:#10b981"/>
+                <div class="text-xs font-semibold" style="color:var(--dash-text-primary)">{{ opt.label }}</div>
+              </div>
+              <div class="text-right flex-shrink-0 ml-2">
+                <div class="text-xs font-bold" style="color:#10b981">+{{ fmtRp(opt.amount) }}</div>
+                <div class="text-xs" style="color:var(--dash-text-muted)">{{ opt.period }}</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Subtotal produk -->
+        <div v-if="selectedMain[p.id]" class="mb-3 px-3 py-2 rounded-xl text-xs flex items-center justify-between"
+          style="background:var(--dash-input-bg)">
+          <span style="color:var(--dash-text-muted)">Subtotal</span>
+          <span class="font-bold" style="color:var(--dash-text-primary)">{{ fmtRp(productSubtotal(p.id)) }}</span>
+        </div>
+
+        <!-- Tombol aksi -->
+        <div class="space-y-2 mt-auto">
+          <button v-if="selectedMain[p.id]"
+            @click="addToCart(p)"
+            class="w-full py-2.5 rounded-xl text-sm font-bold transition-all"
+            :style="isInCart(p.id)
+              ? 'background:rgba(26,79,160,0.1);color:#1a4fa0;border:1px solid #1a4fa0'
+              : 'background:#1a4fa0;color:white'">
+            {{ isInCart(p.id) ? '🔄 Update Keranjang' : '🛒 Tambah ke Keranjang' }}
+          </button>
+          <button v-if="selectedMain[p.id] && websiteProducts.length === 1"
+            @click="directOrder(p)" :disabled="ordering"
+            class="w-full py-2.5 rounded-xl text-sm font-bold text-white"
+            style="background:linear-gradient(135deg,#1a4fa0,#2563eb)">
+            {{ ordering ? 'Memproses...' : 'Langsung Order' }}
+          </button>
+          <p v-if="!selectedMain[p.id]" class="text-center text-xs py-2" style="color:var(--dash-text-muted)">
+            ← Pilih paket untuk melanjutkan
+          </p>
+        </div>
       </div>
     </div>
-    </Transition>
+
+    <!-- Panel Keranjang -->
+    <div v-if="cart.length > 0" id="cart-section" class="glass rounded-2xl p-5"
+      style="border:1px solid rgba(26,79,160,0.25)">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">🛒</span>
+          <h3 class="font-bold" style="color:var(--dash-text-primary)">Keranjang Anda</h3>
+          <span class="text-xs px-2 py-0.5 rounded-full font-semibold"
+            style="background:rgba(26,79,160,0.1);color:#1a4fa0">{{ cart.length }} produk</span>
+        </div>
+        <button @click="clearCart" class="text-xs px-2 py-1 rounded-lg"
+          style="color:#f87171;background:rgba(239,68,68,0.08)">
+          Kosongkan
+        </button>
+      </div>
+
+      <!-- Item keranjang -->
+      <div class="space-y-3 mb-4">
+        <div v-for="item in cart" :key="item.productId"
+          class="rounded-xl p-4"
+          style="background:var(--dash-input-bg);border:1px solid var(--dash-card-border)">
+          <div class="flex items-start justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">{{ productIcon(item.productName) }}</span>
+              <div>
+                <div class="text-sm font-bold" style="color:var(--dash-text-primary)">{{ item.productName }}</div>
+                <div class="text-xs" style="color:var(--dash-text-muted)">{{ item.main.label }}</div>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="text-sm font-bold" style="color:#1a4fa0">{{ fmtRp(item.main.amount) }}</div>
+              <button @click="removeFromCart(item.productId)" class="text-xs mt-1"
+                style="color:#f87171">✕ Hapus</button>
+            </div>
+          </div>
+          <div v-if="item.addons.length > 0" class="space-y-1 mt-2 pt-2"
+            style="border-top:1px solid var(--dash-divider)">
+            <div v-for="addon in item.addons" :key="addon.id"
+              class="flex items-center justify-between text-xs">
+              <span style="color:var(--dash-text-muted)">+ {{ addon.label }}</span>
+              <span class="font-semibold" style="color:#10b981">+{{ fmtRp(addon.amount) }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total & Checkout -->
+      <div class="pt-4" style="border-top:1px solid var(--dash-divider)">
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-bold" style="color:var(--dash-text-primary)">Total Keseluruhan</span>
+          <span class="text-xl font-bold" style="color:#1a4fa0">{{ fmtRp(cartTotal) }}</span>
+        </div>
+        <button @click="checkoutCart" :disabled="ordering"
+          class="w-full py-3 rounded-xl font-bold text-sm text-white transition-all"
+          style="background:linear-gradient(135deg,#1a4fa0,#2563eb);box-shadow:0 4px 16px rgba(26,79,160,0.3)">
+          <span style='color:white'>{{ ordering ? 'Memproses...' : 'Checkout Semua — ' + fmtRp(cartTotal) }}</span>
+        </button>
+      </div>
+    </div>
 
     <!-- Modal sukses -->
-    <div v-if="orderSuccess" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4" @click.self="orderSuccess = null">
-      <div class="rounded-3xl p-8 max-w-sm w-full text-center" style="background:var(--dash-card-bg);border:1px solid var(--dash-card-border)">
+    <div v-if="orderSuccess" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+      @click.self="orderSuccess = null">
+      <div class="rounded-3xl p-8 max-w-sm w-full text-center"
+        style="background:var(--dash-card-bg);border:1px solid var(--dash-card-border)">
         <div class="text-5xl mb-4">🎉</div>
         <h3 class="font-bold text-xl mb-2" style="color:var(--dash-text-primary)">Order Berhasil!</h3>
-        <p class="text-sm mb-6" style="color:var(--dash-text-muted)">Tim kami akan segera memproses pesanan Anda.</p>
-        <button @click="orderSuccess = null; step = 0" class="w-full py-2.5 rounded-xl text-sm font-bold text-white" style="background:linear-gradient(135deg,#059669,#10b981)">Order Lagi</button>
+        <p class="text-sm mb-2" style="color:var(--dash-text-muted)">Invoice telah dibuat dan dikirim ke email Anda.</p>
+        <p class="text-xs mb-6" style="color:var(--dash-text-muted)">Tim kami akan segera menghubungi Anda.</p>
+        <div class="space-y-2">
+          <NuxtLink to="/invoices"
+            class="block w-full py-2.5 rounded-xl text-sm font-bold"
+            style="background:linear-gradient(135deg,#1a4fa0,#2563eb);text-decoration:none;color:white !important">
+            Lihat Invoice →
+          </NuxtLink>
+          <button @click="orderSuccess = null"
+            class="w-full py-2.5 rounded-xl text-sm font-semibold"
+            style="background:var(--dash-input-bg);color:var(--dash-text-muted)">
+            Order Lagi
+          </button>
+        </div>
       </div>
     </div>
+
   </div>
 </template>
 
 <script setup lang="ts">
 definePageMeta({ layout: 'default', middleware: 'auth' })
 
-const { products, categories, loading: productLoading, fetchProducts, fetchCategories } = useProducts()
-const { createOrder, getPricingOptions, rp } = useOrders()
+const { user } = useCustomAuth()
+const { products, loading: productLoading, fetchProducts } = useProducts()
 
-const step = ref(0)
-const steps = ['Kategori', 'Produk', 'Paket & Order']
-const activeCat = ref('')
-const selectedCategory = ref<any>(null)
-const selectedProduct = ref<any>(null)
-const selectedOpt = ref<any>(null)
 const ordering = ref(false)
 const orderSuccess = ref<any>(null)
 
-const catMeta: Record<string, any> = {
-  'website': { icon:'🖥️', desc:'Website profesional untuk bisnis, UMKM, dan instansi pemerintah desa', accent:'#2563eb', iconBg:'rgba(37,99,235,0.08)', border:'rgba(37,99,235,0.15)', shadow:'rgba(37,99,235,0.08)' },
-  'ppob':    { icon:'⚡', desc:'Token listrik PLN, pulsa, paket data, e-wallet, dan berbagai utilitas digital', accent:'#059669', iconBg:'rgba(5,150,105,0.08)', border:'rgba(5,150,105,0.15)', shadow:'rgba(5,150,105,0.08)' },
-  'hiburan': { icon:'🎮', desc:'Voucher game, top up diamond, streaming, dan layanan hiburan digital', accent:'#7c3aed', iconBg:'rgba(124,58,237,0.08)', border:'rgba(124,58,237,0.15)', shadow:'rgba(124,58,237,0.08)' },
+// Pilihan paket utama per produk — { [productId]: option }
+const selectedMain = ref<Record<string, any>>({})
+// Pilihan addon per produk — { [productId]: option[] }
+const selectedAddons = ref<Record<string, any[]>>({})
+
+// Keranjang — { productId, productName, main, addons }[]
+const CART_KEY = 'mitranz-cart-v2'
+const cart = ref<any[]>([])
+
+onMounted(async () => {
+  await fetchProducts()
+  try {
+    const saved = localStorage.getItem(CART_KEY)
+    if (saved) cart.value = JSON.parse(saved)
+  } catch {}
+})
+
+function saveCart() {
+  try { localStorage.setItem(CART_KEY, JSON.stringify(cart.value)) } catch {}
 }
 
-const defaultMeta = { icon:'📦', desc:'', accent:'#64748b', iconBg:'rgba(100,116,139,0.08)', border:'rgba(100,116,139,0.15)', shadow:'rgba(0,0,0,0.06)' }
-
-const visibleCategories = computed(() =>
-  categories.value.filter((c: any) => c.status === 'visible').map((c: any) => ({
-    val: c.slug, label: c.name,
-    ...( catMeta[c.slug] || defaultMeta ),
-    count: products.value.filter((p: any) => p.category === c.slug).length,
-  }))
+// Produk website saja
+const websiteProducts = computed(() =>
+  products.value.filter((p: any) => p.category === 'website')
 )
 
-const catIcon = (c: string) => ({ website:'🖥️', ppob:'⚡', hiburan:'🎮' }[c] || '📦')
-
-const filtered = computed(() => products.value.filter((p: any) => p.category === activeCat.value))
-
-const ppobRoutes: Record<string, string> = {
-  'Token Listrik': '/ppob/pln', 'Pulsa & Paket Data': '/ppob/pulsa',
-  'Top Up E-Wallet': '/ppob/emoney', 'TV Kabel': '/ppob/tv', 'Voucher Game': '/ppob/games',
+// Helper ambil opsi berdasarkan type
+function mainOptions(p: any) {
+  return (p.specs?.pricing || []).filter((o: any) => o.type === 'main')
 }
 
-function selectCategory(c: any) {
-  activeCat.value = c.val; selectedCategory.value = c
-  selectedProduct.value = null; selectedOpt.value = null; step.value = 1
+function addonOptions(p: any) {
+  return (p.specs?.pricing || []).filter((o: any) => o.type === 'addon')
 }
 
-function selectProduct(p: any) {
-  if (p.category === 'ppob') { navigateTo(ppobRoutes[p.name] || '/ppob/pulsa'); return }
-  selectedProduct.value = p
-  const opts = getPricingOptions(p)
-  selectedOpt.value = opts[0] ?? null
-  step.value = 2
+function selectMain(productId: string, opt: any) {
+  selectedMain.value = { ...selectedMain.value, [productId]: opt }
 }
 
-function goStep(i: number) { if (i < step.value) step.value = i }
+function isAddonSelected(productId: string, optId: string) {
+  return (selectedAddons.value[productId] || []).some((a: any) => a.id === optId)
+}
 
-async function handleOrder(product: any) {
-  if (!selectedOpt.value) return
+function toggleAddon(productId: string, opt: any) {
+  const current = selectedAddons.value[productId] || []
+  const idx = current.findIndex((a: any) => a.id === opt.id)
+  if (idx >= 0) {
+    selectedAddons.value[productId] = current.filter((_: any, i: number) => i !== idx)
+  } else {
+    selectedAddons.value[productId] = [...current, opt]
+  }
+}
+
+function productSubtotal(productId: string) {
+  const main = selectedMain.value[productId]?.amount || 0
+  const addons = (selectedAddons.value[productId] || []).reduce((s: number, a: any) => s + a.amount, 0)
+  return main + addons
+}
+
+function isInCart(productId: string) {
+  return cart.value.some(i => i.productId === productId)
+}
+
+function addToCart(p: any) {
+  if (!selectedMain.value[p.id]) return
+  const item = {
+    productId: p.id,
+    productName: p.name,
+    main: selectedMain.value[p.id],
+    addons: selectedAddons.value[p.id] || [],
+  }
+  const idx = cart.value.findIndex(i => i.productId === p.id)
+  if (idx >= 0) {
+    cart.value[idx] = item
+  } else {
+    cart.value.push(item)
+  }
+  saveCart()
+}
+
+function removeFromCart(productId: string) {
+  cart.value = cart.value.filter(i => i.productId !== productId)
+  saveCart()
+}
+
+function clearCart() {
+  cart.value = []
+  try { localStorage.removeItem(CART_KEY) } catch {}
+}
+
+const cartTotal = computed(() =>
+  cart.value.reduce((sum, i) => {
+    const addonTotal = i.addons.reduce((s: number, a: any) => s + a.amount, 0)
+    return sum + i.main.amount + addonTotal
+  }, 0)
+)
+
+function scrollToCart() {
+  document.getElementById('cart-section')?.scrollIntoView({ behavior: 'smooth' })
+}
+
+function buildInvoiceItems(items: any[]) {
+  const result: any[] = []
+  for (const item of items) {
+    result.push({
+      description: `${item.productName} — ${item.main.label}`,
+      quantity: 1,
+      unit_price: item.main.amount,
+    })
+    for (const addon of item.addons) {
+      result.push({
+        description: `${item.productName} — ${addon.label}`,
+        quantity: 1,
+        unit_price: addon.amount,
+      })
+    }
+  }
+  return result
+}
+
+// Order langsung (tanpa keranjang)
+async function directOrder(p: any) {
+  if (!selectedMain.value[p.id] || !user.value) return
   ordering.value = true
   try {
-    const order = await createOrder(product, selectedOpt.value)
-    orderSuccess.value = order
+    const items = buildInvoiceItems([{
+      productId: p.id,
+      productName: p.name,
+      main: selectedMain.value[p.id],
+      addons: selectedAddons.value[p.id] || [],
+    }])
+    const res = await $fetch<any>('/api/billing/create-invoice', {
+      method: 'POST',
+      body: {
+        user_id: user.value.id,
+        user_name: user.value.name,
+        user_email: user.value.email,
+        items,
+        form: {}
+      }
+    })
+    clearCart()
+    orderSuccess.value = res
   } catch (e: any) {
-    alert(e.message || 'Gagal membuat order')
+    alert(e?.data?.message || e.message || 'Gagal membuat order')
   } finally { ordering.value = false }
 }
 
-onMounted(async () => {
-  await Promise.all([fetchProducts(), fetchCategories()])
-})
-</script>
+// Checkout semua dari keranjang
+async function checkoutCart() {
+  if (!cart.value.length || !user.value) return
+  ordering.value = true
+  try {
+    const items = buildInvoiceItems(cart.value)
+    const res = await $fetch<any>('/api/billing/create-invoice', {
+      method: 'POST',
+      body: {
+        user_id: user.value.id,
+        user_name: user.value.name,
+        user_email: user.value.email,
+        items,
+        form: {}
+      }
+    })
+    clearCart()
+    orderSuccess.value = res
+  } catch (e: any) {
+    alert(e?.data?.message || e.message || 'Gagal checkout')
+  } finally { ordering.value = false }
+}
 
-<style scoped>
-.slide-fade-enter-active, .slide-fade-leave-active { transition: all 0.3s ease; }
-.slide-fade-enter-from { opacity: 0; transform: translateX(24px); }
-.slide-fade-leave-to { opacity: 0; transform: translateX(-24px); }
-</style>
+const fmtRp = (n: number) => n ? new Intl.NumberFormat('id-ID', {
+  style: 'currency', currency: 'IDR', maximumFractionDigits: 0
+}).format(n) : 'Rp 0'
+
+function productIcon(name: string) {
+  if (name.toLowerCase().includes('umkm')) return '🏪'
+  if (name.toLowerCase().includes('premium')) return '⭐'
+  if (name.toLowerCase().includes('desa')) return '🏘️'
+  return '🌐'
+}
+</script>

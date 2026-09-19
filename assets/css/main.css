@@ -84,6 +84,13 @@ body {
 .bg-adaptive { background: var(--dash-card-bg) !important; }
 .border-adaptive { border-color: var(--dash-card-border) !important; }
 
+/* Fix ChatWidget di dashboard light mode */
+.dash-light .fixed .text-white,
+.dash-light .fixed [class*="text-white"],
+.dash-light .fixed .font-bold.text-sm.text-white {
+  color: #ffffff !important;
+}
+
 /* Fix text-white di mode light */
 .dash-dark .text-theme { color: #ffffff; }
 .text-theme { color: var(--dash-text-primary); }
