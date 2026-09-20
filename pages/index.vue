@@ -10,7 +10,6 @@
           <span :style="navScrolled ? 'color:#1a4fa0' : 'color:white'">mi</span><span :style="navScrolled ? 'color:#c0192c' : 'color:#fbbf24'">TRANZ</span>
         </div>
         <div style="display:flex;align-items:center;gap:16px">
-          <a href="/layanan" :style="navScrolled ? 'color:#64748b;text-decoration:none;font-size:14px;font-weight:600' : 'color:rgba(255,255,255,0.85);text-decoration:none;font-size:14px;font-weight:600'">Layanan</a>
           <a href="/auth/login" :style="navScrolled ? 'padding:8px 20px;color:#1a4fa0;text-decoration:none;font-size:14px;font-weight:600;border-radius:8px;border:1.5px solid #1a4fa0' : 'padding:8px 20px;color:white;text-decoration:none;font-size:14px;font-weight:600;border-radius:8px;border:1.5px solid rgba(255,255,255,0.7)'">Masuk</a>
           <a href="/kontak" :style="navScrolled ? 'padding:8px 20px;background:#1a4fa0;color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700' : 'padding:8px 20px;background:rgba(255,255,255,0.18);color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700;backdrop-filter:blur(8px)'">Konsultasi Gratis</a>
         </div>
@@ -32,20 +31,10 @@
           <p style="color:rgba(255,255,255,0.75);font-size:17px;line-height:1.8;margin:0 0 36px;max-width:460px">
             Kami wujudkan aplikasi digital modern yang profesional dan terpercaya — sesuai kebutuhan dan anggaran Anda.
           </p>
-          <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <div style="margin-top:0">
             <a href="/kontak"
               style="padding:14px 28px;background:#fbbf24;color:#1a202c;border-radius:12px;text-decoration:none;font-size:15px;font-weight:800;box-shadow:0 4px 20px rgba(251,191,36,0.35);display:inline-flex;align-items:center;gap:8px">
               🚀 Konsultasi Gratis
-            </a>
-            <a href="#layanan"
-              onclick="event.preventDefault();document.getElementById('layanan').scrollIntoView({behavior:'smooth'})"
-              style="padding:14px 28px;background:rgba(255,255,255,0.1);color:white;border-radius:12px;text-decoration:none;font-size:15px;font-weight:700;border:1.5px solid rgba(255,255,255,0.25);display:inline-flex;align-items:center;gap:8px">
-              Lihat Paket →
-            </a>
-            <a href="#portofolio"
-              onclick="event.preventDefault();document.getElementById('portofolio').scrollIntoView({behavior:'smooth'})"
-              style="padding:14px 28px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.8);border-radius:12px;text-decoration:none;font-size:15px;font-weight:600;border:1px solid rgba(255,255,255,0.15);display:inline-flex;align-items:center;gap:8px">
-              🗂️ Portofolio
             </a>
           </div>
         </div>
@@ -257,7 +246,6 @@
           <div>
             <div style="font-weight:700;color:white;font-size:14px;margin-bottom:16px;letter-spacing:0.5px">LAYANAN</div>
             <div style="display:flex;flex-direction:column;gap:10px">
-              <a href="/layanan" style="color:#94a3b8;text-decoration:none;font-size:13px">Semua Layanan</a>
               <a href="/kontak?paket=web-umkm" style="color:#94a3b8;text-decoration:none;font-size:13px">🏪 Aplikasi Digital UMKM</a>
               <a href="/kontak?paket=web-desa-ekonomis" style="color:#94a3b8;text-decoration:none;font-size:13px">🏘️ Aplikasi Digital Desa Ekonomis</a>
               <a href="/kontak?paket=web-desa-premium" style="color:#94a3b8;text-decoration:none;font-size:13px">⭐ Aplikasi Digital Desa Premium</a>
