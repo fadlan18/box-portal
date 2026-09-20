@@ -44,8 +44,8 @@
           <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:24px">
             <!-- Logo & nama perusahaan -->
             <div>
-              <div v-if="settings.company_logo_url" style="margin-bottom:12px">
-                <img :src="settings.company_logo_url" style="height:48px;object-fit:contain" alt="Logo"/>
+              <div v-if="logoUrl" style="margin-bottom:12px">
+                <img :src="logoUrl" style="height:48px;object-fit:contain" alt="Logo"/>
               </div>
               <div v-else style="font-size:28px;font-weight:900;color:white;letter-spacing:-1px;margin-bottom:4px">
                 <span style="color:white">mi</span><span style="color:#fbbf24">TRANZ</span>
@@ -214,6 +214,14 @@ onMounted(async () => {
   } finally {
     loading.value = false
   }
+})
+
+const logoUrl = computed(() => {
+  const url = settings.value?.company_logo_url || ''
+  if (!url) return ''
+  if (url.startsWith('http')) return url
+  // URL relatif dari billing-portal
+  return 'https://paymen.mitranz.com' + url
 })
 
 function printInvoice() {
