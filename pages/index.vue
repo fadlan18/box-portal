@@ -250,7 +250,6 @@
             <div style="display:flex;flex-direction:column;gap:8px">
               <a href="mailto:cs@mitranz.com" style="color:#60a5fa;font-size:13px;text-decoration:none">📧 cs@mitranz.com</a>
               <a href="tel:+628114556611" style="color:#60a5fa;font-size:13px;text-decoration:none">📞 0811-455-6611</a>
-              <span style="color:#475569;font-size:12px;line-height:1.6">📍 Jl. Gunung Sinara No. 21<br>Ampana, Sulawesi Tengah</span>
               <span style="color:#475569;font-size:12px">PT Mitra Trans Digital</span>
             </div>
           </div>
