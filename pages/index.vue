@@ -145,63 +145,6 @@
       </div>
     </div>
 
-    <!-- Keunggulan -->
-    <div style="background:#f8faff;padding:72px 32px">
-      <div style="max-width:1200px;margin:0 auto">
-        <div style="text-align:center;margin-bottom:56px">
-          <span style="background:#eff6ff;color:#1a4fa0;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px">KEUNGGULAN KAMI</span>
-          <h2 style="font-size:clamp(22px,3vw,32px);font-weight:900;color:#1a202c;margin:12px 0 12px;letter-spacing:-0.5px">Mengapa Memilih miTRANZ?</h2>
-          <p style="color:#64748b;font-size:15px;max-width:480px;margin:0 auto">Komitmen kami untuk kualitas, transparansi, dan kepuasan klien di setiap proyek.</p>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
-          <div v-for="f in features" :key="f.title"
-            style="background:white;border-radius:20px;padding:32px;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,0.04);transition:all 0.2s;position:relative;overflow:hidden">
-            <!-- Accent top -->
-            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1a4fa0,#2563eb)"></div>
-            <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#eff6ff,#dbeafe);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:26px">
-              {{ f.icon }}
-            </div>
-            <div style="font-size:16px;font-weight:800;color:#1a202c;margin-bottom:10px">{{ f.title }}</div>
-            <div style="font-size:13px;color:#64748b;line-height:1.7">{{ f.desc }}</div>
-          </div>
-        </div>
-
-        <!-- Stats row -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:48px;background:linear-gradient(135deg,#1a4fa0,#2563eb);border-radius:20px;padding:36px">
-          <div v-for="s in stats" :key="s.label" style="text-align:center">
-            <div style="font-size:32px;font-weight:900;color:white;margin-bottom:4px">{{ s.value }}</div>
-            <div style="font-size:12px;color:rgba(255,255,255,0.7)">{{ s.label }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Testimonial -->
-    <div style="background:white;padding:72px 32px">
-      <div style="max-width:1100px;margin:0 auto">
-        <div style="text-align:center;margin-bottom:48px">
-          <span style="background:#fef3c7;color:#d97706;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px">TESTIMONI KLIEN</span>
-          <h2 style="font-size:clamp(22px,3vw,30px);font-weight:900;color:#1a202c;margin:12px 0 12px;letter-spacing:-0.5px">Apa Kata Klien Kami</h2>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
-          <div v-for="t in testimonials" :key="t.name"
-            style="background:#f8faff;border-radius:20px;padding:32px;border:1px solid #e2e8f0;position:relative">
-            <div style="font-size:32px;color:#dbeafe;font-weight:900;line-height:1;margin-bottom:16px">"</div>
-            <p style="font-size:14px;color:#374151;line-height:1.8;margin:0 0 24px;font-style:italic">{{ t.text }}</p>
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#1a4fa0,#2563eb);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:white;flex-shrink:0">
-                {{ t.name.charAt(0) }}
-              </div>
-              <div>
-                <div style="font-size:14px;font-weight:700;color:#1a202c">{{ t.name }}</div>
-                <div style="font-size:12px;color:#64748b">{{ t.role }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Layanan Tambahan — satu baris -->
     <div style="background:#f0f4f8;padding:32px">
       <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
@@ -347,23 +290,6 @@ const features = [
   { icon: '💬', title: 'Support Responsif', desc: 'Tim kami siap membantu via chat dan email. Tidak ada pertanyaan yang dibiarkan tanpa jawaban.' },
 ]
 
-const testimonials = [
-  {
-    name: 'Ahmad Fauzi',
-    role: 'Pemilik UMKM Kuliner, Ampana',
-    text: 'Aplikasi digital dari miTRANZ benar-benar mengubah cara saya berbisnis. Sekarang pelanggan bisa menemukan usaha saya dengan mudah di internet. Prosesnya cepat dan tim sangat responsif.',
-  },
-  {
-    name: 'Kepala Desa Malino',
-    role: 'Pemerintah Desa, Sulawesi Tengah',
-    text: 'Sistem informasi desa yang dibangun miTRANZ sangat membantu administrasi desa kami. Warga kini bisa mengakses informasi desa kapan saja dan di mana saja.',
-  },
-  {
-    name: 'Rahmat Hidayat',
-    role: 'Pengusaha Lokal, Poso',
-    text: 'Harga terjangkau dengan kualitas yang tidak kalah dengan vendor besar. Saya sangat puas dengan hasilnya dan sudah merekomendasikan miTRANZ ke rekan bisnis saya.',
-  },
-]
 
 onMounted(async () => {
   await fetchUser().catch(() => {})
