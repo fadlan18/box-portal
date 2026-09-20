@@ -67,19 +67,19 @@ const isOpen = (ci, fi) => !!openMap.value[`${ci}-${fi}`]
 const faqCategories = [
   {
     icon: '⚡',
-    title: 'Layanan PPOB',
+    title: 'Layanan Pembayaran Digital',
     items: [
       {
-        q: 'Produk apa saja yang tersedia di layanan PPOB miTRANZ?',
-        a: 'miTRANZ menyediakan berbagai layanan PPOB lengkap: <strong>Token & Tagihan Listrik PLN</strong>, <strong>Pulsa & Paket Data</strong> (semua operator: Telkomsel, XL, Indosat, Tri, Smartfren), <strong>Voucher & Top Up Game</strong> (Free Fire, Mobile Legends, PUBG, dan lainnya), <strong>E-Money</strong> (GoPay, OVO, DANA, ShopeePay, LinkAja), dan <strong>TV Kabel</strong> (Indihome, MNC, dll). Produk terus bertambah secara berkala.'
+        q: 'Produk apa saja yang tersedia di layanan pembayaran digital miTRANZ?',
+        a: 'miTRANZ menyediakan berbagai layanan pembayaran digital — mulai dari utilitas rumah tangga, komunikasi, hiburan, hingga dompet digital. Produk terus bertambah secara berkala. Kunjungi halaman pembayaran digital untuk melihat daftar lengkapnya.'
       },
       {
-        q: 'Apakah saya perlu membuat akun untuk bertransaksi PPOB?',
-        a: 'Tidak perlu mendaftar akun. Layanan PPOB miTRANZ dapat digunakan langsung — cukup masukkan nomor tujuan dan alamat email Anda, lalu lakukan pembayaran. Riwayat transaksi dapat dicek kapan saja menggunakan email yang sama.'
+        q: 'Apakah saya perlu membuat akun untuk transaksi pembayaran digital?',
+        a: 'Tidak perlu mendaftar akun. Layanan pembayaran digital miTRANZ dapat digunakan langsung — cukup masukkan nomor tujuan dan alamat email Anda, lalu lakukan pembayaran. Riwayat transaksi dapat dicek kapan saja menggunakan email yang sama.'
       },
       {
         q: 'Berapa lama produk diterima setelah pembayaran?',
-        a: 'Semua produk PPOB diproses <strong>secara otomatis dalam hitungan detik</strong> hingga maksimal 5 menit setelah pembayaran dikonfirmasi. Konfirmasi transaksi dan detail produk dikirim ke email yang Anda daftarkan. Untuk pulsa dan paket data, pengisian langsung masuk ke nomor tujuan. Untuk e-money, ikuti petunjuk yang dikirim via email.'
+        a: 'Semua produk pembayaran digital diproses <strong>secara otomatis dalam hitungan detik</strong> hingga maksimal 5 menit setelah pembayaran dikonfirmasi. Konfirmasi transaksi dan detail produk dikirim ke email yang Anda daftarkan. Untuk pulsa dan paket data, pengisian langsung masuk ke nomor tujuan. Untuk e-money, ikuti petunjuk yang dikirim via email.'
       },
       {
         q: 'Data atau nomor tujuan saya salah input. Apa yang terjadi?',
@@ -87,7 +87,7 @@ const faqCategories = [
       },
       {
         q: 'Bagaimana cara mengecek riwayat transaksi saya?',
-        a: 'Kunjungi menu <strong>Riwayat Transaksi</strong> di halaman PPOB. Anda akan diminta verifikasi melalui <strong>OTP yang dikirim ke email</strong> terdaftar untuk mengakses seluruh riwayat transaksi Anda.'
+        a: 'Kunjungi menu <strong>Riwayat Transaksi</strong> di halaman Pembayaran Digital. Anda akan diminta verifikasi melalui <strong>OTP yang dikirim ke email</strong> terdaftar untuk mengakses seluruh riwayat transaksi Anda.'
       },
     ]
   },

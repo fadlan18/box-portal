@@ -101,7 +101,7 @@
             <div style="font-size:40px;margin-bottom:16px">⚡</div>
             <h3 style="font-size:17px;font-weight:800;color:white;margin:0 0 10px">Pembayaran Digital</h3>
             <p style="color:rgba(255,255,255,0.75);font-size:13px;line-height:1.7;margin:0">
-              Token Listrik PLN, Pulsa & Paket Data, Voucher Game, dan lebih banyak lagi. Proses otomatis, token langsung ke email.
+              Berbagai layanan pembayaran digital — utilitas, komunikasi, hiburan, dan dompet digital. Proses otomatis, konfirmasi langsung ke email.
             </p>
           </div>
           <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:32px;backdrop-filter:blur(8px)">

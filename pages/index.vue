@@ -171,7 +171,7 @@
               <a href="/kontak?paket=web-umkm" style="color:#94a3b8;text-decoration:none;font-size:13px">🏪 Aplikasi Digital UMKM</a>
               <a href="/kontak?paket=web-desa-ekonomis" style="color:#94a3b8;text-decoration:none;font-size:13px">🏘️ Aplikasi Digital Desa Ekonomis</a>
               <a href="/kontak?paket=web-desa-premium" style="color:#94a3b8;text-decoration:none;font-size:13px">⭐ Aplikasi Digital Desa Premium</a>
-              <a href="/ppob" style="color:#94a3b8;text-decoration:none;font-size:13px">⚡ Layanan PPOB</a>
+
             </div>
           </div>
           <div>
@@ -238,24 +238,7 @@ const steps = [
   { icon: '🚀', title: 'Peluncuran', desc: 'Aplikasi digital live dan siap diakses seluruh dunia.' },
 ]
 
-const ppobProducts = ref<any[]>([])
-onMounted(async () => {
-  try {
-    const all = await $fetch<any[]>('/api/ppob/categories')
-    ppobProducts.value = all
-      .filter((c: any) => c.is_featured)
-      .sort((a: any, b: any) => a.featured_order - b.featured_order)
-      .slice(0, 6)
-  } catch {
-    ppobProducts.value = [
-      { icon: '⚡', name: 'Token Listrik', desc: 'PLN prabayar', href: '/ppob/pln' },
-      { icon: '📱', name: 'Pulsa & Data', desc: 'Semua operator', href: '/ppob/pulsa' },
-      { icon: '🎮', name: 'Voucher Game', desc: 'Mobile Legends, FF', href: '/ppob/games' },
-      { icon: '📺', name: 'TV Kabel', desc: 'K-Vision & lainnya', href: '/ppob/tv' },
-      { icon: '💳', name: 'E-Money', desc: 'Top up dompet digital', href: '/ppob/emoney' },
-    ]
-  }
-})
+
 
 const websiteProducts = [
   {
