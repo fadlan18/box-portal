@@ -163,7 +163,7 @@
               <div style="position:absolute;bottom:-30px;left:-10px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.04)"></div>
               <div style="font-size:40px;margin-bottom:12px">🏘️</div>
               <div style="font-size:18px;font-weight:800;color:white;margin-bottom:6px">Website Desa Tombiano</div>
-              <div style="font-size:13px;color:rgba(255,255,255,0.7)">Sistem Informasi Desa — Sulawesi Tengah</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.7)">Sistem Informasi Desa</div>
             </div>
             <div style="padding:24px 32px">
               <p style="font-size:13px;color:#64748b;line-height:1.7;margin:0 0 20px">
@@ -187,7 +187,7 @@
               <div style="position:absolute;bottom:-30px;left:-10px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.04)"></div>
               <div style="font-size:40px;margin-bottom:12px">🏡</div>
               <div style="font-size:18px;font-weight:800;color:white;margin-bottom:6px">Website Desa Lee</div>
-              <div style="font-size:13px;color:rgba(255,255,255,0.7)">Sistem Informasi Desa — Morut, Sulawesi Tengah</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.7)">Sistem Informasi Desa</div>
             </div>
             <div style="padding:24px 32px">
               <p style="font-size:13px;color:#64748b;line-height:1.7;margin:0 0 20px">
