@@ -80,19 +80,17 @@
               </td>
               <td class="px-4 py-3">
                 <div class="flex items-center gap-2">
+                  <NuxtLink :to="'/invoices/' + inv.id"
+                    class="text-xs px-3 py-1.5 rounded-lg font-semibold"
+                    style="background:rgba(26,79,160,0.08);color:#1a4fa0;border:1px solid rgba(26,79,160,0.2)">
+                    🧾 Lihat
+                  </NuxtLink>
                   <a v-if="inv.status === 'unpaid'"
                     :href="`https://paymen.mitranz.com/invoices/${inv.id}`"
                     target="_blank"
                     class="text-xs px-3 py-1.5 rounded-lg font-semibold"
                     style="background:#1a4fa0;color:#ffffff !important">
                     💳 Bayar
-                  </a>
-                  <a v-else
-                    :href="`https://paymen.mitranz.com/invoices/${inv.id}`"
-                    target="_blank"
-                    class="text-xs px-3 py-1.5 rounded-lg font-semibold"
-                    style="background:rgba(255,255,255,0.08);color:#94a3b8">
-                    Detail
                   </a>
                   <button v-if="inv.status === 'unpaid'"
                     @click="cancelInvoice(inv)"
