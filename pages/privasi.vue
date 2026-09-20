@@ -27,7 +27,7 @@
           <h2 style="font-size:17px;font-weight:800;color:#1a4fa0;margin:0 0 12px">2. Data yang Kami Kumpulkan</h2>
           <p style="color:#374151;font-size:14px;line-height:1.8;margin:0 0 12px">Kami mengumpulkan data yang Anda berikan secara langsung, antara lain:</p>
           <ul style="color:#374151;font-size:14px;line-height:2;margin:0;padding-left:20px">
-            <li><strong>Data transaksi:</strong> alamat email, nomor tujuan transaksi (nomor meter PLN, nomor HP), produk yang dibeli</li>
+            <li><strong>Data transaksi:</strong> alamat email, detail layanan yang dipesan, dan produk yang dibeli</li>
             <li><strong>Data akun (jika mendaftar):</strong> nama, email, password (tersimpan terenkripsi)</li>
             <li><strong>Data teknis:</strong> alamat IP, jenis browser, waktu akses (untuk keamanan dan analitik)</li>
           </ul>
