@@ -101,7 +101,7 @@
 
 <script setup>
 definePageMeta({ layout: false })
-useHead({ title: 'Kebijakan Refund — miTRANZ' })
+useHead({ title: 'Kebijakan Refund — miTRANZ | PT Mitra Trans Digital' })
 const eligible = [
   'Pembayaran invoice jasa website berhasil diterima namun proyek tidak dapat dimulai dalam 7 hari kerja tanpa pemberitahuan resmi dari tim miTRANZ.',
   'Terjadi kesalahan teknis dari pihak miTRANZ yang menyebabkan layanan tidak dapat diberikan sesuai kesepakatan kontrak.',

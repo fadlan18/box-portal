@@ -125,13 +125,13 @@
 
 <script setup>
 definePageMeta({ layout: false })
-useHead({ title: 'Tentang Kami — miTRANZ' })
+useHead({ title: 'Tentang Kami — PT Mitra Trans Digital | miTRANZ' })
 const features = [
-  { icon: '⚡', title: 'Proses Instan', desc: 'Transaksi diproses otomatis dalam hitungan detik tanpa campur tangan manual' },
-  { icon: '🔒', title: 'Aman & Terpercaya', desc: 'Sistem keamanan berlapis dengan enkripsi data penuh di setiap transaksi' },
-  { icon: '📧', title: 'Konfirmasi Email', desc: 'Bukti transaksi dan token dikirim langsung ke email Anda secara otomatis' },
-  { icon: '💬', title: 'Dukungan Responsif', desc: 'Tim kami siap membantu melalui fitur chat yang tersedia di platform' },
-  { icon: '💰', title: 'Harga Transparan', desc: 'Tidak ada biaya tersembunyi. Harga yang tampil adalah harga yang Anda bayar' },
-  { icon: '🕐', title: 'Layanan 24 Jam', desc: 'Transaksi pembayaran digital dapat dilakukan kapan saja, 24 jam sehari 7 hari seminggu' },
+  { icon: '⚡', title: 'Pengerjaan Tepat Waktu', desc: 'Setiap proyek dikerjakan sesuai jadwal yang disepakati dengan tim yang berpengalaman.' },
+  { icon: '🔒', title: 'Aman & Terpercaya', desc: 'Keamanan data klien adalah prioritas kami — sistem terenkripsi dan backup rutin.' },
+  { icon: '📧', title: 'Komunikasi Proaktif', desc: 'Update progres proyek dikirim rutin ke email Anda selama pengerjaan berlangsung.' },
+  { icon: '💬', title: 'Dukungan Responsif', desc: 'Tim kami siap membantu via chat, email, dan telepon di jam operasional.' },
+  { icon: '💰', title: 'Harga Transparan', desc: 'Tidak ada biaya tersembunyi. Harga yang disepakati adalah harga final yang Anda bayar.' },
+  { icon: '🕐', title: 'Dukungan Pasca Rilis', desc: 'Garansi teknis 30 hari setelah aplikasi diluncurkan untuk memastikan semuanya berjalan optimal.' },
 ]
 </script>

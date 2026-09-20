@@ -56,7 +56,7 @@
 
 <script setup>
 definePageMeta({ layout: false })
-useHead({ title: 'FAQ — miTRANZ' })
+useHead({ title: 'FAQ — miTRANZ | Solusi Platform Digital Profesional' })
 const openMap = ref({})
 const toggle = (ci, fi) => {
   const key = `${ci}-${fi}`
@@ -147,6 +147,22 @@ const faqCategories = [
         q: 'Bagaimana jika saya tidak puas dengan hasil aplikasi digital?',
         a: 'Kami menyediakan sesi revisi sesuai paket yang dipilih. Tim kami berkomitmen untuk memastikan hasil akhir sesuai dengan kebutuhan dan harapan Anda.'
       },
+      {
+        q: 'Bagaimana proses pembayaran untuk layanan aplikasi digital?',
+        a: 'Setelah konsultasi dan paket disepakati, kami akan mengirimkan invoice resmi ke email Anda. Pembayaran dilakukan melalui platform miTRANZ dan dapat menggunakan QRIS atau metode pembayaran lain yang tersedia. Proyek dimulai setelah pembayaran dikonfirmasi.'
+      },
+      {
+        q: 'Apakah ada garansi setelah aplikasi selesai?',
+        a: 'Ya. Kami memberikan garansi bug dan error teknis selama <strong>30 hari</strong> setelah aplikasi diluncurkan. Jika ada masalah teknis yang bukan disebabkan oleh perubahan dari klien, kami akan memperbaiki tanpa biaya tambahan.'
+      },
+      {
+        q: 'Apakah saya bisa meminta fitur tambahan di luar paket?',
+        a: 'Tentu. Fitur tambahan di luar spesifikasi paket dapat didiskusikan dan akan dikenakan biaya sesuai kompleksitas pengerjaan. Konsultasikan kebutuhan Anda kepada tim kami sebelum proyek dimulai.'
+      },
+      {
+        q: 'Apakah aplikasi yang dibangun bisa diakses dari smartphone?',
+        a: 'Ya. Semua aplikasi digital yang kami bangun menggunakan desain <strong>responsif</strong> yang dapat diakses dengan baik dari desktop, tablet, maupun smartphone.'
+      }
     ]
   },
 ]

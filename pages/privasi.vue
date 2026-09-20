@@ -128,5 +128,5 @@
 
 <script setup>
 definePageMeta({ layout: false })
-useHead({ title: 'Kebijakan Privasi — miTRANZ' })
+useHead({ title: 'Kebijakan Privasi — miTRANZ | PT Mitra Trans Digital' })
 </script>

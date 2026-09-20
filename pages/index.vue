@@ -10,6 +10,7 @@
           <span :style="navScrolled ? 'color:#1a4fa0' : 'color:white'">mi</span><span :style="navScrolled ? 'color:#c0192c' : 'color:#fbbf24'">TRANZ</span>
         </div>
         <div style="display:flex;align-items:center;gap:16px">
+          <a href="/layanan" :style="navScrolled ? 'color:#64748b;text-decoration:none;font-size:14px;font-weight:600' : 'color:rgba(255,255,255,0.85);text-decoration:none;font-size:14px;font-weight:600'">Layanan</a>
           <a href="/auth/login" :style="navScrolled ? 'padding:8px 20px;color:#1a4fa0;text-decoration:none;font-size:14px;font-weight:600;border-radius:8px;border:1.5px solid #1a4fa0' : 'padding:8px 20px;color:white;text-decoration:none;font-size:14px;font-weight:600;border-radius:8px;border:1.5px solid rgba(255,255,255,0.7)'">Masuk</a>
           <a href="/kontak" :style="navScrolled ? 'padding:8px 20px;background:#1a4fa0;color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700' : 'padding:8px 20px;background:rgba(255,255,255,0.18);color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700;backdrop-filter:blur(8px)'">Konsultasi Gratis</a>
         </div>
@@ -256,6 +257,7 @@
           <div>
             <div style="font-weight:700;color:white;font-size:14px;margin-bottom:16px;letter-spacing:0.5px">LAYANAN</div>
             <div style="display:flex;flex-direction:column;gap:10px">
+              <a href="/layanan" style="color:#94a3b8;text-decoration:none;font-size:13px">Semua Layanan</a>
               <a href="/kontak?paket=web-umkm" style="color:#94a3b8;text-decoration:none;font-size:13px">🏪 Aplikasi Digital UMKM</a>
               <a href="/kontak?paket=web-desa-ekonomis" style="color:#94a3b8;text-decoration:none;font-size:13px">🏘️ Aplikasi Digital Desa Ekonomis</a>
               <a href="/kontak?paket=web-desa-premium" style="color:#94a3b8;text-decoration:none;font-size:13px">⭐ Aplikasi Digital Desa Premium</a>

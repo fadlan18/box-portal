@@ -141,7 +141,7 @@
 
 <script setup>
 definePageMeta({ layout: false })
-useHead({ title: 'Kontak — miTRANZ' })
+useHead({ title: 'Kontak Kami — miTRANZ | PT Mitra Trans Digital' })
 const form = ref({ nama: '', email: '', subjek: '', pesan: '' })
 const terkirim = ref(false)
 

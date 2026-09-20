@@ -112,5 +112,5 @@
 
 <script setup>
 definePageMeta({ layout: false })
-useHead({ title: 'Syarat & Ketentuan — miTRANZ' })
+useHead({ title: 'Syarat & Ketentuan — miTRANZ | PT Mitra Trans Digital' })
 </script>
