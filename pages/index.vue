@@ -11,7 +11,7 @@
         </div>
         <div style="display:flex;align-items:center;gap:16px">
           <a href="/auth/login" :style="navScrolled ? 'padding:8px 20px;color:#1a4fa0;text-decoration:none;font-size:14px;font-weight:600;border-radius:8px;border:1.5px solid #1a4fa0' : 'padding:8px 20px;color:white;text-decoration:none;font-size:14px;font-weight:600;border-radius:8px;border:1.5px solid rgba(255,255,255,0.7)'">Masuk</a>
-          <a href="/kontak" :style="navScrolled ? 'padding:8px 20px;background:#1a4fa0;color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700' : 'padding:8px 20px;background:rgba(255,255,255,0.18);color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700;backdrop-filter:blur(8px)'">Konsultasi Gratis</a>
+          <a href="/kontak" :style="navScrolled ? 'padding:8px 20px;background:#1a4fa0;color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700' : 'padding:8px 20px;background:rgba(255,255,255,0.18);color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700;backdrop-filter:blur(8px)'">Hubungi Kami</a>
         </div>
       </div>
     </nav>
@@ -31,10 +31,11 @@
           <p style="color:rgba(255,255,255,0.75);font-size:17px;line-height:1.8;margin:0 0 36px;max-width:460px">
             Kami wujudkan aplikasi digital modern yang profesional dan terpercaya — sesuai kebutuhan dan anggaran Anda.
           </p>
-          <div style="margin-top:0">
-            <a href="/kontak"
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <a href="#layanan"
+              onclick="event.preventDefault();document.getElementById('layanan').scrollIntoView({behavior:'smooth'})"
               style="padding:14px 28px;background:#fbbf24;color:#1a202c;border-radius:12px;text-decoration:none;font-size:15px;font-weight:800;box-shadow:0 4px 20px rgba(251,191,36,0.35);display:inline-flex;align-items:center;gap:8px">
-              🚀 Konsultasi Gratis
+              Lihat Paket Layanan →
             </a>
           </div>
         </div>
@@ -85,13 +86,7 @@
           </div>
         </div>
 
-        <!-- CTA bawah -->
-        <div style="text-align:center;margin-top:48px">
-          <a href="/kontak"
-            style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:#1a4fa0;color:white;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 4px 16px rgba(26,79,160,0.25)">
-            Mulai Konsultasi Gratis →
-          </a>
-        </div>
+
       </div>
     </div>
 
@@ -206,7 +201,7 @@
           <p style="color:#64748b;font-size:14px;margin:0 0 16px">Ingin aplikasi digital seperti ini untuk bisnis atau desa Anda?</p>
           <a href="/kontak"
             style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:#1a4fa0;color:white;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 4px 16px rgba(26,79,160,0.25)">
-            Konsultasi Gratis →
+            Diskusikan Proyek Anda →
           </a>
         </div>
       </div>
