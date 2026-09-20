@@ -98,27 +98,25 @@
           <h2 style="font-size:32px;font-weight:900;color:#1a202c;margin:12px 0 12px;letter-spacing:-0.5px">Aplikasi Digital Profesional untuk Semua Kebutuhan</h2>
           <p style="color:#64748b;font-size:15px;max-width:500px;margin:0 auto">Harga transparan, tanpa biaya tersembunyi. Pilih paket yang sesuai dengan kebutuhan Anda.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px">
-          <div v-for="w in websiteProducts" :key="w.name"
-            :style="{background:'white',borderRadius:'20px',padding:'32px',border: w.featured ? '2px solid #1a4fa0' : '2px solid #e2e8f0',position:'relative',boxShadow:w.featured ? '0 8px 32px rgba(26,79,160,0.15)' : '0 2px 8px rgba(0,0,0,0.04)',transition:'all 0.2s'}">
-            <div v-if="w.featured" style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#1a4fa0;color:white;font-size:11px;font-weight:700;padding:4px 16px;border-radius:100px;white-space:nowrap">
+        <div v-if="websiteProducts.length === 0" class="text-center py-8 text-sm" style="color:#94a3b8">
+          Memuat paket layanan...
+        </div>
+        <div v-else style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px">
+          <div v-for="(w, idx) in websiteProducts" :key="w.id"
+            style="background:white;border-radius:20px;padding:32px;position:relative;box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:all 0.2s"
+            :style="{border: idx === 1 ? '2px solid #1a4fa0' : '2px solid #e2e8f0', boxShadow: idx === 1 ? '0 8px 32px rgba(26,79,160,0.15)' : '0 2px 8px rgba(0,0,0,0.04)'}">
+            <div v-if="idx === 1" style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#1a4fa0;color:white;font-size:11px;font-weight:700;padding:4px 16px;border-radius:100px;white-space:nowrap">
               ⭐ PALING DIMINATI
             </div>
-            <div style="font-size:36px;margin-bottom:16px">{{ w.icon }}</div>
+            <div style="font-size:36px;margin-bottom:16px">{{ productIcon(w.name) }}</div>
             <h3 style="font-size:19px;font-weight:800;color:#1a202c;margin:0 0 8px">{{ w.name }}</h3>
-            <p style="font-size:13px;color:#64748b;line-height:1.6;margin:0 0 20px">{{ w.desc }}</p>
+            <p style="font-size:13px;color:#64748b;line-height:1.6;margin:0 0 20px">{{ w.short_desc }}</p>
             <div style="margin-bottom:20px">
               <div style="font-size:12px;color:#94a3b8;margin-bottom:4px">Mulai dari</div>
-              <div style="font-size:28px;font-weight:900;color:#1a4fa0">{{ w.startPrice }}</div>
-              <div style="font-size:12px;color:#94a3b8">{{ w.period }}</div>
+              <div style="font-size:28px;font-weight:900;color:#1a4fa0">{{ getMinPrice(w) || 'Hubungi Kami' }}</div>
             </div>
-            <ul style="list-style:none;padding:0;margin:0 0 24px">
-              <li v-for="f in w.features" :key="f" style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151;margin-bottom:8px">
-                <span style="color:#10b981;font-weight:700;flex-shrink:0">✓</span> {{ f }}
-              </li>
-            </ul>
-            <a :href="'/kontak?paket=' + w.slug"
-              :style="{display:'block',textAlign:'center',padding:'13px',borderRadius:'10px',textDecoration:'none',fontSize:'14px',fontWeight:'700',background:w.featured ? '#1a4fa0' : '#f1f5f9',color:w.featured ? 'white' : '#1a4fa0'}">
+            <a :href="'/kontak?paket=' + w.id"
+              :style="{display:'block',textAlign:'center',padding:'13px',borderRadius:'10px',textDecoration:'none',fontSize:'14px',fontWeight:'700',background: idx === 1 ? '#1a4fa0' : '#f1f5f9',color: idx === 1 ? 'white' : '#1a4fa0'}">
               Konsultasi Sekarang →
             </a>
           </div>
@@ -169,9 +167,7 @@
           <div>
             <div style="font-weight:700;color:white;font-size:14px;margin-bottom:16px;letter-spacing:0.5px">LAYANAN</div>
             <div style="display:flex;flex-direction:column;gap:10px">
-              <a href="/kontak?paket=web-umkm" style="color:#94a3b8;text-decoration:none;font-size:13px">🏪 Aplikasi Digital UMKM</a>
-              <a href="/kontak?paket=web-desa-ekonomis" style="color:#94a3b8;text-decoration:none;font-size:13px">🏘️ Aplikasi Digital Desa Ekonomis</a>
-              <a href="/kontak?paket=web-desa-premium" style="color:#94a3b8;text-decoration:none;font-size:13px">⭐ Aplikasi Digital Desa Premium</a>
+              <a v-for="p in websiteProducts" :key="p.id" :href="'/kontak?paket=' + p.id" style="color:#94a3b8;text-decoration:none;font-size:13px">{{ productIcon(p.name) }} {{ p.name }}</a>
 
             </div>
           </div>
@@ -241,38 +237,22 @@ const steps = [
 
 
 
-const websiteProducts = [
-  {
-    slug: 'web-umkm',
-    icon: '🏪',
-    name: 'Aplikasi Digital UMKM',
-    desc: 'Aplikasi digital profesional untuk usaha kecil dan menengah. Tampil online, raih lebih banyak pelanggan.',
-    startPrice: 'Rp 1.750.000',
-    period: 'sekali bayar + hosting 1 tahun',
-    featured: false,
-    features: ['Desain modern & responsif', 'Free hosting 1 tahun', 'Tombol Kontak & WhatsApp', 'Google Maps terintegrasi', 'SEO dasar'],
-  },
-  {
-    slug: 'web-desa-ekonomis',
-    icon: '🏘️',
-    name: 'Aplikasi Digital Desa Ekonomis',
-    desc: 'Aplikasi digital dengan fitur standar layanan desa. Identitas dan informasi desa tampil profesional.',
-    startPrice: 'Rp 3.000.000',
-    period: 'sekali bayar + hosting & domain 1 tahun',
-    featured: true,
-    features: ['Identitas & profil desa lengkap', 'Artikel & berita terkini', 'Agenda kegiatan desa', 'Galeri foto & slider', 'Responsif di semua perangkat'],
-  },
-  {
-    slug: 'web-desa-premium',
-    icon: '⭐',
-    name: 'Aplikasi Digital Desa Premium',
-    desc: 'Semua fitur Ekonomis plus manajemen canggih untuk desa yang ingin tampil lebih maju.',
-    startPrice: 'Rp 5.500.000',
-    period: 'sekali bayar + hosting & domain 1 tahun',
-    featured: false,
-    features: ['Semua fitur Ekonomis', 'Pengaduan warga online', 'Kelola program bantuan', 'Manajemen data penduduk', 'Pilihan tema eksklusif'],
-  },
-]
+// Produk website dari API — dinamis dari DB
+const websiteProducts = ref<any[]>([])
+
+function productIcon(name: string) {
+  if (name.toLowerCase().includes('umkm')) return '🏪'
+  if (name.toLowerCase().includes('premium')) return '⭐'
+  if (name.toLowerCase().includes('desa')) return '🏘️'
+  return '🌐'
+}
+
+function getMinPrice(p: any) {
+  const pricing = p.specs?.pricing || []
+  const mainPrices = pricing.filter((o: any) => o.type === 'main').map((o: any) => o.amount)
+  if (!mainPrices.length) return null
+  return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(Math.min(...mainPrices))
+}
 
 const features = [
   { icon: '🎨', title: 'Desain Profesional', desc: 'Tampilan modern, bersih, dan responsif di semua perangkat — desktop, tablet, maupun mobile.' },
@@ -283,6 +263,11 @@ const features = [
 
 
 onMounted(async () => {
+  // Fetch produk website dari API
+  $fetch<any>('/api/products').then(res => {
+    websiteProducts.value = (res.products || []).filter((p: any) => p.category === 'website')
+  }).catch(() => {})
+
   await fetchUser().catch(() => {})
   if (status.value === 'authenticated') navigateTo('/dashboard')
 })
