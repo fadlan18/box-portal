@@ -65,28 +65,28 @@
         </div>
 
         <!-- Steps -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;position:relative">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+          <div v-for="(step, i) in steps" :key="i"
+            style="background:white;border-radius:20px;padding:32px 24px;border:1px solid #e2e8f0;box-shadow:0 2px 16px rgba(26,79,160,0.06);position:relative;overflow:hidden;transition:all 0.2s">
 
-          <div v-for="(step, i) in steps" :key="i" style="padding:0 20px;text-align:center;position:relative">
-            <!-- Connector line antar step -->
-            <div v-if="i < steps.length - 1"
-              style="position:absolute;top:38px;left:calc(50% + 38px);right:calc(-50% + 38px);height:2px;background:linear-gradient(90deg,#dbeafe,#bfdbfe);z-index:0">
+            <!-- Nomor besar di background -->
+            <div style="position:absolute;top:-10px;right:16px;font-size:80px;font-weight:900;color:#f0f7ff;line-height:1;user-select:none;pointer-events:none">{{ i+1 }}</div>
+
+            <!-- Badge step -->
+            <div style="display:inline-flex;align-items:center;gap:6px;background:#eff6ff;border-radius:100px;padding:4px 12px;margin-bottom:20px">
+              <span style="font-size:10px;font-weight:800;color:#1a4fa0;letter-spacing:1px">LANGKAH 0{{ i+1 }}</span>
             </div>
 
             <!-- Ikon -->
-            <div style="position:relative;display:inline-flex;flex-direction:column;align-items:center;margin-bottom:20px;z-index:1">
-              <div style="width:76px;height:76px;border-radius:20px;background:#eff6ff;border:2px solid #dbeafe;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;box-shadow:0 4px 12px rgba(26,79,160,0.08)">
-                <div style="font-size:26px;line-height:1">{{ step.icon }}</div>
-                <div style="font-size:10px;font-weight:800;color:#1a4fa0;letter-spacing:1px">0{{ i+1 }}</div>
-              </div>
-              <!-- Dot di ujung kanan -->
-              <div v-if="i < steps.length - 1"
-                style="position:absolute;right:-24px;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:#1a4fa0;border:2px solid white;box-shadow:0 0 0 3px #dbeafe;z-index:2">
-              </div>
+            <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#1a4fa0,#2563eb);display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 4px 12px rgba(26,79,160,0.25)">
+              <span style="font-size:26px">{{ step.icon }}</span>
             </div>
 
-            <div style="font-size:15px;font-weight:800;color:#1a202c;margin-bottom:8px">{{ step.title }}</div>
-            <div style="font-size:13px;color:#64748b;line-height:1.7;max-width:180px;margin:0 auto">{{ step.desc }}</div>
+            <div style="font-size:16px;font-weight:800;color:#1a202c;margin-bottom:10px">{{ step.title }}</div>
+            <div style="font-size:13px;color:#64748b;line-height:1.7">{{ step.desc }}</div>
+
+            <!-- Bottom accent -->
+            <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1a4fa0,#2563eb)"></div>
           </div>
         </div>
 
