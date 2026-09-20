@@ -56,18 +56,48 @@
     </div>
 
     <!-- Cara Kerja -->
-    <div style="background:white;padding:64px 32px">
-      <div style="max-width:900px;margin:0 auto;text-align:center">
-        <span style="background:#eff6ff;color:#1a4fa0;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px">PROSES MUDAH</span>
-        <h2 style="font-size:30px;font-weight:900;color:#1a202c;margin:12px 0 48px;letter-spacing:-0.5px">Dari Konsultasi hingga Aplikasi Digital Siap</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;position:relative">
-          <div v-for="(step, i) in steps" :key="i"
-            style="padding:28px 20px;text-align:center;position:relative">
-            <div style="width:48px;height:48px;border-radius:50%;background:#eff6ff;color:#1a4fa0;font-size:18px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">{{ i+1 }}</div>
-            <div style="font-size:24px;margin-bottom:10px">{{ step.icon }}</div>
-            <div style="font-size:14px;font-weight:700;color:#1a202c;margin-bottom:6px">{{ step.title }}</div>
-            <div style="font-size:12px;color:#64748b;line-height:1.6">{{ step.desc }}</div>
+    <div style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);padding:80px 32px">
+      <div style="max-width:1100px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:64px">
+          <span style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);font-size:12px;font-weight:700;padding:5px 16px;border-radius:100px;letter-spacing:1.5px;border:1px solid rgba(255,255,255,0.12)">BAGAIMANA CARA KERJANYA</span>
+          <h2 style="font-size:clamp(24px,3vw,36px);font-weight:900;color:white;margin:16px 0 12px;letter-spacing:-0.5px">Dari Konsultasi hingga<br>Aplikasi Digital Siap</h2>
+          <p style="color:rgba(255,255,255,0.6);font-size:15px;max-width:480px;margin:0 auto">Proses yang sederhana, transparan, dan terukur — dari awal hingga aplikasi Anda live.</p>
+        </div>
+
+        <!-- Steps -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;position:relative">
+          <!-- Garis penghubung -->
+          <div style="position:absolute;top:48px;left:calc(12.5% + 24px);right:calc(12.5% + 24px);height:2px;background:linear-gradient(90deg,#1a4fa0,#2563eb,#1a4fa0);display:none" class="desktop-line"></div>
+
+          <div v-for="(step, i) in steps" :key="i" style="padding:0 16px;text-align:center;position:relative">
+            <!-- Connector line -->
+            <div v-if="i < steps.length - 1"
+              style="position:absolute;top:48px;left:calc(50% + 48px);right:calc(-50% + 48px);height:1px;background:rgba(255,255,255,0.1);display:block">
+            </div>
+
+            <!-- Nomor & ikon -->
+            <div style="position:relative;display:inline-flex;flex-direction:column;align-items:center;margin-bottom:24px">
+              <div style="width:96px;height:96px;border-radius:24px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;backdrop-filter:blur(8px);position:relative">
+                <div style="font-size:32px;line-height:1">{{ step.icon }}</div>
+                <div style="font-size:11px;font-weight:800;color:rgba(255,255,255,0.4);letter-spacing:1px">0{{ i+1 }}</div>
+              </div>
+              <!-- Dot connector -->
+              <div v-if="i < steps.length - 1"
+                style="position:absolute;right:-32px;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,0.3)">
+              </div>
+            </div>
+
+            <div style="font-size:16px;font-weight:800;color:white;margin-bottom:10px">{{ step.title }}</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:200px;margin:0 auto">{{ step.desc }}</div>
           </div>
+        </div>
+
+        <!-- CTA bawah -->
+        <div style="text-align:center;margin-top:56px">
+          <a href="/kontak"
+            style="display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:#fbbf24;color:#1a202c;border-radius:12px;text-decoration:none;font-size:15px;font-weight:800;box-shadow:0 4px 20px rgba(251,191,36,0.3)">
+            🚀 Mulai Konsultasi Gratis
+          </a>
         </div>
       </div>
     </div>
