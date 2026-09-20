@@ -150,8 +150,8 @@
       <div style="max-width:1100px;margin:0 auto">
         <div style="text-align:center;margin-bottom:48px">
           <span style="background:#eff6ff;color:#1a4fa0;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px">PORTOFOLIO</span>
-          <h2 style="font-size:clamp(22px,3vw,32px);font-weight:900;color:#1a202c;margin:12px 0 12px;letter-spacing:-0.5px">Proyek yang Telah Kami Kerjakan</h2>
-          <p style="color:#64748b;font-size:15px;max-width:480px;margin:0 auto">Aplikasi digital nyata yang sudah berjalan dan dapat diakses oleh publik.</p>
+          <h2 style="font-size:clamp(22px,3vw,32px);font-weight:900;color:#1a202c;margin:12px 0 12px;letter-spacing:-0.5px">Aplikasi Digital yang Telah Kami Hadirkan</h2>
+          <p style="color:#64748b;font-size:15px;max-width:480px;margin:0 auto">Setiap proyek adalah bukti komitmen kami terhadap kualitas dan kepercayaan klien.</p>
         </div>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr));gap:24px">
