@@ -41,6 +41,11 @@
               style="padding:14px 28px;background:rgba(255,255,255,0.1);color:white;border-radius:12px;text-decoration:none;font-size:15px;font-weight:700;border:1.5px solid rgba(255,255,255,0.25);display:inline-flex;align-items:center;gap:8px">
               Lihat Paket →
             </a>
+            <a href="#portofolio"
+              onclick="event.preventDefault();document.getElementById('portofolio').scrollIntoView({behavior:'smooth'})"
+              style="padding:14px 28px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.8);border-radius:12px;text-decoration:none;font-size:15px;font-weight:600;border:1px solid rgba(255,255,255,0.15);display:inline-flex;align-items:center;gap:8px">
+              🗂️ Portofolio
+            </a>
           </div>
         </div>
 
@@ -146,7 +151,7 @@
     </div>
 
     <!-- Portofolio -->
-    <div style="background:#f8faff;padding:72px 32px">
+    <div id="portofolio" style="background:#f8faff;padding:72px 32px">
       <div style="max-width:1100px;margin:0 auto">
         <div style="text-align:center;margin-bottom:48px">
           <span style="background:#eff6ff;color:#1a4fa0;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px">PORTOFOLIO</span>
@@ -242,8 +247,10 @@
             <p style="color:#94a3b8;font-size:13px;line-height:1.8;margin:0 0 12px">
               Platform layanan digital terpercaya untuk kebutuhan aplikasi digital profesional dan pembayaran digital Anda.
             </p>
-            <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;flex-direction:column;gap:8px">
               <a href="mailto:cs@mitranz.com" style="color:#60a5fa;font-size:13px;text-decoration:none">📧 cs@mitranz.com</a>
+              <a href="tel:+628114556611" style="color:#60a5fa;font-size:13px;text-decoration:none">📞 0811-455-6611</a>
+              <span style="color:#475569;font-size:12px;line-height:1.6">📍 Jl. Gunung Sinara No. 21<br>Ampana, Sulawesi Tengah</span>
               <span style="color:#475569;font-size:12px">PT Mitra Trans Digital</span>
             </div>
           </div>
@@ -260,6 +267,7 @@
             <div style="font-weight:700;color:white;font-size:14px;margin-bottom:16px;letter-spacing:0.5px">PERUSAHAAN</div>
             <div style="display:flex;flex-direction:column;gap:10px">
               <a href="/tentang" style="color:#94a3b8;text-decoration:none;font-size:13px">Tentang Kami</a>
+              <a href="/#portofolio" style="color:#94a3b8;text-decoration:none;font-size:13px">Portofolio</a>
               <a href="/kontak" style="color:#94a3b8;text-decoration:none;font-size:13px">Kontak</a>
               <a href="/faq" style="color:#94a3b8;text-decoration:none;font-size:13px">FAQ</a>
             </div>
