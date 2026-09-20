@@ -135,78 +135,6 @@
       </div>
     </div>
 
-    <!-- Portofolio -->
-    <div id="portofolio" style="background:#f8faff;padding:72px 32px">
-      <div style="max-width:1100px;margin:0 auto">
-        <div style="text-align:center;margin-bottom:48px">
-          <span style="background:#eff6ff;color:#1a4fa0;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px">PORTOFOLIO</span>
-          <h2 style="font-size:clamp(22px,3vw,32px);font-weight:900;color:#1a202c;margin:12px 0 12px;letter-spacing:-0.5px">Aplikasi Digital yang Telah Kami Hadirkan</h2>
-          <p style="color:#64748b;font-size:15px;max-width:480px;margin:0 auto">Setiap proyek adalah bukti komitmen kami terhadap kualitas dan kepercayaan klien.</p>
-        </div>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr));gap:24px">
-
-          <!-- Portofolio 1 -->
-          <div style="background:white;border-radius:20px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.2s">
-            <div style="background:linear-gradient(135deg,#1a4fa0,#2563eb);padding:40px 32px;position:relative;overflow:hidden">
-              <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.06)"></div>
-              <div style="position:absolute;bottom:-30px;left:-10px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.04)"></div>
-              <div style="font-size:40px;margin-bottom:12px">🏘️</div>
-              <div style="font-size:18px;font-weight:800;color:white;margin-bottom:6px">Website Desa Tombiano</div>
-              <div style="font-size:13px;color:rgba(255,255,255,0.7)">Sistem Informasi Desa</div>
-            </div>
-            <div style="padding:24px 32px">
-              <p style="font-size:13px;color:#64748b;line-height:1.7;margin:0 0 20px">
-                Aplikasi web sistem informasi desa lengkap dengan profil desa, artikel & berita, agenda kegiatan, galeri foto, dan informasi publik yang dapat diakses warga kapan saja.
-              </p>
-              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
-                <span style="background:#eff6ff;color:#1a4fa0;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">Sistem Informasi Desa</span>
-                <span style="background:#f0fdf4;color:#16a34a;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">✓ Live & Aktif</span>
-              </div>
-              <a href="https://tombiano.desa.id" target="_blank" rel="noopener"
-                style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#1a4fa0;color:white;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700">
-                🌐 Kunjungi tombiano.desa.id →
-              </a>
-            </div>
-          </div>
-
-          <!-- Portofolio 2 -->
-          <div style="background:white;border-radius:20px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:all 0.2s">
-            <div style="background:linear-gradient(135deg,#065f46,#059669);padding:40px 32px;position:relative;overflow:hidden">
-              <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.06)"></div>
-              <div style="position:absolute;bottom:-30px;left:-10px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.04)"></div>
-              <div style="font-size:40px;margin-bottom:12px">🏡</div>
-              <div style="font-size:18px;font-weight:800;color:white;margin-bottom:6px">Website Desa Lee</div>
-              <div style="font-size:13px;color:rgba(255,255,255,0.7)">Sistem Informasi Desa</div>
-            </div>
-            <div style="padding:24px 32px">
-              <p style="font-size:13px;color:#64748b;line-height:1.7;margin:0 0 20px">
-                Aplikasi web sistem informasi desa dengan fitur identitas desa, publikasi berita & pengumuman, agenda kegiatan, dan galeri dokumentasi kegiatan desa.
-              </p>
-              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
-                <span style="background:#f0fdf4;color:#16a34a;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">Sistem Informasi Desa</span>
-                <span style="background:#f0fdf4;color:#16a34a;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">✓ Live & Aktif</span>
-              </div>
-              <a href="https://desa-lee.morut.id" target="_blank" rel="noopener"
-                style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#059669;color:white;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700">
-                🌐 Kunjungi desa-lee.morut.id →
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- CTA konsultasi -->
-        <div style="text-align:center;margin-top:40px">
-          <p style="color:#64748b;font-size:14px;margin:0 0 16px">Ingin aplikasi digital seperti ini untuk bisnis atau desa Anda?</p>
-          <a href="/kontak"
-            style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:#1a4fa0;color:white;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;box-shadow:0 4px 16px rgba(26,79,160,0.25)">
-            Diskusikan Proyek Anda →
-          </a>
-        </div>
-      </div>
-    </div>
-
     <!-- Layanan Tambahan — satu baris -->
     <div style="background:#f0f4f8;padding:32px">
       <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
@@ -251,7 +179,6 @@
             <div style="font-weight:700;color:white;font-size:14px;margin-bottom:16px;letter-spacing:0.5px">PERUSAHAAN</div>
             <div style="display:flex;flex-direction:column;gap:10px">
               <a href="/tentang" style="color:#94a3b8;text-decoration:none;font-size:13px">Tentang Kami</a>
-              <a href="/#portofolio" style="color:#94a3b8;text-decoration:none;font-size:13px">Portofolio</a>
               <a href="/kontak" style="color:#94a3b8;text-decoration:none;font-size:13px">Kontak</a>
               <a href="/faq" style="color:#94a3b8;text-decoration:none;font-size:13px">FAQ</a>
             </div>
