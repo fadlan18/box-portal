@@ -43,23 +43,23 @@
               <div v-if="logoUrl" style="margin-bottom:12px">
                 <img :src="logoUrl" style="height:48px;object-fit:contain" alt="Logo"/>
               </div>
-              <div v-else style="font-size:28px;font-weight:900;color:white;letter-spacing:-1px;margin-bottom:4px">
+              <div v-else :style="'font-size:28px;font-weight:900;letter-spacing:-1px;margin-bottom:4px;color:' + textColor">
                 <span>mi</span><span style="color:#fbbf24">TRANZ</span>
               </div>
-              <div style="color:rgba(255,255,255,0.7);font-size:13px">{{ settings.company_tagline }}</div>
+              <div :style="'font-size:13px;color:' + textColor + '99'">{{ settings.company_tagline }}</div>
               <div style="margin-top:12px;display:flex;flex-direction:column;gap:3px">
-                <span style="color:rgba(255,255,255,0.75);font-size:12px">{{ settings.company_address }}</span>
-                <span style="color:rgba(255,255,255,0.75);font-size:12px">{{ settings.company_phone }} · {{ settings.company_email }}</span>
+                <span :style="'font-size:12px;color:' + textColor + '99'">{{ settings.company_address }}</span>
+                <span :style="'font-size:12px;color:' + textColor + '99'">{{ settings.company_phone }} · {{ settings.company_email }}</span>
               </div>
             </div>
             <div style="text-align:right">
-              <div style="font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:2px;font-weight:700;margin-bottom:4px">INVOICE</div>
-              <div style="font-size:24px;font-weight:900;color:white;margin-bottom:16px">{{ invoice.invoice_number }}</div>
+              <div :style="'font-size:11px;letter-spacing:2px;font-weight:700;margin-bottom:4px;color:' + textColor + '99'">INVOICE</div>
+              <div :style="'font-size:24px;font-weight:900;margin-bottom:16px;color:' + textColor">{{ invoice.invoice_number }}</div>
               <div style="background:rgba(255,255,255,0.15);border-radius:8px;padding:12px 16px;text-align:right">
-                <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:4px">Tanggal</div>
-                <div style="font-size:13px;font-weight:700;color:white">{{ fmtDate(invoice.created_at) }}</div>
-                <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:8px;margin-bottom:4px">Jatuh Tempo</div>
-                <div style="font-size:13px;font-weight:700;color:white">{{ fmtDate(invoice.due_date) }}</div>
+                <div :style="'font-size:11px;margin-bottom:4px;color:' + textColor + '99'">Tanggal</div>
+                <div :style="'font-size:13px;font-weight:700;color:' + textColor">{{ fmtDate(invoice.created_at) }}</div>
+                <div :style="'font-size:11px;margin-top:8px;margin-bottom:4px;color:' + textColor + '99'">Jatuh Tempo</div>
+                <div :style="'font-size:13px;font-weight:700;color:' + textColor">{{ fmtDate(invoice.due_date) }}</div>
               </div>
             </div>
           </div>
@@ -99,8 +99,8 @@
           <div style="display:flex;justify-content:flex-end;margin-bottom:32px">
             <div style="width:280px">
               <div style="display:flex;justify-content:space-between;padding:14px 16px;border-radius:10px" :style="'background:' + headerColor">
-                <span style="font-size:14px;font-weight:700;color:white">TOTAL</span>
-                <span style="font-size:18px;font-weight:900;color:white">{{ fmtRp(invoice.total) }}</span>
+                <span :style="'font-size:14px;font-weight:700;color:' + textColor">TOTAL</span>
+                <span :style="'font-size:18px;font-weight:900;color:' + textColor">{{ fmtRp(invoice.total) }}</span>
               </div>
             </div>
           </div>
@@ -408,6 +408,7 @@ onMounted(async () => {
 
 const template = computed(() => settings.value?.invoice_template || 'modern')
 const headerColor = computed(() => settings.value?.invoice_color || '#1a4fa0')
+const textColor = computed(() => settings.value?.invoice_text_color || '#ffffff')
 const logoUrl = computed(() => {
   const url = settings.value?.company_logo_url || ''
   if (!url) return ''
