@@ -10,14 +10,13 @@
           <span :style="navScrolled ? 'color:#1a4fa0' : 'color:white'">mi</span><span :style="navScrolled ? 'color:#c0192c' : 'color:#fbbf24'">TRANZ</span>
         </div>
         <div style="display:flex;align-items:center;gap:16px">
-          <a href="/ppob" :style="navScrolled ? 'color:#64748b;text-decoration:none;font-size:14px;font-weight:600' : 'color:rgba(255,255,255,0.85);text-decoration:none;font-size:14px;font-weight:600'">Layanan PPOB</a>
           <a href="/auth/login" :style="navScrolled ? 'padding:8px 20px;color:#1a4fa0;text-decoration:none;font-size:14px;font-weight:600;border-radius:8px;border:1.5px solid #1a4fa0' : 'padding:8px 20px;color:white;text-decoration:none;font-size:14px;font-weight:600;border-radius:8px;border:1.5px solid rgba(255,255,255,0.7)'">Masuk</a>
           <a href="/kontak" :style="navScrolled ? 'padding:8px 20px;background:#1a4fa0;color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700' : 'padding:8px 20px;background:rgba(255,255,255,0.18);color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700;backdrop-filter:blur(8px)'">Konsultasi Gratis</a>
         </div>
       </div>
     </nav>
 
-    <!-- Hero: Jasa Website -->
+    <!-- Hero: Aplikasi Digital -->
     <div style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 40%,#1a4fa0 100%);padding:clamp(60px,10vw,100px) clamp(16px,4vw,32px) clamp(60px,10vw,100px);padding-top:calc(clamp(60px,10vw,100px) + 64px);position:relative;overflow:hidden">
       <div style="position:absolute;inset:0;opacity:0.06;background:radial-gradient(circle at 20% 50%,#60a5fa 0%,transparent 50%),radial-gradient(circle at 80% 20%,#a78bfa 0%,transparent 50%)"></div>
       <div style="max-width:1100px;margin:0 auto;position:relative;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
@@ -27,10 +26,10 @@
             <span style="color:rgba(255,255,255,0.8);font-size:12px;font-weight:600;letter-spacing:1px">PT MITRA TRANS DIGITAL</span>
           </div>
           <h1 style="font-size:clamp(28px,4vw,44px);font-weight:900;color:white;line-height:1.15;margin:0 0 20px;letter-spacing:-1px">
-            Solusi Digital<br>untuk <span style="color:#fbbf24">Bisnis</span> &<br><span style="color:#60a5fa">Desa</span> Anda
+            Solusi <span style="color:#fbbf24">Platform</span><br>Digital <span style="color:#60a5fa">Anda</span>
           </h1>
           <p style="color:rgba(255,255,255,0.75);font-size:17px;line-height:1.8;margin:0 0 36px;max-width:460px">
-            Website profesional, sistem informasi desa, dan layanan digital lainnya. Dikerjakan oleh tim berpengalaman dengan teknologi terkini.
+            Kami wujudkan aplikasi digital modern yang profesional dan terpercaya — sesuai kebutuhan dan anggaran Anda.
           </p>
           <div style="display:flex;gap:14px;flex-wrap:wrap">
             <a href="/kontak"
@@ -60,7 +59,7 @@
     <div style="background:white;padding:64px 32px">
       <div style="max-width:900px;margin:0 auto;text-align:center">
         <span style="background:#eff6ff;color:#1a4fa0;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px">PROSES MUDAH</span>
-        <h2 style="font-size:30px;font-weight:900;color:#1a202c;margin:12px 0 48px;letter-spacing:-0.5px">Dari Konsultasi hingga Website Jadi</h2>
+        <h2 style="font-size:30px;font-weight:900;color:#1a202c;margin:12px 0 48px;letter-spacing:-0.5px">Dari Konsultasi hingga Aplikasi Digital Siap</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;position:relative">
           <div v-for="(step, i) in steps" :key="i"
             style="padding:28px 20px;text-align:center;position:relative">
@@ -73,12 +72,12 @@
       </div>
     </div>
 
-    <!-- Paket Jasa Website -->
+    <!-- Paket Aplikasi Digital -->
     <div style="background:linear-gradient(180deg,#f0f7ff 0%,#ffffff 100%);padding:64px 32px" id="layanan">
       <div style="max-width:1200px;margin:0 auto">
         <div style="text-align:center;margin-bottom:48px">
           <span style="background:#fef3c7;color:#d97706;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px">PAKET LAYANAN</span>
-          <h2 style="font-size:32px;font-weight:900;color:#1a202c;margin:12px 0 12px;letter-spacing:-0.5px">Website Profesional untuk Semua Kebutuhan</h2>
+          <h2 style="font-size:32px;font-weight:900;color:#1a202c;margin:12px 0 12px;letter-spacing:-0.5px">Aplikasi Digital Profesional untuk Semua Kebutuhan</h2>
           <p style="color:#64748b;font-size:15px;max-width:500px;margin:0 auto">Harga transparan, tanpa biaya tersembunyi. Pilih paket yang sesuai dengan kebutuhan Anda.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px">
@@ -136,27 +135,17 @@
       </div>
     </div>
 
-    <!-- PPOB Section — sebagai fitur tambahan -->
-    <div style="background:#f0f4f8;padding:64px 32px" id="ppob">
-      <div style="max-width:1200px;margin:0 auto">
-        <div style="text-align:center;margin-bottom:40px">
-          <span style="background:#eff6ff;color:#1a4fa0;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px">PPOB</span>
-          <h2 style="font-size:30px;font-weight:900;color:#1a202c;margin:12px 0 12px;letter-spacing:-0.5px">Layanan Pembayaran Digital</h2>
-          <p style="color:#64748b;font-size:15px;max-width:480px;margin:0 auto">Token listrik, pulsa, voucher game, dan lainnya. Proses otomatis dalam hitungan detik.</p>
+    <!-- Layanan Tambahan — satu baris -->
+    <div style="background:#f0f4f8;padding:32px">
+      <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#1a202c;margin-bottom:4px">Butuh layanan pembayaran digital?</div>
+          <div style="font-size:13px;color:#64748b">Token listrik, pulsa, voucher game, dan lainnya tersedia di platform kami.</div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:32px">
-          <a v-for="p in ppobProducts" :key="p.href" :href="p.href"
-            style="display:flex;flex-direction:column;align-items:center;padding:24px 16px;background:white;border:1.5px solid #dbeafe;border-radius:16px;text-decoration:none;box-shadow:0 2px 8px rgba(26,79,160,0.06)">
-            <div style="font-size:36px;margin-bottom:10px">{{ p.icon }}</div>
-            <div style="font-size:13px;font-weight:700;color:#1a202c;text-align:center">{{ p.name }}</div>
-            <div style="font-size:11px;color:#64748b;margin-top:4px;text-align:center">{{ p.desc }}</div>
-          </a>
-        </div>
-        <div style="text-align:center">
-          <a href="/ppob" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:#1a4fa0;color:white;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700">
-            Lihat Semua Layanan PPOB →
-          </a>
-        </div>
+        <a href="/ppob"
+          style="display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:white;color:#1a4fa0;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;border:1.5px solid #1a4fa0;white-space:nowrap">
+          ⚡ Layanan Pembayaran Digital →
+        </a>
       </div>
     </div>
 
@@ -169,7 +158,7 @@
               <span style="color:#60a5fa">mi</span><span style="color:#f87171">TRANZ</span>
             </div>
             <p style="color:#94a3b8;font-size:13px;line-height:1.8;margin:0 0 12px">
-              Platform layanan digital terpercaya untuk kebutuhan website profesional dan pembayaran digital Anda.
+              Platform layanan digital terpercaya untuk kebutuhan aplikasi digital profesional dan pembayaran digital Anda.
             </p>
             <div style="display:flex;flex-direction:column;gap:6px">
               <a href="mailto:cs@mitranz.com" style="color:#60a5fa;font-size:13px;text-decoration:none">📧 cs@mitranz.com</a>
@@ -179,9 +168,9 @@
           <div>
             <div style="font-weight:700;color:white;font-size:14px;margin-bottom:16px;letter-spacing:0.5px">LAYANAN</div>
             <div style="display:flex;flex-direction:column;gap:10px">
-              <a href="/kontak?paket=web-umkm" style="color:#94a3b8;text-decoration:none;font-size:13px">🏪 Website UMKM</a>
-              <a href="/kontak?paket=web-desa-ekonomis" style="color:#94a3b8;text-decoration:none;font-size:13px">🏘️ Website Desa Ekonomis</a>
-              <a href="/kontak?paket=web-desa-premium" style="color:#94a3b8;text-decoration:none;font-size:13px">⭐ Website Desa Premium</a>
+              <a href="/kontak?paket=web-umkm" style="color:#94a3b8;text-decoration:none;font-size:13px">🏪 Aplikasi Digital UMKM</a>
+              <a href="/kontak?paket=web-desa-ekonomis" style="color:#94a3b8;text-decoration:none;font-size:13px">🏘️ Aplikasi Digital Desa Ekonomis</a>
+              <a href="/kontak?paket=web-desa-premium" style="color:#94a3b8;text-decoration:none;font-size:13px">⭐ Aplikasi Digital Desa Premium</a>
               <a href="/ppob" style="color:#94a3b8;text-decoration:none;font-size:13px">⚡ Layanan PPOB</a>
             </div>
           </div>
@@ -220,9 +209,9 @@
 <script setup lang="ts">
 definePageMeta({ layout: false })
 useHead({
-  title: 'miTRANZ — Solusi Website & Layanan Digital Profesional',
+  title: 'miTRANZ — Solusi Platform Digital Profesional',
   meta: [
-    { name: 'description', content: 'Website profesional untuk UMKM dan desa, layanan PPOB instan, dan solusi digital terpercaya dari PT Mitra Trans Digital.' }
+    { name: 'description', content: 'Solusi platform digital profesional untuk UMKM, bisnis, dan instansi. Aplikasi modern, harga transparan, pengerjaan tepat waktu. PT Mitra Trans Digital.' }
   ]
 })
 
@@ -245,8 +234,8 @@ const stats = [
 const steps = [
   { icon: '💬', title: 'Konsultasi', desc: 'Ceritakan kebutuhan Anda, kami bantu tentukan solusi terbaik.' },
   { icon: '✏️', title: 'Desain', desc: 'Tim desainer kami merancang tampilan sesuai identitas bisnis Anda.' },
-  { icon: '⚙️', title: 'Pengembangan', desc: 'Website dibangun dengan teknologi modern dan performa tinggi.' },
-  { icon: '🚀', title: 'Peluncuran', desc: 'Website live dan siap diakses seluruh dunia.' },
+  { icon: '⚙️', title: 'Pengembangan', desc: 'Aplikasi digital dibangun dengan teknologi modern dan performa tinggi.' },
+  { icon: '🚀', title: 'Peluncuran', desc: 'Aplikasi digital live dan siap diakses seluruh dunia.' },
 ]
 
 const ppobProducts = ref<any[]>([])
@@ -272,8 +261,8 @@ const websiteProducts = [
   {
     slug: 'web-umkm',
     icon: '🏪',
-    name: 'Paket Website UMKM',
-    desc: 'Website profesional untuk usaha kecil dan menengah. Tampil online, raih lebih banyak pelanggan.',
+    name: 'Aplikasi Digital UMKM',
+    desc: 'Aplikasi digital profesional untuk usaha kecil dan menengah. Tampil online, raih lebih banyak pelanggan.',
     startPrice: 'Rp 1.750.000',
     period: 'sekali bayar + hosting 1 tahun',
     featured: false,
@@ -282,8 +271,8 @@ const websiteProducts = [
   {
     slug: 'web-desa-ekonomis',
     icon: '🏘️',
-    name: 'Website Desa Ekonomis',
-    desc: 'Website dinamis dengan fitur standar layanan desa. Identitas dan informasi desa tampil profesional.',
+    name: 'Aplikasi Digital Desa Ekonomis',
+    desc: 'Aplikasi digital dengan fitur standar layanan desa. Identitas dan informasi desa tampil profesional.',
     startPrice: 'Rp 3.000.000',
     period: 'sekali bayar + hosting & domain 1 tahun',
     featured: true,
@@ -292,7 +281,7 @@ const websiteProducts = [
   {
     slug: 'web-desa-premium',
     icon: '⭐',
-    name: 'Website Desa Premium',
+    name: 'Aplikasi Digital Desa Premium',
     desc: 'Semua fitur Ekonomis plus manajemen canggih untuk desa yang ingin tampil lebih maju.',
     startPrice: 'Rp 5.500.000',
     period: 'sekali bayar + hosting & domain 1 tahun',

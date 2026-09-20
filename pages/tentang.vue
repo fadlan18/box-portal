@@ -23,15 +23,39 @@
       <div style="background:white;border-radius:20px;padding:48px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,0.06)">
         <h2 style="font-size:22px;font-weight:800;color:#1a202c;margin:0 0 16px">Siapa Kami</h2>
         <p style="color:#374151;font-size:15px;line-height:1.8;margin:0 0 16px">
-          <strong>miTRANZ</strong> adalah merek dagang dari <strong>PT Mitra Trans Digital</strong>, perusahaan teknologi yang bergerak di bidang solusi website profesional dan layanan pembayaran digital. Kami hadir untuk membantu bisnis, UMKM, dan pemerintah desa tampil profesional di era digital.
+          <strong>miTRANZ</strong> adalah merek dagang dari <strong>PT Mitra Trans Digital</strong>, perusahaan teknologi yang bergerak di bidang solusi aplikasi digital profesional dan layanan pembayaran digital. Kami hadir untuk membantu bisnis, UMKM, dan pemerintah desa tampil profesional di era digital.
         </p>
         <p style="color:#374151;font-size:15px;line-height:1.8;margin:0 0 16px">
-          Dengan pengalaman membangun berbagai solusi digital, kami berkomitmen menghadirkan produk berkualitas tinggi yang mudah digunakan — dari website modern hingga sistem informasi yang terintegrasi.
+          Dengan pengalaman membangun berbagai solusi digital, kami berkomitmen menghadirkan produk berkualitas tinggi yang mudah digunakan — dari aplikasi digital modern hingga sistem informasi yang terintegrasi.
         </p>
-        <div style="margin-top:20px;padding:16px 20px;background:#f0f7ff;border-left:4px solid #1a4fa0;border-radius:0 8px 8px 0">
-          <div style="font-size:13px;color:#64748b;margin-bottom:4px">Badan Usaha Resmi</div>
-          <div style="font-size:15px;font-weight:700;color:#1a4fa0">PT Mitra Trans Digital</div>
-          <div style="font-size:13px;color:#64748b;margin-top:4px">📧 cs@mitranz.com</div>
+        <div style="margin-top:20px;padding:24px;background:#f0f7ff;border-left:4px solid #1a4fa0;border-radius:0 12px 12px 0">
+          <div style="font-size:13px;font-weight:700;color:#1a4fa0;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.5px">Identitas Perusahaan</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+            <div>
+              <div style="font-size:12px;color:#64748b;margin-bottom:2px">Nama Perusahaan</div>
+              <div style="font-size:14px;font-weight:700;color:#1a202c">PT Mitra Trans Digital</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:#64748b;margin-bottom:2px">Merek Dagang</div>
+              <div style="font-size:14px;font-weight:700;color:#1a202c">miTRANZ</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:#64748b;margin-bottom:2px">Alamat</div>
+              <div style="font-size:14px;font-weight:700;color:#1a202c">Jl. Gunung Sinara No. 21, Ampana — Sulawesi Tengah</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:#64748b;margin-bottom:2px">Telepon / WhatsApp</div>
+              <div style="font-size:14px;font-weight:700;color:#1a202c">0811-455-6611</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:#64748b;margin-bottom:2px">Email</div>
+              <div style="font-size:14px;font-weight:700;color:#1a202c">cs@mitranz.com</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:#64748b;margin-bottom:2px">Website</div>
+              <div style="font-size:14px;font-weight:700;color:#1a202c">mitranz.com</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -49,7 +73,7 @@
           <h3 style="font-size:18px;font-weight:800;color:#1a202c;margin:0 0 12px">Misi</h3>
           <ul style="color:#374151;font-size:14px;line-height:2;margin:0;padding-left:18px">
             <li>Menghadirkan layanan pembayaran digital yang cepat dan terjangkau</li>
-            <li>Membangun website profesional berkualitas tinggi</li>
+            <li>Membangun aplikasi digital profesional berkualitas tinggi</li>
             <li>Memberikan dukungan pelanggan yang responsif</li>
             <li>Terus berinovasi untuk pengalaman digital terbaik</li>
           </ul>
@@ -82,9 +106,9 @@
           </div>
           <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:32px;backdrop-filter:blur(8px)">
             <div style="font-size:40px;margin-bottom:16px">🌐</div>
-            <h3 style="font-size:17px;font-weight:800;color:white;margin:0 0 10px">Jasa Website</h3>
+            <h3 style="font-size:17px;font-weight:800;color:white;margin:0 0 10px">Aplikasi Digital</h3>
             <p style="color:rgba(255,255,255,0.75);font-size:13px;line-height:1.7;margin:0">
-              Website modern untuk bisnis, UMKM, dan pemerintah desa. Desain profesional, harga terjangkau, dukungan penuh.
+              Aplikasi digital modern untuk bisnis, UMKM, dan instansi. Desain profesional, harga terjangkau, dukungan penuh.
             </p>
           </div>
         </div>

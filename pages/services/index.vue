@@ -23,12 +23,12 @@
       <div class="text-4xl mb-3">📭</div>
       <div class="font-bold text-adaptive text-lg mb-2">Belum ada layanan aktif</div>
       <p class="text-gray-400 text-sm mb-6 max-w-xs mx-auto">
-        Mulai dengan memesan paket website profesional untuk bisnis atau desa Anda.
+        Mulai dengan memesan paket aplikasi digital profesional sesuai kebutuhan Anda.
       </p>
       <NuxtLink to="/orders"
         class="inline-block px-6 py-2.5 rounded-xl text-sm font-bold"
         style="background:#1a4fa0;color:white;text-decoration:none">
-        Lihat Paket Website
+        Lihat Paket Aplikasi Digital
       </NuxtLink>
     </div>
 
@@ -79,7 +79,7 @@
       <!-- Tombol pesan tambahan -->
       <div class="glass rounded-2xl p-5 text-center"
         style="border:1px dashed var(--dash-card-border)">
-        <p class="text-sm text-gray-400 mb-3">Butuh layanan website lainnya?</p>
+        <p class="text-sm text-gray-400 mb-3">Butuh layanan aplikasi digital lainnya?</p>
         <NuxtLink to="/orders"
           class="inline-block px-5 py-2 rounded-xl text-sm font-bold"
           style="background:var(--dash-input-bg);color:#1a4fa0;border:1px solid #1a4fa0;text-decoration:none">

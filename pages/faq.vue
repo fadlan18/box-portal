@@ -97,7 +97,7 @@ const faqCategories = [
     items: [
       {
         q: 'Metode pembayaran apa yang diterima?',
-        a: 'Kami menerima pembayaran melalui <strong>QRIS Universal</strong> (dapat digunakan dari semua aplikasi e-wallet & mobile banking), <strong>ShopeePay</strong>. Untuk layanan jasa website, pembayaran dilakukan melalui invoice yang dikirim ke email Anda.'
+        a: 'Kami menerima pembayaran melalui <strong>QRIS Universal</strong> (dapat digunakan dari semua aplikasi e-wallet & mobile banking), <strong>ShopeePay</strong>. Untuk layanan aplikasi digital, pembayaran dilakukan melalui invoice yang dikirim ke email Anda.'
       },
       {
         q: 'Apakah ada biaya tambahan saat pembayaran?',
@@ -133,18 +133,18 @@ const faqCategories = [
   },
   {
     icon: '🌐',
-    title: 'Jasa Website',
+    title: 'Aplikasi Digital',
     items: [
       {
-        q: 'Berapa lama proses pembuatan website?',
+        q: 'Berapa lama proses pembuatan aplikasi digital?',
         a: 'Estimasi waktu pengerjaan tergantung paket yang dipilih, umumnya antara <strong>7–21 hari kerja</strong>. Tim kami akan menghubungi Anda dalam 1x24 jam setelah pembayaran untuk mendiskusikan detail proyek.'
       },
       {
         q: 'Apakah termasuk hosting dan domain?',
-        a: 'Setiap paket memiliki spesifikasi berbeda. Detail apa yang termasuk dalam setiap paket tersedia di halaman layanan website. Anda dapat juga menghubungi kami untuk konsultasi gratis.'
+        a: 'Setiap paket memiliki spesifikasi berbeda. Detail apa yang termasuk dalam setiap paket tersedia di halaman layanan aplikasi digital. Anda dapat juga menghubungi kami untuk konsultasi gratis.'
       },
       {
-        q: 'Bagaimana jika saya tidak puas dengan hasil website?',
+        q: 'Bagaimana jika saya tidak puas dengan hasil aplikasi digital?',
         a: 'Kami menyediakan sesi revisi sesuai paket yang dipilih. Tim kami berkomitmen untuk memastikan hasil akhir sesuai dengan kebutuhan dan harapan Anda.'
       },
     ]

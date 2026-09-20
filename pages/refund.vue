@@ -22,7 +22,7 @@
         <div>
           <h3 style="font-size:16px;font-weight:800;color:#065f46;margin:0 0 8px">Komitmen Kami</h3>
           <p style="color:#047857;font-size:14px;line-height:1.7;margin:0">
-            Kepuasan dan kepercayaan Anda adalah prioritas utama kami. Jika terjadi kesalahan dari sistem miTRANZ atau transaksi gagal akibat gangguan teknis, kami berkomitmen untuk mengembalikan dana Anda sepenuhnya.
+            Kepuasan klien adalah prioritas utama kami. Jika proyek website tidak dapat kami kerjakan sesuai kesepakatan, atau terjadi kesalahan dari pihak miTRANZ, kami berkomitmen untuk mengembalikan dana Anda secara penuh dan transparan.
           </p>
         </div>
       </div>
@@ -55,7 +55,7 @@
         </div>
         <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px;margin-top:16px">
           <p style="color:#92400e;font-size:13px;line-height:1.7;margin:0">
-            ⚠️ <strong>Penting:</strong> Pastikan nomor tujuan (nomor meter PLN, nomor HP, ID game, dll) sudah benar sebelum melakukan pembayaran. miTRANZ tidak bertanggung jawab atas kesalahan input data oleh pengguna.
+            ⚠️ <strong>Penting:</strong> Refund hanya berlaku untuk layanan jasa website. Pastikan Anda membaca spesifikasi paket secara lengkap sebelum melakukan pembayaran. Pengajuan refund yang melewati batas waktu 7 hari kerja tidak dapat diproses.
           </p>
         </div>
       </div>
@@ -103,26 +103,28 @@
 definePageMeta({ layout: false })
 useHead({ title: 'Kebijakan Refund — miTRANZ' })
 const eligible = [
-  'Transaksi PPOB gagal diproses oleh sistem, namun pembayaran sudah berhasil diterima.',
-  'Terjadi kesalahan teknis dari pihak miTRANZ yang menyebabkan transaksi tidak dapat diselesaikan.',
-  'Pembayaran berhasil namun produk tidak dapat dikirimkan dalam waktu maksimal 24 jam.',
-  'Duplikasi transaksi akibat gangguan sistem (pembayaran terjadi lebih dari sekali untuk satu pesanan).',
+  'Pembayaran invoice jasa website berhasil diterima namun proyek tidak dapat dimulai dalam 7 hari kerja tanpa pemberitahuan resmi dari tim miTRANZ.',
+  'Terjadi kesalahan teknis dari pihak miTRANZ yang menyebabkan layanan tidak dapat diberikan sesuai kesepakatan kontrak.',
+  'Duplikasi pembayaran invoice akibat gangguan sistem (pembayaran terjadi lebih dari sekali untuk satu invoice yang sama).',
+  'Proyek dibatalkan oleh pihak miTRANZ sebelum tahap pengerjaan dimulai.',
 ]
 const notEligible = [
-  'Transaksi PPOB berhasil diproses dengan nomor yang diinput oleh pengguna — meski nomor tersebut salah.',
-  'Pengguna berubah pikiran setelah transaksi berhasil diproses.',
-  'Keterlambatan pengiriman email konfirmasi akibat gangguan layanan email pengguna.',
-  'Transaksi yang gagal akibat saldo tidak mencukupi pada metode pembayaran pengguna.',
+  'Klien berubah pikiran setelah proyek website mulai dikerjakan atau sudah memasuki tahap desain.',
+  'Ketidakpuasan subjektif terhadap desain yang telah disetujui bersama pada tahap revisi.',
+  'Permintaan fitur di luar spesifikasi yang telah disepakati dalam kontrak.',
+  'Keterlambatan penyelesaian proyek akibat klien terlambat menyerahkan konten, aset, atau informasi yang dibutuhkan.',
+  'Layanan hosting dan domain yang telah aktif dan digunakan.',
+  'Paket perpanjangan hosting dan domain yang telah diproses.',
 ]
 const steps = [
-  { title: 'Hubungi kami dalam 1x24 jam', desc: 'Kirim email ke cs@mitranz.com atau gunakan fitur Chat di halaman utama segera setelah transaksi gagal.' },
-  { title: 'Sertakan informasi transaksi', desc: 'Lampirkan: ID/nomor transaksi, bukti pembayaran, email yang digunakan, dan keterangan singkat masalah yang terjadi.' },
-  { title: 'Verifikasi oleh tim kami', desc: 'Tim kami akan memverifikasi laporan Anda dalam 1x24 jam kerja dan menginformasikan hasilnya via email.' },
-  { title: 'Proses pengembalian dana', desc: 'Jika refund disetujui, dana akan dikembalikan ke sumber pembayaran asal sesuai estimasi waktu yang berlaku.' },
+  { title: 'Hubungi kami maksimal 7 hari kerja', desc: 'Kirim email ke cs@mitranz.com atau hubungi 0811-455-6611 dengan menyebutkan nomor invoice dan alasan pengajuan refund.' },
+  { title: 'Sertakan dokumen pendukung', desc: 'Lampirkan nomor invoice, bukti pembayaran, dan penjelasan lengkap mengenai alasan pengajuan refund.' },
+  { title: 'Verifikasi dan evaluasi', desc: 'Tim kami akan mengevaluasi pengajuan Anda dalam 3 hari kerja dan menginformasikan keputusan via email.' },
+  { title: 'Proses pengembalian dana', desc: 'Jika refund disetujui, dana dikembalikan ke rekening/metode pembayaran asal sesuai estimasi waktu yang berlaku.' },
 ]
 const timeline = [
-  { icon: '🔲', method: 'QRIS', days: '3–5', },
-  { icon: '🛒', method: 'ShopeePay', days: '3–7', },
-  { icon: '🏦', method: 'Transfer BCA', days: '1–3', },
+  { icon: '🔲', method: 'QRIS / E-Wallet', days: '3–7' },
+  { icon: '🏦', method: 'Transfer Bank', days: '3–5' },
+  { icon: '💳', method: 'Kartu Kredit/Debit', days: '7–14' },
 ]
 </script>

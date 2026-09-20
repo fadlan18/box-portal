@@ -5,7 +5,7 @@
     <div class="flex items-center justify-between">
       <div>
         <h1 class="text-2xl font-bold" style="color:var(--dash-text-primary)">Order Layanan</h1>
-        <p class="text-sm" style="color:var(--dash-text-muted)">Pilih paket website yang sesuai kebutuhan Anda</p>
+        <p class="text-sm" style="color:var(--dash-text-muted)">Pilih paket aplikasi digital yang sesuai kebutuhan Anda</p>
       </div>
       <!-- Badge keranjang -->
       <button v-if="cart.length > 0" @click="scrollToCart"
@@ -250,7 +250,7 @@ function saveCart() {
   try { localStorage.setItem(CART_KEY, JSON.stringify(cart.value)) } catch {}
 }
 
-// Produk website saja
+// Produk aplikasi digital saja
 const websiteProducts = computed(() =>
   products.value.filter((p: any) => p.category === 'website')
 )

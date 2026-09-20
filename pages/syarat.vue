@@ -28,7 +28,7 @@
           <p style="color:#374151;font-size:14px;line-height:1.8;margin:0 0 12px">miTRANZ menyediakan layanan digital yang meliputi:</p>
           <ul style="color:#374151;font-size:14px;line-height:2;margin:0;padding-left:20px">
             <li>Layanan pembayaran digital — Token Listrik PLN, Pulsa & Paket Data, Voucher Game, dan layanan sejenis</li>
-            <li>Jasa pembuatan website profesional untuk bisnis, UMKM, dan pemerintah desa</li>
+            <li>Jasa pembuatan aplikasi digital profesional untuk bisnis, UMKM, dan instansi</li>
             <li>Layanan digital lainnya sebagaimana tersedia di platform</li>
           </ul>
         </section>

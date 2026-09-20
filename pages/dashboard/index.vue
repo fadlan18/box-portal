@@ -24,7 +24,7 @@
         <div>
           <div class="font-bold text-base mb-1" style="color:white">🚀 Mulai Perjalanan Digital Anda</div>
           <p class="text-sm mb-4" style="color:rgba(255,255,255,0.8)">
-            Dapatkan website profesional untuk bisnis atau desa Anda. Proses mudah, harga transparan.
+            Dapatkan aplikasi digital profesional sesuai kebutuhan Anda. Proses mudah, harga transparan.
           </p>
           <div class="flex items-center gap-2 flex-wrap">
             <div v-for="(s, i) in onboardingSteps" :key="i"
@@ -67,11 +67,11 @@
       </div>
     </div>
 
-    <!-- Paket Jasa Website — Hero Section -->
+    <!-- Paket Aplikasi Digital — Hero Section -->
     <div class="glass rounded-2xl p-5">
       <div class="flex items-center justify-between mb-4">
         <div>
-          <h2 class="font-bold" style="color:var(--dash-text-primary)">Solusi Website Profesional</h2>
+          <h2 class="font-bold" style="color:var(--dash-text-primary)">Solusi Aplikasi Digital Profesional</h2>
           <p class="text-xs mt-0.5" style="color:var(--dash-text-muted)">Pilih paket yang sesuai kebutuhan Anda</p>
         </div>
         <NuxtLink to="/orders" class="text-xs font-semibold" style="color:#1a4fa0;text-decoration:none">
@@ -122,7 +122,7 @@
         style="background:var(--dash-input-bg);border:1px dashed var(--dash-card-border)">
         <div class="text-2xl mb-2">📭</div>
         <div class="text-sm font-semibold mb-1" style="color:var(--dash-text-primary)">Belum ada layanan aktif</div>
-        <p class="text-xs mb-3" style="color:var(--dash-text-muted)">Pesan paket website pertama Anda sekarang</p>
+        <p class="text-xs mb-3" style="color:var(--dash-text-muted)">Pesan aplikasi digital pertama Anda sekarang</p>
         <NuxtLink to="/orders"
           class="inline-block text-xs font-bold px-4 py-2 rounded-lg"
           style="background:#1a4fa0;color:white;text-decoration:none">
@@ -220,7 +220,7 @@ const loadingTickets = ref(true)
 const loadingProducts = ref(true)
 
 // Onboarding steps
-const onboardingSteps = ['Pilih Paket', 'Isi Form', 'Bayar Invoice', 'Website Aktif']
+const onboardingSteps = ['Pilih Paket', 'Isi Form', 'Bayar Invoice', 'Aplikasi Aktif']
 
 // PPOB menu
 const ppobMenu = [
@@ -274,7 +274,7 @@ const fmtRp = (n: number) => n ? new Intl.NumberFormat('id-ID', {
 onMounted(async () => {
   if (!user.value?.id) return
 
-  // Fetch produk website
+  // Fetch produk aplikasi digital
   fetchProducts().finally(() => { loadingProducts.value = false })
 
   // Fetch layanan aktif

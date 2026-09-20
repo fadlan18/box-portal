@@ -17,27 +17,64 @@
     <div style="max-width:900px;margin:0 auto;padding:56px 24px">
 
       <!-- Info kontak -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-bottom:32px">
-        <div style="background:white;border-radius:20px;padding:36px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center">
-          <div style="font-size:40px;margin-bottom:16px">📧</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:32px">
+        <div style="background:white;border-radius:20px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center">
+          <div style="font-size:36px;margin-bottom:14px">📧</div>
           <div style="font-size:15px;font-weight:700;color:#1a202c;margin-bottom:8px">Email</div>
           <a href="mailto:cs@mitranz.com" style="color:#1a4fa0;font-size:14px;text-decoration:none;font-weight:600">cs@mitranz.com</a>
           <div style="font-size:12px;color:#94a3b8;margin-top:6px">Respon dalam 1x24 jam kerja</div>
         </div>
-        <div style="background:white;border-radius:20px;padding:36px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center">
-          <div style="font-size:40px;margin-bottom:16px">💬</div>
-          <div style="font-size:15px;font-weight:700;color:#1a202c;margin-bottom:8px">Chat Langsung</div>
-          <div style="color:#374151;font-size:14px;line-height:1.6">Gunakan fitur <strong>Chat</strong> di pojok kanan bawah halaman utama</div>
-          <div style="font-size:12px;color:#94a3b8;margin-top:6px">Tersedia di desktop</div>
+        <div style="background:white;border-radius:20px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center">
+          <div style="font-size:36px;margin-bottom:14px">📞</div>
+          <div style="font-size:15px;font-weight:700;color:#1a202c;margin-bottom:8px">Telepon / WhatsApp</div>
+          <a href="tel:+628114556611" style="color:#1a4fa0;font-size:14px;text-decoration:none;font-weight:600">0811-455-6611</a>
+          <div style="font-size:12px;color:#94a3b8;margin-top:6px">Senin–Jumat, 08.00–17.00 WITA</div>
         </div>
-        <div style="background:white;border-radius:20px;padding:36px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center">
-          <div style="font-size:40px;margin-bottom:16px">🕐</div>
-          <div style="font-size:15px;font-weight:700;color:#1a202c;margin-bottom:8px">Jam Operasional CS</div>
-          <div style="color:#374151;font-size:14px;line-height:1.8">
-            Senin – Jumat<br>
-            <strong>08.00 – 17.00 WITA</strong>
+        <div style="background:white;border-radius:20px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center">
+          <div style="font-size:36px;margin-bottom:14px">💬</div>
+          <div style="font-size:15px;font-weight:700;color:#1a202c;margin-bottom:8px">Live Chat</div>
+          <div style="color:#374151;font-size:14px;line-height:1.6">Klik ikon chat di pojok kanan bawah halaman</div>
+          <div style="font-size:12px;color:#94a3b8;margin-top:6px">Jam kerja operasional</div>
+        </div>
+        <div style="background:white;border-radius:20px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center">
+          <div style="font-size:36px;margin-bottom:14px">📍</div>
+          <div style="font-size:15px;font-weight:700;color:#1a202c;margin-bottom:8px">Alamat Kantor</div>
+          <div style="color:#374151;font-size:14px;line-height:1.7">Jl. Gunung Sinara No. 21<br>Ampana, Sulawesi Tengah</div>
+          <div style="font-size:12px;color:#94a3b8;margin-top:6px">PT Mitra Trans Digital</div>
+        </div>
+      </div>
+
+      <!-- Jam Operasional -->
+      <div style="background:white;border-radius:20px;padding:32px;margin-bottom:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06)">
+        <h3 style="font-size:16px;font-weight:800;color:#1a202c;margin:0 0 20px;display:flex;align-items:center;gap:8px">
+          🕐 Jam Operasional
+        </h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+          <div style="padding:16px;background:#f0f7ff;border-radius:12px">
+            <div style="font-size:13px;font-weight:700;color:#1a4fa0;margin-bottom:6px">Konsultasi & Support</div>
+            <div style="font-size:14px;color:#374151;line-height:1.8">
+              Senin – Jumat<br><strong>08.00 – 17.00 WITA</strong>
+            </div>
           </div>
-          <div style="font-size:12px;color:#94a3b8;margin-top:6px">Layanan digital aktif 24 jam</div>
+          <div style="padding:16px;background:#f0f7ff;border-radius:12px">
+            <div style="font-size:13px;font-weight:700;color:#1a4fa0;margin-bottom:6px">Sabtu</div>
+            <div style="font-size:14px;color:#374151;line-height:1.8">
+              <strong>08.00 – 12.00 WITA</strong><br>
+              <span style="font-size:12px;color:#64748b">Hanya via email & WhatsApp</span>
+            </div>
+          </div>
+          <div style="padding:16px;background:#fff7ed;border-radius:12px">
+            <div style="font-size:13px;font-weight:700;color:#d97706;margin-bottom:6px">Minggu & Hari Libur</div>
+            <div style="font-size:14px;color:#374151;line-height:1.8">
+              <strong>Tutup</strong><br>
+              <span style="font-size:12px;color:#64748b">Email dibalas hari kerja berikutnya</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding:12px 16px;background:#f0fdf4;border-radius:10px;border:1px solid #86efac">
+          <p style="color:#15803d;font-size:13px;margin:0">
+            ✅ <strong>Pengerjaan proyek aplikasi digital</strong> berlangsung sesuai jadwal yang disepakati di kontrak kerja, tidak terbatas jam operasional.
+          </p>
         </div>
       </div>
 
@@ -67,7 +104,7 @@
             style="width:100%;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;box-sizing:border-box;background:white">
             <option value="">Pilih subjek...</option>
             <option>Pertanyaan tentang Pembayaran Digital</option>
-            <option>Pertanyaan tentang Jasa Website</option>
+            <option>Pertanyaan tentang Aplikasi Digital</option>
             <option>Pengajuan Refund</option>
             <option>Laporan Masalah Transaksi</option>
             <option>Lainnya</option>
@@ -113,7 +150,7 @@ function kirimPesan() {
     alert('Mohon lengkapi semua field.')
     return
   }
-  const subject = encodeURIComponent(`[miTRANZ] ${form.value.subjek || 'Pesan dari Website'} - ${form.value.nama}`)
+  const subject = encodeURIComponent(`[miTRANZ] ${form.value.subjek || 'Pesan dari Aplikasi Digital'} - ${form.value.nama}`)
   const body = encodeURIComponent(`Nama: ${form.value.nama}\nEmail: ${form.value.email}\nSubjek: ${form.value.subjek}\n\nPesan:\n${form.value.pesan}`)
   window.location.href = `mailto:cs@mitranz.com?subject=${subject}&body=${body}`
   terkirim.value = true
