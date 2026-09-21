@@ -471,4 +471,64 @@ const statusBadge = (s: string) => ({
   #invoice-print > div { box-shadow: none !important; border-radius: 0 !important; max-width: 100% !important; }
   body { margin: 0; }
 }
+
+@media (max-width: 768px) {
+  /* Toolbar */
+  .no-print { flex-wrap: wrap; gap: 8px; padding: 10px 16px !important; }
+
+  /* Invoice wrapper padding */
+  #invoice-print { padding: 16px !important; }
+
+  /* Modern template mobile */
+  #invoice-print div[style*="padding:40px 48px"] {
+    padding: 20px 16px !important;
+  }
+  #invoice-print div[style*="padding:40px 48px"] > div[style*="display:flex"] {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  /* Grid 2 kolom info klien — stack */
+  #invoice-print div[style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Grid 3 kolom bank info — stack */
+  #invoice-print div[style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Tabel invoice — font lebih kecil */
+  #invoice-print table { font-size: 12px !important; }
+  #invoice-print table th, #invoice-print table td {
+    padding: 8px 8px !important;
+  }
+  /* Sembunyikan kolom harga satuan di mobile */
+  #invoice-print table th:nth-child(3),
+  #invoice-print table td:nth-child(3) {
+    display: none !important;
+  }
+
+  /* Total box full width */
+  #invoice-print div[style*="width:280px"],
+  #invoice-print div[style*="width:260px"] {
+    width: 100% !important;
+  }
+
+  /* Minimal template */
+  #invoice-print div[style*="grid-template-columns:1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Header font size */
+  #invoice-print div[style*="font-size:28px;font-weight:900"] {
+    font-size: 20px !important;
+  }
+  #invoice-print div[style*="font-size:24px;font-weight:900"] {
+    font-size: 18px !important;
+  }
+}
 </style>

@@ -5,7 +5,7 @@
     <nav :style="navScrolled
       ? 'position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid #e2e8f0;padding:0 32px;box-shadow:0 2px 16px rgba(0,0,0,0.08);transition:all 0.3s'
       : 'position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;padding:0 32px;transition:all 0.3s'">
-      <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px">
+      <div class="nav-inner" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px">
         <div style="font-size:26px;font-weight:900;letter-spacing:-0.5px">
           <span :style="navScrolled ? 'color:#1a4fa0' : 'color:white'">mi</span><span :style="navScrolled ? 'color:#c0192c' : 'color:#fbbf24'">TRANZ</span>
         </div>
@@ -19,7 +19,7 @@
     <!-- Hero: Aplikasi Digital -->
     <div style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 40%,#1a4fa0 100%);padding:clamp(60px,10vw,100px) clamp(16px,4vw,32px) clamp(60px,10vw,100px);padding-top:calc(clamp(60px,10vw,100px) + 64px);position:relative;overflow:hidden">
       <div style="position:absolute;inset:0;opacity:0.06;background:radial-gradient(circle at 20% 50%,#60a5fa 0%,transparent 50%),radial-gradient(circle at 80% 20%,#a78bfa 0%,transparent 50%)"></div>
-      <div style="max-width:1100px;margin:0 auto;position:relative;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+      <div class="hero-grid" style="max-width:1100px;margin:0 auto;position:relative;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
         <div>
           <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:6px 16px;margin-bottom:24px">
             <span style="width:6px;height:6px;background:#10b981;border-radius:50%;display:inline-block"></span>
@@ -41,7 +41,7 @@
         </div>
 
         <!-- Stats card kanan -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="stats-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
           <div v-for="s in stats" :key="s.label"
             style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:24px;backdrop-filter:blur(8px)">
             <div style="font-size:26px;font-weight:900;color:white;margin-bottom:4px">{{ s.value }}</div>
@@ -52,7 +52,7 @@
     </div>
 
     <!-- Cara Kerja -->
-    <div style="background:white;padding:64px 32px">
+    <div class="section-pad" style="background:white;padding:64px 32px">
       <div style="max-width:1100px;margin:0 auto">
         <div style="text-align:center;margin-bottom:56px">
           <span style="background:#eff6ff;color:#1a4fa0;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px">BAGAIMANA CARA KERJANYA</span>
@@ -91,7 +91,7 @@
     </div>
 
     <!-- Paket Aplikasi Digital -->
-    <div style="background:linear-gradient(180deg,#f0f7ff 0%,#ffffff 100%);padding:64px 32px" id="layanan">
+    <div class="section-pad" style="background:linear-gradient(180deg,#f0f7ff 0%,#ffffff 100%);padding:64px 32px" id="layanan">
       <div style="max-width:1200px;margin:0 auto">
         <div style="text-align:center;margin-bottom:48px">
           <span style="background:#fef3c7;color:#d97706;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px">PAKET LAYANAN</span>
@@ -143,7 +143,7 @@
     </div>
 
     <!-- Layanan Tambahan — satu baris -->
-    <div style="background:#f0f4f8;padding:32px">
+    <div class="section-pad-sm" style="background:#f0f4f8;padding:32px">
       <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
         <div>
           <div style="font-size:14px;font-weight:700;color:#1a202c;margin-bottom:4px">Butuh layanan pembayaran digital?</div>
@@ -157,7 +157,7 @@
     </div>
 
     <!-- Footer -->
-    <footer style="background:#1a202c;padding:56px 32px 32px">
+    <footer class="footer-mobile" style="background:#1a202c;padding:56px 32px 32px">
       <div style="max-width:1200px;margin:0 auto">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-bottom:48px">
           <div>
@@ -211,6 +211,59 @@
     <ChatWidget />
   </div>
 </template>
+
+<style>
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+  /* Navbar */
+  .nav-inner { padding: 0 16px !important; }
+  nav { padding: 0 16px !important; }
+
+  /* Hero — 1 kolom */
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .stats-grid { display: none !important; }
+
+  /* Sections padding */
+  .section-pad { padding: 40px 16px !important; }
+  .section-pad-sm { padding: 20px 16px !important; }
+
+  /* Paket layanan — 1 kolom */
+  .section-pad div[style*="minmax(min(300px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Cara kerja cards — 2 kolom di mobile */
+  div[style*="minmax(200px,1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Footer — 2 kolom */
+  .footer-mobile { padding: 40px 16px 24px !important; }
+  .footer-mobile div[style*="minmax(200px,1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Layanan tambahan — stack vertikal */
+  .section-pad-sm > div > div[style*="space-between"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Tombol hero full width */
+  .hero-grid div[style*="display:flex;gap:14px"] {
+    flex-direction: column !important;
+  }
+  .hero-grid a[style*="padding:14px 28px"] {
+    text-align: center !important;
+    justify-content: center !important;
+  }
+}
+</style>
 
 <script setup lang="ts">
 definePageMeta({ layout: false })
