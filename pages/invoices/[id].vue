@@ -126,7 +126,7 @@
           </div>
 
           <!-- Info bank -->
-          <div v-if="settings.bank_name" style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:20px;margin-bottom:24px">
+          <div v-if="settings.bank_name && invoice.status !== 'paid'" style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:20px;margin-bottom:24px">
             <div style="font-size:11px;font-weight:700;color:#1d4ed8;letter-spacing:1px;margin-bottom:12px">INFORMASI REKENING</div>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
               <div>
@@ -145,7 +145,7 @@
           </div>
 
           <!-- Catatan -->
-          <div v-if="invoice.notes" style="padding-top:20px;border-top:1px solid #f3f4f6">
+          <div v-if="invoice.notes && invoice.status !== 'paid'" style="padding-top:20px;border-top:1px solid #f3f4f6">
             <div style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;margin-bottom:8px">CATATAN</div>
             <div style="font-size:13px;color:#374151;line-height:1.7">{{ invoice.notes }}</div>
           </div>
@@ -221,11 +221,11 @@
             </div>
           </div>
         </div>
-        <div v-if="settings.bank_name" style="padding:16px 20px;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:24px">
+        <div v-if="settings.bank_name && invoice.status !== 'paid'" style="padding:16px 20px;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:24px">
           <div style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;margin-bottom:8px">INFORMASI REKENING</div>
           <div style="font-size:13px;color:#111827">{{ settings.bank_name }} · <strong>{{ settings.bank_account_number }}</strong> · a.n. {{ settings.bank_account_name }}</div>
         </div>
-        <div v-if="invoice.notes" style="margin-bottom:16px">
+        <div v-if="invoice.notes && invoice.status !== 'paid'" style="margin-bottom:16px">
           <div style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;margin-bottom:6px">CATATAN</div>
           <div style="font-size:13px;color:#374151;line-height:1.7">{{ invoice.notes }}</div>
         </div>
@@ -305,11 +305,11 @@
               <span style="font-size:20px;font-weight:900;color:white">{{ fmtRp(invoice.total) }}</span>
             </div>
           </div>
-          <div v-if="settings.bank_name" style="background:#f9fafb;border-left:4px solid #0f172a;padding:16px 20px;margin-bottom:24px">
+          <div v-if="settings.bank_name && invoice.status !== 'paid'" style="background:#f9fafb;border-left:4px solid #0f172a;padding:16px 20px;margin-bottom:24px">
             <div style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;margin-bottom:8px">INFORMASI REKENING</div>
             <div style="font-size:13px;color:#111827">{{ settings.bank_name }} · <strong>{{ settings.bank_account_number }}</strong> · a.n. {{ settings.bank_account_name }}</div>
           </div>
-          <div v-if="invoice.notes" style="font-size:13px;color:#374151;line-height:1.7">{{ invoice.notes }}</div>
+          <div v-if="invoice.notes && invoice.status !== 'paid'" style="font-size:13px;color:#374151;line-height:1.7">{{ invoice.notes }}</div>
         </div>
         <div style="background:#0f172a;padding:16px 48px;display:flex;justify-content:space-between">
           <div style="font-size:11px;color:#475569">{{ settings.invoice_footer_note }}</div>
@@ -387,11 +387,11 @@
             </div>
           </div>
         </div>
-        <div v-if="settings.bank_name" style="margin-bottom:24px;padding:16px;border:1px solid #e5e7eb;border-radius:8px">
+        <div v-if="settings.bank_name && invoice.status !== 'paid'" style="margin-bottom:24px;padding:16px;border:1px solid #e5e7eb;border-radius:8px">
           <div style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;margin-bottom:8px">INFORMASI REKENING</div>
           <div style="font-size:13px;color:#111827">{{ settings.bank_name }} — <strong>{{ settings.bank_account_number }}</strong> — a.n. {{ settings.bank_account_name }}</div>
         </div>
-        <div v-if="invoice.notes" style="margin-bottom:24px">
+        <div v-if="invoice.notes && invoice.status !== 'paid'" style="margin-bottom:24px">
           <div style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;margin-bottom:6px">CATATAN</div>
           <div style="font-size:13px;color:#374151;line-height:1.7">{{ invoice.notes }}</div>
         </div>
