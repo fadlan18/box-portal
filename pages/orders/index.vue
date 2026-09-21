@@ -307,6 +307,10 @@ function addToCart(p: any) {
     cart.value.push(item)
   }
   saveCart()
+  // Auto scroll ke panel keranjang
+  nextTick(() => {
+    document.getElementById('cart-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  })
 }
 
 function removeFromCart(productId: string) {
