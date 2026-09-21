@@ -193,29 +193,24 @@
       </div>
     </div>
 
-    <!-- Modal sukses -->
-    <div v-if="orderSuccess" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
-      @click.self="orderSuccess = null">
-      <div class="rounded-3xl p-8 max-w-sm w-full text-center"
-        style="background:var(--dash-card-bg);border:1px solid var(--dash-card-border)">
-        <div class="text-5xl mb-4">🎉</div>
-        <h3 class="font-bold text-xl mb-2" style="color:var(--dash-text-primary)">Order Berhasil!</h3>
-        <p class="text-sm mb-2" style="color:var(--dash-text-muted)">Invoice telah dibuat dan dikirim ke email Anda.</p>
-        <p class="text-xs mb-6" style="color:var(--dash-text-muted)">Tim kami akan segera menghubungi Anda.</p>
-        <div class="space-y-2">
-          <NuxtLink to="/invoices"
-            class="block w-full py-2.5 rounded-xl text-sm font-bold"
-            style="background:linear-gradient(135deg,#1a4fa0,#2563eb);text-decoration:none;color:white !important">
-            Lihat Invoice →
-          </NuxtLink>
-          <button @click="orderSuccess = null"
-            class="w-full py-2.5 rounded-xl text-sm font-semibold"
-            style="background:var(--dash-input-bg);color:var(--dash-text-muted)">
-            Order Lagi
-          </button>
+    <!-- Toast notifikasi sukses -->
+    <Transition name="toast">
+      <div v-if="orderSuccess" class="fixed top-5 left-1/2 z-50 flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-lg"
+        style="transform:translateX(-50%);background:#1a202c;min-width:280px;max-width:400px">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+          style="background:rgba(16,185,129,0.2)">
+          <span style="font-size:16px">✅</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="text-sm font-bold text-white">Invoice berhasil dibuat!</div>
+          <div class="text-xs mt-0.5" style="color:#94a3b8">Mengarahkan ke pembayaran dalam {{ countdown }} detik...</div>
+        </div>
+        <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+          style="background:rgba(255,255,255,0.1)">
+          <span class="text-xs font-black text-white">{{ countdown }}</span>
         </div>
       </div>
-    </div>
+    </Transition>
 
   </div>
 </template>
@@ -228,6 +223,22 @@ const { products, loading: productLoading, fetchProducts } = useProducts()
 
 const ordering = ref(false)
 const orderSuccess = ref<any>(null)
+const countdown = ref(3)
+let countdownTimer: any = null
+
+function startRedirect(invoiceId: string) {
+  orderSuccess.value = { invoiceId }
+  countdown.value = 3
+  countdownTimer = setInterval(() => {
+    countdown.value--
+    if (countdown.value <= 0) {
+      clearInterval(countdownTimer)
+      window.open(`https://paymen.mitranz.com/invoices/${invoiceId}`, '_blank')
+      orderSuccess.value = null
+      clearCart()
+    }
+  }, 1000)
+}
 
 // Pilihan paket utama per produk — { [productId]: option }
 const selectedMain = ref<Record<string, any>>({})
@@ -374,8 +385,7 @@ async function directOrder(p: any) {
         form: {}
       }
     })
-    clearCart()
-    orderSuccess.value = res
+    startRedirect(res.invoice?.id || '')
   } catch (e: any) {
     alert(e?.data?.message || e.message || 'Gagal membuat order')
   } finally { ordering.value = false }
@@ -397,8 +407,7 @@ async function checkoutCart() {
         form: {}
       }
     })
-    clearCart()
-    orderSuccess.value = res
+    startRedirect(res.invoice?.id || '')
   } catch (e: any) {
     alert(e?.data?.message || e.message || 'Gagal checkout')
   } finally { ordering.value = false }
@@ -415,3 +424,12 @@ function productIcon(name: string) {
   return '🌐'
 }
 </script>
+
+<style scoped>
+.slide-fade-enter-active, .slide-fade-leave-active { transition: all 0.3s ease; }
+.slide-fade-enter-from { opacity: 0; transform: translateX(24px); }
+.slide-fade-leave-to { opacity: 0; transform: translateX(-24px); }
+.toast-enter-active, .toast-leave-active { transition: all 0.3s ease; }
+.toast-enter-from { opacity: 0; transform: translateX(-50%) translateY(-16px); }
+.toast-leave-to { opacity: 0; transform: translateX(-50%) translateY(-16px); }
+</style>
