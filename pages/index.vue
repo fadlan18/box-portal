@@ -115,20 +115,29 @@
               <div style="font-size:12px;color:#94a3b8;margin-bottom:4px">Mulai dari</div>
               <div style="font-size:28px;font-weight:900;color:#1a4fa0">{{ getMinPrice(w) || 'Hubungi Kami' }}</div>
             </div>
-            <a :href="'/kontak?paket=' + w.id"
+            <a href="/orders"
               :style="{display:'block',textAlign:'center',padding:'13px',borderRadius:'10px',textDecoration:'none',fontSize:'14px',fontWeight:'700',background: idx === 1 ? '#1a4fa0' : '#f1f5f9',color: idx === 1 ? 'white' : '#1a4fa0'}">
-              Konsultasi Sekarang →
+              Pesan Sekarang →
+            </a>
+            <a :href="'/kontak?paket=' + w.id"
+              style="display:block;text-align:center;padding:6px;text-decoration:none;font-size:12px;color:#94a3b8;margin-top:6px">
+              Butuh konsultasi dulu?
             </a>
           </div>
         </div>
 
-        <!-- CTA konsultasi -->
+        <!-- CTA order -->
         <div style="margin-top:40px;background:linear-gradient(135deg,#1a4fa0,#2563eb);border-radius:20px;padding:40px;text-align:center">
-          <h3 style="font-size:22px;font-weight:800;color:white;margin:0 0 10px">Tidak yakin paket mana yang cocok?</h3>
-          <p style="color:rgba(255,255,255,0.8);font-size:14px;margin:0 0 24px">Konsultasikan kebutuhan Anda secara gratis. Tim kami siap membantu.</p>
-          <a href="/kontak" style="display:inline-block;padding:12px 32px;background:white;color:#1a4fa0;border-radius:10px;text-decoration:none;font-size:14px;font-weight:800">
-            💬 Hubungi Kami Sekarang
-          </a>
+          <h3 style="font-size:22px;font-weight:800;color:white;margin:0 0 10px">Siap memulai proyek digital Anda?</h3>
+          <p style="color:rgba(255,255,255,0.8);font-size:14px;margin:0 0 24px">Pilih paket, buat invoice, dan bayar dengan mudah. Proses cepat dan transparan.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a href="/orders" style="display:inline-block;padding:12px 32px;background:white;color:#1a4fa0;border-radius:10px;text-decoration:none;font-size:14px;font-weight:800">
+              🚀 Pesan Sekarang
+            </a>
+            <a href="/kontak" style="display:inline-block;padding:12px 32px;background:rgba(255,255,255,0.15);color:white;border-radius:10px;text-decoration:none;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,0.3)">
+              💬 Konsultasi Dulu
+            </a>
+          </div>
         </div>
       </div>
     </div>
