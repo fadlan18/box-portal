@@ -163,7 +163,7 @@
     <div v-else-if="invoice && template === 'minimal'" id="invoice-print"
       style="background:white;min-height:100vh;padding:48px 32px">
       <div style="max-width:800px;margin:0 auto">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:24px;margin-bottom:36px" :style="'border-bottom:3px solid ' + hc">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:24px;margin-bottom:36px" :style="'border-bottom:3px solid ' + accentColor">
           <div>
             <img v-if="logoUrl" :src="logoUrl" style="height:44px;object-fit:contain;margin-bottom:8px" alt="Logo"/>
             <div v-else style="font-size:26px;font-weight:900;letter-spacing:-1px;margin-bottom:4px" :style="'color:' + hc">miTRANZ</div>
@@ -215,9 +215,9 @@
         </table>
         <div style="display:flex;justify-content:flex-end;margin-bottom:40px">
           <div style="width:260px">
-            <div style="display:flex;justify-content:space-between;padding:16px 0;border-top:2px solid #111827">
+            <div style="display:flex;justify-content:space-between;padding:16px 0;" :style="'border-top:2px solid ' + accentColor">
               <span style="font-size:16px;font-weight:900;color:#111827">TOTAL</span>
-              <span style="font-size:20px;font-weight:900" :style="'color:' + hc">{{ fmtRp(invoice.total) }}</span>
+              <span style="font-size:20px;font-weight:900" :style="'color:' + accentColor">{{ fmtRp(invoice.total) }}</span>
             </div>
           </div>
         </div>
@@ -322,7 +322,7 @@
     <div v-else-if="invoice && template === 'classic'" id="invoice-print"
       style="background:white;min-height:100vh;padding:48px 32px">
       <div style="max-width:800px;margin:0 auto">
-        <div :style="'height:6px;background:' + hc + ';margin-bottom:36px'"></div>
+        <div :style="'height:6px;background:' + accentColor + ';margin-bottom:36px'"></div>
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:40px">
           <div>
             <img v-if="logoUrl" :src="logoUrl" style="height:44px;object-fit:contain;margin-bottom:12px" alt="Logo"/>
@@ -359,7 +359,7 @@
         </div>
         <table style="width:100%;border-collapse:collapse;margin-bottom:32px">
           <thead>
-            <tr :style="'border-top:2px solid ' + hc + ';border-bottom:2px solid ' + hc">
+            <tr :style="'border-top:2px solid ' + accentColor + ';border-bottom:2px solid ' + accentColor">
               <th style="padding:10px 12px;text-align:left;font-size:12px;font-weight:700;color:#111827">Deskripsi</th>
               <th style="padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:#111827;width:60px">Qty</th>
               <th style="padding:10px 12px;text-align:right;font-size:12px;font-weight:700;color:#111827;width:130px">Harga</th>
@@ -383,7 +383,7 @@
             </div>
             <div style="display:flex;justify-content:space-between;padding:12px 0">
               <span style="font-size:15px;font-weight:800;color:#111827">TOTAL</span>
-              <span style="font-size:18px;font-weight:900" :style="'color:' + hc">{{ fmtRp(invoice.total) }}</span>
+              <span style="font-size:18px;font-weight:900" :style="'color:' + accentColor">{{ fmtRp(invoice.total) }}</span>
             </div>
           </div>
         </div>
@@ -395,7 +395,7 @@
           <div style="font-size:11px;font-weight:700;color:#6b7280;letter-spacing:1px;margin-bottom:6px">CATATAN</div>
           <div style="font-size:13px;color:#374151;line-height:1.7">{{ invoice.notes }}</div>
         </div>
-        <div :style="'height:4px;background:' + hc + ';margin-top:32px'"></div>
+        <div :style="'height:4px;background:' + accentColor + ';margin-top:32px'"></div>
         <div style="display:flex;justify-content:space-between;padding-top:12px">
           <div style="font-size:11px;color:#6b7280">{{ settings.invoice_footer_note }}</div>
           <div style="font-size:11px;color:#6b7280">{{ settings.company_website }}</div>
@@ -435,6 +435,14 @@ onMounted(async () => {
 // Shorthand untuk warna — hc = header color, tc = text color
 const hc = computed(() => settings.value?.invoice_color || '#1a4fa0')
 const tc = computed(() => settings.value?.invoice_text_color || '#ffffff')
+
+// Warna teks yang aman di latar putih — jika hc terlalu terang pakai fallback gelap
+const accentColor = computed(() => {
+  const color = settings.value?.invoice_color || '#1a4fa0'
+  // Jika warna terlalu terang (putih atau mendekati), pakai warna gelap
+  if (color === '#ffffff' || color === '#fff' || color === 'white') return '#1a202c'
+  return color
+})
 const template = computed(() => settings.value?.invoice_template || 'modern')
 const logoUrl = computed(() => {
   const url = settings.value?.company_logo_url || ''
