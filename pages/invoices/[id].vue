@@ -409,10 +409,17 @@
       <div style="max-width:800px;margin:0 auto;background:white;box-shadow:0 2px 16px rgba(0,0,0,0.1);position:relative;overflow:hidden">
 
         <!-- Pita status pojok kanan atas -->
-        <div style="position:absolute;top:0;right:0;width:140px;height:140px;overflow:hidden;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact">
-          <div :style="'position:absolute;top:28px;right:-38px;width:180px;padding:7px 0;text-align:center;font-size:15px;font-weight:900;letter-spacing:2px;transform:rotate(45deg);print-color-adjust:exact;-webkit-print-color-adjust:exact;' + (invoice.status === 'paid' ? 'background:#10b981;color:white' : 'background:#ef4444;color:white')"
-            style="box-shadow:0 2px 8px rgba(0,0,0,0.2)">
-            {{ invoice.status === 'paid' ? 'PAID' : 'UNPAID' }}
+        <div style="position:absolute;top:0;right:0;width:150px;height:150px;overflow:hidden;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact">
+          <div :style="'position:absolute;top:30px;right:-42px;width:190px;padding:0;text-align:center;transform:rotate(45deg);print-color-adjust:exact;-webkit-print-color-adjust:exact;' + (invoice.status === 'paid' ? 'background:#10b981' : 'background:#ef4444')"
+            style="overflow:hidden">
+            <!-- Garis gelap atas -->
+            <div :style="'height:2px;width:100%;' + (invoice.status === 'paid' ? 'background:#047857' : 'background:#b91c1c')"></div>
+            <!-- Teks pita -->
+            <div style="padding:7px 0;font-size:15px;font-weight:900;letter-spacing:3px;color:white">
+              {{ invoice.status === 'paid' ? 'PAID' : 'UNPAID' }}
+            </div>
+            <!-- Garis gelap bawah -->
+            <div :style="'height:2px;width:100%;' + (invoice.status === 'paid' ? 'background:#047857' : 'background:#b91c1c')"></div>
           </div>
         </div>
 
@@ -427,7 +434,7 @@
               </div>
             </div>
             <!-- Info perusahaan kanan -->
-            <div style="text-align:right;max-width:220px;padding-right:8px">
+            <div style="text-align:right;max-width:200px;padding-right:8px;margin-top:28px">
               <div style="font-size:14px;font-weight:700;color:#111827">{{ settings.company_website || 'mitranz.com' }}</div>
               <div style="font-size:12px;color:#374151;line-height:1.8;margin-top:4px">
                 {{ settings.company_name }}<br>
