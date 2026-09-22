@@ -5,7 +5,7 @@
       : 'background:#ffffff;border-right:1px solid #e2e8f0;box-shadow:2px 0 12px rgba(0,0,0,0.08)'">
 
     <!-- Logo -->
-    <div class="px-5 py-4 flex-shrink-0 flex items-center justify-between"
+    <div class="no-print px-5 py-4 flex-shrink-0 flex items-center justify-between"
       :style="isDark ? 'border-bottom:1px solid rgba(255,255,255,0.06)' : 'border-bottom:1px solid #e2e8f0'">
       <NuxtLink to="/dashboard" class="flex items-center" style="text-decoration:none">
         <div style="font-size:26px;font-weight:900;letter-spacing:-0.5px;line-height:1;white-space:nowrap">
