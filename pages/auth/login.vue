@@ -4,10 +4,13 @@
     <!-- KIRI 55%: Visual — hanya desktop -->
     <div class="auth-left" style="width:55%;height:100vh;background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#1a4fa0 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:48px;position:relative;overflow:hidden">
 
-      <!-- Dekorasi background -->
+      <!-- Dekorasi background: dot grid + ambient glow -->
       <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
-        <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.12),transparent 70%)"></div>
-        <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(167,139,250,0.1),transparent 70%)"></div>
+        <!-- Dot grid -->
+        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:28px 28px"></div>
+        <!-- Ambient glow -->
+        <div style="position:absolute;top:-120px;right:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(251,191,36,0.08),transparent 65%)"></div>
+        <div style="position:absolute;bottom:-100px;left:-60px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.07),transparent 65%)"></div>
       </div>
 
       <div style="max-width:440px;width:100%;position:relative;z-index:1">
@@ -20,28 +23,32 @@
           <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:2px">Platform Aplikasi Digital Terpercaya</div>
         </a>
 
-        <!-- 4 Card Alur — besar, jelas, menarik -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px">
+        <!-- 4 Card Alur — glassmorphism, aksen tunggal -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px">
           <div v-for="(step, i) in steps" :key="i"
-            style="border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden"
-            :style="step.cardStyle">
+            style="border-radius:16px;padding:18px 16px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(8px);transition:all 0.2s"
+            @mouseover="$event.currentTarget.style.background='rgba(255,255,255,0.07)';$event.currentTarget.style.borderColor='rgba(251,191,36,0.25)'"
+            @mouseout="$event.currentTarget.style.background='rgba(255,255,255,0.04)';$event.currentTarget.style.borderColor='rgba(255,255,255,0.08)'">
             <!-- Nomor watermark -->
-            <div style="position:absolute;right:12px;top:8px;font-size:36px;font-weight:900;opacity:0.08;line-height:1">{{ i+1 }}</div>
-            <!-- Ikon -->
-            <div style="font-size:26px">{{ step.icon }}</div>
+            <div style="position:absolute;right:10px;top:6px;font-size:42px;font-weight:900;color:white;opacity:0.04;line-height:1;font-family:Inter,sans-serif">{{ i+1 }}</div>
+            <!-- Ikon dalam lingkaran aksen -->
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.2);display:flex;align-items:center;justify-content:center;font-size:18px">
+              {{ step.icon }}
+            </div>
             <!-- Teks -->
             <div>
-              <div style="font-size:13px;font-weight:800;margin-bottom:4px" :style="'color:' + step.titleColor">{{ step.title }}</div>
-              <div style="font-size:11px;line-height:1.5;color:rgba(255,255,255,0.55)">{{ step.desc }}</div>
+              <div style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.92);margin-bottom:4px;letter-spacing:0.1px">{{ step.title }}</div>
+              <div style="font-size:11px;line-height:1.55;color:rgba(255,255,255,0.4)">{{ step.desc }}</div>
             </div>
           </div>
         </div>
 
         <!-- 3 benefit pills -->
-        <div style="display:flex;gap:8px;margin-top:20px;flex-wrap:wrap">
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
           <div v-for="b in benefits" :key="b"
-            style="display:flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:rgba(255,255,255,0.6)">
-            <span style="color:#10b981;font-size:10px">✓</span> {{ b }}
+            style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:500;color:rgba(255,255,255,0.5)">
+            <span style="width:14px;height:14px;border-radius:50%;background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.3);display:flex;align-items:center;justify-content:center;font-size:8px;color:#fbbf24;font-weight:900;flex-shrink:0">✓</span>
+            {{ b }}
           </div>
         </div>
 
@@ -164,34 +171,10 @@ const benefits = [
 ]
 
 const steps = [
-  {
-    icon: '📦',
-    title: 'Pilih Paket',
-    desc: 'Pilih paket sesuai kebutuhan dan anggaran Anda',
-    cardStyle: 'background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(16,185,129,0.05));border:1px solid rgba(16,185,129,0.2)',
-    titleColor: '#10b981',
-  },
-  {
-    icon: '📋',
-    title: 'Buat Order',
-    desc: 'Tentukan spesifikasi dan konfirmasi pesanan',
-    cardStyle: 'background:linear-gradient(135deg,rgba(96,165,250,0.15),rgba(96,165,250,0.05));border:1px solid rgba(96,165,250,0.2)',
-    titleColor: '#60a5fa',
-  },
-  {
-    icon: '💳',
-    title: 'Bayar',
-    desc: 'Invoice otomatis — bayar via QRIS atau Transfer',
-    cardStyle: 'background:linear-gradient(135deg,rgba(251,191,36,0.15),rgba(251,191,36,0.05));border:1px solid rgba(251,191,36,0.2)',
-    titleColor: '#fbbf24',
-  },
-  {
-    icon: '🚀',
-    title: 'Aplikasi Aktif',
-    desc: 'Tim kami kerjakan, siap dalam 3-7 hari kerja',
-    cardStyle: 'background:linear-gradient(135deg,rgba(167,139,250,0.15),rgba(167,139,250,0.05));border:1px solid rgba(167,139,250,0.2)',
-    titleColor: '#a78bfa',
-  },
+  { icon: '📦', title: 'Pilih Paket', desc: 'Pilih paket sesuai kebutuhan dan anggaran Anda' },
+  { icon: '📋', title: 'Buat Order', desc: 'Tentukan spesifikasi dan konfirmasi pesanan' },
+  { icon: '💳', title: 'Bayar', desc: 'Invoice otomatis — bayar via QRIS atau Transfer' },
+  { icon: '🚀', title: 'Aplikasi Aktif', desc: 'Siap dalam 3-7 hari kerja' },
 ]
 
 async function submit() {
