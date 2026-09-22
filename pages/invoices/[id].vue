@@ -403,6 +403,130 @@
       </div>
     </div>
 
+    <!-- ==================== TEMPLATE: PROFESSIONAL ==================== -->
+    <div v-else-if="invoice && template === 'professional'" id="invoice-print"
+      style="background:#f5f5f5;min-height:100vh;padding:40px 24px">
+      <div style="max-width:800px;margin:0 auto;background:white;box-shadow:0 2px 16px rgba(0,0,0,0.1);position:relative;overflow:hidden">
+
+        <!-- Pita status pojok kanan atas -->
+        <div style="position:absolute;top:0;right:0;width:160px;height:160px;overflow:hidden;z-index:10">
+          <div :style="'position:absolute;top:32px;right:-40px;width:200px;padding:8px 0;text-align:center;font-size:18px;font-weight:900;letter-spacing:2px;transform:rotate(45deg);' + (invoice.status === 'paid' ? 'background:#10b981;color:white' : 'background:#ef4444;color:white')"
+            style="box-shadow:0 2px 8px rgba(0,0,0,0.2)">
+            {{ invoice.status === 'paid' ? 'PAID' : 'UNPAID' }}
+          </div>
+        </div>
+
+        <!-- Header -->
+        <div style="padding:40px 48px 32px;border-bottom:1px solid #e5e7eb">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between">
+            <!-- Logo kiri -->
+            <div>
+              <img v-if="logoUrl" :src="logoUrl" style="height:56px;object-fit:contain;margin-bottom:8px" alt="Logo"/>
+              <div v-else style="font-size:28px;font-weight:900;letter-spacing:-1px" :style="'color:' + accentColor">
+                miTRANZ
+              </div>
+            </div>
+            <!-- Info perusahaan kanan -->
+            <div style="text-align:right;max-width:260px">
+              <div style="font-size:14px;font-weight:700;color:#111827">{{ settings.company_website || 'mitranz.com' }}</div>
+              <div style="font-size:12px;color:#374151;line-height:1.8;margin-top:4px">
+                {{ settings.company_name }}<br>
+                {{ settings.company_address }}<br>
+                {{ settings.company_phone }}<br>
+                {{ settings.company_email }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nomor & tanggal invoice -->
+        <div style="padding:28px 48px;border-bottom:1px solid #e5e7eb">
+          <div style="font-size:22px;font-weight:900;color:#111827;margin-bottom:8px">Invoice #{{ invoice.invoice_number }}</div>
+          <div style="font-size:13px;color:#6b7280">Invoice Date: {{ fmtDateEn(invoice.created_at) }}</div>
+          <div style="font-size:13px;color:#6b7280">Due Date: {{ fmtDateEn(invoice.due_date) }}</div>
+        </div>
+
+        <!-- Invoiced To -->
+        <div style="padding:24px 48px;border-bottom:1px solid #e5e7eb">
+          <div style="font-size:13px;font-weight:700;color:#111827;margin-bottom:8px">Invoiced To</div>
+          <div style="font-size:13px;color:#374151;line-height:1.9">
+            <strong>{{ invoice.client?.name }}</strong><br>
+            {{ invoice.client?.email }}<br>
+            <span v-if="invoice.client?.phone">{{ invoice.client?.phone }}<br></span>
+            <span v-if="invoice.client?.address">{{ invoice.client?.address }}</span>
+          </div>
+        </div>
+
+        <!-- Tabel item -->
+        <div style="padding:0 48px">
+          <table style="width:100%;border-collapse:collapse">
+            <thead>
+              <tr style="background:#f3f4f6">
+                <th style="padding:12px 16px;text-align:left;font-size:12px;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb">Description</th>
+                <th style="padding:12px 16px;text-align:right;font-size:12px;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb;width:160px">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in invoice.invoice_items" :key="item.id">
+                <td style="padding:12px 16px;font-size:13px;color:#374151;border-bottom:1px solid #f3f4f6">
+                  {{ item.description }}
+                  <span v-if="item.quantity > 1" style="color:#9ca3af;font-size:12px"> (×{{ item.quantity }})</span>
+                </td>
+                <td style="padding:12px 16px;text-align:right;font-size:13px;color:#374151;border-bottom:1px solid #f3f4f6">{{ fmtRp(item.total) }} IDR</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr style="background:#f3f4f6">
+                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:600;color:#374151">Sub Total</td>
+                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:700;color:#111827">{{ fmtRp(invoice.subtotal || invoice.total) }} IDR</td>
+              </tr>
+              <tr v-if="invoice.tax > 0" style="background:#f3f4f6">
+                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:600;color:#374151">Tax</td>
+                <td style="padding:10px 16px;text-align:right;font-size:13px;color:#374151">{{ fmtRp(invoice.tax) }} IDR</td>
+              </tr>
+              <tr style="background:#f3f4f6">
+                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:800;color:#111827">Total</td>
+                <td style="padding:10px 16px;text-align:right;font-size:14px;font-weight:900;color:#111827">{{ fmtRp(invoice.total) }} IDR</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- Transactions (jika sudah paid) -->
+        <div v-if="invoice.payments && invoice.payments.length > 0" style="padding:32px 48px 0">
+          <div style="font-size:15px;font-weight:800;color:#111827;margin-bottom:16px">Transactions</div>
+          <table style="width:100%;border-collapse:collapse">
+            <thead>
+              <tr style="background:#f3f4f6">
+                <th style="padding:10px 14px;text-align:left;font-size:12px;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb">Transaction Date</th>
+                <th style="padding:10px 14px;text-align:left;font-size:12px;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb">Gateway</th>
+                <th style="padding:10px 14px;text-align:left;font-size:12px;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb">Transaction ID</th>
+                <th style="padding:10px 14px;text-align:right;font-size:12px;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="pay in invoice.payments" :key="pay.id" style="background:#fafafa">
+                <td style="padding:10px 14px;font-size:12px;color:#374151;border-bottom:1px solid #f3f4f6">{{ fmtDateEn(pay.paid_at || pay.created_at) }}</td>
+                <td style="padding:10px 14px;font-size:12px;color:#374151;border-bottom:1px solid #f3f4f6;text-transform:capitalize">{{ pay.gateway || pay.method || '-' }}</td>
+                <td style="padding:10px 14px;font-size:11px;color:#6b7280;border-bottom:1px solid #f3f4f6;font-family:monospace">{{ pay.id?.slice(0,20).toUpperCase() || '-' }}</td>
+                <td style="padding:10px 14px;text-align:right;font-size:12px;font-weight:600;color:#111827;border-bottom:1px solid #f3f4f6">{{ fmtRp(pay.amount) }} IDR</td>
+              </tr>
+              <tr style="background:#f3f4f6">
+                <td colspan="3" style="padding:10px 14px;text-align:right;font-size:12px;font-weight:700;color:#374151">Balance</td>
+                <td style="padding:10px 14px;text-align:right;font-size:12px;font-weight:700;color:#111827">Rp 0 IDR</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Footer -->
+        <div style="padding:32px 48px;text-align:center">
+          <div style="font-size:11px;color:#9ca3af">PDF Generated on {{ fmtDateEn(new Date().toISOString()) }}</div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -458,6 +582,10 @@ const fmtRp = (n: number) => n ? new Intl.NumberFormat('id-ID', {
 
 const fmtDate = (d: string) => d ? new Date(d).toLocaleDateString('id-ID', {
   day: 'numeric', month: 'long', year: 'numeric'
+}) : '-'
+
+const fmtDateEn = (d: string) => d ? new Date(d).toLocaleDateString('en-US', {
+  weekday: 'long', month: 'short', day: 'numeric', year: 'numeric'
 }) : '-'
 
 const statusLabel = (s: string) => ({
