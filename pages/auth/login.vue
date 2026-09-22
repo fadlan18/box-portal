@@ -1,148 +1,156 @@
 <template>
   <div style="min-height:100vh;display:flex;font-family:Inter,sans-serif">
 
-    <!-- Kiri: Detail Produk (70%) — hanya tampil jika ada product param -->
-    <div v-if="product" :style="`width:70%;min-height:100vh;padding:48px;display:flex;flex-direction:column;justify-content:center;background:${product.bg};position:relative;overflow:hidden`">
-      <!-- Back -->
-      <a href="/" style="display:inline-flex;align-items:center;gap:6px;color:#64748b;text-decoration:none;font-size:13px;font-weight:600;margin-bottom:40px;position:absolute;top:32px;left:48px">
-        ← Kembali ke miTRANZ
-      </a>
+    <!-- KIRI 60%: Value proposition + Alur — hanya desktop -->
+    <div class="auth-left" style="width:60%;min-height:100vh;background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#1a4fa0 100%);display:flex;flex-direction:column;justify-content:center;padding:56px 64px;position:relative;overflow:hidden">
 
-      <div style="max-width:560px;margin:0 auto;padding-top:40px">
-        <!-- Badge -->
-        <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:white;border-radius:100px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,0.08)">
-          <span style="font-size:16px">{{ product.icon }}</span>
-          <span :style="`font-size:12px;font-weight:700;color:${product.color}`">{{ product.name }}</span>
-        </div>
+      <!-- Background decoration -->
+      <div style="position:absolute;inset:0;opacity:0.06;background:radial-gradient(circle at 20% 50%,#60a5fa 0%,transparent 50%),radial-gradient(circle at 80% 20%,#a78bfa 0%,transparent 50%);pointer-events:none"></div>
 
-        <h1 style="font-size:36px;font-weight:900;color:#1a202c;line-height:1.2;margin:0 0 12px;letter-spacing:-0.5px">
-          {{ product.tagline }}
-        </h1>
-        <p style="font-size:16px;color:#475569;line-height:1.7;margin:0 0 32px">{{ product.desc }}</p>
-
-        <!-- Pricing tiers -->
-        <div style="background:white;border-radius:16px;padding:24px;margin-bottom:28px;box-shadow:0 4px 16px rgba(0,0,0,0.06)">
-          <div style="font-size:12px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px">Pilihan Paket</div>
-          <div v-for="tier in product.tiers" :key="tier.label"
-            style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #f1f5f9">
-            <div>
-              <div style="font-size:14px;font-weight:600;color:#1a202c">{{ tier.label }}</div>
-              <div style="font-size:12px;color:#94a3b8">{{ tier.note }}</div>
-            </div>
-            <div style="text-align:right">
-              <div style="font-size:16px;font-weight:800;color:#1a4fa0">{{ tier.price }}</div>
-              <div v-if="tier.promo" style="display:inline-block;font-size:10px;font-weight:700;color:#f59e0b;background:#fef3c7;padding:2px 8px;border-radius:4px">{{ tier.promo }}</div>
-            </div>
+      <!-- Logo -->
+      <div style="margin-bottom:48px;position:relative">
+        <a href="/" style="text-decoration:none">
+          <div style="font-size:28px;font-weight:900;margin-bottom:8px">
+            <span style="color:white">mi</span><span style="color:#fbbf24">TRANZ</span>
           </div>
-        </div>
-
-        <!-- Fitur -->
-        <div style="background:white;border-radius:16px;padding:24px;box-shadow:0 4px 16px rgba(0,0,0,0.06)">
-          <div style="font-size:12px;font-weight:700;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px">Yang Anda Dapatkan</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-            <div v-for="f in product.features" :key="f" style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151">
-              <span style="color:#10b981;font-weight:700;font-size:16px">✓</span> {{ f }}
-            </div>
-          </div>
-        </div>
-
-        <!-- Contact -->
-        <div style="margin-top:24px;text-align:center">
-          <p style="font-size:13px;color:#64748b">Ada pertanyaan? Hubungi kami via
-            fitur <strong>Chat</strong> di halaman utama
-          </p>
+        </a>
+        <div style="font-size:15px;color:rgba(255,255,255,0.65);line-height:1.6;max-width:400px">
+          Platform Aplikasi Digital untuk UMKM dan Pemerintah Desa — profesional, terjangkau, dan terpercaya.
         </div>
       </div>
+
+      <!-- 3 Benefit -->
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:48px;position:relative">
+        <div v-for="b in benefits" :key="b" style="display:flex;align-items:center;gap:10px">
+          <div style="width:20px;height:20px;border-radius:50%;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="color:#10b981;font-size:11px;font-weight:900">✓</span>
+          </div>
+          <span style="font-size:13px;color:rgba(255,255,255,0.8);font-weight:500">{{ b }}</span>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div style="height:1px;background:rgba(255,255,255,0.1);margin-bottom:40px;position:relative"></div>
+
+      <!-- Alur 4 Fase -->
+      <div style="position:relative">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:28px">ALUR PEMESANAN</div>
+
+        <div style="display:flex;flex-direction:column;gap:0;position:relative">
+          <!-- Garis vertikal -->
+          <div style="position:absolute;left:19px;top:20px;bottom:20px;width:1.5px;background:rgba(255,255,255,0.12)"></div>
+
+          <div v-for="(step, i) in steps" :key="i" style="display:flex;align-items:flex-start;gap:16px;padding-bottom:24px;position:relative">
+            <!-- Ikon lingkaran -->
+            <div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1"
+              :style="step.active
+                ? 'background:#fbbf24;box-shadow:0 0 0 4px rgba(251,191,36,0.2)'
+                : 'background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.15)'">
+              <span :style="step.active ? 'font-size:18px' : 'font-size:16px'">{{ step.icon }}</span>
+            </div>
+            <!-- Teks -->
+            <div style="padding-top:8px">
+              <div style="font-size:14px;font-weight:700;margin-bottom:3px"
+                :style="step.active ? 'color:#fbbf24' : 'color:rgba(255,255,255,0.9)'">
+                {{ step.title }}
+              </div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6">{{ step.desc }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Kanan: Form Login (30% jika ada produk, 100% jika tidak) -->
-    <div :style="`${product ? 'width:30%' : 'width:100%'};min-height:100vh;background:white;display:flex;align-items:center;justify-content:center;padding:40px 32px;box-shadow:${product ? '-4px 0 24px rgba(0,0,0,0.08)' : 'none'}`">
-      <div style="width:100%;max-width:380px">
+    <!-- KANAN 40%: Form Login/Register -->
+    <div style="width:40%;min-height:100vh;background:white;display:flex;align-items:center;justify-content:center;padding:40px 40px;box-shadow:-4px 0 32px rgba(0,0,0,0.1)">
+      <div style="width:100%;max-width:360px">
 
-        <!-- Logo -->
-        <div style="text-align:center;margin-bottom:32px">
+        <!-- Mobile only: Logo -->
+        <div class="mobile-logo" style="display:none;text-align:center;margin-bottom:28px">
           <a href="/" style="text-decoration:none">
-            <div style="font-size:32px;font-weight:900">
+            <div style="font-size:28px;font-weight:900">
               <span style="color:#1a4fa0">mi</span><span style="color:#c0192c">TRANZ</span>
             </div>
           </a>
-          <p v-if="product" style="color:#64748b;font-size:13px;margin:8px 0 0">
-            Daftar atau masuk untuk memesan
-          </p>
-          <p v-else style="color:#64748b;font-size:14px;margin:8px 0 0">Platform Layanan Digital Terpercaya</p>
         </div>
 
-        <!-- Tab -->
-        <div style="display:flex;gap:4px;background:#f1f5f9;border-radius:12px;padding:4px;margin-bottom:24px">
-          <button @click="mode='login'"
-            style="flex:1;padding:10px;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s"
-            :style="mode==='login' ? 'background:white;color:#1a4fa0;box-shadow:0 2px 8px rgba(0,0,0,0.08)' : 'background:transparent;color:#94a3b8'">
-            Masuk
-          </button>
-          <button @click="mode='register'"
-            style="flex:1;padding:10px;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s"
-            :style="mode==='register' ? 'background:white;color:#1a4fa0;box-shadow:0 2px 8px rgba(0,0,0,0.08)' : 'background:transparent;color:#94a3b8'">
-            Daftar
-          </button>
+        <!-- Mobile only: benefit pills -->
+        <div class="mobile-benefits" style="display:none;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px">
+          <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:#f0fdf4;color:#15803d">✓ Siap 3-7 hari</span>
+          <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:#eff6ff;color:#1d4ed8">✓ Harga transparan</span>
+          <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:#f5f3ff;color:#6d28d9">✓ QRIS & Transfer</span>
+        </div>
+
+        <!-- Heading -->
+        <div style="margin-bottom:28px">
+          <div style="font-size:22px;font-weight:900;color:#111827;margin-bottom:6px">
+            {{ mode === 'login' ? 'Masuk ke Akun' : 'Buat Akun Baru' }}
+          </div>
+          <div style="font-size:13px;color:#6b7280">
+            {{ mode === 'login' ? 'Belum punya akun?' : 'Sudah punya akun?' }}
+            <button @click="mode = mode === 'login' ? 'register' : 'login'"
+              style="background:none;border:none;color:#1a4fa0;font-weight:700;cursor:pointer;font-size:13px;padding:0;margin-left:4px">
+              {{ mode === 'login' ? 'Daftar sekarang' : 'Masuk di sini' }}
+            </button>
+          </div>
         </div>
 
         <!-- Form Login -->
-        <div v-if="mode==='login'" style="display:flex;flex-direction:column;gap:14px">
+        <div v-if="mode === 'login'" style="display:flex;flex-direction:column;gap:16px">
           <div>
             <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">Email</label>
             <input v-model="email" type="email" placeholder="nama@email.com"
-              style="width:100%;box-sizing:border-box;padding:12px 16px;border:2px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;transition:border 0.2s"
-              @focus="$event.target.style.borderColor='#1a4fa0'" @blur="$event.target.style.borderColor='#e2e8f0'"
-              @keyup.enter="submit" />
+              style="width:100%;box-sizing:border-box;padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;transition:border 0.2s"
+              @focus="$event.target.style.borderColor='#1a4fa0'" @blur="$event.target.style.borderColor='#e2e8f0'"/>
           </div>
           <div>
             <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">Password</label>
             <input v-model="password" type="password" placeholder="••••••••"
-              style="width:100%;box-sizing:border-box;padding:12px 16px;border:2px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;transition:border 0.2s"
+              style="width:100%;box-sizing:border-box;padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none;transition:border 0.2s"
               @focus="$event.target.style.borderColor='#1a4fa0'" @blur="$event.target.style.borderColor='#e2e8f0'"
-              @keyup.enter="submit" />
+              @keyup.enter="submit"/>
           </div>
           <p v-if="error" style="color:#dc2626;font-size:13px;margin:0">⚠️ {{ error }}</p>
           <button @click="submit" :disabled="loading"
-            style="width:100%;padding:14px;background:#1a4fa0;color:white;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;transition:all 0.2s;margin-top:4px"
-            :style="loading ? 'opacity:0.6' : ''"
-            onmouseover="if(!this.disabled)this.style.background='#1e40af'" onmouseout="this.style.background='#1a4fa0'">
+            style="width:100%;padding:14px;background:linear-gradient(135deg,#1a4fa0,#2563eb);color:white;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(26,79,160,0.3)"
+            :style="loading ? 'opacity:0.6;cursor:not-allowed' : ''">
             {{ loading ? 'Memproses...' : 'Masuk →' }}
           </button>
         </div>
 
         <!-- Form Register -->
-        <div v-if="mode==='register'" style="display:flex;flex-direction:column;gap:14px">
+        <div v-else style="display:flex;flex-direction:column;gap:16px">
           <div>
             <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">Nama Lengkap</label>
             <input v-model="name" type="text" placeholder="Nama Anda"
-              style="width:100%;box-sizing:border-box;padding:12px 16px;border:2px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none"
-              @focus="$event.target.style.borderColor='#1a4fa0'" @blur="$event.target.style.borderColor='#e2e8f0'" />
+              style="width:100%;box-sizing:border-box;padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none"
+              @focus="$event.target.style.borderColor='#1a4fa0'" @blur="$event.target.style.borderColor='#e2e8f0'"/>
           </div>
           <div>
             <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">Email</label>
             <input v-model="email" type="email" placeholder="nama@email.com"
-              style="width:100%;box-sizing:border-box;padding:12px 16px;border:2px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none"
-              @focus="$event.target.style.borderColor='#1a4fa0'" @blur="$event.target.style.borderColor='#e2e8f0'" />
+              style="width:100%;box-sizing:border-box;padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none"
+              @focus="$event.target.style.borderColor='#1a4fa0'" @blur="$event.target.style.borderColor='#e2e8f0'"/>
           </div>
           <div>
             <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">Password</label>
             <input v-model="password" type="password" placeholder="Minimal 8 karakter"
-              style="width:100%;box-sizing:border-box;padding:12px 16px;border:2px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none"
+              style="width:100%;box-sizing:border-box;padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;outline:none"
               @focus="$event.target.style.borderColor='#1a4fa0'" @blur="$event.target.style.borderColor='#e2e8f0'"
-              @keyup.enter="submit" />
+              @keyup.enter="submit"/>
           </div>
           <p v-if="error" style="color:#dc2626;font-size:13px;margin:0">⚠️ {{ error }}</p>
           <p v-if="success" style="color:#16a34a;font-size:13px;margin:0">✅ {{ success }}</p>
           <button @click="submit" :disabled="loading"
-            style="width:100%;padding:14px;background:#1a4fa0;color:white;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;transition:all 0.2s;margin-top:4px"
-            :style="loading ? 'opacity:0.6' : ''">
+            style="width:100%;padding:14px;background:linear-gradient(135deg,#1a4fa0,#2563eb);color:white;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(26,79,160,0.3)"
+            :style="loading ? 'opacity:0.6;cursor:not-allowed' : ''">
             {{ loading ? 'Memproses...' : 'Daftar Sekarang →' }}
           </button>
         </div>
 
         <div style="text-align:center;margin-top:24px">
-          <a href="/" style="color:#94a3b8;font-size:12px;text-decoration:none">← Kembali ke miTRANZ.com</a>
+          <a href="/" style="color:#9ca3af;font-size:12px;text-decoration:none">← Kembali ke miTRANZ.com</a>
         </div>
       </div>
     </div>
@@ -164,13 +172,38 @@ const loading = ref(false)
 const error = ref('')
 const success = ref('')
 
-// Data produk
-const productsData: Record<string, any> = {"web-umkm": {"name": "Paket Website UMKM", "icon": "🏪", "tagline": "Onlinekan bisnis Anda sekarang", "desc": "Website profesional untuk usaha kecil dan menengah. Tampil lebih terpercaya di mata pelanggan dengan website yang modern, cepat, dan responsif.", "color": "#059669", "bg": "linear-gradient(135deg,#ecfdf5,#d1fae5)", "tiers": [{"label": "Paket Promo 1", "note": "Free hosting 1 tahun", "price": "Rp 1.750.000", "promo": "Promo"}, {"label": "Paket Promo 2", "note": "Free hosting 2 tahun", "price": "Rp 2.050.000", "promo": null}, {"label": "Perpanjangan", "note": "Hosting & Domain per tahun", "price": "Rp 500.000", "promo": "Hemat 15%"}], "features": ["Desain modern & responsif", "Free hosting & domain", "WhatsApp button terintegrasi", "Google Maps", "SEO dasar", "Dukungan teknis 30 hari"]}, "web-desa-ekonomis": {"name": "Website Desa Ekonomis", "icon": "🏘️", "tagline": "Wajah digital desa yang profesional", "desc": "Website dinamis dengan fitur standar layanan desa. Tampilkan identitas, berita, kegiatan, dan galeri desa secara online dengan mudah.", "color": "#1a4fa0", "bg": "linear-gradient(135deg,#eff6ff,#dbeafe)", "tiers": [{"label": "Paket Promo", "note": "Free hosting & domain 1 tahun", "price": "Rp 3.000.000", "promo": "Promo"}, {"label": "Paket Reguler", "note": "Free hosting & domain 1 tahun", "price": "Rp 4.500.000", "promo": null}, {"label": "Perpanjangan Hosting", "note": "per tahun", "price": "Rp 500.000", "promo": "Hemat 15%"}, {"label": "Perpanjangan Domain", "note": "per tahun", "price": "Rp 250.000", "promo": null}], "features": ["Identitas & profil desa", "Artikel & berita terkini", "Agenda kegiatan desa", "Galeri foto & slider", "Responsif di semua perangkat", "Panel admin mudah digunakan"]}, "web-desa-premium": {"name": "Website Desa Premium", "icon": "⭐", "tagline": "Desa modern dengan fitur lengkap", "desc": "Semua fitur Ekonomis ditambah fitur manajemen canggih. Untuk desa yang ingin tampil lebih maju, transparan, dan melayani warga secara digital.", "color": "#7c3aed", "bg": "linear-gradient(135deg,#f5f3ff,#ede9fe)", "tiers": [{"label": "Paket Promo", "note": "Free hosting & domain 1 tahun", "price": "Rp 5.500.000", "promo": "Promo"}, {"label": "Paket Reguler", "note": "Free hosting & domain 1 tahun", "price": "Rp 5.750.000", "promo": null}, {"label": "Perpanjangan Hosting", "note": "per tahun", "price": "Rp 500.000", "promo": "Hemat 15%"}, {"label": "Perpanjangan Domain", "note": "per tahun", "price": "Rp 250.000", "promo": null}], "features": ["Semua fitur Ekonomis", "Pengaduan warga online", "Kelola program bantuan", "Manajemen data penduduk", "Pilihan tema eksklusif", "Prioritas dukungan teknis"]}}
+const benefits = [
+  'Aplikasi digital siap dalam 3-7 hari kerja',
+  'Harga transparan, tanpa biaya tersembunyi',
+  'Pembayaran QRIS & Transfer Bank',
+]
 
-const product = computed(() => {
-  const slug = route.query.product as string
-  return slug ? productsData[slug] || null : null
-})
+const steps = [
+  {
+    icon: '📦',
+    title: 'Pilih Paket',
+    desc: 'Pilih paket sesuai kebutuhan dan anggaran Anda',
+    active: false,
+  },
+  {
+    icon: '📋',
+    title: 'Buat Order',
+    desc: 'Tentukan spesifikasi dan konfirmasi pesanan',
+    active: true,
+  },
+  {
+    icon: '💳',
+    title: 'Bayar',
+    desc: 'Invoice otomatis dikirim — bayar via QRIS atau Transfer',
+    active: false,
+  },
+  {
+    icon: '🚀',
+    title: 'Aplikasi Aktif',
+    desc: 'Tim kami kerjakan, aplikasi siap dalam 3-7 hari kerja',
+    active: false,
+  },
+]
 
 async function submit() {
   error.value = ''; success.value = ''
@@ -194,3 +227,17 @@ async function submit() {
   }
 }
 </script>
+
+<style>
+@media (max-width: 768px) {
+  .auth-left { display: none !important; }
+  .mobile-logo { display: block !important; }
+  .mobile-benefits { display: flex !important; }
+
+  /* Form full width di mobile */
+  div[style*="width:40%"] {
+    width: 100% !important;
+    box-shadow: none !important;
+  }
+}
+</style>
