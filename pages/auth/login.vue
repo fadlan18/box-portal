@@ -41,15 +41,9 @@
           </div>
         </div>
 
-        <!-- Benefits -->
-        <div style="display:flex;gap:20px;flex-wrap:wrap">
-          <div v-for="b in benefits" :key="b"
-            style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.9);font-weight:600">
-            <div style="width:20px;height:20px;border-radius:50%;background:rgba(251,191,36,0.25);border:1px solid rgba(251,191,36,0.5);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <span style="font-size:10px;font-weight:900;color:#fbbf24">✓</span>
-            </div>
-            {{ b }}
-          </div>
+        <!-- Tagline -->
+        <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.6);letter-spacing:0.3px">
+          Solusi Platform Digital Anda
         </div>
 
       </div>
