@@ -61,7 +61,7 @@
             <li>Terjadi kesalahan sistem pada pihak miTRANZ</li>
           </ul>
           <p style="color:#374151;font-size:14px;line-height:1.8;margin:12px 0 0">
-            Pengajuan refund dilakukan maksimal <strong>1x24 jam</strong> setelah transaksi gagal, melalui fitur Chat di halaman utama atau email cs@mitranz.com. Proses pengembalian dana memerlukan waktu 3-7 hari kerja.
+            Pengajuan refund dilakukan maksimal <strong>1x24 jam</strong> setelah transaksi gagal, melalui fitur Chat di halaman utama atau email {{ cs.company_email }}. Proses pengembalian dana memerlukan waktu 3-7 hari kerja.
           </p>
         </section>
 
@@ -93,7 +93,7 @@
           </p>
           <div style="background:#f0f4fa;border-radius:12px;padding:16px;margin-top:12px">
             <div style="font-size:14px;color:#374151;line-height:2">
-              📧 Email: <a href="mailto:cs@mitranz.com" style="color:#1a4fa0">cs@mitranz.com</a><br>
+              📧 Email: <a href="mailto:{{ cs.company_email }}" style="color:#1a4fa0">{{ cs.company_email }}</a><br>
               💬 Chat: Gunakan fitur Chat di halaman utama<br>
               🌐 Website: <a href="https://mitranz.com" style="color:#1a4fa0">mitranz.com</a>
             </div>

@@ -105,7 +105,7 @@ const faqCategories = [
       },
       {
         q: 'Pembayaran saya berhasil tapi transaksi belum diproses?',
-        a: 'Jika pembayaran sudah berhasil namun transaksi belum selesai setelah 10 menit, segera hubungi kami melalui fitur <strong>Chat</strong> di halaman utama atau email cs@mitranz.com dengan menyertakan bukti pembayaran.'
+        a: 'Jika pembayaran sudah berhasil namun transaksi belum selesai setelah 10 menit, segera hubungi kami melalui fitur <strong>Chat</strong> di halaman utama atau email {{ cs.company_email }} dengan menyertakan bukti pembayaran.'
       },
       {
         q: 'Berapa lama batas waktu pembayaran invoice?',

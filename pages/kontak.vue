@@ -21,13 +21,13 @@
         <div style="background:white;border-radius:20px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center">
           <div style="font-size:36px;margin-bottom:14px">📧</div>
           <div style="font-size:15px;font-weight:700;color:#1a202c;margin-bottom:8px">Email</div>
-          <a href="mailto:cs@mitranz.com" style="color:#1a4fa0;font-size:14px;text-decoration:none;font-weight:600">cs@mitranz.com</a>
+          <a href="mailto:{{ cs.company_email }}" style="color:#1a4fa0;font-size:14px;text-decoration:none;font-weight:600">{{ cs.company_email }}</a>
           <div style="font-size:12px;color:#94a3b8;margin-top:6px">Respon dalam 1x24 jam kerja</div>
         </div>
         <div style="background:white;border-radius:20px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center">
           <div style="font-size:36px;margin-bottom:14px">📞</div>
           <div style="font-size:15px;font-weight:700;color:#1a202c;margin-bottom:8px">Telepon / WhatsApp</div>
-          <a href="tel:+628114556611" style="color:#1a4fa0;font-size:14px;text-decoration:none;font-weight:600">0811-455-6611</a>
+          <a href="tel:+628114556611" style="color:#1a4fa0;font-size:14px;text-decoration:none;font-weight:600">{{ cs.company_phone }}</a>
           <div style="font-size:12px;color:#94a3b8;margin-top:6px">Senin–Jumat, 08.00–17.00 WITA</div>
         </div>
         <div style="background:white;border-radius:20px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center">
@@ -39,7 +39,7 @@
         <div style="background:white;border-radius:20px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center">
           <div style="font-size:36px;margin-bottom:14px">📍</div>
           <div style="font-size:15px;font-weight:700;color:#1a202c;margin-bottom:8px">Alamat Kantor</div>
-          <div style="color:#374151;font-size:14px;line-height:1.7">Jl. Gunung Sinara No. 21<br>Ampana, Sulawesi Tengah</div>
+          <div style="color:#374151;font-size:14px;line-height:1.7">{{ cs.company_address }}</div>
           <div style="font-size:12px;color:#94a3b8;margin-top:6px">PT Mitra Trans Digital</div>
         </div>
       </div>
@@ -152,7 +152,7 @@ function kirimPesan() {
   }
   const subject = encodeURIComponent(`[miTRANZ] ${form.value.subjek || 'Pesan dari Aplikasi Digital'} - ${form.value.nama}`)
   const body = encodeURIComponent(`Nama: ${form.value.nama}\nEmail: ${form.value.email}\nSubjek: ${form.value.subjek}\n\nPesan:\n${form.value.pesan}`)
-  window.location.href = `mailto:cs@mitranz.com?subject=${subject}&body=${body}`
+  window.location.href = `mailto:{{ cs.company_email }}?subject=${subject}&body=${body}`
   terkirim.value = true
   setTimeout(() => { terkirim.value = false }, 4000)
 }

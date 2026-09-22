@@ -41,15 +41,15 @@
             </div>
             <div>
               <div style="font-size:12px;color:#64748b;margin-bottom:2px">Alamat</div>
-              <div style="font-size:14px;font-weight:700;color:#1a202c">Jl. Gunung Sinara No. 21, Ampana — Sulawesi Tengah</div>
+              <div style="font-size:14px;font-weight:700;color:#1a202c">{{ cs.company_address }}</div>
             </div>
             <div>
               <div style="font-size:12px;color:#64748b;margin-bottom:2px">Telepon / WhatsApp</div>
-              <div style="font-size:14px;font-weight:700;color:#1a202c">0811-455-6611</div>
+              <div style="font-size:14px;font-weight:700;color:#1a202c">{{ cs.company_phone }}</div>
             </div>
             <div>
               <div style="font-size:12px;color:#64748b;margin-bottom:2px">Email</div>
-              <div style="font-size:14px;font-weight:700;color:#1a202c">cs@mitranz.com</div>
+              <div style="font-size:14px;font-weight:700;color:#1a202c">{{ cs.company_email }}</div>
             </div>
             <div>
               <div style="font-size:12px;color:#64748b;margin-bottom:2px">Website</div>

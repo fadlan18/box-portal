@@ -168,8 +168,8 @@
               Platform layanan digital terpercaya untuk kebutuhan aplikasi digital profesional dan pembayaran digital Anda.
             </p>
             <div style="display:flex;flex-direction:column;gap:8px">
-              <a href="mailto:cs@mitranz.com" style="color:#60a5fa;font-size:13px;text-decoration:none">📧 cs@mitranz.com</a>
-              <a href="tel:+628114556611" style="color:#60a5fa;font-size:13px;text-decoration:none">📞 0811-455-6611</a>
+              <a href="mailto:{{ cs.company_email }}" style="color:#60a5fa;font-size:13px;text-decoration:none">📧 {{ cs.company_email }}</a>
+              <a href="tel:+628114556611" style="color:#60a5fa;font-size:13px;text-decoration:none">📞 {{ cs.company_phone }}</a>
               <span style="color:#475569;font-size:12px">PT Mitra Trans Digital</span>
             </div>
           </div>
@@ -266,6 +266,7 @@
 </style>
 
 <script setup lang="ts">
+const cs = await useCompanySettings()
 definePageMeta({ layout: false })
 useHead({
   title: 'miTRANZ — Solusi Platform Digital Profesional',

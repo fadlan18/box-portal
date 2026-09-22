@@ -70,7 +70,7 @@
         <section style="margin-bottom:32px">
           <h2 style="font-size:17px;font-weight:800;color:#1a4fa0;margin:0 0 12px">6. Retensi Data</h2>
           <p style="color:#374151;font-size:14px;line-height:1.8;margin:0">
-            Data transaksi disimpan selama <strong>2 tahun</strong> untuk keperluan audit dan layanan pelanggan. Data riwayat transaksi melalui OTP disimpan di session yang otomatis kadaluarsa dalam 30 menit. Anda dapat meminta penghapusan data melalui email cs@mitranz.com.
+            Data transaksi disimpan selama <strong>2 tahun</strong> untuk keperluan audit dan layanan pelanggan. Data riwayat transaksi melalui OTP disimpan di session yang otomatis kadaluarsa dalam 30 menit. Anda dapat meminta penghapusan data melalui email {{ cs.company_email }}.
           </p>
         </section>
 
@@ -84,7 +84,7 @@
             <li>Menarik persetujuan penggunaan data untuk tujuan pemasaran</li>
           </ul>
           <p style="color:#374151;font-size:14px;line-height:1.8;margin:12px 0 0">
-            Untuk menggunakan hak-hak ini, hubungi kami di cs@mitranz.com.
+            Untuk menggunakan hak-hak ini, hubungi kami di {{ cs.company_email }}.
           </p>
         </section>
 
@@ -109,7 +109,7 @@
           </p>
           <div style="background:#f0f4fa;border-radius:12px;padding:16px;margin-top:12px">
             <div style="font-size:14px;color:#374151;line-height:2">
-              📧 Email: <a href="mailto:cs@mitranz.com" style="color:#1a4fa0">cs@mitranz.com</a><br>
+              📧 Email: <a href="mailto:{{ cs.company_email }}" style="color:#1a4fa0">{{ cs.company_email }}</a><br>
               💬 Chat: Gunakan fitur Chat di halaman utama<br>
               🌐 Website: <a href="https://mitranz.com" style="color:#1a4fa0">mitranz.com</a>
             </div>

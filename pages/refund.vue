@@ -117,7 +117,7 @@ const notEligible = [
   'Paket perpanjangan hosting dan domain yang telah diproses.',
 ]
 const steps = [
-  { title: 'Hubungi kami maksimal 7 hari kerja', desc: 'Kirim email ke cs@mitranz.com atau hubungi 0811-455-6611 dengan menyebutkan nomor invoice dan alasan pengajuan refund.' },
+  { title: 'Hubungi kami maksimal 7 hari kerja', desc: 'Kirim email ke {{ cs.company_email }} atau hubungi {{ cs.company_phone }} dengan menyebutkan nomor invoice dan alasan pengajuan refund.' },
   { title: 'Sertakan dokumen pendukung', desc: 'Lampirkan nomor invoice, bukti pembayaran, dan penjelasan lengkap mengenai alasan pengajuan refund.' },
   { title: 'Verifikasi dan evaluasi', desc: 'Tim kami akan mengevaluasi pengajuan Anda dalam 3 hari kerja dan menginformasikan keputusan via email.' },
   { title: 'Proses pengembalian dana', desc: 'Jika refund disetujui, dana dikembalikan ke rekening/metode pembayaran asal sesuai estimasi waktu yang berlaku.' },
