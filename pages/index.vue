@@ -29,7 +29,7 @@
             Solusi <span style="color:#fbbf24">Platform</span><br>Digital <span style="color:#60a5fa">Anda</span>
           </h1>
           <p style="color:rgba(255,255,255,0.75);font-size:17px;line-height:1.8;margin:0 0 36px;max-width:460px">
-            Kami wujudkan aplikasi digital modern yang profesional dan terpercaya — sesuai kebutuhan dan anggaran Anda.
+            Kami wujudkan aplikasi digital modern yang profesional dan terpercaya — sesuai kebutuhan Anda.
           </p>
           <div style="display:flex;gap:14px;flex-wrap:wrap">
             <a href="#layanan"
