@@ -411,7 +411,7 @@
         <!-- Pita status pojok kanan atas -->
         <!-- Pita status 45 derajat -->
         <div style="position:absolute;top:0;right:0;width:200px;height:200px;overflow:hidden;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact">
-          <div :style="'position:absolute;top:42px;right:-52px;width:260px;text-align:center;transform:rotate(45deg);transform-origin:center center;print-color-adjust:exact;-webkit-print-color-adjust:exact;' + (invoice.status === 'paid' ? 'background:#10b981' : 'background:#ef4444')"
+          <div :style="'position:absolute;top:-26px;right:-6px;width:331px;text-align:center;transform:rotate(40deg);transform-origin:center center;print-color-adjust:exact;-webkit-print-color-adjust:exact;' + (invoice.status === 'paid' ? 'background:#10b981' : 'background:#ef4444')"
             style="overflow:hidden">
             <div :style="'height:2.5px;width:100%;' + (invoice.status === 'paid' ? 'background:#047857' : 'background:#b91c1c')"></div>
             <div style="padding:10px 0;font-size:19px;font-weight:900;letter-spacing:3px;color:white">
