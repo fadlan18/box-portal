@@ -409,8 +409,8 @@
       <div style="max-width:800px;margin:0 auto;background:white;box-shadow:0 2px 16px rgba(0,0,0,0.1);position:relative;overflow:hidden">
 
         <!-- Pita status pojok kanan atas -->
-        <div style="position:absolute;top:0;right:0;width:160px;height:160px;overflow:hidden;z-index:10">
-          <div :style="'position:absolute;top:32px;right:-40px;width:200px;padding:8px 0;text-align:center;font-size:18px;font-weight:900;letter-spacing:2px;transform:rotate(45deg);' + (invoice.status === 'paid' ? 'background:#10b981;color:white' : 'background:#ef4444;color:white')"
+        <div style="position:absolute;top:0;right:0;width:140px;height:140px;overflow:hidden;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact">
+          <div :style="'position:absolute;top:28px;right:-38px;width:180px;padding:7px 0;text-align:center;font-size:15px;font-weight:900;letter-spacing:2px;transform:rotate(45deg);print-color-adjust:exact;-webkit-print-color-adjust:exact;' + (invoice.status === 'paid' ? 'background:#10b981;color:white' : 'background:#ef4444;color:white')"
             style="box-shadow:0 2px 8px rgba(0,0,0,0.2)">
             {{ invoice.status === 'paid' ? 'PAID' : 'UNPAID' }}
           </div>
@@ -427,7 +427,7 @@
               </div>
             </div>
             <!-- Info perusahaan kanan -->
-            <div style="text-align:right;max-width:260px">
+            <div style="text-align:right;max-width:220px;padding-right:8px">
               <div style="font-size:14px;font-weight:700;color:#111827">{{ settings.company_website || 'mitranz.com' }}</div>
               <div style="font-size:12px;color:#374151;line-height:1.8;margin-top:4px">
                 {{ settings.company_name }}<br>
@@ -461,32 +461,32 @@
         <div style="padding:0 48px">
           <table style="width:100%;border-collapse:collapse">
             <thead>
-              <tr style="background:#f3f4f6">
-                <th style="padding:12px 16px;text-align:left;font-size:12px;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb">Description</th>
-                <th style="padding:12px 16px;text-align:right;font-size:12px;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb;width:160px">Total</th>
+              <tr style="background:#e5e7eb">
+                <th style="padding:12px 16px;text-align:left;font-size:12px;font-weight:700;color:#111827;border-top:2px solid #d1d5db;border-bottom:2px solid #d1d5db">Description</th>
+                <th style="padding:12px 16px;text-align:right;font-size:12px;font-weight:700;color:#111827;border-top:2px solid #d1d5db;border-bottom:2px solid #d1d5db;width:160px">Total</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in invoice.invoice_items" :key="item.id">
-                <td style="padding:12px 16px;font-size:13px;color:#374151;border-bottom:1px solid #f3f4f6">
+              <tr v-for="(item, i) in invoice.invoice_items" :key="item.id" :style="i % 2 === 0 ? 'background:white' : 'background:#fafafa'">
+                <td style="padding:12px 16px;font-size:13px;color:#374151;border-bottom:1px solid #e5e7eb">
                   {{ item.description }}
                   <span v-if="item.quantity > 1" style="color:#9ca3af;font-size:12px"> (×{{ item.quantity }})</span>
                 </td>
-                <td style="padding:12px 16px;text-align:right;font-size:13px;color:#374151;border-bottom:1px solid #f3f4f6">{{ fmtRp(item.total) }} IDR</td>
+                <td style="padding:12px 16px;text-align:right;font-size:13px;color:#374151;border-bottom:1px solid #e5e7eb">{{ fmtRp(item.total) }} IDR</td>
               </tr>
             </tbody>
             <tfoot>
-              <tr style="background:#f3f4f6">
-                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:600;color:#374151">Sub Total</td>
-                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:700;color:#111827">{{ fmtRp(invoice.subtotal || invoice.total) }} IDR</td>
+              <tr style="background:#e5e7eb;border-top:2px solid #d1d5db">
+                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:600;color:#374151;border-bottom:1px solid #d1d5db">Sub Total</td>
+                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:700;color:#111827;border-bottom:1px solid #d1d5db">{{ fmtRp(invoice.subtotal || invoice.total) }} IDR</td>
               </tr>
-              <tr v-if="invoice.tax > 0" style="background:#f3f4f6">
-                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:600;color:#374151">Tax</td>
-                <td style="padding:10px 16px;text-align:right;font-size:13px;color:#374151">{{ fmtRp(invoice.tax) }} IDR</td>
+              <tr v-if="invoice.tax > 0" style="background:#e5e7eb">
+                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:600;color:#374151;border-bottom:1px solid #d1d5db">Tax</td>
+                <td style="padding:10px 16px;text-align:right;font-size:13px;color:#374151;border-bottom:1px solid #d1d5db">{{ fmtRp(invoice.tax) }} IDR</td>
               </tr>
-              <tr style="background:#f3f4f6">
-                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:800;color:#111827">Total</td>
-                <td style="padding:10px 16px;text-align:right;font-size:14px;font-weight:900;color:#111827">{{ fmtRp(invoice.total) }} IDR</td>
+              <tr style="background:#e5e7eb">
+                <td style="padding:12px 16px;text-align:right;font-size:13px;font-weight:800;color:#111827;border-top:2px solid #9ca3af">Total</td>
+                <td style="padding:12px 16px;text-align:right;font-size:15px;font-weight:900;color:#111827;border-top:2px solid #9ca3af">{{ fmtRp(invoice.total) }} IDR</td>
               </tr>
             </tfoot>
           </table>
@@ -606,6 +606,13 @@ const statusBadge = (s: string) => ({
   #invoice-print { background: white !important; padding: 0 !important; min-height: auto !important; }
   #invoice-print > div { box-shadow: none !important; border-radius: 0 !important; max-width: 100% !important; }
   body { margin: 0; }
+
+  /* Paksa warna background tampil saat print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
 }
 
 @media (max-width: 768px) {
