@@ -409,9 +409,9 @@
       <div style="max-width:800px;margin:0 auto;background:white;box-shadow:0 2px 16px rgba(0,0,0,0.1);position:relative;overflow:hidden">
 
         <!-- Pita status pojok kanan atas -->
-        <!-- Pita status 45 derajat -->
-        <div style="position:absolute;top:0;right:0;width:210px;height:210px;overflow:hidden;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact">
-          <div :style="'position:absolute;top:42px;right:-52px;width:260px;text-align:center;transform:rotate(45deg);transform-origin:center center;print-color-adjust:exact;-webkit-print-color-adjust:exact;' + (invoice.status === 'paid' ? 'background:#10b981' : 'background:#ef4444')"
+        <!-- Pita status simetris dari pojok kanan atas -->
+        <div style="position:absolute;top:0;right:0;width:180px;height:180px;overflow:hidden;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact">
+          <div :style="'position:absolute;top:0;right:0;width:254px;text-align:center;transform:rotate(45deg);transform-origin:top right;print-color-adjust:exact;-webkit-print-color-adjust:exact;' + (invoice.status === 'paid' ? 'background:#10b981' : 'background:#ef4444')"
             style="overflow:hidden">
             <div :style="'height:2.5px;width:100%;' + (invoice.status === 'paid' ? 'background:#047857' : 'background:#b91c1c')"></div>
             <div style="padding:10px 0;font-size:19px;font-weight:900;letter-spacing:3px;color:white">
