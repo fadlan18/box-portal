@@ -408,26 +408,20 @@
       style="background:#f5f5f5;min-height:100vh;padding:40px 24px">
       <div style="max-width:800px;margin:0 auto;background:white;box-shadow:0 2px 16px rgba(0,0,0,0.1);position:relative;overflow:hidden">
 
-        <!-- Pita status SVG — presisi sempurna -->
-        <svg style="position:absolute;top:0;right:0;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact"
-          width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-          <!-- Segitiga latar -->
-          <polygon :points="'0,0 160,0 160,160'"
-            :fill="invoice.status === 'paid' ? '#10b981' : '#ef4444'"/>
-          <!-- Garis border atas -->
-          <line x1="28" y1="0" x2="160" y2="132"
-            :stroke="invoice.status === 'paid' ? '#047857' : '#b91c1c'" stroke-width="2.5"/>
-          <!-- Garis border bawah -->
-          <line x1="0" y1="0" x2="160" y2="160"
-            :stroke="invoice.status === 'paid' ? '#047857' : '#b91c1c'" stroke-width="2.5" opacity="0"/>
-          <!-- Teks -->
-          <text x="118" y="52" text-anchor="middle"
-            font-family="Arial, sans-serif" font-size="16" font-weight="900"
-            letter-spacing="2" fill="white"
-            transform="rotate(45, 118, 52)">
-            {{ invoice.status === 'paid' ? 'PAID' : 'UNPAID' }}
-          </text>
-        </svg>
+        <!-- Pita status pojok kanan atas -->
+        <div style="position:absolute;top:0;right:0;width:150px;height:150px;overflow:hidden;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact">
+          <div :style="'position:absolute;top:30px;right:-42px;width:190px;padding:0;text-align:center;transform:rotate(45deg);print-color-adjust:exact;-webkit-print-color-adjust:exact;' + (invoice.status === 'paid' ? 'background:#10b981' : 'background:#ef4444')"
+            style="overflow:hidden">
+            <!-- Garis gelap atas -->
+            <div :style="'height:2px;width:100%;' + (invoice.status === 'paid' ? 'background:#047857' : 'background:#b91c1c')"></div>
+            <!-- Teks pita -->
+            <div style="padding:7px 0;font-size:15px;font-weight:900;letter-spacing:3px;color:white">
+              {{ invoice.status === 'paid' ? 'PAID' : 'UNPAID' }}
+            </div>
+            <!-- Garis gelap bawah -->
+            <div :style="'height:2px;width:100%;' + (invoice.status === 'paid' ? 'background:#047857' : 'background:#b91c1c')"></div>
+          </div>
+        </div>
 
         <!-- Header -->
         <div style="padding:40px 48px 32px;border-bottom:1px solid #e5e7eb">
@@ -440,7 +434,7 @@
               </div>
             </div>
             <!-- Info perusahaan kanan -->
-            <div style="text-align:right;max-width:200px;padding-right:8px;margin-top:76px">
+            <div style="text-align:right;max-width:200px;padding-right:8px;margin-top:28px">
               <div style="font-size:14px;font-weight:700;color:#111827">{{ settings.company_website || 'mitranz.com' }}</div>
               <div style="font-size:12px;color:#374151;line-height:1.8;margin-top:4px">
                 {{ settings.company_name }}<br>
@@ -471,67 +465,62 @@
         </div>
 
         <!-- Tabel item -->
-        <div style="padding:0 48px 8px">
-          <table style="width:100%;border-collapse:collapse;border:1px solid #d1d5db">
+        <div style="padding:0 48px">
+          <table style="width:100%;border-collapse:collapse">
             <thead>
               <tr style="background:#e5e7eb">
-                <th style="padding:10px 14px;text-align:center;font-size:12px;font-weight:700;color:#111827;border-bottom:1px solid #9ca3af;border-right:1px solid #d1d5db">Description</th>
-                <th style="padding:10px 14px;text-align:center;font-size:12px;font-weight:700;color:#111827;border-bottom:1px solid #9ca3af;width:170px">Total</th>
+                <th style="padding:12px 16px;text-align:left;font-size:12px;font-weight:700;color:#111827;border-top:2px solid #d1d5db;border-bottom:2px solid #d1d5db">Description</th>
+                <th style="padding:12px 16px;text-align:right;font-size:12px;font-weight:700;color:#111827;border-top:2px solid #d1d5db;border-bottom:2px solid #d1d5db;width:160px">Total</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in invoice.invoice_items" :key="item.id">
-                <td style="padding:10px 14px;font-size:13px;color:#374151;border-bottom:1px solid #e5e7eb;border-right:1px solid #e5e7eb">
+              <tr v-for="(item, i) in invoice.invoice_items" :key="item.id" :style="i % 2 === 0 ? 'background:white' : 'background:#fafafa'">
+                <td style="padding:12px 16px;font-size:13px;color:#374151;border-bottom:1px solid #e5e7eb">
                   {{ item.description }}
-                  <span v-if="item.quantity > 1" style="color:#9ca3af;font-size:11px"> ×{{ item.quantity }}</span>
+                  <span v-if="item.quantity > 1" style="color:#9ca3af;font-size:12px"> (×{{ item.quantity }})</span>
                 </td>
-                <td style="padding:10px 14px;text-align:right;font-size:13px;color:#374151;border-bottom:1px solid #e5e7eb">{{ fmtRp(item.total) }} IDR</td>
-              </tr>
-              <!-- Baris kosong untuk spacing seperti referensi -->
-              <tr style="height:48px">
-                <td style="border-right:1px solid #e5e7eb"></td>
-                <td></td>
+                <td style="padding:12px 16px;text-align:right;font-size:13px;color:#374151;border-bottom:1px solid #e5e7eb">{{ fmtRp(item.total) }} IDR</td>
               </tr>
             </tbody>
             <tfoot>
-              <tr style="background:#f3f4f6;border-top:1px solid #9ca3af">
-                <td style="padding:9px 14px;text-align:right;font-size:12px;font-weight:600;color:#374151;border-right:1px solid #d1d5db;border-bottom:1px solid #d1d5db">Sub Total</td>
-                <td style="padding:9px 14px;text-align:right;font-size:12px;font-weight:700;color:#111827;border-bottom:1px solid #d1d5db">{{ fmtRp(invoice.subtotal || invoice.total) }} IDR</td>
+              <tr style="background:#e5e7eb;border-top:2px solid #d1d5db">
+                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:600;color:#374151;border-bottom:1px solid #d1d5db">Sub Total</td>
+                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:700;color:#111827;border-bottom:1px solid #d1d5db">{{ fmtRp(invoice.subtotal || invoice.total) }} IDR</td>
               </tr>
-              <tr style="background:#f3f4f6">
-                <td style="padding:9px 14px;text-align:right;font-size:12px;font-weight:600;color:#374151;border-right:1px solid #d1d5db;border-bottom:1px solid #d1d5db">Credit</td>
-                <td style="padding:9px 14px;text-align:right;font-size:12px;color:#374151;border-bottom:1px solid #d1d5db">Rp 0 IDR</td>
+              <tr v-if="invoice.tax > 0" style="background:#e5e7eb">
+                <td style="padding:10px 16px;text-align:right;font-size:13px;font-weight:600;color:#374151;border-bottom:1px solid #d1d5db">Tax</td>
+                <td style="padding:10px 16px;text-align:right;font-size:13px;color:#374151;border-bottom:1px solid #d1d5db">{{ fmtRp(invoice.tax) }} IDR</td>
               </tr>
               <tr style="background:#e5e7eb">
-                <td style="padding:9px 14px;text-align:right;font-size:12px;font-weight:800;color:#111827;border-right:1px solid #d1d5db">Total</td>
-                <td style="padding:9px 14px;text-align:right;font-size:13px;font-weight:900;color:#111827">{{ fmtRp(invoice.total) }} IDR</td>
+                <td style="padding:12px 16px;text-align:right;font-size:13px;font-weight:800;color:#111827;border-top:2px solid #9ca3af">Total</td>
+                <td style="padding:12px 16px;text-align:right;font-size:15px;font-weight:900;color:#111827;border-top:2px solid #9ca3af">{{ fmtRp(invoice.total) }} IDR</td>
               </tr>
             </tfoot>
           </table>
         </div>
 
-        <!-- Transactions section — persis seperti referensi -->
-        <div v-if="invoice.payments && invoice.payments.length > 0" style="padding:24px 48px 0">
-          <div style="font-size:15px;font-weight:800;color:#111827;margin-bottom:12px">Transactions</div>
-          <table style="width:100%;border-collapse:collapse;border:1px solid #d1d5db">
+        <!-- Transactions (jika sudah paid) -->
+        <div v-if="invoice.payments && invoice.payments.length > 0" style="padding:32px 48px 0">
+          <div style="font-size:15px;font-weight:800;color:#111827;margin-bottom:16px">Transactions</div>
+          <table style="width:100%;border-collapse:collapse">
             <thead>
-              <tr style="background:#e5e7eb">
-                <th style="padding:9px 14px;text-align:left;font-size:12px;font-weight:700;color:#111827;border-bottom:1px solid #9ca3af;border-right:1px solid #d1d5db">Transaction Date</th>
-                <th style="padding:9px 14px;text-align:left;font-size:12px;font-weight:700;color:#111827;border-bottom:1px solid #9ca3af;border-right:1px solid #d1d5db">Gateway</th>
-                <th style="padding:9px 14px;text-align:left;font-size:12px;font-weight:700;color:#111827;border-bottom:1px solid #9ca3af;border-right:1px solid #d1d5db">Transaction ID</th>
-                <th style="padding:9px 14px;text-align:right;font-size:12px;font-weight:700;color:#111827;border-bottom:1px solid #9ca3af">Amount</th>
+              <tr style="background:#f3f4f6">
+                <th style="padding:10px 14px;text-align:left;font-size:12px;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb">Transaction Date</th>
+                <th style="padding:10px 14px;text-align:left;font-size:12px;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb">Gateway</th>
+                <th style="padding:10px 14px;text-align:left;font-size:12px;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb">Transaction ID</th>
+                <th style="padding:10px 14px;text-align:right;font-size:12px;font-weight:700;color:#374151;border-bottom:1px solid #e5e7eb">Amount</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="pay in invoice.payments" :key="pay.id" style="background:#f9fafb">
-                <td style="padding:9px 14px;font-size:12px;color:#374151;border-bottom:1px solid #e5e7eb;border-right:1px solid #e5e7eb">{{ fmtDateEn(pay.paid_at || pay.created_at) }}</td>
-                <td style="padding:9px 14px;font-size:12px;color:#374151;border-bottom:1px solid #e5e7eb;border-right:1px solid #e5e7eb;text-transform:capitalize">{{ pay.gateway || pay.method || 'Transfer Manual' }}</td>
-                <td style="padding:9px 14px;font-size:11px;color:#374151;border-bottom:1px solid #e5e7eb;border-right:1px solid #e5e7eb;font-family:monospace;letter-spacing:0.5px">{{ (pay.id || '').slice(0,22).toUpperCase() }}</td>
-                <td style="padding:9px 14px;text-align:right;font-size:12px;font-weight:600;color:#111827;border-bottom:1px solid #e5e7eb">{{ fmtRp(pay.amount) }} IDR</td>
+              <tr v-for="pay in invoice.payments" :key="pay.id" style="background:#fafafa">
+                <td style="padding:10px 14px;font-size:12px;color:#374151;border-bottom:1px solid #f3f4f6">{{ fmtDateEn(pay.paid_at || pay.created_at) }}</td>
+                <td style="padding:10px 14px;font-size:12px;color:#374151;border-bottom:1px solid #f3f4f6;text-transform:capitalize">{{ pay.gateway || pay.method || '-' }}</td>
+                <td style="padding:10px 14px;font-size:11px;color:#6b7280;border-bottom:1px solid #f3f4f6;font-family:monospace">{{ pay.id?.slice(0,20).toUpperCase() || '-' }}</td>
+                <td style="padding:10px 14px;text-align:right;font-size:12px;font-weight:600;color:#111827;border-bottom:1px solid #f3f4f6">{{ fmtRp(pay.amount) }} IDR</td>
               </tr>
-              <tr style="background:#e5e7eb;border-top:1px solid #9ca3af">
-                <td colspan="3" style="padding:9px 14px;text-align:right;font-size:12px;font-weight:700;color:#111827;border-right:1px solid #d1d5db">Balance</td>
-                <td style="padding:9px 14px;text-align:right;font-size:12px;font-weight:700;color:#111827">Rp 0 IDR</td>
+              <tr style="background:#f3f4f6">
+                <td colspan="3" style="padding:10px 14px;text-align:right;font-size:12px;font-weight:700;color:#374151">Balance</td>
+                <td style="padding:10px 14px;text-align:right;font-size:12px;font-weight:700;color:#111827">Rp 0 IDR</td>
               </tr>
             </tbody>
           </table>
