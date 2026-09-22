@@ -2,7 +2,7 @@
   <div style="height:100vh;display:flex;overflow:hidden;font-family:Inter,sans-serif">
 
     <!-- KIRI 58%: Brand panel -->
-    <div class="auth-left" style="width:58%;height:100vh;background:white;display:flex;flex-direction:column;justify-content:center;padding:56px 64px;position:relative;overflow:hidden;border-right:1px solid #e2e8f0">
+    <div class="auth-left" style="width:58%;height:100vh;background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#1a4fa0 100%);display:flex;flex-direction:column;justify-content:center;padding:56px 64px;position:relative;overflow:hidden;border-right:none">
 
       <!-- Dekorasi subtle -->
       <div style="position:absolute;top:0;right:0;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(26,79,160,0.06),transparent 70%);pointer-events:none"></div>
@@ -13,13 +13,13 @@
         <!-- Logo -->
         <a href="/" style="text-decoration:none;display:inline-block;margin-bottom:40px">
           <div style="font-size:24px;font-weight:900;letter-spacing:-0.5px">
-            <span style="color:#1a4fa0">mi</span><span style="color:#c0192c">TRANZ</span>
+            <span style="color:white">mi</span><span style="color:#fbbf24">TRANZ</span>
           </div>
         </a>
 
         <!-- Label alur -->
         <div style="margin-bottom:20px">
-          <div style="font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:2px;text-transform:uppercase">Alur Pemesanan</div>
+          <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase">Alur Pemesanan</div>
         </div>
 
         <!-- 4 Steps — besar, warna segar -->
@@ -44,9 +44,9 @@
         <!-- Benefits -->
         <div style="display:flex;gap:20px;flex-wrap:wrap">
           <div v-for="b in benefits" :key="b"
-            style="display:flex;align-items:center;gap:6px;font-size:12px;color:#6b7280;font-weight:500">
-            <div style="width:18px;height:18px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <span style="font-size:9px;font-weight:900;color:#16a34a">✓</span>
+            style="display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.55);font-weight:500">
+            <div style="width:18px;height:18px;border-radius:50%;background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <span style="font-size:9px;font-weight:900;color:#fbbf24">✓</span>
             </div>
             {{ b }}
           </div>
@@ -170,10 +170,10 @@ const error = ref('')
 const success = ref('')
 
 const steps = [
-  { icon: '📦', title: 'Pilih Paket', desc: 'Sesuai kebutuhan & anggaran Anda', bg: 'background:#e0f2fe;border:1px solid #bae6fd', textColor: '#0369a1' },
-  { icon: '📋', title: 'Buat Order', desc: 'Konfigurasi & konfirmasi pesanan', bg: 'background:#f0fdf4;border:1px solid #bbf7d0', textColor: '#15803d' },
-  { icon: '💳', title: 'Bayar', desc: 'QRIS atau Transfer Bank', bg: 'background:#fefce8;border:1px solid #fde68a', textColor: '#92400e' },
-  { icon: '🚀', title: 'Aplikasi Aktif', desc: 'Siap dalam 3-7 hari kerja', bg: 'background:#f5f3ff;border:1px solid #ddd6fe', textColor: '#6d28d9' },
+  { icon: '📦', title: 'Pilih Paket', desc: 'Sesuai kebutuhan & anggaran Anda', bg: 'background:#dbeafe;border:1px solid #93c5fd', textColor: '#1e40af' },
+  { icon: '📋', title: 'Buat Order', desc: 'Konfigurasi & konfirmasi pesanan', bg: 'background:#dcfce7;border:1px solid #86efac', textColor: '#15803d' },
+  { icon: '💳', title: 'Bayar', desc: 'QRIS atau Transfer Bank', bg: 'background:#fef9c3;border:1px solid #fde047', textColor: '#854d0e' },
+  { icon: '🚀', title: 'Aplikasi Aktif', desc: 'Siap dalam 3-7 hari kerja', bg: 'background:#ede9fe;border:1px solid #c4b5fd', textColor: '#5b21b6' },
 ]
 
 const benefits = [
