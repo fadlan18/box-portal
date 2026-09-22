@@ -408,18 +408,26 @@
       style="background:#f5f5f5;min-height:100vh;padding:40px 24px">
       <div style="max-width:800px;margin:0 auto;background:white;box-shadow:0 2px 16px rgba(0,0,0,0.1);position:relative;overflow:hidden">
 
-        <!-- Pita status pojok kanan atas -->
-        <!-- Pita status 45 derajat -->
-        <div style="position:absolute;top:0;right:0;width:200px;height:200px;overflow:hidden;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact">
-          <div :style="'position:absolute;top:42px;right:-52px;width:260px;text-align:center;transform:rotate(45deg);transform-origin:center center;print-color-adjust:exact;-webkit-print-color-adjust:exact;' + (invoice.status === 'paid' ? 'background:#10b981' : 'background:#ef4444')"
-            style="overflow:hidden">
-            <div :style="'height:2.5px;width:100%;' + (invoice.status === 'paid' ? 'background:#047857' : 'background:#b91c1c')"></div>
-            <div style="padding:10px 0;font-size:19px;font-weight:900;letter-spacing:3px;color:white">
-              {{ invoice.status === 'paid' ? 'PAID' : 'UNPAID' }}
-            </div>
-            <div :style="'height:2.5px;width:100%;' + (invoice.status === 'paid' ? 'background:#047857' : 'background:#b91c1c')"></div>
-          </div>
-        </div>
+        <!-- Pita status SVG — presisi sempurna -->
+        <svg style="position:absolute;top:0;right:0;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact"
+          width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Segitiga latar -->
+          <polygon :points="'0,0 160,0 160,160'"
+            :fill="invoice.status === 'paid' ? '#10b981' : '#ef4444'"/>
+          <!-- Garis border atas -->
+          <line x1="28" y1="0" x2="160" y2="132"
+            :stroke="invoice.status === 'paid' ? '#047857' : '#b91c1c'" stroke-width="2.5"/>
+          <!-- Garis border bawah -->
+          <line x1="0" y1="0" x2="160" y2="160"
+            :stroke="invoice.status === 'paid' ? '#047857' : '#b91c1c'" stroke-width="2.5" opacity="0"/>
+          <!-- Teks -->
+          <text x="118" y="52" text-anchor="middle"
+            font-family="Arial, sans-serif" font-size="16" font-weight="900"
+            letter-spacing="2" fill="white"
+            transform="rotate(45, 118, 52)">
+            {{ invoice.status === 'paid' ? 'PAID' : 'UNPAID' }}
+          </text>
+        </svg>
 
         <!-- Header -->
         <div style="padding:40px 48px 32px;border-bottom:1px solid #e5e7eb">
