@@ -406,7 +406,7 @@
     <!-- ==================== TEMPLATE: PROFESSIONAL ==================== -->
     <div v-else-if="invoice && template === 'professional'" id="invoice-print"
       style="background:#f5f5f5;min-height:100vh;padding:40px 24px">
-      <div style="max-width:800px;margin:0 auto;background:white;box-shadow:0 2px 16px rgba(0,0,0,0.1);position:relative;overflow:hidden">
+      <div class="invoice-professional-wrapper" style="max-width:800px;margin:0 auto;background:white;box-shadow:0 2px 16px rgba(0,0,0,0.1);position:relative;overflow:hidden">
 
         <!-- Pita status pojok kanan atas -->
         <div style="position:absolute;top:0;right:0;width:150px;height:150px;overflow:hidden;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact">
@@ -612,6 +612,7 @@ const statusBadge = (s: string) => ({
   .no-print { display: none !important; }
   #invoice-print { background: white !important; padding: 0 !important; min-height: auto !important; }
   #invoice-print > div { box-shadow: none !important; border-radius: 0 !important; max-width: 100% !important; }
+  .invoice-professional-wrapper { box-shadow: none !important; }
   body { margin: 0; }
 
   /* Paksa warna background tampil saat print */

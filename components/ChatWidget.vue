@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="no-print">
     <!-- Floating Button -->
     <div v-if="!isOpen" class="fixed bottom-6 right-6 z-50">
       <div class="absolute inset-0 rounded-full" style="animation:ping 2s cubic-bezier(0,0,0.2,1) infinite;background:rgba(26,79,160,0.2)"/>
