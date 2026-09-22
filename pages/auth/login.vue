@@ -19,7 +19,7 @@
 
         <!-- Label alur -->
         <div style="margin-bottom:20px">
-          <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase">Alur Pemesanan</div>
+          <div style="font-size:15px;font-weight:800;color:white;letter-spacing:1px;margin-bottom:4px">Alur Pemesanan</div>
         </div>
 
         <!-- 4 Steps — besar, warna segar -->
@@ -44,9 +44,9 @@
         <!-- Benefits -->
         <div style="display:flex;gap:20px;flex-wrap:wrap">
           <div v-for="b in benefits" :key="b"
-            style="display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,0.55);font-weight:500">
-            <div style="width:18px;height:18px;border-radius:50%;background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <span style="font-size:9px;font-weight:900;color:#fbbf24">✓</span>
+            style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.9);font-weight:600">
+            <div style="width:20px;height:20px;border-radius:50%;background:rgba(251,191,36,0.25);border:1px solid rgba(251,191,36,0.5);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <span style="font-size:10px;font-weight:900;color:#fbbf24">✓</span>
             </div>
             {{ b }}
           </div>
