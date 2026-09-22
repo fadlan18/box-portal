@@ -748,8 +748,9 @@ const statusBadge = (s: string) => ({
 
 @media print {
   .no-print { display: none !important; }
+  html, body { background: white !important; margin: 0 !important; padding: 0 !important; }
   #invoice-print { background: white !important; padding: 0 !important; min-height: auto !important; }
-  #invoice-print > div { box-shadow: none !important; border-radius: 0 !important; max-width: 100% !important; }
+  #invoice-print > div { box-shadow: none !important; border-radius: 0 !important; max-width: 100% !important; background: white !important; }
   .invoice-professional-wrapper { box-shadow: none !important; }
   body { margin: 0; }
 
