@@ -2,7 +2,7 @@
   <div style="height:100vh;display:flex;overflow:hidden;font-family:Inter,sans-serif">
 
     <!-- KIRI 58%: Brand panel -->
-    <div class="auth-left" style="width:58%;height:100vh;background:linear-gradient(145deg,#f8faff 0%,#eef2ff 100%);display:flex;flex-direction:column;justify-content:center;padding:56px 64px;position:relative;overflow:hidden;border-right:1px solid #e2e8f0">
+    <div class="auth-left" style="width:58%;height:100vh;background:white;display:flex;flex-direction:column;justify-content:center;padding:56px 64px;position:relative;overflow:hidden;border-right:1px solid #e2e8f0">
 
       <!-- Dekorasi subtle -->
       <div style="position:absolute;top:0;right:0;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(26,79,160,0.06),transparent 70%);pointer-events:none"></div>
