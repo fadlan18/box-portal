@@ -434,7 +434,7 @@
               </div>
             </div>
             <!-- Info perusahaan kanan -->
-            <div style="text-align:right;max-width:200px;padding-right:8px;margin-top:52px">
+            <div style="text-align:right;max-width:200px;padding-right:8px;margin-top:76px">
               <div style="font-size:14px;font-weight:700;color:#111827">{{ settings.company_website || 'mitranz.com' }}</div>
               <div style="font-size:12px;color:#374151;line-height:1.8;margin-top:4px">
                 {{ settings.company_name }}<br>
