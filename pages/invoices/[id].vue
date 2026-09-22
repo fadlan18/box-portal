@@ -35,7 +35,7 @@
 
     <!-- ==================== TEMPLATE: MODERN ==================== -->
     <div v-else-if="invoice && template === 'modern'" id="invoice-print"
-      style="background:#f0f4fa;min-height:100vh;padding:40px 24px">
+      style="background:white;min-height:100vh;padding:40px 24px">
       <div style="max-width:800px;margin:0 auto;background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
 
         <!-- Header berwarna -->
@@ -238,7 +238,7 @@
 
     <!-- ==================== TEMPLATE: CORPORATE ==================== -->
     <div v-else-if="invoice && template === 'corporate'" id="invoice-print"
-      style="background:#f0f4fa;min-height:100vh;padding:40px 24px">
+      style="background:white;min-height:100vh;padding:40px 24px">
       <div style="max-width:800px;margin:0 auto;background:white;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
         <div style="background:#0f172a;padding:40px 48px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px">
@@ -405,7 +405,7 @@
 
     <!-- ==================== TEMPLATE: PROFESSIONAL ==================== -->
     <div v-else-if="invoice && template === 'professional'" id="invoice-print"
-      style="background:#f5f5f5;min-height:100vh;padding:40px 24px">
+      style="background:white;min-height:100vh;padding:40px 24px">
       <div class="invoice-professional-wrapper" style="max-width:800px;margin:0 auto;background:white;box-shadow:0 2px 16px rgba(0,0,0,0.1);position:relative;overflow:hidden">
 
         <!-- Pita status pojok kanan atas -->
