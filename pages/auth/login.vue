@@ -20,56 +20,20 @@
           <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:2px">Platform Aplikasi Digital Terpercaya</div>
         </a>
 
-        <!-- Mockup dashboard -->
-        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;overflow:hidden;margin-bottom:28px;box-shadow:0 24px 48px rgba(0,0,0,0.3)">
-          <!-- Browser bar -->
-          <div style="background:rgba(255,255,255,0.06);padding:8px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,0.07)">
-            <div style="display:flex;gap:5px">
-              <div style="width:7px;height:7px;border-radius:50%;background:#ef4444;opacity:0.8"></div>
-              <div style="width:7px;height:7px;border-radius:50%;background:#fbbf24;opacity:0.8"></div>
-              <div style="width:7px;height:7px;border-radius:50%;background:#10b981;opacity:0.8"></div>
-            </div>
-            <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:4px;padding:3px 10px;font-size:9px;color:rgba(255,255,255,0.3);font-family:monospace">mitranz.com/dashboard</div>
-          </div>
-          <!-- Stats row -->
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.07)">
-            <div style="padding:12px 14px;background:#0f1a2e">
-              <div style="font-size:8px;color:rgba(255,255,255,0.35);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.5px">Layanan</div>
-              <div style="font-size:12px;font-weight:700;color:#10b981">● Aktif</div>
-            </div>
-            <div style="padding:12px 14px;background:#0f1a2e">
-              <div style="font-size:8px;color:rgba(255,255,255,0.35);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.5px">Invoice</div>
-              <div style="font-size:12px;font-weight:700;color:#fbbf24">● Lunas</div>
-            </div>
-            <div style="padding:12px 14px;background:#0f1a2e">
-              <div style="font-size:8px;color:rgba(255,255,255,0.35);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.5px">Progres</div>
-              <div style="font-size:12px;font-weight:700;color:#60a5fa">▓▓▓░ 80%</div>
-            </div>
-          </div>
-          <!-- Invoice rows -->
-          <div style="padding:10px 14px;background:#0a1628">
-            <div v-for="(row, i) in mockRows" :key="i"
-              style="display:flex;align-items:center;justify-content:space-between;padding:7px 0"
-              :style="i < mockRows.length-1 ? 'border-bottom:1px solid rgba(255,255,255,0.05)' : ''">
-              <div style="font-size:9px;color:rgba(255,255,255,0.5);font-family:monospace">{{ row.inv }}</div>
-              <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.8)">{{ row.total }}</div>
-              <div style="font-size:8px;font-weight:700;padding:2px 8px;border-radius:100px"
-                :style="row.status === 'Lunas' ? 'background:rgba(16,185,129,0.15);color:#10b981' : 'background:rgba(251,191,36,0.15);color:#fbbf24'">
-                {{ row.status }}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4 Fase — horizontal compact -->
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px">
+        <!-- 4 Card Alur — besar, jelas, menarik -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px">
           <div v-for="(step, i) in steps" :key="i"
-            style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 10px;text-align:center;position:relative">
-            <!-- Connector -->
-            <div v-if="i < steps.length-1"
-              style="position:absolute;right:-5px;top:50%;transform:translateY(-50%);width:10px;height:1px;background:rgba(255,255,255,0.15);z-index:2"></div>
-            <div style="font-size:18px;margin-bottom:6px">{{ step.icon }}</div>
-            <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.85);line-height:1.3">{{ step.title }}</div>
+            style="border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden"
+            :style="step.cardStyle">
+            <!-- Nomor watermark -->
+            <div style="position:absolute;right:12px;top:8px;font-size:36px;font-weight:900;opacity:0.08;line-height:1">{{ i+1 }}</div>
+            <!-- Ikon -->
+            <div style="font-size:26px">{{ step.icon }}</div>
+            <!-- Teks -->
+            <div>
+              <div style="font-size:13px;font-weight:800;margin-bottom:4px" :style="'color:' + step.titleColor">{{ step.title }}</div>
+              <div style="font-size:11px;line-height:1.5;color:rgba(255,255,255,0.55)">{{ step.desc }}</div>
+            </div>
           </div>
         </div>
 
@@ -193,11 +157,6 @@ const loading = ref(false)
 const error = ref('')
 const success = ref('')
 
-const mockRows = [
-  { inv: 'INV-2026-00012', total: 'Rp 3.000.000', status: 'Lunas' },
-  { inv: 'INV-2026-00013', total: 'Rp 5.500.000', status: 'Proses' },
-]
-
 const benefits = [
   'Aplikasi siap 3-7 hari kerja',
   'Harga transparan',
@@ -205,10 +164,34 @@ const benefits = [
 ]
 
 const steps = [
-  { icon: '📦', title: 'Pilih Paket' },
-  { icon: '📋', title: 'Buat Order' },
-  { icon: '💳', title: 'Bayar' },
-  { icon: '🚀', title: 'Aktif' },
+  {
+    icon: '📦',
+    title: 'Pilih Paket',
+    desc: 'Pilih paket sesuai kebutuhan dan anggaran Anda',
+    cardStyle: 'background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(16,185,129,0.05));border:1px solid rgba(16,185,129,0.2)',
+    titleColor: '#10b981',
+  },
+  {
+    icon: '📋',
+    title: 'Buat Order',
+    desc: 'Tentukan spesifikasi dan konfirmasi pesanan',
+    cardStyle: 'background:linear-gradient(135deg,rgba(96,165,250,0.15),rgba(96,165,250,0.05));border:1px solid rgba(96,165,250,0.2)',
+    titleColor: '#60a5fa',
+  },
+  {
+    icon: '💳',
+    title: 'Bayar',
+    desc: 'Invoice otomatis — bayar via QRIS atau Transfer',
+    cardStyle: 'background:linear-gradient(135deg,rgba(251,191,36,0.15),rgba(251,191,36,0.05));border:1px solid rgba(251,191,36,0.2)',
+    titleColor: '#fbbf24',
+  },
+  {
+    icon: '🚀',
+    title: 'Aplikasi Aktif',
+    desc: 'Tim kami kerjakan, siap dalam 3-7 hari kerja',
+    cardStyle: 'background:linear-gradient(135deg,rgba(167,139,250,0.15),rgba(167,139,250,0.05));border:1px solid rgba(167,139,250,0.2)',
+    titleColor: '#a78bfa',
+  },
 ]
 
 async function submit() {
