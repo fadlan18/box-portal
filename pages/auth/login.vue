@@ -1,143 +1,111 @@
 <template>
-  <div style="min-height:100vh;display:flex;font-family:Inter,sans-serif">
+  <div style="height:100vh;display:flex;overflow:hidden;font-family:Inter,sans-serif">
 
-    <!-- KIRI 60%: Value proposition + Alur — hanya desktop -->
-    <div class="auth-left" style="width:60%;min-height:100vh;background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#1a4fa0 100%);display:flex;flex-direction:column;justify-content:center;padding:56px 64px;position:relative;overflow:hidden">
+    <!-- KIRI 55%: Visual — hanya desktop -->
+    <div class="auth-left" style="width:55%;height:100vh;background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 60%,#1a4fa0 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:48px;position:relative;overflow:hidden">
 
-      <!-- Background decoration -->
-      <div style="position:absolute;inset:0;opacity:0.06;background:radial-gradient(circle at 20% 50%,#60a5fa 0%,transparent 50%),radial-gradient(circle at 80% 20%,#a78bfa 0%,transparent 50%);pointer-events:none"></div>
+      <!-- Dekorasi background -->
+      <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
+        <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(96,165,250,0.12),transparent 70%)"></div>
+        <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(167,139,250,0.1),transparent 70%)"></div>
+      </div>
 
-      <!-- Logo -->
-      <div style="margin-bottom:48px;position:relative">
-        <a href="/" style="text-decoration:none">
-          <div style="font-size:28px;font-weight:900;margin-bottom:8px">
+      <div style="max-width:440px;width:100%;position:relative;z-index:1">
+
+        <!-- Logo -->
+        <a href="/" style="text-decoration:none;display:inline-block;margin-bottom:32px">
+          <div style="font-size:26px;font-weight:900">
             <span style="color:white">mi</span><span style="color:#fbbf24">TRANZ</span>
           </div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-top:2px">Platform Aplikasi Digital Terpercaya</div>
         </a>
-        <div style="font-size:15px;color:rgba(255,255,255,0.65);line-height:1.6;max-width:400px">
-          Platform Aplikasi Digital untuk UMKM dan Pemerintah Desa — profesional, terjangkau, dan terpercaya.
-        </div>
-      </div>
 
-      <!-- 3 Benefit -->
-      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:48px;position:relative">
-        <div v-for="b in benefits" :key="b" style="display:flex;align-items:center;gap:10px">
-          <div style="width:20px;height:20px;border-radius:50%;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <span style="color:#10b981;font-size:11px;font-weight:900">✓</span>
+        <!-- Mockup dashboard -->
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;overflow:hidden;margin-bottom:28px;box-shadow:0 24px 48px rgba(0,0,0,0.3)">
+          <!-- Browser bar -->
+          <div style="background:rgba(255,255,255,0.06);padding:8px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,0.07)">
+            <div style="display:flex;gap:5px">
+              <div style="width:7px;height:7px;border-radius:50%;background:#ef4444;opacity:0.8"></div>
+              <div style="width:7px;height:7px;border-radius:50%;background:#fbbf24;opacity:0.8"></div>
+              <div style="width:7px;height:7px;border-radius:50%;background:#10b981;opacity:0.8"></div>
+            </div>
+            <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:4px;padding:3px 10px;font-size:9px;color:rgba(255,255,255,0.3);font-family:monospace">mitranz.com/dashboard</div>
           </div>
-          <span style="font-size:13px;color:rgba(255,255,255,0.8);font-weight:500">{{ b }}</span>
-        </div>
-      </div>
-
-      <!-- Mockup Dashboard Mini -->
-      <div style="margin-bottom:40px;position:relative">
-        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;overflow:hidden;backdrop-filter:blur(8px)">
-          <!-- Topbar mockup -->
-          <div style="background:rgba(255,255,255,0.06);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08)">
-            <div style="display:flex;align-items:center;gap:6px">
-              <div style="width:8px;height:8px;border-radius:50%;background:#ef4444;opacity:0.7"></div>
-              <div style="width:8px;height:8px;border-radius:50%;background:#fbbf24;opacity:0.7"></div>
-              <div style="width:8px;height:8px;border-radius:50%;background:#10b981;opacity:0.7"></div>
+          <!-- Stats row -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.07)">
+            <div style="padding:12px 14px;background:#0f1a2e">
+              <div style="font-size:8px;color:rgba(255,255,255,0.35);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.5px">Layanan</div>
+              <div style="font-size:12px;font-weight:700;color:#10b981">● Aktif</div>
             </div>
-            <div style="font-size:10px;color:rgba(255,255,255,0.3);font-family:monospace">mitranz.com/dashboard</div>
-            <div style="width:24px"></div>
-          </div>
-          <!-- Stats -->
-          <div style="padding:14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:4px">
-            <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.08)">
-              <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-bottom:4px">Layanan</div>
-              <div style="font-size:11px;font-weight:700;color:#10b981">● Aktif</div>
+            <div style="padding:12px 14px;background:#0f1a2e">
+              <div style="font-size:8px;color:rgba(255,255,255,0.35);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.5px">Invoice</div>
+              <div style="font-size:12px;font-weight:700;color:#fbbf24">● Lunas</div>
             </div>
-            <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.08)">
-              <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-bottom:4px">Invoice</div>
-              <div style="font-size:11px;font-weight:700;color:#fbbf24">● Lunas</div>
-            </div>
-            <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.08)">
-              <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-bottom:4px">Progres</div>
-              <div style="font-size:11px;font-weight:700;color:#60a5fa">80%</div>
+            <div style="padding:12px 14px;background:#0f1a2e">
+              <div style="font-size:8px;color:rgba(255,255,255,0.35);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.5px">Progres</div>
+              <div style="font-size:12px;font-weight:700;color:#60a5fa">▓▓▓░ 80%</div>
             </div>
           </div>
           <!-- Invoice rows -->
-          <div style="padding:0 14px 14px">
-            <div style="background:rgba(255,255,255,0.04);border-radius:10px;border:1px solid rgba(255,255,255,0.07);overflow:hidden">
-              <div style="padding:7px 12px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between">
-                <div style="font-size:9px;color:rgba(255,255,255,0.3)">No. Invoice</div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.3)">Total</div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.3)">Status</div>
-              </div>
-              <div v-for="row in mockRows" :key="row.inv"
-                style="padding:7px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.04)">
-                <div style="font-size:10px;color:rgba(255,255,255,0.6);font-family:monospace">{{ row.inv }}</div>
-                <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.8)">{{ row.total }}</div>
-                <div style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px"
-                  :style="row.status === 'Lunas' ? 'background:rgba(16,185,129,0.2);color:#10b981' : 'background:rgba(251,191,36,0.2);color:#fbbf24'">
-                  {{ row.status }}
-                </div>
+          <div style="padding:10px 14px;background:#0a1628">
+            <div v-for="(row, i) in mockRows" :key="i"
+              style="display:flex;align-items:center;justify-content:space-between;padding:7px 0"
+              :style="i < mockRows.length-1 ? 'border-bottom:1px solid rgba(255,255,255,0.05)' : ''">
+              <div style="font-size:9px;color:rgba(255,255,255,0.5);font-family:monospace">{{ row.inv }}</div>
+              <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.8)">{{ row.total }}</div>
+              <div style="font-size:8px;font-weight:700;padding:2px 8px;border-radius:100px"
+                :style="row.status === 'Lunas' ? 'background:rgba(16,185,129,0.15);color:#10b981' : 'background:rgba(251,191,36,0.15);color:#fbbf24'">
+                {{ row.status }}
               </div>
             </div>
           </div>
         </div>
-        <!-- Glow effect -->
-        <div style="position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);width:70%;height:32px;background:#1a4fa0;filter:blur(28px);opacity:0.35;pointer-events:none"></div>
-      </div>
 
-      <!-- Divider -->
-      <div style="height:1px;background:rgba(255,255,255,0.1);margin-bottom:40px;position:relative"></div>
-
-      <!-- Alur 4 Fase -->
-      <div style="position:relative">
-        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:2px;margin-bottom:28px">ALUR PEMESANAN</div>
-
-        <div style="display:flex;flex-direction:column;gap:0;position:relative">
-          <!-- Garis vertikal -->
-          <div style="position:absolute;left:19px;top:20px;bottom:20px;width:1.5px;background:rgba(255,255,255,0.12)"></div>
-
-          <div v-for="(step, i) in steps" :key="i" style="display:flex;align-items:flex-start;gap:16px;padding-bottom:24px;position:relative">
-            <!-- Ikon lingkaran -->
-            <div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1"
-              :style="step.active
-                ? 'background:#fbbf24;box-shadow:0 0 0 4px rgba(251,191,36,0.2)'
-                : 'background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.15)'">
-              <span :style="step.active ? 'font-size:18px' : 'font-size:16px'">{{ step.icon }}</span>
-            </div>
-            <!-- Teks -->
-            <div style="padding-top:8px">
-              <div style="font-size:14px;font-weight:700;margin-bottom:3px"
-                :style="step.active ? 'color:#fbbf24' : 'color:rgba(255,255,255,0.9)'">
-                {{ step.title }}
-              </div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6">{{ step.desc }}</div>
-            </div>
+        <!-- 4 Fase — horizontal compact -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px">
+          <div v-for="(step, i) in steps" :key="i"
+            style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 10px;text-align:center;position:relative">
+            <!-- Connector -->
+            <div v-if="i < steps.length-1"
+              style="position:absolute;right:-5px;top:50%;transform:translateY(-50%);width:10px;height:1px;background:rgba(255,255,255,0.15);z-index:2"></div>
+            <div style="font-size:18px;margin-bottom:6px">{{ step.icon }}</div>
+            <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.85);line-height:1.3">{{ step.title }}</div>
           </div>
         </div>
-      </div>
 
+        <!-- 3 benefit pills -->
+        <div style="display:flex;gap:8px;margin-top:20px;flex-wrap:wrap">
+          <div v-for="b in benefits" :key="b"
+            style="display:flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:rgba(255,255,255,0.6)">
+            <span style="color:#10b981;font-size:10px">✓</span> {{ b }}
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <!-- KANAN 40%: Form Login/Register -->
-    <div style="width:40%;min-height:100vh;background:white;display:flex;align-items:center;justify-content:center;padding:40px 40px;box-shadow:-4px 0 32px rgba(0,0,0,0.1)">
+    <!-- KANAN 45%: Form -->
+    <div style="width:45%;height:100vh;background:white;display:flex;align-items:center;justify-content:center;padding:40px;overflow-y:auto">
       <div style="width:100%;max-width:360px">
 
-        <!-- Mobile only: Logo -->
-        <div class="mobile-logo" style="display:none;text-align:center;margin-bottom:28px">
-          <a href="/" style="text-decoration:none">
-            <div style="font-size:28px;font-weight:900">
-              <span style="color:#1a4fa0">mi</span><span style="color:#c0192c">TRANZ</span>
-            </div>
-          </a>
+        <!-- Mobile logo -->
+        <div class="mobile-logo" style="display:none;text-align:center;margin-bottom:24px">
+          <div style="font-size:28px;font-weight:900">
+            <span style="color:#1a4fa0">mi</span><span style="color:#c0192c">TRANZ</span>
+          </div>
         </div>
 
-        <!-- Mobile only: benefit pills -->
-        <div class="mobile-benefits" style="display:none;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px">
-          <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:#f0fdf4;color:#15803d">✓ Siap 3-7 hari</span>
-          <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:#eff6ff;color:#1d4ed8">✓ Harga transparan</span>
-          <span style="font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:#f5f3ff;color:#6d28d9">✓ QRIS & Transfer</span>
+        <!-- Mobile benefits -->
+        <div class="mobile-benefits" style="display:none;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:20px">
+          <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;background:#f0fdf4;color:#15803d">✓ Siap 3-7 hari</span>
+          <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;background:#eff6ff;color:#1d4ed8">✓ Transparan</span>
+          <span style="font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;background:#f5f3ff;color:#6d28d9">✓ QRIS & Transfer</span>
         </div>
 
         <!-- Heading -->
         <div style="margin-bottom:28px">
-          <div style="font-size:22px;font-weight:900;color:#111827;margin-bottom:6px">
-            {{ mode === 'login' ? 'Masuk ke Akun' : 'Buat Akun Baru' }}
+          <div style="font-size:24px;font-weight:900;color:#111827;margin-bottom:6px">
+            {{ mode === 'login' ? 'Selamat Datang' : 'Buat Akun Baru' }}
           </div>
           <div style="font-size:13px;color:#6b7280">
             {{ mode === 'login' ? 'Belum punya akun?' : 'Sudah punya akun?' }}
@@ -149,7 +117,7 @@
         </div>
 
         <!-- Form Login -->
-        <div v-if="mode === 'login'" style="display:flex;flex-direction:column;gap:16px">
+        <div v-if="mode === 'login'" style="display:flex;flex-direction:column;gap:14px">
           <div>
             <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">Email</label>
             <input v-model="email" type="email" placeholder="nama@email.com"
@@ -165,14 +133,14 @@
           </div>
           <p v-if="error" style="color:#dc2626;font-size:13px;margin:0">⚠️ {{ error }}</p>
           <button @click="submit" :disabled="loading"
-            style="width:100%;padding:14px;background:linear-gradient(135deg,#1a4fa0,#2563eb);color:white;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(26,79,160,0.3)"
+            style="width:100%;padding:13px;background:linear-gradient(135deg,#1a4fa0,#2563eb);color:white;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(26,79,160,0.3)"
             :style="loading ? 'opacity:0.6;cursor:not-allowed' : ''">
             {{ loading ? 'Memproses...' : 'Masuk →' }}
           </button>
         </div>
 
         <!-- Form Register -->
-        <div v-else style="display:flex;flex-direction:column;gap:16px">
+        <div v-else style="display:flex;flex-direction:column;gap:14px">
           <div>
             <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">Nama Lengkap</label>
             <input v-model="name" type="text" placeholder="Nama Anda"
@@ -195,15 +163,16 @@
           <p v-if="error" style="color:#dc2626;font-size:13px;margin:0">⚠️ {{ error }}</p>
           <p v-if="success" style="color:#16a34a;font-size:13px;margin:0">✅ {{ success }}</p>
           <button @click="submit" :disabled="loading"
-            style="width:100%;padding:14px;background:linear-gradient(135deg,#1a4fa0,#2563eb);color:white;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(26,79,160,0.3)"
+            style="width:100%;padding:13px;background:linear-gradient(135deg,#1a4fa0,#2563eb);color:white;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 16px rgba(26,79,160,0.3)"
             :style="loading ? 'opacity:0.6;cursor:not-allowed' : ''">
             {{ loading ? 'Memproses...' : 'Daftar Sekarang →' }}
           </button>
         </div>
 
-        <div style="text-align:center;margin-top:24px">
+        <div style="text-align:center;margin-top:20px">
           <a href="/" style="color:#9ca3af;font-size:12px;text-decoration:none">← Kembali ke miTRANZ.com</a>
         </div>
+
       </div>
     </div>
   </div>
@@ -230,36 +199,16 @@ const mockRows = [
 ]
 
 const benefits = [
-  'Aplikasi digital siap dalam 3-7 hari kerja',
-  'Harga transparan, tanpa biaya tersembunyi',
-  'Pembayaran QRIS & Transfer Bank',
+  'Aplikasi siap 3-7 hari kerja',
+  'Harga transparan',
+  'QRIS & Transfer Bank',
 ]
 
 const steps = [
-  {
-    icon: '📦',
-    title: 'Pilih Paket',
-    desc: 'Pilih paket sesuai kebutuhan dan anggaran Anda',
-    active: false,
-  },
-  {
-    icon: '📋',
-    title: 'Buat Order',
-    desc: 'Tentukan spesifikasi dan konfirmasi pesanan',
-    active: true,
-  },
-  {
-    icon: '💳',
-    title: 'Bayar',
-    desc: 'Invoice otomatis dikirim — bayar via QRIS atau Transfer',
-    active: false,
-  },
-  {
-    icon: '🚀',
-    title: 'Aplikasi Aktif',
-    desc: 'Tim kami kerjakan, aplikasi siap dalam 3-7 hari kerja',
-    active: false,
-  },
+  { icon: '📦', title: 'Pilih Paket' },
+  { icon: '📋', title: 'Buat Order' },
+  { icon: '💳', title: 'Bayar' },
+  { icon: '🚀', title: 'Aktif' },
 ]
 
 async function submit() {
@@ -290,11 +239,9 @@ async function submit() {
   .auth-left { display: none !important; }
   .mobile-logo { display: block !important; }
   .mobile-benefits { display: flex !important; }
-
-  /* Form full width di mobile */
-  div[style*="width:40%"] {
+  div[style*="width:45%"] {
     width: 100% !important;
-    box-shadow: none !important;
+    height: 100vh !important;
   }
 }
 </style>
