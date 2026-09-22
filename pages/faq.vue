@@ -55,6 +55,8 @@
 </template>
 
 <script setup>
+const { data: csData } = await useCompanySettings()
+const cs = csData.value || {}
 definePageMeta({ layout: false })
 useHead({ title: 'FAQ — miTRANZ | Solusi Platform Digital Profesional' })
 const openMap = ref({})

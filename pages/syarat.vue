@@ -111,6 +111,8 @@
 </template>
 
 <script setup>
+const { data: csData } = await useCompanySettings()
+const cs = csData.value || {}
 definePageMeta({ layout: false })
 useHead({ title: 'Syarat & Ketentuan — miTRANZ | PT Mitra Trans Digital' })
 </script>

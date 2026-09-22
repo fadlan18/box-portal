@@ -100,6 +100,8 @@
 </template>
 
 <script setup>
+const { data: csData } = await useCompanySettings()
+const cs = csData.value || {}
 definePageMeta({ layout: false })
 useHead({ title: 'Kebijakan Refund — miTRANZ | PT Mitra Trans Digital' })
 const eligible = [

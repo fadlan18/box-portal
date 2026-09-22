@@ -266,7 +266,8 @@
 </style>
 
 <script setup lang="ts">
-const cs = await useCompanySettings()
+const { data: csData } = await useCompanySettings()
+const cs = csData.value || {}
 definePageMeta({ layout: false })
 useHead({
   title: 'miTRANZ — Solusi Platform Digital Profesional',

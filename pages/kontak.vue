@@ -140,6 +140,8 @@
 </template>
 
 <script setup>
+const { data: csData } = await useCompanySettings()
+const cs = csData.value || {}
 definePageMeta({ layout: false })
 useHead({ title: 'Kontak Kami — miTRANZ | PT Mitra Trans Digital' })
 const form = ref({ nama: '', email: '', subjek: '', pesan: '' })

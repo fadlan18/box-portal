@@ -127,6 +127,8 @@
 </template>
 
 <script setup>
+const { data: csData } = await useCompanySettings()
+const cs = csData.value || {}
 definePageMeta({ layout: false })
 useHead({ title: 'Kebijakan Privasi — miTRANZ | PT Mitra Trans Digital' })
 </script>

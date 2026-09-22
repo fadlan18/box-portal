@@ -124,6 +124,8 @@
 </template>
 
 <script setup>
+const { data: csData } = await useCompanySettings()
+const cs = csData.value || {}
 definePageMeta({ layout: false })
 useHead({ title: 'Tentang Kami — PT Mitra Trans Digital | miTRANZ' })
 const features = [
