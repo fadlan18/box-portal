@@ -172,7 +172,7 @@ const success = ref('')
 const steps = [
   { icon: '📦', title: 'Pilih Paket', desc: 'Sesuai kebutuhan & anggaran Anda', bg: 'background:#dbeafe;border:1px solid #93c5fd', textColor: '#1e40af' },
   { icon: '📋', title: 'Buat Order', desc: 'Konfigurasi & konfirmasi pesanan', bg: 'background:#dcfce7;border:1px solid #86efac', textColor: '#15803d' },
-  { icon: '💳', title: 'Bayar', desc: 'QRIS atau Transfer Bank', bg: 'background:#fef9c3;border:1px solid #fde047', textColor: '#854d0e' },
+  { icon: '💳', title: 'Konfirmasi Pembayaran', desc: 'QRIS atau Transfer Bank', bg: 'background:#fef9c3;border:1px solid #fde047', textColor: '#854d0e' },
   { icon: '🚀', title: 'Aplikasi Aktif', desc: 'Siap dalam 3-7 hari kerja', bg: 'background:#ede9fe;border:1px solid #c4b5fd', textColor: '#5b21b6' },
 ]
 
