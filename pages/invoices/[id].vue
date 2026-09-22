@@ -410,7 +410,7 @@
 
         <!-- Pita status pojok kanan atas -->
         <!-- Pita status 45 derajat -->
-        <div style="position:absolute;top:0;right:0;width:200px;height:200px;overflow:hidden;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact">
+        <div style="position:absolute;top:0;right:0;width:210px;height:210px;overflow:hidden;z-index:10;print-color-adjust:exact;-webkit-print-color-adjust:exact">
           <div :style="'position:absolute;top:42px;right:-52px;width:260px;text-align:center;transform:rotate(45deg);transform-origin:center center;print-color-adjust:exact;-webkit-print-color-adjust:exact;' + (invoice.status === 'paid' ? 'background:#10b981' : 'background:#ef4444')"
             style="overflow:hidden">
             <div :style="'height:2.5px;width:100%;' + (invoice.status === 'paid' ? 'background:#047857' : 'background:#b91c1c')"></div>
@@ -432,7 +432,7 @@
               </div>
             </div>
             <!-- Info perusahaan kanan -->
-            <div style="text-align:right;max-width:200px;padding-right:8px;margin-top:76px">
+            <div style="text-align:right;max-width:200px;padding-right:8px;margin-top:96px">
               <div style="font-size:14px;font-weight:700;color:#111827">{{ settings.company_website || 'mitranz.com' }}</div>
               <div style="font-size:12px;color:#374151;line-height:1.8;margin-top:4px">
                 {{ settings.company_name }}<br>
