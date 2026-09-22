@@ -29,6 +29,58 @@
         </div>
       </div>
 
+      <!-- Mockup Dashboard Mini -->
+      <div style="margin-bottom:40px;position:relative">
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;overflow:hidden;backdrop-filter:blur(8px)">
+          <!-- Topbar mockup -->
+          <div style="background:rgba(255,255,255,0.06);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08)">
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="width:8px;height:8px;border-radius:50%;background:#ef4444;opacity:0.7"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:#fbbf24;opacity:0.7"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:#10b981;opacity:0.7"></div>
+            </div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);font-family:monospace">mitranz.com/dashboard</div>
+            <div style="width:24px"></div>
+          </div>
+          <!-- Stats -->
+          <div style="padding:14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:4px">
+            <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.08)">
+              <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-bottom:4px">Layanan</div>
+              <div style="font-size:11px;font-weight:700;color:#10b981">● Aktif</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.08)">
+              <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-bottom:4px">Invoice</div>
+              <div style="font-size:11px;font-weight:700;color:#fbbf24">● Lunas</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:10px;border:1px solid rgba(255,255,255,0.08)">
+              <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-bottom:4px">Progres</div>
+              <div style="font-size:11px;font-weight:700;color:#60a5fa">80%</div>
+            </div>
+          </div>
+          <!-- Invoice rows -->
+          <div style="padding:0 14px 14px">
+            <div style="background:rgba(255,255,255,0.04);border-radius:10px;border:1px solid rgba(255,255,255,0.07);overflow:hidden">
+              <div style="padding:7px 12px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between">
+                <div style="font-size:9px;color:rgba(255,255,255,0.3)">No. Invoice</div>
+                <div style="font-size:9px;color:rgba(255,255,255,0.3)">Total</div>
+                <div style="font-size:9px;color:rgba(255,255,255,0.3)">Status</div>
+              </div>
+              <div v-for="row in mockRows" :key="row.inv"
+                style="padding:7px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.04)">
+                <div style="font-size:10px;color:rgba(255,255,255,0.6);font-family:monospace">{{ row.inv }}</div>
+                <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.8)">{{ row.total }}</div>
+                <div style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px"
+                  :style="row.status === 'Lunas' ? 'background:rgba(16,185,129,0.2);color:#10b981' : 'background:rgba(251,191,36,0.2);color:#fbbf24'">
+                  {{ row.status }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Glow effect -->
+        <div style="position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);width:70%;height:32px;background:#1a4fa0;filter:blur(28px);opacity:0.35;pointer-events:none"></div>
+      </div>
+
       <!-- Divider -->
       <div style="height:1px;background:rgba(255,255,255,0.1);margin-bottom:40px;position:relative"></div>
 
@@ -171,6 +223,11 @@ const name = ref('')
 const loading = ref(false)
 const error = ref('')
 const success = ref('')
+
+const mockRows = [
+  { inv: 'INV-2026-00012', total: 'Rp 3.000.000', status: 'Lunas' },
+  { inv: 'INV-2026-00013', total: 'Rp 5.500.000', status: 'Proses' },
+]
 
 const benefits = [
   'Aplikasi digital siap dalam 3-7 hari kerja',
