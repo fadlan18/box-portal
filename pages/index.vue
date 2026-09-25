@@ -180,7 +180,7 @@
             </div>
 
             <!-- Aplikasi Custom -->
-            <div style="background:white;border-radius:20px;padding:32px;border:2px solid #1a4fa0;box-shadow:0 8px 32px rgba(26,79,160,0.15);position:relative;overflow:hidden">
+            <div style="background:white;border-radius:20px;padding:32px;border:2px solid #1a4fa0;box-shadow:0 8px 32px rgba(26,79,160,0.15);position:relative;margin-top:12px">
               <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#1a4fa0;color:white;font-size:11px;font-weight:700;padding:4px 16px;border-radius:100px;white-space:nowrap">
                 ⭐ PALING FLEKSIBEL
               </div>
