@@ -155,9 +155,10 @@
                 <div style="font-size:12px;color:#94a3b8;margin-bottom:4px">Mulai dari</div>
                 <div style="font-size:22px;font-weight:900;color:#1a4fa0">Konsultasi Gratis</div>
               </div>
-              <a href="/kontak" style="display:block;text-align:center;padding:13px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;background:#f1f5f9;color:#1a4fa0">
+              <button @click="openBrief('Aplikasi Mobile')"
+                style="width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;background:#f1f5f9;color:#1a4fa0;border:none;cursor:pointer">
                 💬 Diskusikan Kebutuhan Anda
-              </a>
+              </button>
             </div>
 
             <!-- Integrasi & API -->
@@ -174,9 +175,10 @@
                 <div style="font-size:12px;color:#94a3b8;margin-bottom:4px">Mulai dari</div>
                 <div style="font-size:22px;font-weight:900;color:#7c3aed">Konsultasi Gratis</div>
               </div>
-              <a href="/kontak" style="display:block;text-align:center;padding:13px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;background:#f5f3ff;color:#7c3aed">
+              <button @click="openBrief('Integrasi & API')"
+                style="width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;background:#f5f3ff;color:#7c3aed;border:none;cursor:pointer">
                 💬 Diskusikan Kebutuhan Anda
-              </a>
+              </button>
             </div>
 
             <!-- Aplikasi Custom -->
@@ -196,9 +198,10 @@
                 <div style="font-size:12px;color:#94a3b8;margin-bottom:4px">Mulai dari</div>
                 <div style="font-size:22px;font-weight:900;color:#1a4fa0">Konsultasi Gratis</div>
               </div>
-              <a href="/kontak" style="display:block;text-align:center;padding:13px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:700;background:#1a4fa0;color:white">
+              <button @click="openBrief('Aplikasi Custom')"
+                style="width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;background:#1a4fa0;color:white;border:none;cursor:pointer">
                 💬 Diskusikan Kebutuhan Anda
-              </a>
+              </button>
             </div>
 
           </div>
@@ -274,6 +277,75 @@
     </footer>
 
     <ChatWidget />
+
+    <!-- Modal Brief Solusi Custom -->
+    <Transition name="fade">
+      <div v-if="showBrief" class="fixed inset-0 z-50 flex items-center justify-center p-4"
+        style="background:rgba(0,0,0,0.5);backdrop-filter:blur(4px)"
+        @click.self="showBrief = false">
+        <div class="bg-white rounded-2xl w-full" style="max-width:480px;box-shadow:0 24px 64px rgba(0,0,0,0.2)">
+
+          <!-- Header -->
+          <div class="p-6 border-b" style="border-color:#f1f5f9">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="font-black text-lg" style="color:#111827">Ceritakan Kebutuhan Anda</div>
+                <div class="text-sm mt-1" style="color:#64748b">{{ briefType }} · Konsultasi gratis, tanpa komitmen</div>
+              </div>
+              <button @click="showBrief = false"
+                style="width:32px;height:32px;border-radius:50%;background:#f1f5f9;color:#64748b;border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center">✕</button>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="p-6" style="display:flex;flex-direction:column;gap:14px">
+            <div>
+              <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">Nama Lengkap *</label>
+              <input v-model="brief.name" type="text" placeholder="Nama Anda"
+                style="width:100%;box-sizing:border-box;padding:10px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;outline:none;background:#fafafa;color:#111827"
+                @focus="$event.target.style.borderColor='#1a4fa0'"
+                @blur="$event.target.style.borderColor='#e5e7eb'"/>
+            </div>
+            <div>
+              <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">Email / WhatsApp *</label>
+              <input v-model="brief.contact" type="text" placeholder="email@domain.com atau 08xx"
+                style="width:100%;box-sizing:border-box;padding:10px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;outline:none;background:#fafafa;color:#111827"
+                @focus="$event.target.style.borderColor='#1a4fa0'"
+                @blur="$event.target.style.borderColor='#e5e7eb'"/>
+            </div>
+            <div>
+              <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">Ceritakan Kebutuhan Anda *</label>
+              <textarea v-model="brief.desc" rows="3"
+                placeholder="Contoh: Saya butuh aplikasi mobile untuk toko online dengan fitur katalog produk dan pembayaran..."
+                style="width:100%;box-sizing:border-box;padding:10px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;outline:none;background:#fafafa;color:#111827;resize:none"
+                @focus="$event.target.style.borderColor='#1a4fa0'"
+                @blur="$event.target.style.borderColor='#e5e7eb'"></textarea>
+            </div>
+            <div>
+              <label style="font-size:12px;font-weight:600;color:#374151;display:block;margin-bottom:6px">Estimasi Budget (opsional)</label>
+              <select v-model="brief.budget"
+                style="width:100%;box-sizing:border-box;padding:10px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;outline:none;background:#fafafa;color:#111827">
+                <option value="">Pilih rentang budget</option>
+                <option value="< 10 juta">Di bawah Rp 10 juta</option>
+                <option value="10 - 25 juta">Rp 10 juta – Rp 25 juta</option>
+                <option value="25 - 50 juta">Rp 25 juta – Rp 50 juta</option>
+                <option value="> 50 juta">Di atas Rp 50 juta</option>
+                <option value="Fleksibel">Fleksibel / Belum tahu</option>
+              </select>
+            </div>
+            <p v-if="briefError" style="color:#dc2626;font-size:13px;margin:0">⚠️ {{ briefError }}</p>
+            <p v-if="briefSuccess" style="color:#16a34a;font-size:13px;margin:0">✅ {{ briefSuccess }}</p>
+            <button @click="submitBrief" :disabled="briefLoading"
+              style="width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;color:white;border:none;cursor:pointer;background:linear-gradient(135deg,#1a4fa0,#2563eb)"
+              :style="briefLoading ? 'opacity:0.6;cursor:not-allowed' : ''">
+              {{ briefLoading ? 'Mengirim...' : 'Kirim Brief — Tim Kami Akan Menghubungi Anda' }}
+            </button>
+            <p style="font-size:11px;color:#9ca3af;text-align:center;margin:0">Kami akan merespons dalam 1x24 jam kerja</p>
+          </div>
+        </div>
+      </div>
+    </Transition>
+
   </div>
 </template>
 
@@ -328,6 +400,8 @@
     justify-content: center !important;
   }
 }
+.fade-enter-active, .fade-leave-active { transition: opacity 0.2s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
 </style>
 
 <script setup lang="ts">
@@ -344,6 +418,49 @@ useHead({
 const { status, fetchUser } = useCustomAuth()
 
 const navScrolled = ref(false)
+
+// Brief modal
+const showBrief = ref(false)
+const briefType = ref('')
+const brief = ref({ name: '', contact: '', desc: '', budget: '' })
+const briefLoading = ref(false)
+const briefError = ref('')
+const briefSuccess = ref('')
+
+function openBrief(type: string) {
+  briefType.value = type
+  brief.value = { name: '', contact: '', desc: '', budget: '' }
+  briefError.value = ''
+  briefSuccess.value = ''
+  showBrief.value = true
+}
+
+async function submitBrief() {
+  briefError.value = ''
+  if (!brief.value.name || !brief.value.contact || !brief.value.desc) {
+    briefError.value = 'Nama, kontak, dan deskripsi kebutuhan wajib diisi'
+    return
+  }
+  briefLoading.value = true
+  try {
+    await $fetch('/api/brief', {
+      method: 'POST',
+      body: {
+        type: briefType.value,
+        name: brief.value.name,
+        contact: brief.value.contact,
+        desc: brief.value.desc,
+        budget: brief.value.budget,
+      }
+    })
+    briefSuccess.value = 'Brief berhasil dikirim! Tim kami akan menghubungi Anda segera.'
+    setTimeout(() => { showBrief.value = false }, 3000)
+  } catch (e: any) {
+    briefError.value = e?.data?.message || 'Gagal mengirim brief, coba lagi'
+  } finally {
+    briefLoading.value = false
+  }
+}
 onMounted(() => {
   window.addEventListener('scroll', () => {
     navScrolled.value = window.scrollY > 80
