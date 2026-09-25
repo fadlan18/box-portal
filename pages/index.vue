@@ -153,11 +153,11 @@
               </div>
               <div style="margin-bottom:20px">
                 <div style="font-size:12px;color:#94a3b8;margin-bottom:4px">Mulai dari</div>
-                <div style="font-size:22px;font-weight:900;color:#1a4fa0">Konsultasi Gratis</div>
+
               </div>
               <button @click="openBrief('Aplikasi Mobile')"
-                style="width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;background:#f1f5f9;color:#1a4fa0;border:none;cursor:pointer">
-                💬 Diskusikan Kebutuhan Anda
+                style="width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;background:linear-gradient(135deg,#eff6ff,#dbeafe);color:#1a4fa0;border:1px solid #bfdbfe;cursor:pointer;letter-spacing:0.3px">
+                Diskusikan Kebutuhan Anda →
               </button>
             </div>
 
@@ -173,11 +173,11 @@
               </div>
               <div style="margin-bottom:20px">
                 <div style="font-size:12px;color:#94a3b8;margin-bottom:4px">Mulai dari</div>
-                <div style="font-size:22px;font-weight:900;color:#7c3aed">Konsultasi Gratis</div>
+
               </div>
               <button @click="openBrief('Integrasi & API')"
-                style="width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;background:#f5f3ff;color:#7c3aed;border:none;cursor:pointer">
-                💬 Diskusikan Kebutuhan Anda
+                style="width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;background:linear-gradient(135deg,#f5f3ff,#ede9fe);color:#7c3aed;border:1px solid #ddd6fe;cursor:pointer;letter-spacing:0.3px">
+                Diskusikan Kebutuhan Anda →
               </button>
             </div>
 
@@ -196,11 +196,11 @@
               </div>
               <div style="margin-bottom:20px">
                 <div style="font-size:12px;color:#94a3b8;margin-bottom:4px">Mulai dari</div>
-                <div style="font-size:22px;font-weight:900;color:#1a4fa0">Konsultasi Gratis</div>
+
               </div>
               <button @click="openBrief('Aplikasi Custom')"
-                style="width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;background:#1a4fa0;color:white;border:none;cursor:pointer">
-                💬 Diskusikan Kebutuhan Anda
+                style="width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;background:linear-gradient(135deg,#1a4fa0,#2563eb);color:white;border:none;cursor:pointer;letter-spacing:0.3px;box-shadow:0 4px 12px rgba(26,79,160,0.25)">
+                Diskusikan Kebutuhan Anda →
               </button>
             </div>
 
