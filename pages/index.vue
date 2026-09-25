@@ -103,18 +103,68 @@
         </div>
         <div v-else style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px">
           <div v-for="(w, idx) in websiteProducts" :key="w.id"
-            style="background:white;border-radius:20px;padding:32px;position:relative;box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:all 0.2s"
+            style="background:white;border-radius:20px;padding:32px;position:relative;box-shadow:0 2px 8px rgba(0,0,0,0.04)"
             :style="{border: idx === 1 ? '2px solid #1a4fa0' : '2px solid #e2e8f0', boxShadow: idx === 1 ? '0 8px 32px rgba(26,79,160,0.15)' : '0 2px 8px rgba(0,0,0,0.04)'}">
+
+            <!-- Badge paling diminati -->
             <div v-if="idx === 1" style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#1a4fa0;color:white;font-size:11px;font-weight:700;padding:4px 16px;border-radius:100px;white-space:nowrap">
               ⭐ PALING DIMINATI
             </div>
-            <div style="font-size:36px;margin-bottom:16px">{{ productIcon(w.name) }}</div>
-            <h3 style="font-size:19px;font-weight:800;color:#1a202c;margin:0 0 8px">{{ w.name }}</h3>
-            <p style="font-size:13px;color:#64748b;line-height:1.6;margin:0 0 20px">{{ w.short_desc }}</p>
-            <div style="margin-bottom:20px">
-              <div style="font-size:12px;color:#94a3b8;margin-bottom:4px">Mulai dari</div>
-              <div style="font-size:28px;font-weight:900;color:#1a4fa0">{{ getMinPrice(w) || 'Hubungi Kami' }}</div>
+
+            <!-- Header card -->
+            <div style="font-size:36px;margin-bottom:12px">{{ productIcon(w.name) }}</div>
+            <h3 style="font-size:19px;font-weight:800;color:#1a202c;margin:0 0 6px">{{ w.name }}</h3>
+            <p style="font-size:13px;color:#64748b;line-height:1.6;margin:0 0 16px">{{ w.short_desc }}</p>
+
+            <!-- Toggle tier jika ada tiers -->
+            <div v-if="w.specs?.tiers?.length" style="margin-bottom:16px">
+              <div style="display:flex;gap:4px;background:#f1f5f9;border-radius:10px;padding:4px;margin-bottom:16px">
+                <button
+                  @click="setActiveTier(w.id, 0)"
+                  style="flex:1;padding:7px;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s"
+                  :style="(activeTiers[w.id]||0)===0 ? 'background:white;color:#1a4fa0;box-shadow:0 1px 4px rgba(0,0,0,0.08)' : 'background:transparent;color:#94a3b8'">
+                  {{ w.specs.tiers[0].name }}
+                </button>
+                <button
+                  @click="setActiveTier(w.id, 1)"
+                  style="flex:1;padding:7px;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s"
+                  :style="(activeTiers[w.id]||0)===1 ? 'background:white;color:#1a4fa0;box-shadow:0 1px 4px rgba(0,0,0,0.08)' : 'background:transparent;color:#94a3b8'">
+                  {{ w.specs.tiers[1].name }}
+                </button>
+              </div>
+
+              <!-- Harga tier aktif -->
+              <div style="margin-bottom:16px">
+                <div style="font-size:12px;color:#94a3b8;margin-bottom:4px">Harga</div>
+                <div style="font-size:28px;font-weight:900;color:#1a4fa0">
+                  {{ fmtRp(w.specs.tiers[activeTiers[w.id]||0].price) }}
+                </div>
+              </div>
+
+              <!-- Fitur tier aktif -->
+              <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
+                <div v-for="f in w.specs.tiers[activeTiers[w.id]||0].features" :key="f"
+                  style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151">
+                  <span style="color:#10b981;font-weight:700;font-size:14px;flex-shrink:0">✓</span> {{ f }}
+                </div>
+              </div>
             </div>
+
+            <!-- Single tier (Personal Starter) -->
+            <div v-else>
+              <div style="margin-bottom:16px">
+                <div style="font-size:12px;color:#94a3b8;margin-bottom:4px">Mulai dari</div>
+                <div style="font-size:28px;font-weight:900;color:#1a4fa0">{{ getMinPrice(w) || 'Hubungi Kami' }}</div>
+              </div>
+              <div v-if="w.specs?.features?.length" style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
+                <div v-for="f in w.specs.features" :key="f"
+                  style="display:flex;align-items:center;gap:8px;font-size:13px;color:#374151">
+                  <span style="color:#10b981;font-weight:700;font-size:14px;flex-shrink:0">✓</span> {{ f }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Tombol -->
             <a href="/orders"
               :style="{display:'block',textAlign:'center',padding:'13px',borderRadius:'10px',textDecoration:'none',fontSize:'14px',fontWeight:'700',background: idx === 1 ? '#1a4fa0' : '#f1f5f9',color: idx === 1 ? 'white' : '#1a4fa0'}">
               Pesan Sekarang →
@@ -485,6 +535,15 @@ const steps = [
 
 // Produk website dari API — dinamis dari DB
 const websiteProducts = ref<any[]>([])
+const activeTiers = ref<Record<string, number>>({})
+
+function setActiveTier(productId: string, tierIdx: number) {
+  activeTiers.value[productId] = tierIdx
+}
+
+const fmtRp = (n: number) => n ? new Intl.NumberFormat('id-ID', {
+  style: 'currency', currency: 'IDR', maximumFractionDigits: 0
+}).format(n) : 'Rp 0'
 
 function productIcon(name: string) {
   if (name.toLowerCase().includes('umkm')) return '🏪'
