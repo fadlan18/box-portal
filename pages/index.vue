@@ -280,7 +280,7 @@
 
     <!-- Modal Brief Solusi Custom -->
     <Transition name="fade">
-      <div v-if="showBrief" class="fixed inset-0 z-50 flex items-center justify-center p-4"
+      <div v-if="showBrief" class="fixed inset-0 flex items-center justify-center p-4" style="z-index:9999"
         style="background:rgba(0,0,0,0.5);backdrop-filter:blur(4px)"
         @click.self="showBrief = false">
         <div class="bg-white rounded-2xl w-full" style="max-width:480px;box-shadow:0 24px 64px rgba(0,0,0,0.2);overflow:visible">
