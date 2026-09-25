@@ -283,17 +283,17 @@
       <div v-if="showBrief" class="fixed inset-0 z-50 flex items-center justify-center p-4"
         style="background:rgba(0,0,0,0.5);backdrop-filter:blur(4px)"
         @click.self="showBrief = false">
-        <div class="bg-white rounded-2xl w-full" style="max-width:480px;box-shadow:0 24px 64px rgba(0,0,0,0.2)">
+        <div class="bg-white rounded-2xl w-full" style="max-width:480px;box-shadow:0 24px 64px rgba(0,0,0,0.2);overflow:visible">
 
           <!-- Header -->
-          <div class="p-6 border-b" style="border-color:#f1f5f9">
-            <div class="flex items-center justify-between">
-              <div>
-                <div class="font-black text-lg" style="color:#111827">Ceritakan Kebutuhan Anda</div>
+          <div style="padding:24px 24px 16px;border-bottom:1px solid #f1f5f9;border-radius:16px 16px 0 0;background:white">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+              <div style="min-width:0;flex:1">
+                <div style="font-size:17px;font-weight:900;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Ceritakan Kebutuhan Anda</div>
                 <div class="text-sm mt-1" style="color:#64748b">{{ briefType }} · Konsultasi gratis, tanpa komitmen</div>
               </div>
               <button @click="showBrief = false"
-                style="width:32px;height:32px;border-radius:50%;background:#f1f5f9;color:#64748b;border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center">✕</button>
+                style="width:32px;height:32px;border-radius:50%;background:#f1f5f9;color:#64748b;border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0">✕</button>
             </div>
           </div>
 
