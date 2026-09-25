@@ -546,9 +546,9 @@ const fmtRp = (n: number) => n ? new Intl.NumberFormat('id-ID', {
 }).format(n) : 'Rp 0'
 
 function productIcon(name: string) {
-  if (name.toLowerCase().includes('umkm')) return '🏪'
-  if (name.toLowerCase().includes('premium')) return '⭐'
+  if (name.toLowerCase().includes('umkm') || name.toLowerCase().includes('bisnis')) return '🏪'
   if (name.toLowerCase().includes('desa')) return '🏘️'
+  if (name.toLowerCase().includes('academic') || name.toLowerCase().includes('akademik')) return '🎓'
   return '🌐'
 }
 
