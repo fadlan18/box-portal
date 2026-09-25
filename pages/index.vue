@@ -326,10 +326,10 @@
               <select v-model="brief.budget"
                 style="width:100%;box-sizing:border-box;padding:10px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;outline:none;background:#fafafa;color:#111827">
                 <option value="">Pilih rentang budget</option>
-                <option value="< 10 juta">Di bawah Rp 10 juta</option>
-                <option value="10 - 25 juta">Rp 10 juta – Rp 25 juta</option>
-                <option value="25 - 50 juta">Rp 25 juta – Rp 50 juta</option>
-                <option value="> 50 juta">Di atas Rp 50 juta</option>
+                <option value="Rp 10 juta">Rp 10 juta</option>
+                <option value="Rp 20 juta">Rp 20 juta</option>
+                <option value="Rp 35 juta">Rp 35 juta</option>
+                <option value="Rp 50 juta">Rp 50 juta</option>
                 <option value="Fleksibel">Fleksibel / Belum tahu</option>
               </select>
             </div>
