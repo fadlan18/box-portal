@@ -289,7 +289,7 @@
           <div style="padding:24px 24px 16px;border-bottom:1px solid #f1f5f9;border-radius:16px 16px 0 0;background:white">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
               <div style="min-width:0;flex:1">
-                <div style="font-size:17px;font-weight:900;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Ceritakan Kebutuhan Anda</div>
+                <div style="font-size:17px;font-weight:900;color:#111827">Ceritakan Kebutuhan Anda</div>
                 <div class="text-sm mt-1" style="color:#64748b">{{ briefType }} · Konsultasi gratis, tanpa komitmen</div>
               </div>
               <button @click="showBrief = false"
