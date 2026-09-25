@@ -143,6 +143,78 @@
             Belum ada paket. Klik "+ Tambah Paket" untuk menambahkan.
           </div>
 
+          <!-- Section Tiers & Fitur — khusus produk website -->
+          <div v-if="form.category === 'website'" class="mt-4 pt-4" style="border-top:1px solid var(--dash-divider)">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <h4 class="text-sm font-bold" style="color:var(--dash-text-primary)">Tier & Fitur</h4>
+                <p class="text-xs" style="color:var(--dash-text-muted)">Standar/Premium dengan daftar fitur masing-masing</p>
+              </div>
+              <button @click="addTier"
+                class="text-xs px-3 py-1.5 rounded-lg font-semibold"
+                style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.2)">
+                + Tambah Tier
+              </button>
+            </div>
+
+            <!-- Jika tidak ada tier — tampilkan features biasa -->
+            <div v-if="form.tiers.length === 0">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-semibold" style="color:var(--dash-text-muted)">Fitur Produk</span>
+                <button @click="addFeature"
+                  class="text-xs px-2 py-1 rounded-lg font-semibold"
+                  style="background:rgba(26,79,160,0.1);color:#1a4fa0">
+                  + Fitur
+                </button>
+              </div>
+              <div v-for="(f, i) in form.features" :key="i" class="flex gap-2 mb-2">
+                <input v-model="form.features[i]" type="text" placeholder="Contoh: Desain responsif & modern"
+                  class="flex-1 px-3 py-2 rounded-xl text-xs outline-none"
+                  style="background:var(--dash-input-bg);border:1px solid var(--dash-card-border);color:var(--dash-text-primary)"/>
+                <button @click="form.features.splice(i,1)"
+                  class="px-2 py-1 rounded-lg text-xs"
+                  style="color:#f87171;background:rgba(239,68,68,0.08)">✕</button>
+              </div>
+            </div>
+
+            <!-- Jika ada tier -->
+            <div v-else class="space-y-4">
+              <div v-for="(tier, ti) in form.tiers" :key="ti"
+                class="rounded-xl p-4"
+                style="background:var(--dash-input-bg);border:1px solid var(--dash-card-border)">
+                <div class="flex items-center justify-between mb-3">
+                  <input v-model="tier.name" type="text" placeholder="Nama tier (Standar/Premium)"
+                    class="font-bold text-sm px-2 py-1 rounded-lg outline-none flex-1 mr-2"
+                    style="background:transparent;border:1px solid var(--dash-divider);color:var(--dash-text-primary)"/>
+                  <div class="flex items-center gap-2">
+                    <input v-model.number="tier.price" type="number" placeholder="Harga"
+                      class="text-xs px-2 py-1 rounded-lg outline-none w-32"
+                      style="background:var(--dash-card-bg);border:1px solid var(--dash-divider);color:var(--dash-text-primary)"/>
+                    <button @click="form.tiers.splice(ti,1)"
+                      class="text-xs px-2 py-1 rounded-lg"
+                      style="color:#f87171;background:rgba(239,68,68,0.08)">Hapus</button>
+                  </div>
+                </div>
+                <!-- Fitur tier -->
+                <div class="space-y-2">
+                  <div v-for="(f, fi) in tier.features" :key="fi" class="flex gap-2">
+                    <input v-model="tier.features[fi]" type="text" placeholder="Fitur..."
+                      class="flex-1 px-3 py-1.5 rounded-lg text-xs outline-none"
+                      style="background:var(--dash-card-bg);border:1px solid var(--dash-divider);color:var(--dash-text-primary)"/>
+                    <button @click="tier.features.splice(fi,1)"
+                      class="px-2 rounded-lg text-xs"
+                      style="color:#f87171;background:rgba(239,68,68,0.08)">✕</button>
+                  </div>
+                  <button @click="tier.features.push('')"
+                    class="text-xs px-2 py-1 rounded-lg font-semibold w-full text-center"
+                    style="background:rgba(26,79,160,0.06);color:#1a4fa0;border:1px dashed rgba(26,79,160,0.2)">
+                    + Tambah Fitur
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div v-else class="space-y-3">
             <div v-for="(pr, idx) in form.pricing" :key="pr.id"
               class="rounded-xl p-4 space-y-3"
@@ -236,7 +308,9 @@ const saving = ref(false)
 
 const form = ref({
   name: '', category: 'website', short_desc: '', status: 'active',
-  pricing: [] as any[]
+  pricing: [] as any[],
+  tiers: [] as any[],
+  features: [] as string[]
 })
 
 const GQL_LIST = `query {
@@ -262,7 +336,7 @@ const filtered = computed(() => {
 
 function openAdd() {
   editingProduct.value = null
-  form.value = { name: '', category: 'website', short_desc: '', status: 'active', pricing: [] }
+  form.value = { name: '', category: 'website', short_desc: '', status: 'active', pricing: [], tiers: [], features: [] }
   showModal.value = true
 }
 
@@ -273,7 +347,9 @@ function editProduct(p: any) {
     category: p.category,
     short_desc: p.short_desc || '',
     status: p.status,
-    pricing: JSON.parse(JSON.stringify(p.specs?.pricing || []))
+    pricing: JSON.parse(JSON.stringify(p.specs?.pricing || [])),
+    tiers: JSON.parse(JSON.stringify(p.specs?.tiers || [])),
+    features: JSON.parse(JSON.stringify(p.specs?.features || []))
   }
   showModal.value = true
 }
@@ -281,7 +357,19 @@ function editProduct(p: any) {
 function closeModal() {
   showModal.value = false
   editingProduct.value = null
-  form.value = { name: '', category: 'website', short_desc: '', status: 'active', pricing: [] }
+  form.value = { name: '', category: 'website', short_desc: '', status: 'active', pricing: [], tiers: [], features: [] }
+}
+
+function addTier() {
+  form.value.tiers.push({
+    name: form.value.tiers.length === 0 ? 'Standar' : 'Premium',
+    price: 0,
+    features: ['']
+  })
+}
+
+function addFeature() {
+  form.value.features.push('')
 }
 
 function addPricing() {
@@ -304,7 +392,11 @@ async function saveProduct() {
   if (!form.value.name) return alert('Nama produk wajib diisi')
   saving.value = true
   try {
-    const specs = { pricing: form.value.pricing }
+    const specs: any = { pricing: form.value.pricing }
+    if (form.value.category === 'website') {
+      if (form.value.tiers.length) specs.tiers = form.value.tiers
+      if (form.value.features.length) specs.features = form.value.features
+    }
     if (editingProduct.value) {
       await $fetch('/api/graphql/proxy', {
         method: 'POST',
