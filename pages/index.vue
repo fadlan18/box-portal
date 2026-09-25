@@ -126,107 +126,79 @@
           </div>
         </div>
 
-        <!-- CTA order -->
-        <div style="margin-top:40px;background:linear-gradient(135deg,#1a4fa0,#2563eb);border-radius:20px;padding:40px;text-align:center">
-          <h3 style="font-size:22px;font-weight:800;color:white;margin:0 0 10px">Siap memulai proyek digital Anda?</h3>
-          <p style="color:rgba(255,255,255,0.8);font-size:14px;margin:0 0 24px">Pilih paket, buat invoice, dan bayar dengan mudah. Proses cepat dan transparan.</p>
-          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-            <a href="/orders" style="display:inline-block;padding:12px 32px;background:white;color:#1a4fa0;border-radius:10px;text-decoration:none;font-size:14px;font-weight:800">
-              🚀 Pesan Sekarang
-            </a>
-            <a href="/kontak" style="display:inline-block;padding:12px 32px;background:rgba(255,255,255,0.15);color:white;border-radius:10px;text-decoration:none;font-size:14px;font-weight:600;border:1px solid rgba(255,255,255,0.3)">
-              💬 Konsultasi Dulu
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Solusi Digital — Untuk Kebutuhan Lebih Besar -->
-    <div style="background:#0f172a;padding:64px 32px">
-      <div style="max-width:1200px;margin:0 auto">
-        <!-- Header -->
-        <div style="text-align:center;margin-bottom:48px">
-          <span style="background:rgba(251,191,36,0.15);color:#fbbf24;font-size:12px;font-weight:700;padding:4px 14px;border-radius:100px;letter-spacing:1px">SOLUSI DIGITAL</span>
-          <h2 style="font-size:32px;font-weight:900;color:white;margin:12px 0 12px;letter-spacing:-0.5px">Untuk Kebutuhan yang Lebih Besar</h2>
-          <p style="color:rgba(255,255,255,0.5);font-size:15px;max-width:500px;margin:0 auto">Proyek skala besar, kebutuhan khusus, atau integrasi kompleks — kami siap mewujudkannya bersama Anda.</p>
-        </div>
-
-        <!-- 3 Kategori -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:20px;margin-bottom:40px">
-
-          <!-- Mobile Apps -->
-          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;position:relative;overflow:hidden">
-            <div style="position:absolute;top:-20px;right:-20px;font-size:80px;opacity:0.04;line-height:1">📱</div>
-            <div style="width:52px;height:52px;border-radius:14px;background:rgba(96,165,250,0.15);border:1px solid rgba(96,165,250,0.25);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px">📱</div>
-            <h3 style="font-size:18px;font-weight:800;color:white;margin:0 0 10px">Aplikasi Mobile</h3>
-            <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 24px">Android & iOS profesional untuk bisnis, layanan publik, dan komunitas Anda — dari konsep hingga siap diunduh.</p>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px">
-              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5)">
-                <span style="color:#60a5fa">✓</span> Native Android & iOS
-              </div>
-              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5)">
-                <span style="color:#60a5fa">✓</span> Publikasi ke Play Store & App Store
-              </div>
-              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5)">
-                <span style="color:#60a5fa">✓</span> UI/UX modern & responsif
-              </div>
+        <!-- Pemisah Solusi Digital -->
+        <div style="margin-top:56px;margin-bottom:40px">
+          <!-- Garis pemisah dengan label -->
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:40px">
+            <div style="flex:1;height:1px;background:linear-gradient(to right,transparent,#e2e8f0)"></div>
+            <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+              <span style="background:#f0f7ff;color:#1a4fa0;font-size:11px;font-weight:700;padding:5px 16px;border-radius:100px;letter-spacing:1px;border:1px solid #dbeafe">SOLUSI KHUSUS</span>
             </div>
-            <a href="/kontak" style="display:block;text-align:center;padding:12px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;background:rgba(96,165,250,0.12);color:#60a5fa;border:1px solid rgba(96,165,250,0.2)">
-              💬 Diskusikan Kebutuhan Anda
-            </a>
+            <div style="flex:1;height:1px;background:linear-gradient(to left,transparent,#e2e8f0)"></div>
+          </div>
+          <div style="text-align:center;margin-bottom:36px">
+            <h3 style="font-size:24px;font-weight:900;color:#1a202c;margin:0 0 8px;letter-spacing:-0.3px">Untuk Proyek yang Lebih Ambisius</h3>
+            <p style="font-size:14px;color:#64748b;margin:0">Kebutuhan unik, skala lebih besar, atau integrasi kompleks — kami siap mewujudkannya bersama Anda.</p>
           </div>
 
-          <!-- Integrasi & API -->
-          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;position:relative;overflow:hidden">
-            <div style="position:absolute;top:-20px;right:-20px;font-size:80px;opacity:0.04;line-height:1">🔗</div>
-            <div style="width:52px;height:52px;border-radius:14px;background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.25);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px">🔗</div>
-            <h3 style="font-size:18px;font-weight:800;color:white;margin:0 0 10px">Integrasi & API</h3>
-            <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 24px">Hubungkan sistem yang sudah ada dengan platform baru. Otomasi alur kerja dan sinkronisasi data lintas sistem.</p>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px">
-              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5)">
-                <span style="color:#a78bfa">✓</span> Integrasi sistem pihak ketiga
+          <!-- 3 Card Solusi -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:16px">
+
+            <!-- Mobile Apps -->
+            <div style="background:white;border-radius:16px;padding:28px;border:1.5px dashed #bfdbfe;position:relative;overflow:hidden">
+              <div style="position:absolute;top:-16px;right:-16px;font-size:64px;opacity:0.05;line-height:1">📱</div>
+              <div style="width:44px;height:44px;border-radius:12px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px">📱</div>
+              <h4 style="font-size:16px;font-weight:800;color:#1a202c;margin:0 0 8px">Aplikasi Mobile</h4>
+              <p style="font-size:12px;color:#64748b;line-height:1.7;margin:0 0 16px">Android & iOS profesional untuk bisnis, layanan publik, dan komunitas — dari konsep hingga siap diunduh.</p>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px">
+                <div style="font-size:12px;color:#374151;display:flex;align-items:center;gap:6px"><span style="color:#1a4fa0;font-weight:700">✓</span> Native Android & iOS</div>
+                <div style="font-size:12px;color:#374151;display:flex;align-items:center;gap:6px"><span style="color:#1a4fa0;font-weight:700">✓</span> Publikasi ke Play Store & App Store</div>
+                <div style="font-size:12px;color:#374151;display:flex;align-items:center;gap:6px"><span style="color:#1a4fa0;font-weight:700">✓</span> UI/UX modern & responsif</div>
               </div>
-              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5)">
-                <span style="color:#a78bfa">✓</span> REST API & Webhook custom
-              </div>
-              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5)">
-                <span style="color:#a78bfa">✓</span> Otomasi alur kerja bisnis
-              </div>
+              <div style="font-size:11px;color:#94a3b8;margin-bottom:10px">Konsultasi gratis · Estimasi transparan</div>
+              <a href="/kontak" style="display:block;text-align:center;padding:11px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;background:#eff6ff;color:#1a4fa0;border:1px solid #dbeafe">
+                💬 Diskusikan Kebutuhan Anda
+              </a>
             </div>
-            <a href="/kontak" style="display:block;text-align:center;padding:12px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;background:rgba(167,139,250,0.12);color:#a78bfa;border:1px solid rgba(167,139,250,0.2)">
-              💬 Diskusikan Kebutuhan Anda
-            </a>
-          </div>
 
-          <!-- Aplikasi Custom -->
-          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(251,191,36,0.2);border-radius:20px;padding:32px;position:relative;overflow:hidden">
-            <div style="position:absolute;top:-20px;right:-20px;font-size:80px;opacity:0.04;line-height:1">🎯</div>
-            <div style="width:52px;height:52px;border-radius:14px;background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.25);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px">🎯</div>
-            <h3 style="font-size:18px;font-weight:800;color:white;margin:0 0 10px">Aplikasi Custom</h3>
-            <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin:0 0 24px">Dibangun dari nol sesuai kebutuhan spesifik bisnis Anda — fitur, alur, dan tampilan yang benar-benar unik.</p>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px">
-              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5)">
-                <span style="color:#fbbf24">✓</span> Analisis kebutuhan mendalam
+            <!-- Integrasi & API -->
+            <div style="background:white;border-radius:16px;padding:28px;border:1.5px dashed #e9d5ff;position:relative;overflow:hidden">
+              <div style="position:absolute;top:-16px;right:-16px;font-size:64px;opacity:0.05;line-height:1">🔗</div>
+              <div style="width:44px;height:44px;border-radius:12px;background:#f5f3ff;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px">🔗</div>
+              <h4 style="font-size:16px;font-weight:800;color:#1a202c;margin:0 0 8px">Integrasi & API</h4>
+              <p style="font-size:12px;color:#64748b;line-height:1.7;margin:0 0 16px">Hubungkan sistem yang sudah ada dengan platform baru. Otomasi alur kerja dan sinkronisasi data lintas sistem.</p>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px">
+                <div style="font-size:12px;color:#374151;display:flex;align-items:center;gap:6px"><span style="color:#7c3aed;font-weight:700">✓</span> Integrasi sistem pihak ketiga</div>
+                <div style="font-size:12px;color:#374151;display:flex;align-items:center;gap:6px"><span style="color:#7c3aed;font-weight:700">✓</span> REST API & Webhook custom</div>
+                <div style="font-size:12px;color:#374151;display:flex;align-items:center;gap:6px"><span style="color:#7c3aed;font-weight:700">✓</span> Otomasi alur kerja bisnis</div>
               </div>
-              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5)">
-                <span style="color:#fbbf24">✓</span> Desain UI/UX eksklusif
-              </div>
-              <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.5)">
-                <span style="color:#fbbf24">✓</span> Pengembangan & deployment penuh
-              </div>
+              <div style="font-size:11px;color:#94a3b8;margin-bottom:10px">Konsultasi gratis · Estimasi transparan</div>
+              <a href="/kontak" style="display:block;text-align:center;padding:11px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;background:#f5f3ff;color:#7c3aed;border:1px solid #e9d5ff">
+                💬 Diskusikan Kebutuhan Anda
+              </a>
             </div>
-            <a href="/kontak" style="display:block;text-align:center;padding:12px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;background:rgba(251,191,36,0.12);color:#fbbf24;border:1px solid rgba(251,191,36,0.2)">
-              💬 Diskusikan Kebutuhan Anda
-            </a>
-          </div>
 
+            <!-- Aplikasi Custom -->
+            <div style="background:white;border-radius:16px;padding:28px;border:1.5px dashed #fde68a;position:relative;overflow:hidden">
+              <div style="position:absolute;top:-16px;right:-16px;font-size:64px;opacity:0.05;line-height:1">🎯</div>
+              <div style="width:44px;height:44px;border-radius:12px;background:#fffbeb;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px">🎯</div>
+              <h4 style="font-size:16px;font-weight:800;color:#1a202c;margin:0 0 8px">Aplikasi Custom</h4>
+              <p style="font-size:12px;color:#64748b;line-height:1.7;margin:0 0 16px">Dibangun dari nol sesuai kebutuhan spesifik bisnis Anda — fitur, alur, dan tampilan yang benar-benar unik.</p>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px">
+                <div style="font-size:12px;color:#374151;display:flex;align-items:center;gap:6px"><span style="color:#d97706;font-weight:700">✓</span> Analisis kebutuhan mendalam</div>
+                <div style="font-size:12px;color:#374151;display:flex;align-items:center;gap:6px"><span style="color:#d97706;font-weight:700">✓</span> Desain UI/UX eksklusif</div>
+                <div style="font-size:12px;color:#374151;display:flex;align-items:center;gap:6px"><span style="color:#d97706;font-weight:700">✓</span> Pengembangan & deployment penuh</div>
+              </div>
+              <div style="font-size:11px;color:#94a3b8;margin-bottom:10px">Konsultasi gratis · Estimasi transparan</div>
+              <a href="/kontak" style="display:block;text-align:center;padding:11px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;background:#fffbeb;color:#d97706;border:1px solid #fde68a">
+                💬 Diskusikan Kebutuhan Anda
+              </a>
+            </div>
+
+          </div>
         </div>
 
-        <!-- Note bawah -->
-        <div style="text-align:center">
-          <p style="font-size:13px;color:rgba(255,255,255,0.3)">Konsultasi gratis · Estimasi harga transparan · Kontrak resmi · Tim berpengalaman</p>
-        </div>
       </div>
     </div>
 
