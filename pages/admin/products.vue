@@ -125,7 +125,7 @@
         </div>
 
         <!-- Kelola Pricing -->
-        <div style="border-top:1px solid var(--dash-divider);padding-top:16px">
+        <div v-if="form.tiers.length === 0" style="border-top:1px solid var(--dash-divider);padding-top:16px">
           <div class="flex items-center justify-between mb-3">
             <div>
               <h4 class="text-sm font-bold" style="color:var(--dash-text-primary)">Paket & Harga</h4>
@@ -395,10 +395,24 @@ async function saveProduct() {
   if (!form.value.name) return alert('Nama produk wajib diisi')
   saving.value = true
   try {
-    const specs: any = { pricing: form.value.pricing }
+    // Sinkronkan harga pricing dari tiers jika ada
+    let pricing = form.value.pricing
+    if (form.value.tiers.length) {
+      pricing = form.value.tiers.map((t: any, i: number) => ({
+        id: `tier_${i}`,
+        type: 'main',
+        tier: t.name.toLowerCase(),
+        label: `Paket ${t.name}`,
+        amount: t.price,
+        period: 'project'
+      }))
+      // Tambahkan addon yang sudah ada
+      const addons = form.value.pricing.filter((p: any) => p.type === 'addon')
+      pricing = [...pricing, ...addons]
+    }
+    const specs: any = { pricing }
     if (form.value.category === 'website') {
       if (form.value.tiers.length) {
-        // Bersihkan fitur kosong di setiap tier
         specs.tiers = form.value.tiers.map((t: any) => ({
           ...t,
           features: t.features.filter((f: string) => f.trim() !== '')
