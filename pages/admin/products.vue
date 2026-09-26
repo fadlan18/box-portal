@@ -394,8 +394,16 @@ async function saveProduct() {
   try {
     const specs: any = { pricing: form.value.pricing }
     if (form.value.category === 'website') {
-      if (form.value.tiers.length) specs.tiers = form.value.tiers
-      if (form.value.features.length) specs.features = form.value.features
+      if (form.value.tiers.length) {
+        // Bersihkan fitur kosong di setiap tier
+        specs.tiers = form.value.tiers.map((t: any) => ({
+          ...t,
+          features: t.features.filter((f: string) => f.trim() !== '')
+        }))
+      }
+      if (form.value.features.length) {
+        specs.features = form.value.features.filter((f: string) => f.trim() !== '')
+      }
     }
     if (editingProduct.value) {
       await $fetch('/api/graphql/proxy', {
