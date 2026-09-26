@@ -160,7 +160,7 @@
             <!-- Jika tidak ada tier — tampilkan features biasa -->
             <div v-if="form.tiers.length === 0">
               <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-semibold" style="color:var(--dash-text-muted)">Fitur Produk</span>
+                <span class="text-xs font-semibold" style="color:var(--dash-text-muted)">Fitur Produk (tanpa tier)</span>
                 <button @click="addFeature"
                   class="text-xs px-2 py-1 rounded-lg font-semibold"
                   style="background:rgba(26,79,160,0.1);color:#1a4fa0">
@@ -174,6 +174,9 @@
                 <button @click="form.features.splice(i,1)"
                   class="px-2 py-1 rounded-lg text-xs"
                   style="color:#f87171;background:rgba(239,68,68,0.08)">✕</button>
+              </div>
+              <div class="mt-2 p-3 rounded-xl text-xs text-center" style="background:rgba(251,191,36,0.08);border:1px dashed rgba(251,191,36,0.3);color:#92400e">
+                💡 Klik "+ Tambah Tier" di atas untuk menggunakan sistem Standar/Premium
               </div>
             </div>
 
