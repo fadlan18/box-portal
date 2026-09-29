@@ -61,7 +61,16 @@ const reply = ref('')
 const sending = ref(false)
 const replyError = ref('')
 
-onMounted(load)
+let pollTimer: any = null
+
+onMounted(() => {
+  load()
+  pollTimer = setInterval(load, 15000)
+})
+
+onUnmounted(() => {
+  if (pollTimer) clearInterval(pollTimer)
+})
 
 async function load() {
   loading.value = true

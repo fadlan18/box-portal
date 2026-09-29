@@ -217,6 +217,31 @@ export default defineEventHandler(async (event) => {
       '</div></div>',
     ].join('')
     text = `Kode verifikasi miTRANZ Anda: ${otp}\n\nBerlaku 5 menit.`
+  } else if (type === 'ticket_reply') {
+    const { subject, message: replyMsg, ticket_url } = body
+    subject_line = `[miTRANZ] Tim Support membalas tiket Anda: ${subject}`
+    html = `
+      <div style="font-family:sans-serif;max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e5e7eb">
+        <div style="background:linear-gradient(135deg,#1a4fa0,#2563eb);padding:32px 40px;text-align:center">
+          <div style="font-size:24px;font-weight:900;color:white;letter-spacing:-0.5px">miTRANZ</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.8);margin-top:4px">Solusi Platform Digital Anda</div>
+        </div>
+        <div style="padding:32px 40px">
+          <div style="font-size:16px;font-weight:700;color:#111827;margin-bottom:8px">Tim Support telah membalas tiket Anda</div>
+          <div style="font-size:13px;color:#6b7280;margin-bottom:20px">Subjek: <strong>${subject}</strong></div>
+          <div style="background:#f8fafc;border-left:4px solid #1a4fa0;border-radius:8px;padding:16px 20px;margin-bottom:24px">
+            <div style="font-size:11px;color:#6b7280;margin-bottom:8px;font-weight:600">BALASAN TIM SUPPORT</div>
+            <div style="font-size:14px;color:#111827;line-height:1.7;white-space:pre-wrap">${replyMsg}</div>
+          </div>
+          <a href="${ticket_url}" style="display:inline-block;padding:12px 28px;background:#1a4fa0;color:white;border-radius:8px;text-decoration:none;font-size:14px;font-weight:700">
+            Lihat & Balas Tiket →
+          </a>
+        </div>
+        <div style="background:#f9fafb;border-top:1px solid #e5e7eb;padding:16px 40px;text-align:center">
+          <div style="font-size:11px;color:#9ca3af">© ${new Date().getFullYear()} PT Mitra Trans Digital · mitranz.com</div>
+        </div>
+      </div>
+    `
   } else if (type === 'reset_password') {
     subject = 'Permintaan Reset Password - miTRANZ'
     text = `Halo ${name},\n\nKami menerima permintaan reset password untuk akun miTRANZ Anda.\n\nKlik link berikut untuk membuat password baru:\n${resetUrl}\n\nLink ini berlaku selama 1 jam.\n\nJika Anda tidak meminta reset password, abaikan email ini.\n\nSalam,\nTim miTRANZ\nhttps://mitranz.com`
