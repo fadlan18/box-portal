@@ -52,6 +52,28 @@ export default defineNitroPlugin(async () => {
   const config = useRuntimeConfig()
   const redis = getRedis()
 
+  // Setup Telegram webhook saat server start — hanya jika belum terdaftar
+  try {
+    const appUrl = 'https://mitranz.com'
+    const webhookUrl = appUrl + '/api/chat/webhook'
+    // Cek dulu apakah webhook sudah terdaftar
+    const info: any = await $fetch(
+      `https://api.telegram.org/bot${config.telegramBotToken}/getWebhookInfo`
+    )
+    if (info?.result?.url !== webhookUrl) {
+      const res: any = await $fetch(
+        `https://api.telegram.org/bot${config.telegramBotToken}/setWebhook`,
+        { method: 'POST', body: { url: webhookUrl, allowed_updates: ['message', 'callback_query'] } }
+      )
+      if (res.ok) console.log('[Telegram] ✓ Webhook terdaftar:', webhookUrl)
+      else console.warn('[Telegram] ✗ Webhook gagal:', res.description)
+    } else {
+      console.log('[Telegram] ✓ Webhook sudah aktif:', webhookUrl)
+    }
+  } catch (e: any) {
+    console.error('[Telegram] ✗ Setup webhook error:', e.message)
+  }
+
   async function refreshCache() {
     try {
       const [rawProducts, activeCategories] = await Promise.all([
