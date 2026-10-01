@@ -68,72 +68,6 @@ const isOpen = (ci, fi) => !!openMap.value[`${ci}-${fi}`]
 
 const faqCategories = [
   {
-    icon: '⚡',
-    title: 'Layanan Pembayaran Digital',
-    items: [
-      {
-        q: 'Produk apa saja yang tersedia di layanan pembayaran digital miTRANZ?',
-        a: 'miTRANZ menyediakan berbagai layanan pembayaran digital — mulai dari utilitas rumah tangga, komunikasi, hiburan, hingga dompet digital. Produk terus bertambah secara berkala. Kunjungi halaman pembayaran digital untuk melihat daftar lengkapnya.'
-      },
-      {
-        q: 'Apakah saya perlu membuat akun untuk transaksi pembayaran digital?',
-        a: 'Tidak perlu mendaftar akun. Layanan pembayaran digital miTRANZ dapat digunakan langsung — cukup masukkan nomor tujuan dan alamat email Anda, lalu lakukan pembayaran. Riwayat transaksi dapat dicek kapan saja menggunakan email yang sama.'
-      },
-      {
-        q: 'Berapa lama produk diterima setelah pembayaran?',
-        a: 'Semua produk pembayaran digital diproses <strong>secara otomatis dalam hitungan detik</strong> hingga maksimal 5 menit setelah pembayaran dikonfirmasi. Konfirmasi transaksi dan detail produk dikirim ke email yang Anda daftarkan. Untuk pulsa dan paket data, pengisian langsung masuk ke nomor tujuan. Untuk e-money, ikuti petunjuk yang dikirim via email.'
-      },
-      {
-        q: 'Data atau nomor tujuan saya salah input. Apa yang terjadi?',
-        a: 'Jika nomor/ID tidak valid, sistem akan <strong>menolak transaksi sebelum pembayaran</strong> diproses. Namun jika nomor valid milik orang lain (misalnya nomor pulsa atau ID game orang lain), transaksi akan berhasil ke tujuan tersebut dan tidak dapat dibatalkan. Selalu periksa kembali nomor tujuan sebelum melakukan pembayaran.'
-      },
-      {
-        q: 'Bagaimana cara mengecek riwayat transaksi saya?',
-        a: 'Kunjungi menu <strong>Riwayat Transaksi</strong> di halaman Pembayaran Digital. Anda akan diminta verifikasi melalui <strong>OTP yang dikirim ke email</strong> terdaftar untuk mengakses seluruh riwayat transaksi Anda.'
-      },
-    ]
-  },
-  {
-    icon: '💳',
-    title: 'Pembayaran',
-    items: [
-      {
-        q: 'Metode pembayaran apa yang diterima?',
-        a: 'Kami menerima pembayaran melalui <strong>QRIS Universal</strong> (dapat digunakan dari semua aplikasi e-wallet & mobile banking), <strong>ShopeePay</strong>. Untuk layanan aplikasi digital, pembayaran dilakukan melalui invoice yang dikirim ke email Anda.'
-      },
-      {
-        q: 'Apakah ada biaya tambahan saat pembayaran?',
-        a: 'Tidak ada biaya tersembunyi. Harga yang tampil di halaman produk adalah <strong>harga final yang Anda bayar</strong>.'
-      },
-      {
-        q: 'Pembayaran saya berhasil tapi transaksi belum diproses?',
-        a: 'Jika pembayaran sudah berhasil namun transaksi belum selesai setelah 10 menit, segera hubungi kami melalui fitur <strong>Chat</strong> di halaman utama atau email {{ cs.company_email }} dengan menyertakan bukti pembayaran.'
-      },
-      {
-        q: 'Berapa lama batas waktu pembayaran invoice?',
-        a: 'Invoice berlaku selama <strong>24 jam</strong> sejak dibuat. Lewat dari itu, pesanan akan dibatalkan otomatis dan Anda perlu membuat transaksi baru.'
-      },
-    ]
-  },
-  {
-    icon: '🔄',
-    title: 'Refund & Pembatalan',
-    items: [
-      {
-        q: 'Kapan saya bisa mengajukan refund?',
-        a: 'Refund dapat diajukan jika: (1) transaksi gagal diproses namun pembayaran sudah diterima, atau (2) terjadi kesalahan sistem dari pihak miTRANZ. Pengajuan dilakukan maksimal <strong>1x24 jam</strong> setelah transaksi gagal.'
-      },
-      {
-        q: 'Transaksi gagal karena salah nomor. Apakah bisa direfund?',
-        a: 'Jika transaksi <strong>gagal</strong> karena nomor tidak valid, dana akan dikembalikan. Namun jika transaksi <strong>berhasil</strong> dengan nomor yang salah (nomor valid milik orang lain), refund tidak dapat diproses.'
-      },
-      {
-        q: 'Berapa lama proses refund?',
-        a: 'Proses pengembalian dana memerlukan waktu <strong>3–7 hari kerja</strong> tergantung metode pembayaran yang digunakan. Dana dikembalikan ke sumber pembayaran asal.'
-      },
-    ]
-  },
-  {
     icon: '🌐',
     title: 'Aplikasi Digital',
     items: [
@@ -167,5 +101,71 @@ const faqCategories = [
       }
     ]
   },
+  {
+    icon: '💳',
+    title: 'Pembayaran',
+    items: [
+      {
+        q: 'Metode pembayaran apa yang diterima?',
+        a: 'Kami menerima pembayaran melalui <strong>QRIS Universal</strong> (dapat digunakan dari semua aplikasi e-wallet & mobile banking), <strong>ShopeePay</strong>. Untuk layanan aplikasi digital, pembayaran dilakukan melalui invoice yang dikirim ke email Anda.'
+      },
+      {
+        q: 'Apakah ada biaya tambahan saat pembayaran?',
+        a: 'Tidak ada biaya tersembunyi. Harga yang tampil di halaman produk adalah <strong>harga final yang Anda bayar</strong>.'
+      },
+      {
+        q: 'Pembayaran saya berhasil tapi transaksi belum diproses?',
+        a: 'Jika pembayaran sudah berhasil namun transaksi belum selesai setelah 10 menit, segera hubungi kami melalui fitur <strong>Chat</strong> di halaman utama atau email {{ cs.company_email }} dengan menyertakan bukti pembayaran.'
+      },
+      {
+        q: 'Berapa lama batas waktu pembayaran invoice?',
+        a: 'Invoice berlaku selama <strong>24 jam</strong> sejak dibuat. Lewat dari itu, pesanan akan dibatalkan otomatis dan Anda perlu membuat transaksi baru.'
+      },
+    ]
+  },
+  {
+    icon: '⚡',
+    title: 'Layanan Pembayaran Digital',
+    items: [
+      {
+        q: 'Produk apa saja yang tersedia di layanan pembayaran digital miTRANZ?',
+        a: 'miTRANZ menyediakan berbagai layanan pembayaran digital — mulai dari utilitas rumah tangga, komunikasi, hiburan, hingga dompet digital. Produk terus bertambah secara berkala. Kunjungi halaman pembayaran digital untuk melihat daftar lengkapnya.'
+      },
+      {
+        q: 'Apakah saya perlu membuat akun untuk transaksi pembayaran digital?',
+        a: 'Tidak perlu mendaftar akun. Layanan pembayaran digital miTRANZ dapat digunakan langsung — cukup masukkan nomor tujuan dan alamat email Anda, lalu lakukan pembayaran. Riwayat transaksi dapat dicek kapan saja menggunakan email yang sama.'
+      },
+      {
+        q: 'Berapa lama produk diterima setelah pembayaran?',
+        a: 'Semua produk pembayaran digital diproses <strong>secara otomatis dalam hitungan detik</strong> hingga maksimal 5 menit setelah pembayaran dikonfirmasi. Konfirmasi transaksi dan detail produk dikirim ke email yang Anda daftarkan. Untuk pulsa dan paket data, pengisian langsung masuk ke nomor tujuan. Untuk e-money, ikuti petunjuk yang dikirim via email.'
+      },
+      {
+        q: 'Data atau nomor tujuan saya salah input. Apa yang terjadi?',
+        a: 'Jika nomor/ID tidak valid, sistem akan <strong>menolak transaksi sebelum pembayaran</strong> diproses. Namun jika nomor valid milik orang lain (misalnya nomor pulsa atau ID game orang lain), transaksi akan berhasil ke tujuan tersebut dan tidak dapat dibatalkan. Selalu periksa kembali nomor tujuan sebelum melakukan pembayaran.'
+      },
+      {
+        q: 'Bagaimana cara mengecek riwayat transaksi saya?',
+        a: 'Kunjungi menu <strong>Riwayat Transaksi</strong> di halaman Pembayaran Digital. Anda akan diminta verifikasi melalui <strong>OTP yang dikirim ke email</strong> terdaftar untuk mengakses seluruh riwayat transaksi Anda.'
+      },
+    ]
+  },
+  {
+    icon: '🔄',
+    title: 'Refund & Pembatalan',
+    items: [
+      {
+        q: 'Kapan saya bisa mengajukan refund?',
+        a: 'Refund dapat diajukan jika: (1) transaksi gagal diproses namun pembayaran sudah diterima, atau (2) terjadi kesalahan sistem dari pihak miTRANZ. Pengajuan dilakukan maksimal <strong>1x24 jam</strong> setelah transaksi gagal.'
+      },
+      {
+        q: 'Transaksi gagal karena salah nomor. Apakah bisa direfund?',
+        a: 'Jika transaksi <strong>gagal</strong> karena nomor tidak valid, dana akan dikembalikan. Namun jika transaksi <strong>berhasil</strong> dengan nomor yang salah (nomor valid milik orang lain), refund tidak dapat diproses.'
+      },
+      {
+        q: 'Berapa lama proses refund?',
+        a: 'Proses pengembalian dana memerlukan waktu <strong>3–7 hari kerja</strong> tergantung metode pembayaran yang digunakan. Dana dikembalikan ke sumber pembayaran asal.'
+      },
+    ]
+  }
 ]
 </script>
